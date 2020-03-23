@@ -49,6 +49,8 @@ public class PlayerCtrl : MonoBehaviour
             movSpeed = 4;
         }
     }
+
+    
     void FaceMouse()
     {
         Vector3 mousePosition = Input.mousePosition;

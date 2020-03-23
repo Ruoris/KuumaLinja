@@ -17,6 +17,8 @@ public class RoomGenerator : MonoBehaviour
     public GameObject wallLeft;
     public GameObject fogTile;
 
+    public GameObject player;
+
     private Vector2 v2;
 
     public float playerOnTile;
@@ -77,6 +79,7 @@ public class RoomGenerator : MonoBehaviour
                 _y++;
             }
         }
+        GameObject _player = Instantiate(player, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
     }
 
     // Update is called once per frame
