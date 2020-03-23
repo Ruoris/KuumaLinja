@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class testiscripti : MonoBehaviour
+public class LevelGenerator : MonoBehaviour
 {
+    public float roomX;
+    public float roomY;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
