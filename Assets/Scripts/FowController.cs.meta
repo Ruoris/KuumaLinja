@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 690c955a2fcc7e446a8c282281b3727b
+<<<<<<< HEAD:Assets/Scripts/FowController.cs.meta
+guid: b2d2484590f810844a5cf06d474b807b
+=======
+guid: c920d9d015d5dda48971dcda6d88e756
+>>>>>>> JuusonBranch:Assets/Scripts/PlayerCtrl.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
