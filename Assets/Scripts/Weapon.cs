@@ -14,5 +14,6 @@ public class Weapon : ScriptableObject
     public int ammoCapacity;
     public float weight;
     public float reach;
+    public GameObject ammoModel;
     //public int cost;
 }
