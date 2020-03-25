@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PlayerCtrl : MonoBehaviour
 {
     public float movSpeed;
-    public GameObject aim;
+    public GameObject player, aim, pistol, shotgun, assaultRifle;
+    public int equippedGun;
     public bool crouching;
     private float timer = 0.3f;
     private float crouchTimer;
@@ -17,6 +19,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
+        equippedGun = 0;
         plaRB = GetComponent<Rigidbody2D>();
     }
 
@@ -24,6 +27,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         FaceMouse();
         Crouch();
+        EquipGun();
+
         crouchTimer = crouchTimer + Time.deltaTime;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -50,7 +55,42 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    
+    void EquipGun()
+    {
+        switch (equippedGun)
+        {
+            case 1:
+                pistol.SetActive(true);
+                break;
+            case 2:
+                shotgun.SetActive(true);
+                break;
+            case 3:
+                assaultRifle.SetActive(true);
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        Destroy(other.gameObject);
+        if(other.gameObject.tag == "PistolBox")
+        {
+            equippedGun = 1;
+        }
+        if (other.gameObject.tag == "ShotgunBox")
+        {
+            equippedGun = 2;
+        }
+
+        if (other.gameObject.tag == "Arbox")
+        {
+            equippedGun = 3;
+        }
+    }
+
     void FaceMouse()
     {
         Vector3 mousePosition = Input.mousePosition;
@@ -58,9 +98,7 @@ public class PlayerCtrl : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         aim.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
-        Vector2 direction = new Vector2(
-            mousePosition.x - transform.position.x,
-            mousePosition.y - transform.position.y);
+        Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
         transform.up = direction;
     }
