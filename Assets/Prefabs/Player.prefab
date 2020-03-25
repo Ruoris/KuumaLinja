@@ -162,11 +162,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2454997135389594116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f0125f8f1598c74faac7eb511a9789f, type: 3}
+  m_Script: {fileID: 11500000, guid: 67dc575c54759ce479585be1b45dbbba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletForce: 130
-  firepoint: {fileID: 4957479658659666896}
+  bulletForce: 10
+  firepoint: {fileID: 7831255059736530530}
   bulletPF: {fileID: 7302829373065428278, guid: 18957d50604d3b8478cde30c8b972c30,
     type: 3}
 --- !u!58 &3577070067220073482
