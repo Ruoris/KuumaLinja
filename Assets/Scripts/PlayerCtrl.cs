@@ -13,6 +13,7 @@ public class PlayerCtrl : MonoBehaviour
     private float crouchTimer;
 
     public Rigidbody2D plaRB;
+    public Animation walkAnim;
     //public Animator animator;
 
     Vector2 movement;
@@ -37,6 +38,7 @@ public class PlayerCtrl : MonoBehaviour
     void FixedUpdate()
     {
         plaRB.MovePosition(plaRB.position + movement * movSpeed * Time.fixedDeltaTime);
+        //walkAnim.Play();
     }
 
     void Crouch()
