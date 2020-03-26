@@ -15,6 +15,7 @@ TagManager:
   - ShotgunBox
   - Arbox
   - Mgbox
+  - Door
   layers:
   - Default
   - TransparentFX
