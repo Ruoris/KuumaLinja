@@ -5,40 +5,38 @@ using UnityEngine;
 public class Pshoot : MonoBehaviour
 {
     public float bulletForce;
-    private float fireRate = 0.3f;
+    public int shotsFired;
+    private float fireRate;
     private float canFire;
 
-    public Transform firePoint, firePoint2, firePoint3;
-    public GameObject bulletprefab, player;
+    public Transform firePoint;
+    public GameObject bulletprefab, flameprefab, player;
+
+    
 
     void Start()
     {
-
+        shotsFired = 0;
     }
-    // Update is called once per frame
+
     void Update()
     {
-        int equippedGun = GetComponent<PlayerCtrl>().equippedGun;
+        int equippedGun = GetComponent<Weapons>().equippedGun;
+        bool emptyMagazine = GetComponent<Weapons>().emptyMagazine;
 
-        if (equippedGun == 1)
+        if(emptyMagazine)
         {
-            fireRate = 0.3f;
-        }
-        if (equippedGun == 3 || equippedGun == 5)
-        {
-            fireRate = 0.1f;
-        }
-        if (equippedGun == 4)
-        {
-            fireRate = 0.2f;
+            shotsFired = 0;
         }
 
-        if (Input.GetButton("Fire1") && fireRate < canFire)
+        if (Input.GetButton("Fire1") && fireRate < canFire && equippedGun != 0 && !emptyMagazine)
         {
             Fire();
-            if(equippedGun == 2)
+
+            shotsFired++;
+
+            if (equippedGun == 2)
             {
-                fireRate = 0.8f;
                 Fire();
                 Fire();
                 Fire();
@@ -47,14 +45,27 @@ public class Pshoot : MonoBehaviour
                 Fire();
             }
         }
-        canFire = canFire + Time.deltaTime;
+        canFire += Time.deltaTime;
     }
 
     void Fire()
     {
         canFire = 0;
+        int equippedGun = GetComponent<Weapons>().equippedGun;
+        fireRate = GetComponent<Weapons>().fireRate;
+        bulletForce = GetComponent<Weapons>().bulletForce;
 
         var tempBullet = (GameObject)Instantiate(bulletprefab, firePoint.position, firePoint.rotation);
+
+        if (equippedGun == 5)
+        {
+            tempBullet = (GameObject)Instantiate(flameprefab, firePoint.position, firePoint.rotation);
+            GameObject duplicate = GameObject.Find("bullet(Clone)");
+            if (duplicate)
+            {
+                Destroy(duplicate.gameObject);
+            }
+        }
 
         Rigidbody2D tempBulletRB = tempBullet.GetComponent<Rigidbody2D>();
 
@@ -67,6 +78,6 @@ public class Pshoot : MonoBehaviour
         var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
 
         tempBulletRB.velocity = MovementDirection * bulletForce;
-        Destroy(tempBullet, 3.0f);
+        Destroy(tempBullet, 0.3f);
     }
 }
