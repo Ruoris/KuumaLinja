@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class Weapon : ScriptableObject
 {
     public new string name;
-    public Button menuIcon;
+    public Sprite worldModel;
+    public Sprite UIModel;
     public GameObject model;
 
     public float fireRate;

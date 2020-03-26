@@ -15,6 +15,7 @@ TagManager:
   - ShotgunBox
   - Arbox
   - Mgbox
+  - FTbox
   layers:
   - Default
   - TransparentFX

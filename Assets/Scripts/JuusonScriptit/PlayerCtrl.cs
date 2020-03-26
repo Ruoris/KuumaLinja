@@ -6,43 +6,49 @@ using UnityEngine.Audio;
 public class PlayerCtrl : MonoBehaviour
 {
     public float movSpeed;
-    public GameObject player, aim, pistol, shotgun, assaultRifle;
-    public int equippedGun;
+    public GameObject player, aim, walkAnimation;
+
     public bool crouching;
     private float timer = 0.3f;
     private float crouchTimer;
 
-    public Rigidbody2D plaRB;
-    public Animation walkAnim;
-    //public Animator animator;
+    public Rigidbody2D playerRB;
 
     Vector2 movement;
 
     void Start()
     {
-        equippedGun = 0;
-        plaRB = GetComponent<Rigidbody2D>();
+        playerRB = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         FaceMouse();
         Crouch();
-        EquipGun();
 
-        crouchTimer = crouchTimer + Time.deltaTime;
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
+
+        if (movement.x != 0 || movement.y != 0)
+        {
+            walkAnimation.SetActive(true);
+        }
+        else
+        {
+            walkAnimation.SetActive(false);
+        }
+
     }
 
     void FixedUpdate()
     {
-        plaRB.MovePosition(plaRB.position + movement * movSpeed * Time.fixedDeltaTime);
-        //walkAnim.Play();
+        playerRB.MovePosition(playerRB.position + movement * movSpeed * Time.fixedDeltaTime);
     }
 
     void Crouch()
     {
+        crouchTimer = crouchTimer + Time.deltaTime;
+
         if (Input.GetButton("Crouch") && !crouching && timer < crouchTimer)
         {
             crouchTimer = 0;
@@ -54,42 +60,6 @@ public class PlayerCtrl : MonoBehaviour
             crouchTimer = 0;
             crouching = false;
             movSpeed = 4;
-        }
-    }
-
-    void EquipGun()
-    {
-        switch (equippedGun)
-        {
-            case 1:
-                pistol.SetActive(true);
-                break;
-            case 2:
-                shotgun.SetActive(true);
-                break;
-            case 3:
-                assaultRifle.SetActive(true);
-                break;
-            default:
-                break;
-        }
-    }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        Destroy(other.gameObject);
-        if(other.gameObject.tag == "PistolBox")
-        {
-            equippedGun = 1;
-        }
-        if (other.gameObject.tag == "ShotgunBox")
-        {
-            equippedGun = 2;
-        }
-
-        if (other.gameObject.tag == "Arbox")
-        {
-            equippedGun = 3;
         }
     }
 
