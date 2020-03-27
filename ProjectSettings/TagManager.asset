@@ -7,8 +7,6 @@ TagManager:
   - Bullet
   - Melee
   - PistolBulletImage
-  - UsedPistolBulletImage
-  - soundsettings
   layers:
   - Default
   - TransparentFX
