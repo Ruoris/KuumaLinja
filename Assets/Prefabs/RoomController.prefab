@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7864243917977696469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7864243917977696467}
+  - component: {fileID: 7864243917977696468}
+  m_Layer: 0
+  m_Name: RoomController
+  m_TagString: RoomController
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7864243917977696467
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7864243917977696469}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: 1.39, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7864243917977696468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7864243917977696469}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd157c215fe49874baba069343a8127c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connections: 0
+  floor: {fileID: 4478715479393370695, guid: dd86258358b695b4da3f6dddf094df3c, type: 3}
+  fogTile: {fileID: 6574885273630796412, guid: f70a40b347682c748b1cd2ca468e0215, type: 3}
+  wall: {fileID: 3774421203553046307, guid: 96bdb3a275e210e479170b14360309ad, type: 3}
+  door: {fileID: 887399108115539395, guid: 345fda539cb1b0f44bca33d9ea8fc226, type: 3}
+  player: {fileID: 2454997135389594116, guid: 8902d7e0498276745bdcce4de6bc0c32, type: 3}
+  aim: {fileID: 510495280051482629, guid: 70fbf6153fb84da489eb41c5b8b02c5b, type: 3}
+  doors: 05000000
+  playerOnTile: 0
