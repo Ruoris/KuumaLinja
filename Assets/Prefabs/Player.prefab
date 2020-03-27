@@ -58,8 +58,45 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.41547024, y: 0.22126389}
   m_EdgeRadius: 0
+<<<<<<< HEAD
 --- !u!61 &4291327209632158180
 BoxCollider2D:
+=======
+--- !u!114 &6360957342319411557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2454997135389594116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308f24fc6f337404197f8432b0a70c84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movSpeed: 4
+  aim: {fileID: 2848178720801638164}
+  crouching: 0
+  plaRB: {fileID: 3462193888426222920}
+--- !u!114 &8163931636176642841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2454997135389594116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67dc575c54759ce479585be1b45dbbba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletForce: 10
+  firepoint: {fileID: 7831255059736530530}
+  bulletPF: {fileID: 7302829373065428278, guid: 18957d50604d3b8478cde30c8b972c30,
+    type: 3}
+--- !u!58 &3577070067220073482
+CircleCollider2D:
+>>>>>>> origin/Roopenbranch
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}

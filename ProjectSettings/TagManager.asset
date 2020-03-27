@@ -9,8 +9,19 @@ TagManager:
   - Fow
   - Bullet
   - Melee
+<<<<<<< HEAD
   - LevelController
   - Floor
+=======
+  - RoomController
+  - Box
+  - Weapon
+  - PistolBox
+  - ShotgunBox
+  - Arbox
+  - Mgbox
+  - Door
+>>>>>>> origin/Roopenbranch
   layers:
   - Default
   - TransparentFX
