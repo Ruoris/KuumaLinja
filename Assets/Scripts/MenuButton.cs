@@ -27,9 +27,16 @@ public class MenuButton : MonoBehaviour
         }
 
     }
-    public void BackButtonActivator()
+    public void AudioSettings()
     {
-
+        if(mainMenu.activeSelf == false && audioSettings.activeSelf == false)
+        {
+            mainMenu.SetActive(true);
+        }
+        if (audioSettings.activeSelf == true)
+        {
+            mainMenu.SetActive(false);
+        }
     }
     public void onClick()
     {
