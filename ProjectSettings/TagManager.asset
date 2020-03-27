@@ -16,6 +16,7 @@ TagManager:
   - Arbox
   - Mgbox
   - FTbox
+  - Grenadebox
   layers:
   - Default
   - TransparentFX

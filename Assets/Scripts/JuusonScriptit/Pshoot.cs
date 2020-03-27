@@ -8,15 +8,19 @@ public class Pshoot : MonoBehaviour
     public int shotsFired;
     private float fireRate;
     private float canFire;
+    public float counter;
+    public float explosionCounter = 3;
 
     public Transform firePoint;
-    public GameObject bulletprefab, flameprefab, player;
+    public GameObject player;
+    public GameObject bulletprefab, flameprefab, grenadeprefab, explosion;
 
     
 
     void Start()
     {
         shotsFired = 0;
+        explosionCounter = 3;
     }
 
     void Update()
@@ -51,15 +55,30 @@ public class Pshoot : MonoBehaviour
     void Fire()
     {
         canFire = 0;
+        counter = 0;
+
         int equippedGun = GetComponent<Weapons>().equippedGun;
         fireRate = GetComponent<Weapons>().fireRate;
         bulletForce = GetComponent<Weapons>().bulletForce;
 
         var tempBullet = (GameObject)Instantiate(bulletprefab, firePoint.position, firePoint.rotation);
 
-        if (equippedGun == 5)
+        if (equippedGun == 5 || equippedGun == 6)
         {
             tempBullet = (GameObject)Instantiate(flameprefab, firePoint.position, firePoint.rotation);
+            if (equippedGun == 6)
+            {
+                tempBullet = (GameObject)Instantiate(grenadeprefab, firePoint.position, firePoint.rotation);
+
+                counter += Time.deltaTime;
+
+                if(counter >= explosionCounter)
+                {
+                    Instantiate(explosion, grenadeprefab.transform.position, Quaternion.identity);
+                }
+                Destroy(tempBullet, 3.1f);
+            }
+
             GameObject duplicate = GameObject.Find("bullet(Clone)");
             if (duplicate)
             {
@@ -78,6 +97,10 @@ public class Pshoot : MonoBehaviour
         var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
 
         tempBulletRB.velocity = MovementDirection * bulletForce;
-        Destroy(tempBullet, 0.3f);
+
+        if(equippedGun != 6)
+        {
+            Destroy(tempBullet, 0.3f);
+        }
     }
 }
