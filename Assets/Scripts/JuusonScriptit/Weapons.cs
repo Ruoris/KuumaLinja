@@ -84,6 +84,8 @@ public class Weapons : MonoBehaviour
                     break;
                 case 6:
                     grenade.SetActive(true);
+                    emptyMagazine = false;
+                    ammoCapacity = 3;
                     break;
                 default:
                     break;
@@ -120,6 +122,11 @@ public class Weapons : MonoBehaviour
             bulletForce = 20;
             fireRate = 0.005f;
         }
+        if (equippedGun == 6)
+        {
+            bulletForce = 10;
+            fireRate = 2f;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -147,6 +154,11 @@ public class Weapons : MonoBehaviour
         if (other.gameObject.tag == "FTbox")
         {
             equippedGun = 5;
+        }
+
+        if (other.gameObject.tag == "Grenadebox")
+        {
+            equippedGun = 6;
         }
     }
 }

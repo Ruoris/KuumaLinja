@@ -9,12 +9,13 @@ public class Weapon : ScriptableObject
     public new string name;
     public Sprite worldModel;
     public Sprite UIModel;
-    public GameObject model;
+    public Sprite ammoModel;
+    public Sprite model;
 
     public float fireRate;
     public int ammoCapacity;
     public float weight;
     public float reach;
-    public GameObject ammoModel;
+
     //public int cost;
 }
