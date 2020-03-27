@@ -5,6 +5,7 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+<<<<<<< HEAD
   - enabled: 1
     path: Assets/Scenes/Olli/Level 1.2.unity
     guid: 8dad8558738ffb94e83e775a01fa235d
@@ -17,4 +18,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Olli/Level 1.4.unity
     guid: cb8ae8d01392de646ae72b186463404e
+=======
+  - enabled: 0
+    path: Assets/Scenes/SampleScene.unity
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: a7ffc86fd3c799d49b0e9d4a9cf8d1e5
+  - enabled: 1
+    path: Assets/Scenes/UIMainmenukehitysScene.unity
+    guid: becfe2f6280b84e488dd4e811ccb95e0
+>>>>>>> toniBranch
   m_configObjects: {}

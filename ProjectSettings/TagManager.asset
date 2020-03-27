@@ -10,6 +10,7 @@ TagManager:
   - Bullet
   - Melee
 <<<<<<< HEAD
+<<<<<<< HEAD
   - LevelController
   - Floor
 =======
@@ -22,6 +23,11 @@ TagManager:
   - Mgbox
   - Door
 >>>>>>> origin/Roopenbranch
+=======
+  - PistolBulletImage
+  - UsedPistolBulletImage
+  - soundsettings
+>>>>>>> toniBranch
   layers:
   - Default
   - TransparentFX
