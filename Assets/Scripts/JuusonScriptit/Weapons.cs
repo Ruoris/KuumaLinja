@@ -135,7 +135,7 @@ public class Weapons : MonoBehaviour
         audio.Play();
         emptyMagazine = false;
 
-        Destroy(other.gameObject);
+        //Destroy(other.gameObject);
 
         if (other.gameObject.tag == "PistolBox")
         {
