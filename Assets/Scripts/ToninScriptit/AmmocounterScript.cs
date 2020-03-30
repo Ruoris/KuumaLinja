@@ -7,20 +7,23 @@ public class AmmocounterScript : MonoBehaviour
 {
 
     public GameObject[] pistolBullets;
-    public GameObject pistolbullet;
-    public int bulletsLeft=4;
+    public GameObject Player;
+    public int bulletsLeft=9;
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetButton("Fire1"))
         {
             ChangeColor();
-        }
+        } 
+        bulletsLeft = Player.GetComponent<Weapons>().ammoLeft -1;
     }
     void Start()
     {
-       
+      
+
+
     }
-    public void GetPistolBullets()
+    public void GetPistolBullets(int ammoCapacity )
     {
 
     }
@@ -29,7 +32,7 @@ public class AmmocounterScript : MonoBehaviour
   public void ChangeColor()
     {
         Color used = new Color32(75, 75, 75, 255);
-        //pistolbullet.GetComponent<Image>().color = used;
+       
         pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
         bulletsLeft--;
 
