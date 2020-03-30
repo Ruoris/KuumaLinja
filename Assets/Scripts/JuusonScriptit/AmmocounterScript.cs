@@ -29,7 +29,7 @@ public class AmmocounterScript : MonoBehaviour
     }
     public void GetPistolBullets(int ammoCapacity)
     {
-
+        //GameObject pistolBullets[ammoCapacity];
     }
 
 
