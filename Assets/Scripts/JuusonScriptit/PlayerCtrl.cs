@@ -29,9 +29,14 @@ public class PlayerCtrl : MonoBehaviour
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
 
+
         if (movement.x != 0 || movement.y != 0)
         {
             walkAnimation.SetActive(true);
+            walkAnimation.transform.position = player.transform.position;
+
+            float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
+            walkAnimation.transform.rotation = Quaternion.AngleAxis(-walkAngle, Vector3.forward);
         }
         else
         {
@@ -70,8 +75,20 @@ public class PlayerCtrl : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         aim.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
+        //if(mousePosition.x < player.transform.position.y && movement.x != 0 || movement.y != 0)
+        //{
+        //    reverseWalk();
+        //}
+
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
         transform.up = direction;
+    }
+
+    public void reverseWalk()
+    {
+        Debug.Log("ASD");
+        float angle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
+        walkAnimation.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 }
