@@ -17,7 +17,6 @@ public class AmmocounterScript : MonoBehaviour
         if (Input.GetButton("Fire1"))
         {
                 ChangeColor();
-
         }
     }
 
@@ -29,22 +28,15 @@ public class AmmocounterScript : MonoBehaviour
     }
     public void GetPistolBullets(int ammoCapacity)
     {
-        //GameObject pistolBullets[ammoCapacity];
     }
 
 
     public void ChangeColor()
     {
-        //bool emptyMagazine = Player.GetComponent<Weapons>().emptyMagazine;
         int bulletsLeft = Player.GetComponent<Weapons>().ammoLeft;
 
-        //if (emptyMagazine)
-        //{
-        //    ReturnColor();
-        //}
-
-            Color used = new Color32(75, 75, 75, 255);
-            pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
+        Color used = new Color32(75, 75, 75, 255);
+        pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
     }
 
     public void ReturnColor(int ammoCapacity)

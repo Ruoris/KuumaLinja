@@ -10,7 +10,7 @@ public class Weapons : MonoBehaviour
     public float fireRate;
     public bool emptyMagazine;
 
-    public AudioClip equipClip;
+    public AudioSource equipClip;
 
     public GameObject uiAmmoCounter;
 
@@ -28,7 +28,6 @@ public class Weapons : MonoBehaviour
     void Update()
     {
         EquipGun();
-        FireControl();
 
         int shotsFired = GetComponent<Pshoot>().shotsFired;
 
@@ -43,6 +42,7 @@ public class Weapons : MonoBehaviour
     void EquipGun()
     {
         uiAmmoCounter.SetActive(true);
+        bulletForce = 40;
 
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
         {
@@ -68,36 +68,43 @@ public class Weapons : MonoBehaviour
                     uiAmmoCounter.SetActive(false);
                     emptyMagazine = true;
                     ammoCapacity = 0;
+                    fireRate = 0f;
                     break;
                 case 1:
                     pistol.SetActive(true);
                     playerOneHand.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 10;
+                    fireRate = 0.3f;
                     break;
                 case 2:
                     shotgun.SetActive(true);
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 5;
+                    fireRate = 1;
                     break;
                 case 3:
                     assaultRifle.SetActive(true);
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 30;
+                    fireRate = 0.1f;
                     break;
                 case 4:
                     machineGun.SetActive(true);
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 100;
+                    fireRate = 0.2f;
                     break;
                 case 5:
                     flameThrower.SetActive(true);
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 300;
+                    bulletForce = 20;
+                    fireRate = 0.005f;
                     break;
                 case 6:
                     grenade.SetActive(true);
@@ -109,51 +116,14 @@ public class Weapons : MonoBehaviour
                     break;
             }
         }
-    }
-
-    public void FireControl()
-    {
-        bulletForce = 40;
-
-        if (equippedGun == 0)
-        {
-            fireRate = 0f;
-        }
-        if (equippedGun == 1)
-        {
-            fireRate = 0.3f;
-        }
-        if (equippedGun == 2)
-        {
-            fireRate = 1;
-        }
-        if (equippedGun == 3)
-        {
-            fireRate = 0.1f;
-        }
-        if (equippedGun == 4)
-        {
-            fireRate = 0.2f;
-        }
-        if (equippedGun == 5)
-        {
-            bulletForce = 20;
-            fireRate = 0.005f;
-        }
-        if (equippedGun == 6)
-        {
-            bulletForce = 10;
-            fireRate = 2f;
-        }
-    }
+    }  
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        //GetComponent<AudioSource>().Play();
-        //equipClip.Play();
+        equipClip.Play();
 
         uiAmmoCounter.SetActive(true);
-        
+
 
         emptyMagazine = false;
 
@@ -182,5 +152,6 @@ public class Weapons : MonoBehaviour
         {
             equippedGun = 6;
         }
+
     }
 }
