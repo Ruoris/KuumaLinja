@@ -12,10 +12,10 @@ public class Weapons : MonoBehaviour
 
     public AudioClip equipClip;
 
-    public GameObject uiAmmoCounter;
+    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter;
 
     public int equippedGun, ammoCapacity, ammoLeft;
-    
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +33,7 @@ public class Weapons : MonoBehaviour
         int shotsFired = GetComponent<Pshoot>().shotsFired;
 
         ammoLeft = ammoCapacity - shotsFired;
-        if(ammoLeft <= 0)
+        if (ammoLeft <= 0)
         {
             equippedGun = 0;
         }
@@ -42,7 +42,6 @@ public class Weapons : MonoBehaviour
 
     void EquipGun()
     {
-        uiAmmoCounter.SetActive(true);
 
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
         {
@@ -61,27 +60,48 @@ public class Weapons : MonoBehaviour
             {
                 // gun selection
                 case 0:
-                    uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+                    if (uiAmmoCounter.activeSelf == true)
+                    {
+                        uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+                        uiAmmoCounter.SetActive(false);
+                    }
+                    if (uiShellCounter.activeSelf == true)
+                    {
+                        uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+                        uiShellCounter.SetActive(false);
+                    }
+                    if (uiRifleCounter.activeSelf == true)
+                    {
+                        uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+                        uiRifleCounter.SetActive(false);
+                    }
                     playerBothHands.SetActive(false);
                     playerOneHand.SetActive(false);
                     playerMelee.SetActive(false);
-                    uiAmmoCounter.SetActive(false);
+
+
                     emptyMagazine = true;
                     ammoCapacity = 0;
                     break;
                 case 1:
+
+                    uiAmmoCounter.SetActive(true);
                     pistol.SetActive(true);
                     playerOneHand.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 10;
                     break;
                 case 2:
+
+                    uiShellCounter.SetActive(true);
                     shotgun.SetActive(true);
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 5;
                     break;
                 case 3:
+
+                    uiRifleCounter.SetActive(true);
                     assaultRifle.SetActive(true);
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
@@ -152,8 +172,8 @@ public class Weapons : MonoBehaviour
         //GetComponent<AudioSource>().Play();
         //equipClip.Play();
 
-        uiAmmoCounter.SetActive(true);
-        
+
+
 
         emptyMagazine = false;
 
@@ -161,25 +181,76 @@ public class Weapons : MonoBehaviour
 
         if (other.gameObject.tag == "PistolBox")
         {
+            GetComponent<Pshoot>().shotsFired = 0;
+            if (uiShellCounter.activeSelf == true)
+            {
+                GetComponent<Pshoot>().shotsFired = 0;
+                uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+                uiShellCounter.SetActive(false);
+            }
+            if (uiAmmoCounter.activeSelf == true)
+            {
+                uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+                uiAmmoCounter.SetActive(false);
+            }
+            if (uiRifleCounter.activeSelf == true)
+            {
+                uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+                uiRifleCounter.SetActive(false);
+            }
             equippedGun = 1;
         }
         if (other.gameObject.tag == "ShotgunBox")
         {
+            GetComponent<Pshoot>().shotsFired = 0;
+            if (uiShellCounter.activeSelf == true)
+            {
+                uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+                uiShellCounter.SetActive(false);
+            }
+            if (uiAmmoCounter.activeSelf == true)
+            {
+                uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+                uiAmmoCounter.SetActive(false);
+            }
+            if (uiRifleCounter.activeSelf == true)
+            {
+                uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+                uiRifleCounter.SetActive(false);
+            }
             equippedGun = 2;
         }
 
         if (other.gameObject.tag == "Arbox")
         {
+            GetComponent<Pshoot>().shotsFired = 0;
+            if (uiShellCounter.activeSelf == true)
+            {
+                uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+                uiShellCounter.SetActive(false);
+            }
+            if (uiAmmoCounter.activeSelf == true)
+            {
+                uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+                uiAmmoCounter.SetActive(false);
+            }
+            if (uiRifleCounter.activeSelf == true)
+            {
+                uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+                uiRifleCounter.SetActive(false);
+            }
             equippedGun = 3;
         }
 
         if (other.gameObject.tag == "FTbox")
         {
+            GetComponent<Pshoot>().shotsFired = 0;
             equippedGun = 5;
         }
 
         if (other.gameObject.tag == "Grenadebox")
         {
+            GetComponent<Pshoot>().shotsFired = 0;
             equippedGun = 6;
         }
     }
