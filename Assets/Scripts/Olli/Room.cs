@@ -12,6 +12,8 @@ public class Room : ScriptableObject
     public GameObject door;
     public GameObject floor;
 
+    public GameObject[] furniture;
+
     public int roomX;
     public int roomY;
 }

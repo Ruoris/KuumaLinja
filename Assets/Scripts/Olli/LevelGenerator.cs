@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-    public int[] roomsX;
-    public int[] roomsY;
+    public Room[] rooms;
+
+    public string[] roomCoordinates;
+    public string[] roomSizes;
+    public string[] roomDoors;
+    public string[] roomWindows;
+    public string[] roomLayouts;
 
     public int floorX, floorY;
 
@@ -26,13 +31,14 @@ public class LevelGenerator : MonoBehaviour
 
     public Camera mainCamera;
 
-    public GameObject roomController;
-    public string floorLayout;
+    public GameObject levelController;
 
     // Start is called before the first frame update
     void Start()
     {
         location = new Vector2(0, 0);
+
+        levelController = GameObject.FindGameObjectWithTag("LevelController");
 
         //mainCamera.transform.position = new Vector2((floorX / 2) * 0.32f, (floorY / 2) * 0.32f);
         //mainCamera.GetComponent<Camera>().orthographicSize = floorX;
@@ -40,9 +46,18 @@ public class LevelGenerator : MonoBehaviour
         GenerateFloor();
         GeneratePoints();
 
-        GameObject _player = Instantiate(player, playerSpawn, transform.rotation = new Quaternion(0, 0, 0, 0));
-        GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
-        _player.GetComponent<PlayerCtrl>().aim = _aim;
+        if (levelController.GetComponent<LevelController>().playerSpawned == false)
+        {
+            Vector2 temp2 = new Vector2(1, 1);
+            GameObject _player = Instantiate(player, temp2, transform.rotation = new Quaternion(0, 0, 0, 0));
+            GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+            _player.GetComponent<PlayerCtrl>().aim = _aim;
+            levelController.GetComponent<LevelController>().playerSpawned = true;
+        }
+
+        GetRooms();
+        
+        this.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -61,26 +76,29 @@ public class LevelGenerator : MonoBehaviour
             while (floorX > _x)
             {
                 location.x = location.x + 0.32f;
-                Instantiate(hallwayFloor, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                GameObject floor = Instantiate(hallwayFloor, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                floor.transform.parent = levelController.transform;
                 //Instantiate(fogTile, location, transform.rotation = new Quaternion(0, 0, 0, 0));
                 _x++;
                 if (_y == 0)
                 {
-                    Instantiate(wallFloor, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                    GameObject wall = Instantiate(wallFloor, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                    wall.transform.parent = levelController.transform;
                 }
                 if (_y == floorY - 1)
                 {
-
-                    Instantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
-
+                    GameObject wall = Instantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                    wall.transform.parent = levelController.transform;
                 }
                 if (_x == 1)
                 {
-                    Instantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                    GameObject wall = Instantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                    wall.transform.parent = levelController.transform;
                 }
                 if (_x == floorX)
                 {
-                    Instantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                    GameObject wall = Instantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                    wall.transform.parent = levelController.transform;
                 }
             }
 
@@ -109,25 +127,23 @@ public class LevelGenerator : MonoBehaviour
                 while (x < save)
                 {
                     spawnString += floorSpawn[x];
-                    Debug.Log("X string: " + spawnString);
                     x++;
                 }
                 int.TryParse(spawnString, out spawnXint);
-                Debug.Log("X int: " + spawnXint);
                 x++;
                 spawnString = null;
                 while (x < floorSpawn.Length)
                 {
                     spawnString += floorSpawn[x];
-                    Debug.Log("Y string: " + spawnString);
                     x++;
                 }
                 int.TryParse(spawnString, out spawnYint);
-                Debug.Log("Y int: " + spawnYint);
             }
         }
         location = new Vector2(spawnXint * 0.32f, spawnYint * 0.32f);
-        Instantiate(stairs, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+        GameObject _stairs = Instantiate(stairs, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+        _stairs.transform.parent = this.gameObject.transform;
+
         playerSpawn = location;
 
         //Next Floor Enterance
@@ -141,25 +157,85 @@ public class LevelGenerator : MonoBehaviour
                 while (x < save)
                 {
                     spawnString += nextFloor[x];
-                    Debug.Log("X string: " + spawnString);
                     x++;
                 }
                 int.TryParse(spawnString, out spawnXint);
-                Debug.Log("X int: " + spawnXint);
                 x++;
                 spawnString = null;
                 while (x < nextFloor.Length)
                 {
                     spawnString += nextFloor[x];
-                    Debug.Log("Y string: " + spawnString);
                     x++;
                 }
                 int.TryParse(spawnString, out spawnYint);
-                Debug.Log("Y int: " + spawnYint);
             }
         }
         location = new Vector2(spawnXint * 0.32f, spawnYint * 0.32f);
         GameObject exit = Instantiate(stairs, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+        exit.transform.parent = this.gameObject.transform;
         exit.GetComponent<PointController>().nextFloor = true;
+    }
+
+    public void GetRooms()
+    {
+        for (int r = 0; r < roomCoordinates.Length; r++)
+        {
+            int spawnXint = 0;
+            int spawnYint = 0;
+            for (int x = 0; x < roomCoordinates[r].Length; x++)
+            {
+                if (roomCoordinates[r][x] == '-')
+                {
+                    int save = x;
+                    x = 0;
+                    string spawnString = null;
+                    while (x < save)
+                    {
+                        spawnString += roomCoordinates[r][x];
+                        x++;
+                    }
+                    int.TryParse(spawnString, out spawnXint);
+                    x++;
+                    spawnString = null;
+                    while (x < roomCoordinates[r].Length)
+                    {
+                        spawnString += roomCoordinates[r][x];
+                        x++;
+                    }
+                    int.TryParse(spawnString, out spawnYint);
+                }
+            }
+            location = new Vector2(spawnXint * 0.32f, spawnYint * 0.32f);
+
+            spawnXint = 0;
+            spawnYint = 0;
+            
+            for (int x = 0; x < roomSizes[r].Length; x++)
+            {
+                if (roomSizes[r][x] == '-')
+                {
+                    int save = x;
+                    x = 0;
+                    string spawnString = null;
+                    while (x < save)
+                    {
+                        spawnString += roomSizes[r][x];
+                        x++;
+                    }
+                    int.TryParse(spawnString, out spawnXint);
+                    x++;
+                    spawnString = null;
+                    while (x < roomSizes[r].Length)
+                    {
+                        spawnString += roomSizes[r][x];
+                        x++;
+                    }
+                    int.TryParse(spawnString, out spawnYint);
+                }
+            }
+            Debug.Log("Spawn:" + spawnXint + ", " + spawnYint);
+            GetComponent<RoomGenerator>().GenerateRoom(rooms[r], location, spawnXint, spawnYint, roomDoors[r], roomWindows[r], this.gameObject);
+            GetComponent<RoomGenerator>().GenerateFurniture(roomLayouts, location, rooms[r], this.gameObject);
+        }
     }
 }

@@ -4,30 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - LevelController
   - RoomController
   - Wall
-  - Fow
-  - Bullet
-  - Melee
-<<<<<<< HEAD
-<<<<<<< HEAD
-  - LevelController
   - Floor
-=======
-  - RoomController
-  - Box
-  - Weapon
-  - PistolBox
-  - ShotgunBox
-  - Arbox
-  - Mgbox
-  - Door
->>>>>>> origin/Roopenbranch
-=======
-  - PistolBulletImage
-  - UsedPistolBulletImage
-  - soundsettings
->>>>>>> toniBranch
+  - Fow
+  - Object
+  - LevelGenerator
   layers:
   - Default
   - TransparentFX
