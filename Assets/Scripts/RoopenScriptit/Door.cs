@@ -20,6 +20,7 @@ public class Door : MonoBehaviour
     }
     IEnumerator OpenDoor()
     {
+        active = true;
         doortrigger.transform.Rotate(0, 0, 90);
         yield return null;
         open = true;
@@ -27,10 +28,11 @@ public class Door : MonoBehaviour
     }
     IEnumerator CloseDoor()
     {
+        active = true;
         yield return new WaitForSeconds(0.3f);
         doortrigger.transform.Rotate(0, 0, -90);
         open = false;
-        active = true;
+        active = false;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
