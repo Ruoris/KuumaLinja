@@ -10,10 +10,11 @@ public class Pshoot : MonoBehaviour
     private float canFire;
     public float counter;
     public float explosionCounter = 3;
+    public AudioSource gunSound;
 
     public Transform firePoint;
     public GameObject player;
-    public GameObject bulletprefab, flameprefab, grenadeprefab, explosion;
+    public GameObject bulletprefab, flameprefab, grenadeprefab, gunFlareAnimation, explosion;
 
     
 
@@ -27,20 +28,24 @@ public class Pshoot : MonoBehaviour
     {
         int equippedGun = GetComponent<Weapons>().equippedGun;
         bool emptyMagazine = GetComponent<Weapons>().emptyMagazine;
+        gunFlareAnimation.SetActive(false);
 
-        if(emptyMagazine)
+        if (emptyMagazine)
         {
             shotsFired = 0;
         }
 
-        if (Input.GetButton("Fire1") && fireRate < canFire && equippedGun != 0 && !emptyMagazine)
+        if (Input.GetButton("Fire1") && fireRate < canFire && !emptyMagazine)
         {
+            gunSound.Play();
             Fire();
+            gunFlareAnimation.SetActive(true);
 
             shotsFired++;
 
             if (equippedGun == 2)
             {
+                // if a shotgun is equipped
                 Fire();
                 Fire();
                 Fire();
@@ -65,19 +70,22 @@ public class Pshoot : MonoBehaviour
 
         if (equippedGun == 5 || equippedGun == 6)
         {
+            gunSound.Stop();
+            // if weapon is flamethrower or grenade
+
             tempBullet = (GameObject)Instantiate(flameprefab, firePoint.position, firePoint.rotation);
-            if (equippedGun == 6)
-            {
-                tempBullet = (GameObject)Instantiate(grenadeprefab, firePoint.position, firePoint.rotation);
+            //if (equippedGun == 6)
+            //{
+            //    tempBullet = (GameObject)Instantiate(grenadeprefab, firePoint.position, firePoint.rotation);
 
-                counter += Time.deltaTime;
+            //    counter += Time.deltaTime;
 
-                if(counter >= explosionCounter)
-                {
-                    Instantiate(explosion, grenadeprefab.transform.position, Quaternion.identity);
-                }
-                Destroy(tempBullet, 3.1f);
-            }
+            //    if(counter >= explosionCounter)
+            //    {
+            //        Instantiate(explosion, grenadeprefab.transform.position, Quaternion.identity);
+            //    }
+            //    Destroy(tempBullet, 3.1f);
+            //}
 
             GameObject duplicate = GameObject.Find("bullet(Clone)");
             if (duplicate)
@@ -88,7 +96,8 @@ public class Pshoot : MonoBehaviour
 
         Rigidbody2D tempBulletRB = tempBullet.GetComponent<Rigidbody2D>();
 
-        float spreadAngle = Random.Range(10, -10);
+        // sets the random spread of the weapons
+        float spreadAngle = Random.Range(19, 5);
 
         var x = firePoint.position.x - player.transform.position.x;
         var y = firePoint.position.y - player.transform.position.y;

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 005399f7f4be7864c99f64b4ed0ced92
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - pistolbullet: {fileID: 1384786691984070482, guid: 956d29ce5664256469384fc5d4703309,
+      type: 3}
+  - uiBulletCounter: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

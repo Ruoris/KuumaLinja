@@ -5,10 +5,14 @@ using UnityEngine;
 public class Weapons : MonoBehaviour
 {
     public GameObject pistol, shotgun, assaultRifle, machineGun, flameThrower, grenade;
-    public GameObject player;
+    public GameObject player, playerMelee, playerOneHand, playerBothHands;
     public int bulletForce;
     public float fireRate;
     public bool emptyMagazine;
+
+    public AudioClip equipClip;
+
+    public GameObject uiAmmoCounter;
 
     public int equippedGun, ammoCapacity, ammoLeft;
     
@@ -17,6 +21,7 @@ public class Weapons : MonoBehaviour
     void Start()
     {
         emptyMagazine = true;
+        ammoLeft = 0;
     }
 
     // Update is called once per frame
@@ -26,7 +31,7 @@ public class Weapons : MonoBehaviour
         FireControl();
 
         int shotsFired = GetComponent<Pshoot>().shotsFired;
- 
+
         ammoLeft = ammoCapacity - shotsFired;
         if(ammoLeft <= 0)
         {
@@ -37,6 +42,8 @@ public class Weapons : MonoBehaviour
 
     void EquipGun()
     {
+        uiAmmoCounter.SetActive(true);
+
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
         {
             for (int i = 0; i < player.transform.childCount; i++)
@@ -44,46 +51,57 @@ public class Weapons : MonoBehaviour
                 // deactivates other weapons
                 var child = player.transform.GetChild(i).gameObject;
 
-                if (child != null && child.name.Contains("Weapon"))
+                if (child != null && child.name.Contains("Weapon") || child.name.Contains("Hand"))
                 {
                     child.SetActive(false);
                 }
-
             }
 
             switch (equippedGun)
             {
                 // gun selection
                 case 0:
+                    uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+                    playerBothHands.SetActive(false);
+                    playerOneHand.SetActive(false);
+                    playerMelee.SetActive(false);
+                    uiAmmoCounter.SetActive(false);
                     emptyMagazine = true;
+                    ammoCapacity = 0;
                     break;
                 case 1:
                     pistol.SetActive(true);
+                    playerOneHand.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 10;
                     break;
                 case 2:
                     shotgun.SetActive(true);
+                    playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 5;
                     break;
                 case 3:
                     assaultRifle.SetActive(true);
+                    playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 30;
                     break;
                 case 4:
                     machineGun.SetActive(true);
+                    playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 100;
                     break;
                 case 5:
                     flameThrower.SetActive(true);
+                    playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 300;
                     break;
                 case 6:
                     grenade.SetActive(true);
+                    playerOneHand.SetActive(true);
                     emptyMagazine = false;
                     ammoCapacity = 3;
                     break;
@@ -131,14 +149,13 @@ public class Weapons : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        AudioSource audio = GetComponent<AudioSource>();
-        audio.Play();
-        emptyMagazine = false;
+        //GetComponent<AudioSource>().Play();
+        //equipClip.Play();
 
-        //if (other.gameObject.tag != "Wall")
-        //{
-        //    Destroy(other.gameObject);
-        //}
+        uiAmmoCounter.SetActive(true);
+        
+
+        emptyMagazine = false;
 
         if (other.gameObject.tag == "PistolBox")
         {

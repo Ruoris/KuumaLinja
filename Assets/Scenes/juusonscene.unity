@@ -502,7 +502,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1446610615
@@ -1053,6 +1053,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3749585774867313105, guid: 53c40d1b805e0d34aac7e9753c8c753e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3749585774867313119, guid: 53c40d1b805e0d34aac7e9753c8c753e,
         type: 3}
       propertyPath: m_Name
@@ -1063,5 +1068,10 @@ PrefabInstance:
       propertyPath: aim
       value: 
       objectReference: {fileID: 1703778407}
+    - target: {fileID: 7882211793717212140, guid: 53c40d1b805e0d34aac7e9753c8c753e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53c40d1b805e0d34aac7e9753c8c753e, type: 3}
