@@ -147,11 +147,6 @@ public class Weapons : MonoBehaviour
 
         emptyMagazine = false;
 
-<<<<<<< HEAD
-=======
-        //Destroy(other.gameObject);
-
->>>>>>> Roopenbranch
         if (other.gameObject.tag == "PistolBox")
         {
             equippedGun = 1;
