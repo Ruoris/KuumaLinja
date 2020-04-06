@@ -9,8 +9,8 @@ public class EnemyController : MonoBehaviour
 
     public Vector3 playerLastPosition;
     RaycastHit2D rayToPlayer;
-    float speed = 3f;
-    float detectionDistance = 10f;
+    public float speed = 0.75f;
+    public float detectionDistance = 10f;
 
     bool moving = true, patrolling = true, pursuing = false, hasGun = false, goingtoweapon = false, goingtolastloc = false;
     public bool clockwise = false, stationary = false;
@@ -61,7 +61,7 @@ public class EnemyController : MonoBehaviour
 
         if (pursuing)
         {
-            speed = 3.0f;
+            speed = 1.0f;
             enemyRb.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((playerLastPosition.y - transform.position.y), 
                 (playerLastPosition.x - transform.position.x)) * Mathf.Rad2Deg);
 
@@ -73,7 +73,7 @@ public class EnemyController : MonoBehaviour
 
         if (goingtolastloc)
         {
-            speed = 2.5f;
+            speed = 0.75f;
             enemyRb.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((playerLastPosition.y - transform.position.y),
                 (playerLastPosition.x - transform.position.x)) * Mathf.Rad2Deg);
 
