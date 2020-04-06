@@ -3,7 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - PistolBox
+  - PistolBulletImage
+  - Arbox
+  - Grenadebox
+  - soundsettings
+  - ShotgunBox
+  - FTbox
+  - Bullet
+  - PistolDrop
+  - Melee
+  - ShotGunDrop
+  - RifleDrop
   layers:
   - Default
   - TransparentFX
