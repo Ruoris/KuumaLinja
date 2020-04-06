@@ -4,10 +4,6 @@ using UnityEngine;
 
 public class WeaponDrop : MonoBehaviour
 {
-
     public int bulletsLeft;
     public int ammoCapacity;
-   
-
-    
 }

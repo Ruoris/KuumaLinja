@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7158717166876392694}
   - component: {fileID: 1054385263527465005}
   - component: {fileID: 3851095625555690117}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PistolDrop
   m_TagString: PistolDrop
   m_Icon: {fileID: 0}

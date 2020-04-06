@@ -6,11 +6,11 @@ using UnityEngine.Audio;
 public class PlayerCtrl : MonoBehaviour
 {
     public float movSpeed;
-    public GameObject player, aim, walkAnimation;
+    public GameObject player, aim, playerCamera;
+    public GameObject walkAnimation, deathAnimation;
+    private int playerHealth = 1;
 
     public bool crouching;
-    private float timer = 0.3f;
-    private float crouchTimer;
 
     public Rigidbody2D playerRB;
 
@@ -18,6 +18,11 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
+        player.SetActive(true);
+
+        // lisätään kunhan saadaan playerin prefab "valmiiksi"
+        //Instantiate(PlayerPrefab, startPoint.transform.position, Quaternion.identity);
+
         playerRB = GetComponent<Rigidbody2D>();
     }
 
@@ -25,6 +30,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         FaceMouse();
         Crouch();
+
+        playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -42,7 +49,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             walkAnimation.SetActive(false);
         }
-
     }
 
     void FixedUpdate()
@@ -52,17 +58,13 @@ public class PlayerCtrl : MonoBehaviour
 
     void Crouch()
     {
-        crouchTimer = crouchTimer + Time.deltaTime;
-
-        if (Input.GetButton("Crouch") && !crouching && timer < crouchTimer)
+        if (Input.GetButtonDown("Crouch") && !crouching)
         {
-            crouchTimer = 0;
             crouching = true;
             movSpeed = 2;
         }
-        if (Input.GetButton("Crouch") && crouching && timer < crouchTimer)
+        else if (Input.GetButtonDown("Crouch") && crouching)
         {
-            crouchTimer = 0;
             crouching = false;
             movSpeed = 4;
         }
@@ -71,7 +73,7 @@ public class PlayerCtrl : MonoBehaviour
     void FaceMouse()
     {
         Vector3 mousePosition = Input.mousePosition;
-        
+
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         aim.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
@@ -90,5 +92,21 @@ public class PlayerCtrl : MonoBehaviour
         Debug.Log("ASD");
         float angle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
         walkAnimation.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    } // ei toimi vielä
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.CompareTag("EnemyBullet"))
+        {
+            playerHealth--;
+            if(playerHealth <= 0)
+            {
+                deathAnimation.SetActive(true);
+                deathAnimation.transform.position = player.transform.position;
+                deathAnimation.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
+
+                player.SetActive(false);
+            }
+        }
     }
 }

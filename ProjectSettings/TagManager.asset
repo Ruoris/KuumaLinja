@@ -16,6 +16,7 @@ TagManager:
   - Melee
   - ShotGunDrop
   - RifleDrop
+  - EnemyBullet
   layers:
   - Default
   - TransparentFX
@@ -25,10 +26,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - Obstacle
+  - Target
+  - Equipment
   - 
   - 
   - 
