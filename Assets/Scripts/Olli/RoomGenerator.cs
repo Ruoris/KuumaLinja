@@ -148,8 +148,7 @@ public class RoomGenerator : MonoBehaviour
         Vector2 newPos = newRoom.transform.position;
         newPos.x = -newPos.x;
         newRoom.transform.position = newPos;
-        newRoom.transform.rotation = new Quaternion(0, 0, 0, 0);
-        
+        newRoom.transform.rotation = new Quaternion(0, 0, 0, 0);   
     }
     public void GenerateFurniture(string[] layouts, Vector2 vec2, Room room, GameObject _parent)
     {

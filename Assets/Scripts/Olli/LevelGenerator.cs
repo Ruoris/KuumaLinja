@@ -54,9 +54,7 @@ public class LevelGenerator : MonoBehaviour
             _player.GetComponent<PlayerCtrl>().aim = _aim;
             levelController.GetComponent<LevelController>().playerSpawned = true;
         }
-
         GetRooms();
-        
         this.gameObject.SetActive(false);
     }
 
@@ -146,34 +144,38 @@ public class LevelGenerator : MonoBehaviour
 
         playerSpawn = location;
 
-        //Next Floor Enterance
-        for (int x = 0; x < floorSpawn.Length; x++)
+        if (nextFloor[0] == '.')
         {
-            if (nextFloor[x] == '-')
+        } else { 
+            //Next Floor Enterance
+            for (int x = 0; x < floorSpawn.Length; x++)
             {
-                int save = x;
-                x = 0;
-                string spawnString = null;
-                while (x < save)
+                if (nextFloor[x] == '-')
                 {
-                    spawnString += nextFloor[x];
+                    int save = x;
+                    x = 0;
+                    string spawnString = null;
+                    while (x < save)
+                    {
+                        spawnString += nextFloor[x];
+                        x++;
+                    }
+                    int.TryParse(spawnString, out spawnXint);
                     x++;
+                    spawnString = null;
+                    while (x < nextFloor.Length)
+                    {
+                        spawnString += nextFloor[x];
+                        x++;
+                    }
+                    int.TryParse(spawnString, out spawnYint);
                 }
-                int.TryParse(spawnString, out spawnXint);
-                x++;
-                spawnString = null;
-                while (x < nextFloor.Length)
-                {
-                    spawnString += nextFloor[x];
-                    x++;
-                }
-                int.TryParse(spawnString, out spawnYint);
             }
+            location = new Vector2(spawnXint * 0.32f, spawnYint * 0.32f);
+            GameObject exit = Instantiate(stairs, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+            exit.transform.parent = this.gameObject.transform;
+            exit.GetComponent<PointController>().nextFloor = true;
         }
-        location = new Vector2(spawnXint * 0.32f, spawnYint * 0.32f);
-        GameObject exit = Instantiate(stairs, location, transform.rotation = new Quaternion(0, 0, 0, 0));
-        exit.transform.parent = this.gameObject.transform;
-        exit.GetComponent<PointController>().nextFloor = true;
     }
 
     public void GetRooms()
@@ -209,7 +211,7 @@ public class LevelGenerator : MonoBehaviour
 
             spawnXint = 0;
             spawnYint = 0;
-            
+
             for (int x = 0; x < roomSizes[r].Length; x++)
             {
                 if (roomSizes[r][x] == '-')

@@ -5,64 +5,64 @@ using UnityEngine.UI;
 
 public class AmmocounterScript : MonoBehaviour
 {
-    public GameObject[] pistolBullets;
-    public GameObject Player;
-    private int bulletsLeft;
+        public GameObject[] pistolBullets;
+    //    public gameobject player;
+    //    private int bulletsleft;
 
-    void Update()
+    //    void update()
+    //    {
+
+
+
+    //        if (input.getbutton("fire1"))
+    //        {
+    //            changecolor();
+    //<<<<<<< head
+
+    //=======
+    //>>>>>>> juusonbranch2
+    //        }
+    //    }
+
+    //    void start()
+    //    {
+
+
+
+    //    }
+    //    public void getpistolbullets(int ammocapacity)
+    //    {
+    //<<<<<<< head
+    //        //gameobject pistolbullets[ammocapacity];
+    //=======
+    //>>>>>>> juusonbranch2
+    //    }
+
+
+    //    public void changecolor()
+    //    {
+    //<<<<<<< head
+    //        //bool emptymagazine = player.getcomponent<weapons>().emptymagazine;
+    //        int bulletsleft = player.getcomponent<weapons>().ammoleft;
+
+    //        //if (emptymagazine)
+    //        //{
+    //        //    returncolor();
+    //        //}
+
+    //        color used = new color32(75, 75, 75, 255);
+    //        pistolbullets[bulletsleft].getcomponent<image>().color = used;
+    //=======
+    //        int bulletsleft = player.getcomponent<weapons>().ammoleft;
+
+    //        color used = new color32(75, 75, 75, 255);
+    //        pistolbullets[bulletsleft].getcomponent<image>().color = used;
+    //>>>>>>> juusonbranch2
+    //    }
+
+    public void ReturnColor(int ammocapacity)
     {
-
-
-
-        if (Input.GetButton("Fire1"))
-        {
-                ChangeColor();
-<<<<<<< HEAD
-
-=======
->>>>>>> JuusonBranch2
-        }
-    }
-
-    void Start()
-    {
-
-
-
-    }
-    public void GetPistolBullets(int ammoCapacity)
-    {
-<<<<<<< HEAD
-        //GameObject pistolBullets[ammoCapacity];
-=======
->>>>>>> JuusonBranch2
-    }
-
-
-    public void ChangeColor()
-    {
-<<<<<<< HEAD
-        //bool emptyMagazine = Player.GetComponent<Weapons>().emptyMagazine;
-        int bulletsLeft = Player.GetComponent<Weapons>().ammoLeft;
-
-        //if (emptyMagazine)
-        //{
-        //    ReturnColor();
-        //}
-
-            Color used = new Color32(75, 75, 75, 255);
-            pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
-=======
-        int bulletsLeft = Player.GetComponent<Weapons>().ammoLeft;
-
-        Color used = new Color32(75, 75, 75, 255);
-        pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
->>>>>>> JuusonBranch2
-    }
-
-    public void ReturnColor(int ammoCapacity)
-    {
-        for (int i = 0; i < ammoCapacity; i++)
+        for (int i = 0; i < ammocapacity; i++)
         {
             Color used = new Color32(255, 255, 255, 255);
 

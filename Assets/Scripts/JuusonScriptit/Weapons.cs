@@ -10,11 +10,11 @@ public class Weapons : MonoBehaviour
     public float fireRate;
     public bool emptyMagazine;
 
-<<<<<<< HEAD
-    public AudioClip equipClip;
-=======
-    public AudioSource equipClip;
->>>>>>> JuusonBranch2
+
+    //public AudioClip equipClip;
+
+    //public AudioSource equipClip;
+
 
     public GameObject uiAmmoCounter;
 
@@ -46,10 +46,9 @@ public class Weapons : MonoBehaviour
     void EquipGun()
     {
         uiAmmoCounter.SetActive(true);
-<<<<<<< HEAD
-=======
+
         bulletForce = 40;
->>>>>>> JuusonBranch2
+
 
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
         {
@@ -75,10 +74,9 @@ public class Weapons : MonoBehaviour
                     uiAmmoCounter.SetActive(false);
                     emptyMagazine = true;
                     ammoCapacity = 0;
-<<<<<<< HEAD
-=======
+
                     fireRate = 0f;
->>>>>>> JuusonBranch2
+
                     break;
                 case 1:
                     pistol.SetActive(true);
@@ -128,21 +126,21 @@ public class Weapons : MonoBehaviour
         }
     }  
 
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        equipClip.Play();
+    //private void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    equipClip.Play();
 
-        uiAmmoCounter.SetActive(true);
+    //    uiAmmoCounter.SetActive(true);
 
 
-<<<<<<< HEAD
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         //GetComponent<AudioSource>().Play();
         //equipClip.Play();
-=======
+
         emptyMagazine = false;
->>>>>>> JuusonBranch2
+
 
         uiAmmoCounter.SetActive(true);
         

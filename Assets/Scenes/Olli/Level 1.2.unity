@@ -181,9 +181,9 @@ MonoBehaviour:
   floorX: 15
   floorY: 15
   floorSpawn: 7-14
-  nextFloor: 1-3
-  player: {fileID: 3749585774867313119, guid: 53c40d1b805e0d34aac7e9753c8c753e, type: 3}
-  aim: {fileID: 510495280051482629, guid: 70fbf6153fb84da489eb41c5b8b02c5b, type: 3}
+  nextFloor: 2-4
+  player: {fileID: 7519949920170052916, guid: 7e410048cede15e42af5016166a91956, type: 3}
+  aim: {fileID: 203596257180371919, guid: 44c2585661122d84f83186925fccae9e, type: 3}
   fogTile: {fileID: 6574885273630796412, guid: f70a40b347682c748b1cd2ca468e0215, type: 3}
   hallwayFloor: {fileID: 4478715479393370695, guid: dd86258358b695b4da3f6dddf094df3c,
     type: 3}
@@ -265,10 +265,10 @@ MonoBehaviour:
   - a1-2, b2-1, c3-2,
   floorX: 15
   floorY: 15
-  floorSpawn: 1-3
-  nextFloor: 7-14
-  player: {fileID: 3749585774867313119, guid: 53c40d1b805e0d34aac7e9753c8c753e, type: 3}
-  aim: {fileID: 510495280051482629, guid: 70fbf6153fb84da489eb41c5b8b02c5b, type: 3}
+  floorSpawn: 2-4
+  nextFloor: .
+  player: {fileID: 7519949920170052916, guid: 7e410048cede15e42af5016166a91956, type: 3}
+  aim: {fileID: 203596257180371919, guid: 44c2585661122d84f83186925fccae9e, type: 3}
   fogTile: {fileID: 6574885273630796412, guid: f70a40b347682c748b1cd2ca468e0215, type: 3}
   hallwayFloor: {fileID: 4478715479393370695, guid: dd86258358b695b4da3f6dddf094df3c,
     type: 3}
@@ -307,9 +307,11 @@ MonoBehaviour:
   floorNum: 1
   floors:
   - {fileID: 8466223695220719353}
-  - {fileID: 8466223695220719353}
+  - {fileID: 339731411}
+  - {fileID: 1338303362}
   currentFloor: 0
   playerSpawned: 0
+  firstRoomSpawned: 0
 --- !u!4 &770674610594475649
 Transform:
   m_ObjectHideFlags: 0
@@ -547,19 +549,19 @@ MonoBehaviour:
   roomCoordinates:
   - 2-4
   roomSizes:
-  - 8-8
+  - 6-6
   roomDoors:
-  - 5-0,
+  - 4-0
   roomWindows:
   - 0-0
   roomLayouts:
-  - a1-2, b2-1, c3-2,
+  - a0-0, b1-1, c2-2,
   floorX: 15
   floorY: 15
   floorSpawn: 1-3
   nextFloor: 7-14
-  player: {fileID: 3749585774867313119, guid: 53c40d1b805e0d34aac7e9753c8c753e, type: 3}
-  aim: {fileID: 510495280051482629, guid: 70fbf6153fb84da489eb41c5b8b02c5b, type: 3}
+  player: {fileID: 7519949920170052916, guid: 7e410048cede15e42af5016166a91956, type: 3}
+  aim: {fileID: 203596257180371919, guid: 44c2585661122d84f83186925fccae9e, type: 3}
   fogTile: {fileID: 6574885273630796412, guid: f70a40b347682c748b1cd2ca468e0215, type: 3}
   hallwayFloor: {fileID: 4478715479393370695, guid: dd86258358b695b4da3f6dddf094df3c,
     type: 3}

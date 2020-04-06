@@ -14,17 +14,23 @@ public class LevelController : MonoBehaviour
 
     public bool playerSpawned;
 
+    public bool firstRoomSpawned;
+
+
     // Start is called before the first frame update
     void Start()
     {
         currentFloor = 0;
-        floors[currentFloor].SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (floors[currentFloor].activeSelf == false && firstRoomSpawned == false)
+        {
+            firstRoomSpawned = true;
+            floors[currentFloor].SetActive(true);
+        }
     }
 
     public void ResetFloor()
@@ -32,8 +38,6 @@ public class LevelController : MonoBehaviour
         if (floorNum < numberOfFloors)
         {
             floorNum++;
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
-
 }
