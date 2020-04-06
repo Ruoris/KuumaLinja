@@ -58,7 +58,11 @@ InputManager:
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
+<<<<<<< HEAD
     positiveButton: e
+=======
+    positiveButton: 
+>>>>>>> Roopenbranch
     altNegativeButton: 
     altPositiveButton: f
     gravity: 1000

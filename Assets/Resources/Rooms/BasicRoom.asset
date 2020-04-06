@@ -19,7 +19,6 @@ MonoBehaviour:
   furniture:
   - {fileID: 8141681904896997514, guid: d48ecc6fed039a749804be427656cc10, type: 3}
   - {fileID: 8141681904896997514, guid: 26c21d1c555387f4289064fb41084ecf, type: 3}
-  - {fileID: 8141681904896997514, guid: cf7c7da38504d844cbca32a5c59ff6d5, type: 3}
-  - {fileID: 8141681904896997514, guid: 5abfdd8f61c2b8b4b9830878f181c749, type: 3}
+  - {fileID: 6162643745567351147, guid: fa93eb3dcff2d03488a3af710ce32c58, type: 3}
   roomX: 0
   roomY: 0

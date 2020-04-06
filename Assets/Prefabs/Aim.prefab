@@ -26,10 +26,14 @@ Transform:
   m_GameObject: {fileID: 510495280051482629}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_LocalPosition: {x: -1.7, y: 0.1, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
 =======
   m_LocalPosition: {x: -8.493724, y: 6.6505575, z: 0}
+=======
+  m_LocalPosition: {x: -4.8613844, y: 6.8433733, z: 0}
+>>>>>>> Roopenbranch
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
 >>>>>>> origin/Roopenbranch
   m_Children: []
