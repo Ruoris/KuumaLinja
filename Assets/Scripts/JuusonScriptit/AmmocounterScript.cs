@@ -56,4 +56,14 @@ public class AmmocounterScript : MonoBehaviour
             pistolBullets[i].GetComponent<Image>().color = used;
         }
     }
+    public void PartialColorToUsed(int ammoCapacity, int ammoleft)
+    {
+        while(ammoleft < ammoCapacity)
+        {
+            Color used = new Color32(75, 75, 75, 255);
+
+            pistolBullets[ammoleft].GetComponent<Image>().color = used;
+            ammoleft++;
+        }
+    }
 }

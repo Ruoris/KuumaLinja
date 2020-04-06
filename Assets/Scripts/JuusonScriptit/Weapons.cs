@@ -12,9 +12,10 @@ public class Weapons : MonoBehaviour
 
     public AudioClip equipClip;
 
-    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter;
+    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, pistolDrop, shotGunDrop,rifleDrop,gameThrow;
 
-    public int equippedGun, ammoCapacity, ammoLeft;
+    public int equippedGun, ammoCapacity, ammoLeft, previousequippedGun, previousammoCapacity, previousAmmoLeft;
+
 
 
     // Start is called before the first frame update
@@ -27,12 +28,21 @@ public class Weapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         EquipGun();
         FireControl();
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            SwitchGunWithButton();
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            DropGun();
+        }
 
-        int shotsFired = GetComponent<Pshoot>().shotsFired;
+        //int shotsFired = GetComponent<Pshoot>().shotsFired;
 
-        ammoLeft = ammoCapacity - shotsFired;
+        //ammoLeft = ammoCapacity - shotsFired;
         if (ammoLeft <= 0)
         {
             equippedGun = 0;
@@ -84,34 +94,77 @@ public class Weapons : MonoBehaviour
                     ammoCapacity = 0;
                     break;
                 case 1:
+                    if (uiShellCounter.activeSelf == true)
+                    {
 
+                        uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+                        uiShellCounter.SetActive(false);
+                    }
+                    //if (uiAmmoCounter.activeSelf == true)
+                    //{
+                    //    uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+                    //    uiAmmoCounter.SetActive(false);
+                    //}
+                    if (uiRifleCounter.activeSelf == true)
+                    {
+                        uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+                        uiRifleCounter.SetActive(false);
+                    }
                     uiAmmoCounter.SetActive(true);
                     pistol.SetActive(true);
                     playerOneHand.SetActive(true);
                     emptyMagazine = false;
-                    ammoCapacity = 10;
+                    //   ammoCapacity = 10;
                     break;
                 case 2:
-
+                    //if (uiShellCounter.activeSelf == true)
+                    //{
+                    //    uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+                    //    uiShellCounter.SetActive(false);
+                    //}
+                    if (uiAmmoCounter.activeSelf == true)
+                    {
+                        uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+                        uiAmmoCounter.SetActive(false);
+                    }
+                    if (uiRifleCounter.activeSelf == true)
+                    {
+                        uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+                        uiRifleCounter.SetActive(false);
+                    }
                     uiShellCounter.SetActive(true);
                     shotgun.SetActive(true);
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
-                    ammoCapacity = 5;
+                    // ammoCapacity = 5;
                     break;
                 case 3:
-
+                    if (uiShellCounter.activeSelf == true)
+                    {
+                        uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+                        uiShellCounter.SetActive(false);
+                    }
+                    if (uiAmmoCounter.activeSelf == true)
+                    {
+                        uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+                        uiAmmoCounter.SetActive(false);
+                    }
+                    //if (uiRifleCounter.activeSelf == true)
+                    //{
+                    //    uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+                    //    uiRifleCounter.SetActive(false);
+                    //}
                     uiRifleCounter.SetActive(true);
                     assaultRifle.SetActive(true);
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
-                    ammoCapacity = 30;
+                    //   ammoCapacity = 30;
                     break;
                 case 4:
                     machineGun.SetActive(true);
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
-                    ammoCapacity = 100;
+                    //  ammoCapacity = 100;
                     break;
                 case 5:
                     flameThrower.SetActive(true);
@@ -166,6 +219,81 @@ public class Weapons : MonoBehaviour
             fireRate = 2f;
         }
     }
+    public void DropGun()
+    {
+        if (equippedGun == 1)
+        {
+            var droppedPistol = Instantiate(pistolDrop, gameThrow.transform.position, Quaternion.identity);
+            droppedPistol.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
+            droppedPistol.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
+            
+            equippedGun = 0;
+            ammoLeft = 0;
+        }
+        if (equippedGun == 2)
+        {
+            var droppedShotgun = Instantiate(shotGunDrop, gameThrow.transform.position, Quaternion.identity);
+            droppedShotgun.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
+            droppedShotgun.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
+          
+            equippedGun = 0;
+            ammoLeft = 0;
+        }
+
+        if (equippedGun == 3)
+        {
+            var droppedRifle = Instantiate(rifleDrop, gameThrow.transform.position, Quaternion.identity);
+            droppedRifle.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
+            droppedRifle.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
+          
+            equippedGun = 0;
+            ammoLeft = 0;
+        }
+
+
+    }
+
+    public void SwitchGunWithButton()
+    {
+
+        Debug.Log("Q painettu");
+        int tempammoCapacity = ammoCapacity;
+        int tempAmmoLeft = ammoLeft;
+        int tempEquippedweapon = equippedGun;
+        if (equippedGun == 1)
+        {
+            uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+        }
+        if (equippedGun == 2)
+        {
+            uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+        }
+        if (equippedGun == 3)
+        {
+            uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+        }
+        ammoCapacity = previousammoCapacity;
+        ammoLeft = previousAmmoLeft;
+        equippedGun = previousequippedGun;
+        if (equippedGun == 1)
+        {
+            uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
+        }
+        if (equippedGun == 2)
+        {
+            uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
+        }
+        if (equippedGun == 3)
+        {
+            uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
+        }
+
+        previousammoCapacity = tempammoCapacity;
+        previousAmmoLeft = tempAmmoLeft;
+        previousequippedGun = tempEquippedweapon;
+
+
+    }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -181,70 +309,164 @@ public class Weapons : MonoBehaviour
 
         if (other.gameObject.tag == "PistolBox")
         {
-            GetComponent<Pshoot>().shotsFired = 0;
-            if (uiShellCounter.activeSelf == true)
+            if (equippedGun != 0)
             {
-                GetComponent<Pshoot>().shotsFired = 0;
-                uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
-                uiShellCounter.SetActive(false);
+                previousequippedGun = equippedGun;
+                previousAmmoLeft = ammoLeft;
+                previousammoCapacity = ammoCapacity;
             }
-            if (uiAmmoCounter.activeSelf == true)
-            {
-                uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
-                uiAmmoCounter.SetActive(false);
-            }
-            if (uiRifleCounter.activeSelf == true)
-            {
-                uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
-                uiRifleCounter.SetActive(false);
-            }
+
+            //if (uiShellCounter.activeSelf == true)
+            //{
+
+            //    uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+            //    uiShellCounter.SetActive(false);
+            //}
+            //if (uiAmmoCounter.activeSelf == true)
+            //{
+            //    uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+            //    uiAmmoCounter.SetActive(false);
+            //}
+            //if (uiRifleCounter.activeSelf == true)
+            //{
+            //    uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+            //    uiRifleCounter.SetActive(false);
+            //}
             equippedGun = 1;
+            ammoCapacity = 10;
+            ammoLeft = 10;
+        }
+        if (other.gameObject.tag == "PistolDrop")
+        {
+            if (equippedGun != 0)
+            {
+                previousequippedGun = equippedGun;
+                previousAmmoLeft = ammoLeft;
+                previousammoCapacity = ammoCapacity;
+            }
+
+            uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
+            equippedGun = 1;
+            ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
+            ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
         }
         if (other.gameObject.tag == "ShotgunBox")
         {
-            GetComponent<Pshoot>().shotsFired = 0;
-            if (uiShellCounter.activeSelf == true)
+            if (equippedGun != 0)
             {
-                uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
-                uiShellCounter.SetActive(false);
+                previousequippedGun = equippedGun;
+                previousAmmoLeft = ammoLeft;
+                previousammoCapacity = ammoCapacity;
             }
-            if (uiAmmoCounter.activeSelf == true)
-            {
-                uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
-                uiAmmoCounter.SetActive(false);
-            }
-            if (uiRifleCounter.activeSelf == true)
-            {
-                uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
-                uiRifleCounter.SetActive(false);
-            }
+
+            //if (uiShellCounter.activeSelf == true)
+            //{
+            //    uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+            //    uiShellCounter.SetActive(false);
+            //}
+            //if (uiAmmoCounter.activeSelf == true)
+            //{
+            //    uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+            //    uiAmmoCounter.SetActive(false);
+            //}
+            //if (uiRifleCounter.activeSelf == true)
+            //{
+            //    uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+            //    uiRifleCounter.SetActive(false);
+            //}
             equippedGun = 2;
+            ammoCapacity = 5;
+            ammoLeft = 5;
+        }
+        if (other.gameObject.tag == "ShotGunDrop")
+        {
+            if (equippedGun != 0)
+            {
+                previousequippedGun = equippedGun;
+                previousAmmoLeft = ammoLeft;
+                previousammoCapacity = ammoCapacity;
+            }
+
+            //if (uiShellCounter.activeSelf == true)
+            //{
+            //    uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+            //    uiShellCounter.SetActive(false);
+            //}
+            //if (uiAmmoCounter.activeSelf == true)
+            //{
+            //    uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+            //    uiAmmoCounter.SetActive(false);
+            //}
+            //if (uiRifleCounter.activeSelf == true)
+            //{
+            //    uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+            //    uiRifleCounter.SetActive(false);
+            //}
+            uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
+            equippedGun = 2;
+            ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
+            ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
         }
 
         if (other.gameObject.tag == "Arbox")
         {
-            GetComponent<Pshoot>().shotsFired = 0;
-            if (uiShellCounter.activeSelf == true)
+            if (equippedGun != 0)
             {
-                uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
-                uiShellCounter.SetActive(false);
+                previousequippedGun = equippedGun;
+                previousAmmoLeft = ammoLeft;
+                previousammoCapacity = ammoCapacity;
             }
-            if (uiAmmoCounter.activeSelf == true)
-            {
-                uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
-                uiAmmoCounter.SetActive(false);
-            }
-            if (uiRifleCounter.activeSelf == true)
-            {
-                uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
-                uiRifleCounter.SetActive(false);
-            }
+            //if (uiShellCounter.activeSelf == true)
+            //{
+            //    uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+            //    uiShellCounter.SetActive(false);
+            //}
+            //if (uiAmmoCounter.activeSelf == true)
+            //{
+            //    uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+            //    uiAmmoCounter.SetActive(false);
+            //}
+            //if (uiRifleCounter.activeSelf == true)
+            //{
+            //    uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+            //    uiRifleCounter.SetActive(false);
+            //}
             equippedGun = 3;
+            ammoCapacity = 30;
+            ammoLeft = 30;
         }
+        if (other.gameObject.tag == "RifleDrop")
+        {
+            if (equippedGun != 0)
+            {
+                previousequippedGun = equippedGun;
+                previousAmmoLeft = ammoLeft;
+                previousammoCapacity = ammoCapacity;
+            }
 
+            //if (uiShellCounter.activeSelf == true)
+            //{
+            //    uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+            //    uiShellCounter.SetActive(false);
+            //}
+            //if (uiAmmoCounter.activeSelf == true)
+            //{
+            //    uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+            //    uiAmmoCounter.SetActive(false);
+            //}
+            //if (uiRifleCounter.activeSelf == true)
+            //{
+            //    uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+            //    uiRifleCounter.SetActive(false);
+            //}
+            uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
+            equippedGun = 3;
+            ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
+            ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+        }
         if (other.gameObject.tag == "FTbox")
         {
-            GetComponent<Pshoot>().shotsFired = 0;
+
             equippedGun = 5;
         }
 

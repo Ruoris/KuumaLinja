@@ -20,7 +20,7 @@ public class Pshoot : MonoBehaviour
 
     void Start()
     {
-        shotsFired = 0;
+        //shotsFired = 0;
         explosionCounter = 3;
     }
 
@@ -32,7 +32,7 @@ public class Pshoot : MonoBehaviour
 
         if (emptyMagazine)
         {
-            shotsFired = 0;
+           // shotsFired = 0;
         }
 
         if (Input.GetButton("Fire1") && fireRate < canFire && !emptyMagazine)
@@ -41,7 +41,7 @@ public class Pshoot : MonoBehaviour
             Fire();
             gunFlareAnimation.SetActive(true);
 
-            shotsFired++;
+            GetComponent<Weapons>().ammoLeft--;
 
             if (equippedGun == 2)
             {
