@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/Roope/DoorHinge.prefab.meta
 <<<<<<< HEAD
 guid: 065cefe6c13374544b481b284c390fd6
 =======
 guid: 8fb72d8001d280946b3b50b1fe2913d5
 >>>>>>> Roopenbranch
+=======
+guid: 2b53645a0081bdb48a43b555321d8a70
+>>>>>>> Roopenbranch:Assets/Prefabs/Roope/Door.prefab.meta
 PrefabImporter:
   externalObjects: {}
   userData: 

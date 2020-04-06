@@ -17,8 +17,17 @@ MonoBehaviour:
   door: {fileID: 887399108115539395, guid: 345fda539cb1b0f44bca33d9ea8fc226, type: 3}
   floor: {fileID: 4478715479393370695, guid: 765082d5eae742c45b969230be13ac46, type: 3}
   furniture:
-  - {fileID: 8141681904896997514, guid: d48ecc6fed039a749804be427656cc10, type: 3}
-  - {fileID: 8141681904896997514, guid: 26c21d1c555387f4289064fb41084ecf, type: 3}
   - {fileID: 6162643745567351147, guid: fa93eb3dcff2d03488a3af710ce32c58, type: 3}
+  - {fileID: 5061753156938665601, guid: c4426ec97c7b8664a87fcfa184d3612b, type: 3}
+  - {fileID: 3046656407633791674, guid: 49f2851afff65b248aad263b7bdc0afb, type: 3}
+  - {fileID: 9117586396530091741, guid: 455f871fe8afc6b40bcbab6e5d83c0a3, type: 3}
+  - {fileID: 5688634322276681817, guid: 4faf91f89136648428a0a0572cfe99aa, type: 3}
+  - {fileID: 3468510378927569752, guid: 46f02df7fe69ccd47a1b95ef4af0597a, type: 3}
+  - {fileID: 8862774174441473076, guid: ed9e4ea0ebd1326498eca9bc31a03e19, type: 3}
+  - {fileID: 4006323245689507792, guid: 8d1a9a8bb57fa624684de3c47fcb2bfb, type: 3}
+  - {fileID: 5454608919814120261, guid: 2256ca83c6c9c4e49afa3ce2df98902f, type: 3}
+  - {fileID: 8182729280601584312, guid: 4904a6f54b08a104ab6089060771cc3f, type: 3}
+  - {fileID: 7320061698837239793, guid: cd5fb442ffdef4848a4bb3bd52deaf88, type: 3}
+  - {fileID: 7511827956135903679, guid: 2e543fc350414064fa07675552482748, type: 3}
   roomX: 0
   roomY: 0
