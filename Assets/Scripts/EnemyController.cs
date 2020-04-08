@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    GameObject player,aseDroppisjiainti,pistolDrop;
+    public GameObject player, enemy,aseDroppisjiainti,pistolDrop;
     Rigidbody2D enemyRb;
     public int ammoCapacity, ammoLeft;
     public Vector3 playerLastPosition;
@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour
     {
         Movement();
         PlayerDetect();
+        walkAnimation.SetActive(true);
     }
 
     void KilledByBullet()
@@ -53,7 +54,9 @@ public class EnemyController : MonoBehaviour
 
     void Movement()
     {
-        walkAnimation.SetActive(true);
+        walkAnimation.transform.position = enemy.transform.position;
+        walkAnimation.transform.rotation = enemy.transform.rotation;
+
         float distance = Vector2.Distance(player.transform.position, enemyRb.transform.position);
         Vector3 direction = player.transform.position - enemyRb.transform.position;
         rayToPlayer = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(direction.x, direction.y), distance);
