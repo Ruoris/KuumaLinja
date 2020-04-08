@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerFOV : MonoBehaviour
 {
+    
     public float viewRadius;
     [Range(0, 360)]
     public float viewAngle;
@@ -11,25 +12,25 @@ public class PlayerFOV : MonoBehaviour
     public LayerMask targetMask;
     public LayerMask obstacleMask;
 
-    [HideInInspector]
+    public GameObject player;
+
     public List<Transform> visibleTargets = new List<Transform>();
 
     public float meshResolution;
     public int edgeResolveIterations;
     public float edgeDstThreshold;
 
-    public GameObject player;
-
     public MeshFilter viewMeshFilter;
     Mesh viewMesh;
 
     void Start()
     {
+
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
 
-        StartCoroutine("FindTargetsWithDelay", 0.2f);
+        StartCoroutine("FindTargetsWithDelay", 0.05f);
     }
 
 
@@ -50,12 +51,12 @@ public class PlayerFOV : MonoBehaviour
     void FindVisibleTargets()
     {
         visibleTargets.Clear();
-        Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(new Vector2(transform.position.x, transform.position.y), viewRadius, targetMask);
+        Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
+
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
             Vector3 dirToTarget = (target.position - transform.position).normalized;
-            //d
             if (Vector3.Angle(transform.up, dirToTarget) < viewAngle / 2)
             {
                 float dstToTarget = Vector3.Distance(transform.position, target.position);
@@ -66,6 +67,7 @@ public class PlayerFOV : MonoBehaviour
             }
         }
     }
+
     void DrawFieldOfView()
     {
         int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
@@ -74,8 +76,7 @@ public class PlayerFOV : MonoBehaviour
         ViewCastInfo oldViewCast = new ViewCastInfo();
         for (int i = 0; i <= stepCount; i++)
         {
-            float angle = transform.eulerAngles.x - viewAngle / 2 + stepAngleSize * i;
-            Debug.DrawLine(transform.position, transform.position + DirFromAngle(angle, true) * viewRadius, Color.yellow);
+            float angle = transform.eulerAngles.y - viewAngle / 2 + stepAngleSize * i;
             ViewCastInfo newViewCast = ViewCast(angle);
 
             if (i > 0)
@@ -93,7 +94,6 @@ public class PlayerFOV : MonoBehaviour
                         viewPoints.Add(edge.pointB);
                     }
                 }
-
             }
 
             viewPoints.Add(newViewCast.point);
@@ -157,27 +157,24 @@ public class PlayerFOV : MonoBehaviour
     ViewCastInfo ViewCast(float globalAngle)
     {
         Vector3 dir = DirFromAngle(globalAngle, true);
-        RaycastHit2D hit = Physics2D.Raycast(player.transform.position, dir, obstacleMask);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir);
 
-        if (Physics2D.Raycast(transform.position, dir))
+        if (Physics2D.Raycast(transform.position, dir, viewRadius, obstacleMask))
         {
             Debug.Log("OSUU");
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
-
         }
         else
         {
-            Debug.Log("EIOSU");
-
             return new ViewCastInfo(false, transform.position + dir * viewRadius, viewRadius, globalAngle);
         }
     }
 
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
     {
-        angleInDegrees -= transform.eulerAngles.z;
+            angleInDegrees -= transform.eulerAngles.z;
 
-        return new Vector3(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad), 0);
+        return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
 
     public struct ViewCastInfo

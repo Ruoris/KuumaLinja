@@ -13,8 +13,10 @@ public class Weapons : MonoBehaviour
     public AudioClip equipClip;
 
     public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, pistolDrop, shotGunDrop, rifleDrop, gameThrow;
+    //public GameObject uiWeaponSelection;
 
-    public int equippedGun, ammoCapacity, ammoLeft, previousequippedGun, previousammoCapacity, previousAmmoLeft;
+    public int equippedGun, ammoCapacity, ammoLeft, previousEquippedGun, previousAmmoCapacity, previousAmmoLeft;
+   
 
 
 
@@ -28,7 +30,6 @@ public class Weapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         EquipGun();
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -44,7 +45,6 @@ public class Weapons : MonoBehaviour
         {
             equippedGun = 0;
         }
-
     }
 
     void EquipGun()
@@ -88,6 +88,7 @@ public class Weapons : MonoBehaviour
                     playerBothHands.SetActive(false);
                     playerOneHand.SetActive(false);
                     playerMelee.SetActive(false);
+                    //uiWeaponSelection.SetActive(false);
                     emptyMagazine = true;
                     ammoCapacity = 0;
                     break;
@@ -229,9 +230,9 @@ public class Weapons : MonoBehaviour
         {
             uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
         }
-        ammoCapacity = previousammoCapacity;
+        ammoCapacity = previousAmmoCapacity;
         ammoLeft = previousAmmoLeft;
-        equippedGun = previousequippedGun;
+        equippedGun = previousEquippedGun;
         if (equippedGun == 1)
         {
             uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
@@ -245,11 +246,9 @@ public class Weapons : MonoBehaviour
             uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
         }
 
-        previousammoCapacity = tempammoCapacity;
+        previousAmmoCapacity = tempammoCapacity;
         previousAmmoLeft = tempAmmoLeft;
-        previousequippedGun = tempEquippedweapon;
-
-
+        previousEquippedGun = tempEquippedweapon;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -267,9 +266,9 @@ public class Weapons : MonoBehaviour
             {
                 if (equippedGun != 0)
                 {
-                    previousequippedGun = equippedGun;
+                    previousEquippedGun = equippedGun;
                     previousAmmoLeft = ammoLeft;
-                    previousammoCapacity = ammoCapacity;
+                    previousAmmoCapacity = ammoCapacity;
                 }
 
                 equippedGun = 1;
@@ -280,9 +279,9 @@ public class Weapons : MonoBehaviour
             {
                 if (equippedGun != 0)
                 {
-                    previousequippedGun = equippedGun;
+                    previousEquippedGun = equippedGun;
                     previousAmmoLeft = ammoLeft;
-                    previousammoCapacity = ammoCapacity;
+                    previousAmmoCapacity = ammoCapacity;
                 }
 
                 uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
@@ -294,9 +293,9 @@ public class Weapons : MonoBehaviour
             {
                 if (equippedGun != 0)
                 {
-                    previousequippedGun = equippedGun;
+                    previousEquippedGun = equippedGun;
                     previousAmmoLeft = ammoLeft;
-                    previousammoCapacity = ammoCapacity;
+                    previousAmmoCapacity = ammoCapacity;
                 }
 
                 equippedGun = 2;
@@ -307,9 +306,9 @@ public class Weapons : MonoBehaviour
             {
                 if (equippedGun != 0)
                 {
-                    previousequippedGun = equippedGun;
+                    previousEquippedGun = equippedGun;
                     previousAmmoLeft = ammoLeft;
-                    previousammoCapacity = ammoCapacity;
+                    previousAmmoCapacity = ammoCapacity;
                 }
 
                 uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
@@ -322,9 +321,9 @@ public class Weapons : MonoBehaviour
             {
                 if (equippedGun != 0)
                 {
-                    previousequippedGun = equippedGun;
+                    previousEquippedGun = equippedGun;
                     previousAmmoLeft = ammoLeft;
-                    previousammoCapacity = ammoCapacity;
+                    previousAmmoCapacity = ammoCapacity;
                 }
 
                 equippedGun = 3;
@@ -335,9 +334,9 @@ public class Weapons : MonoBehaviour
             {
                 if (equippedGun != 0)
                 {
-                    previousequippedGun = equippedGun;
+                    previousEquippedGun = equippedGun;
                     previousAmmoLeft = ammoLeft;
-                    previousammoCapacity = ammoCapacity;
+                    previousAmmoCapacity = ammoCapacity;
                 }
 
                 uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);

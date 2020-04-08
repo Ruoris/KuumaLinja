@@ -17,6 +17,7 @@ TagManager:
   - ShotGunDrop
   - RifleDrop
   - EnemyBullet
+  - FOV
   layers:
   - Default
   - TransparentFX
@@ -53,4 +54,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Obstacle
+    uniqueID: 388946139
     locked: 0

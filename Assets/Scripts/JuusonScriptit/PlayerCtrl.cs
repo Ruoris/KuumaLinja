@@ -101,9 +101,8 @@ public class PlayerCtrl : MonoBehaviour
             playerHealth--;
             if(playerHealth <= 0)
             {
-                deathAnimation.SetActive(true);
-                deathAnimation.transform.position = player.transform.position;
-                deathAnimation.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
+                player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
+                Instantiate(deathAnimation, player.transform.position, player.transform.rotation);
 
                 player.SetActive(false);
             }
