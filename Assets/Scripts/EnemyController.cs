@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    GameObject player;
+    GameObject player,aseDroppisjiainti,pistolDrop;
     Rigidbody2D enemyRb;
-
+    public int ammoCapacity, ammoLeft;
     public Vector3 playerLastPosition;
     RaycastHit2D rayToPlayer;
     float speed = 3f;
@@ -23,7 +23,10 @@ public class EnemyController : MonoBehaviour
         playerLastPosition = player.transform.position;
         enemyRb = this.GetComponent<Rigidbody2D>();
     }
-
+    public bool GetPursuing()
+    {
+        return this.pursuing;
+    }
     void FixedUpdate()
     {
         Movement();
@@ -32,6 +35,8 @@ public class EnemyController : MonoBehaviour
 
     void KilledByBullet()
     {
+   
+        GetComponent<EnemyWeapons>().DropGun();
         Destroy(gameObject);
     }
 
@@ -68,6 +73,30 @@ public class EnemyController : MonoBehaviour
             if (rayToPlayer.collider.gameObject.CompareTag("Player"))
             {
                 playerLastPosition = player.transform.position;
+                Debug.Log("seuraa");
+
+
+                //if ( GetComponent<EnemyPshoot>().fireRate < canFire && !emptyMagazine)
+                //{
+                //    gunSound.Play();
+                //    Fire();
+                //    gunFlareAnimation.SetActive(true);
+
+                //    GetComponent<Weapons>().ammoLeft--;
+
+                //    if (equippedGun == 2)
+                //    {
+                //        // if a shotgun is equipped
+                //        Fire();
+                //        Fire();
+                //        Fire();
+                //        Fire();
+                //        Fire();
+                //        Fire();
+                //    }
+                //}
+
+
             }
         }
 
@@ -120,7 +149,7 @@ public class EnemyController : MonoBehaviour
     {
 
         Vector3 pos = this.transform.InverseTransformPoint(player.transform.position);
-        Debug.Log("POS: "+ pos + "distance: " + Vector3.Distance(transform.position, player.transform.position));
+     //   Debug.Log("POS: "+ pos + "distance: " + Vector3.Distance(transform.position, player.transform.position));
         if (rayToPlayer.collider != null)
           
         {
