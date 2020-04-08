@@ -40,7 +40,6 @@ public class Weapons : MonoBehaviour
         {
             DropGun();
         }
-
         if (ammoLeft <= 0)
         {
             equippedGun = 0;
@@ -338,7 +337,6 @@ public class Weapons : MonoBehaviour
                     previousAmmoLeft = ammoLeft;
                     previousAmmoCapacity = ammoCapacity;
                 }
-
                 uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
                 equippedGun = 3;
                 ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
