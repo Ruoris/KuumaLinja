@@ -27,7 +27,7 @@ public class Closet : MonoBehaviour
         {
             if(Vector3.Distance(playerTrans.position,this.transform.position) < 5f)
             {
-                //SetPanelText();
+               
                 if (open)
                 {
                     StartCoroutine("CloseDoor");
@@ -55,10 +55,5 @@ public class Closet : MonoBehaviour
         open = false;
         active = false;
     }
-    private void SetPanelText()
-    {
-
-        doortrigger.GetComponent<Text>().text="F";
-      
-    }
+ 
 }
