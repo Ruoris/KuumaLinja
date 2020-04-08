@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 55451033801020679}
   - component: {fileID: 7634643037804315090}
   m_Layer: 0
-  m_Name: WallBot
+  m_Name: Wall
   m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+guid: d97de9eaf68e0bd4587cfdbfbd15405f
+=======
 guid: d36ce44de5af8384a8e71d24e791fe2d
+>>>>>>> Roopenbranch
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
