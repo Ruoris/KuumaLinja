@@ -14,7 +14,9 @@ public class EnemyController : MonoBehaviour
 
     bool moving = true, patrolling = true, pursuing = false, hasGun = false, goingtoweapon = false, goingtolastloc = false;
     public bool clockwise = false, stationary = false;
-    public int enemyType = 1; 
+    public int enemyType = 1;
+
+    public GameObject walkAnimation;
 
     void Start()
     {
@@ -51,6 +53,7 @@ public class EnemyController : MonoBehaviour
 
     void Movement()
     {
+        walkAnimation.SetActive(true);
         float distance = Vector2.Distance(player.transform.position, enemyRb.transform.position);
         Vector3 direction = player.transform.position - enemyRb.transform.position;
         rayToPlayer = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(direction.x, direction.y), distance);

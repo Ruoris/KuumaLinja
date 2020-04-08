@@ -4,24 +4,21 @@
 TagManager:
   serializedVersion: 2
   tags:
-
+  - Bullet
+  - Enemy
+  - EnemyBullet
   - PistolBox
   - PistolBulletImage
   - Arbox
+  - Wall
+  - FOV
   - Grenadebox
   - soundsettings
   - ShotgunBox
   - FTbox
-  - Bullet
-  - PistolDrop
-  - Melee
   - ShotGunDrop
   - RifleDrop
-  - EnemyBullet
-  - FOV
-  - Enemy
-  - Wall
-
+  - PistolDrop
   layers:
   - Default
   - TransparentFX
@@ -31,11 +28,14 @@ TagManager:
   - UI
   - 
   - 
-  - Player
-  - Obstacle
-  - Target
-  - Equipment
+  - 
   - Enemy
+  - Player
+  - Equipment
+  - Obstacle
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -55,7 +55,4 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
-    locked: 0
-  - name: Obstacle
-    uniqueID: 388946139
     locked: 0
