@@ -56,6 +56,10 @@ public class PlayerFOV : MonoBehaviour
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
+            target.GetComponent<Renderer>().enabled = false;
+            //target.GetComponent<Animator>().enabled = false;
+
+
             Vector3 dirToTarget = (target.position - transform.position).normalized;
             if (Vector3.Angle(transform.up, dirToTarget) < viewAngle / 2)
             {
@@ -63,6 +67,9 @@ public class PlayerFOV : MonoBehaviour
                 if (!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
+                    target.GetComponent<Renderer>().enabled = true;
+                    //target.GetComponent<Animator>().enabled = true;
+
                 }
             }
         }
