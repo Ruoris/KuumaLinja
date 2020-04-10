@@ -160,13 +160,13 @@ public class EnemyController : MonoBehaviour
           
         {
 
-            Debug.Log("hit collider hit: "+ rayToPlayer.collider.gameObject.ToString());
+            //Debug.Log("hit collider hit: "+ rayToPlayer.collider.gameObject.ToString());
             if (rayToPlayer.collider.CompareTag("Player") && Vector3.Distance(transform.position, player.transform.position)<detectionDistance)
             {
                 patrolling = false;
                 pursuing = true;
                 goingtoweapon = false;
-                Debug.Log("player detected");
+                //Debug.Log("player detected");
             } 
             else
             {

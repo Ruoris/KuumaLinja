@@ -168,7 +168,6 @@ public class PlayerFOV : MonoBehaviour
 
         if (Physics2D.Raycast(transform.position, dir, viewRadius, obstacleMask))
         {
-            Debug.Log("OSUU");
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
         }
         else
