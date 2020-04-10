@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sprites/ddruggie.png.meta
 guid: be830efa153a9484597e87eb48caa580
+=======
+guid: 976c7e31f68aa174f9bc1b8e07d66354
+>>>>>>> origin/Roopenbranch:Assets/Graphics/Temp/Revolver_SU.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,10 +38,17 @@ TextureImporter:
     filterMode: -1
     aniso: -1
     mipBias: -100
+<<<<<<< HEAD:Assets/Sprites/ddruggie.png.meta
     wrapU: 1
     wrapV: 1
     wrapW: 1
   nPOTScale: 0
+=======
+    wrapU: -1
+    wrapV: -1
+    wrapW: -1
+  nPOTScale: 1
+>>>>>>> origin/Roopenbranch:Assets/Graphics/Temp/Revolver_SU.png.meta
   lightmap: 0
   compressionQuality: 50
   spriteMode: 1
@@ -51,7 +62,11 @@ TextureImporter:
   alphaUsage: 1
   alphaIsTransparency: 1
   spriteTessellationDetail: -1
+<<<<<<< HEAD:Assets/Sprites/ddruggie.png.meta
   textureType: 8
+=======
+  textureType: 0
+>>>>>>> origin/Roopenbranch:Assets/Graphics/Temp/Revolver_SU.png.meta
   textureShape: 1
   singleChannelComponent: 0
   maxTextureSizeSet: 0

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sprites/Materials.meta
 guid: 9522118938c050545ae61b56df730312
+=======
+guid: 468a881a3756c7d4fb8681c2c6ded27a
+>>>>>>> origin/Roopenbranch:Assets/Graphics/Temp.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

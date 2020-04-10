@@ -10,7 +10,11 @@ public class Weapons : MonoBehaviour
     public float fireRate;
     public bool emptyMagazine;
 
-    public AudioClip equipClip;
+
+    //public AudioClip equipClip;
+
+    //public AudioSource equipClip;
+
 
     public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, pistolDrop, shotGunDrop, rifleDrop, gameThrow;
     //public GameObject uiWeaponSelection;
@@ -49,6 +53,9 @@ public class Weapons : MonoBehaviour
     void EquipGun()
     {
         bulletForce = 30;
+
+        uiAmmoCounter.SetActive(true);
+
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
         {
             for (int i = 0; i < player.transform.childCount; i++)
@@ -90,6 +97,9 @@ public class Weapons : MonoBehaviour
                     //uiWeaponSelection.SetActive(false);
                     emptyMagazine = true;
                     ammoCapacity = 0;
+
+                    fireRate = 0f;
+
                     break;
 
                 case 1:
@@ -110,7 +120,7 @@ public class Weapons : MonoBehaviour
                     playerOneHand.SetActive(true);
                     emptyMagazine = false;
                     fireRate = 0.3f;
-
+                    ammoCapacity = 10;
                     break;
                 case 2:
                     if (uiAmmoCounter.activeSelf == true)
@@ -127,6 +137,7 @@ public class Weapons : MonoBehaviour
                     shotgun.SetActive(true);
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
+                    ammoCapacity = 5;
                     fireRate = 1;
                     break;
 
@@ -147,6 +158,7 @@ public class Weapons : MonoBehaviour
                     playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     fireRate = 0.1f;
+                    ammoCapacity = 30;
                     break;
                     // alla piilotettuna lisää aseita
                 //case 4:
@@ -176,7 +188,13 @@ public class Weapons : MonoBehaviour
                 //    break;
             }
         }
-    }
+    }  
+
+    //private void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    equipClip.Play();
+
+    //    uiAmmoCounter.SetActive(true);
 
     public void DropGun()
     {
@@ -221,10 +239,12 @@ public class Weapons : MonoBehaviour
         {
             uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
         }
+
         if (equippedGun == 2)
         {
             uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
         }
+
         if (equippedGun == 3)
         {
             uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
@@ -254,6 +274,7 @@ public class Weapons : MonoBehaviour
     {
         //GetComponent<AudioSource>().Play();
         //equipClip.Play();
+
 
         if(other.gameObject.layer == 11) // 11 = Equipment
         {
@@ -342,17 +363,16 @@ public class Weapons : MonoBehaviour
                 ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
                 ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
             }
-            if (other.gameObject.tag == "FTbox")
-            {
+            //if (other.gameObject.tag == "FTbox")
+            //{
+            //    equippedGun = 5;
+            //}
 
-                equippedGun = 5;
-            }
-
-            if (other.gameObject.tag == "Grenadebox")
-            {
-                GetComponent<Pshoot>().shotsFired = 0;
-                equippedGun = 6;
-            }
+            //if (other.gameObject.tag == "Grenadebox")
+            //{
+            //    GetComponent<Pshoot>().shotsFired = 0;
+            //    equippedGun = 6;
+            //}
         }
     }
 }
