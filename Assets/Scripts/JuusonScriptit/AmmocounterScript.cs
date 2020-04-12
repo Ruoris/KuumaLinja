@@ -8,6 +8,11 @@ public class AmmocounterScript : MonoBehaviour
     public GameObject[] pistolBullets;
     public GameObject player;
 
+    public void Update()
+    {
+        pistolBullets = GameObject.FindGameObjectsWithTag("PistolBulletImage");
+    }
+
     public void ChangeColor()
     {
 
@@ -26,6 +31,7 @@ public class AmmocounterScript : MonoBehaviour
             pistolBullets[i].GetComponent<Image>().color = used;
         }
     }
+
     public void PartialColorToUsed(int ammoCapacity, int ammoleft)
     {
         while(ammoleft < ammoCapacity)

@@ -61,13 +61,13 @@ public class EnemyController : MonoBehaviour
         Vector3 direction = player.transform.position - enemyRb.transform.position;
         rayToPlayer = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(direction.x, direction.y), distance);
         Debug.DrawRay(transform.position, direction, Color.red);
-        Vector3 f = transform.TransformDirection(Vector3.right);
+        Vector3 f = transform.TransformDirection(Vector3.up);
         RaycastHit2D obstacleCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(f.x, f.y), 1.2f);
         
 
         if (moving)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
 
         if (pursuing)

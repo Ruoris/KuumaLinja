@@ -30,7 +30,7 @@ public class PlayerFOV : MonoBehaviour
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
 
-        StartCoroutine("FindTargetsWithDelay", 0.05f);
+        StartCoroutine("FindTargetsWithDelay", 0.08f);
     }
 
 
@@ -53,11 +53,17 @@ public class PlayerFOV : MonoBehaviour
         visibleTargets.Clear();
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
 
+
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
             target.GetComponent<Renderer>().enabled = false;
             //target.GetComponent<Animator>().enabled = false;
+
+
+            //var enviromentLayer = GetComponent<EnviromentScript>().enviroment.layer;
+            //enviromentLayer.layer = "asd";
+
 
 
             Vector3 dirToTarget = (target.position - transform.position).normalized;
@@ -69,7 +75,6 @@ public class PlayerFOV : MonoBehaviour
                     visibleTargets.Add(target);
                     target.GetComponent<Renderer>().enabled = true;
                     //target.GetComponent<Animator>().enabled = true;
-
                 }
             }
         }

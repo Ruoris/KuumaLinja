@@ -48,5 +48,4 @@ public class Door : MonoBehaviour
             StartCoroutine("CloseDoor");                     
         }
     }
-
 }
