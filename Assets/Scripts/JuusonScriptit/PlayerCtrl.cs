@@ -31,6 +31,8 @@ public class PlayerCtrl : MonoBehaviour
     {
         FaceMouse();
         Crouch();
+        //var walkAnimation = GetComponent<Animator>();
+        var idle = GetComponent<SpriteRenderer>();
 
         playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
 
@@ -41,6 +43,10 @@ public class PlayerCtrl : MonoBehaviour
         if (movement.x != 0 || movement.y != 0)
         {
             walkAnimation.SetActive(true);
+
+
+            //walkAnimation.enabled = true;
+
             walkAnimation.transform.position = player.transform.position;
 
             float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
@@ -49,6 +55,7 @@ public class PlayerCtrl : MonoBehaviour
         else
         {
             walkAnimation.SetActive(false);
+            //walkAnimation.enabled = false;
         }
     }
 
