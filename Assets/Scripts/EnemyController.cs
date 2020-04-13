@@ -1,18 +1,19 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject player, enemy,aseDroppisjiainti,pistolDrop;
+    public GameObject player, enemy, aseDroppisjiainti,pistolDrop;
+    public GameObject enemySprite, footPrints;
     Rigidbody2D enemyRb;
     public int ammoCapacity, ammoLeft;
     public Vector3 playerLastPosition;
     RaycastHit2D rayToPlayer;
-    float speed = 3f;
+    float speed = 0.2f;
     float detectionDistance = 10f;
 
-    bool moving = true, patrolling = true, pursuing = false, hasGun = false, goingtoweapon = false, goingtolastloc = false;
+    public bool moving = true, patrolling = true, pursuing = false, hasGun = false, goingtoweapon = false, goingtolastloc = false;
     public bool clockwise = false, stationary = false;
     public int enemyType = 1;
 
@@ -29,16 +30,27 @@ public class EnemyController : MonoBehaviour
     {
         return this.pursuing;
     }
+
     void FixedUpdate()
     {
         Movement();
         PlayerDetect();
-        walkAnimation.SetActive(true);
+        if(gameObject.GetComponent<SpriteRenderer>().enabled == true && Time.time > 1)
+        {
+            footPrints.SetActive(true);
+            enemySprite.SetActive(true);
+            footPrints.transform.position = enemy.transform.position;
+            footPrints.transform.rotation = enemy.transform.rotation;
+        }
+        else
+        {
+            enemySprite.SetActive(false);
+            footPrints.transform.parent = null;
+        }
     }
 
     void KilledByBullet()
     {
-   
         GetComponent<EnemyWeapons>().DropGun();
         Destroy(gameObject);
     }
@@ -62,8 +74,12 @@ public class EnemyController : MonoBehaviour
         rayToPlayer = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(direction.x, direction.y), distance);
         Debug.DrawRay(transform.position, direction, Color.red);
         Vector3 f = transform.TransformDirection(Vector3.up);
-        RaycastHit2D obstacleCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(f.x, f.y), 1.2f);
+        RaycastHit2D obstacleCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(f.x, f.y), 0.2f);
         
+        if(!pursuing)
+        {
+            speed = 0.2f;
+        }
 
         if (moving)
         {
@@ -72,7 +88,6 @@ public class EnemyController : MonoBehaviour
 
         if (pursuing)
         {
-            speed = 3.0f;
             enemyRb.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((playerLastPosition.y - transform.position.y), 
                 (playerLastPosition.x - transform.position.x)) * Mathf.Rad2Deg);
 
@@ -80,8 +95,6 @@ public class EnemyController : MonoBehaviour
             {
                 playerLastPosition = player.transform.position;
                 Debug.Log("seuraa");
-
-
                 //if ( GetComponent<EnemyPshoot>().fireRate < canFire && !emptyMagazine)
                 //{
                 //    gunSound.Play();
@@ -101,14 +114,11 @@ public class EnemyController : MonoBehaviour
                 //        Fire();
                 //    }
                 //}
-
-
             }
         }
 
         if (goingtolastloc)
         {
-            speed = 2.5f;
             enemyRb.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((playerLastPosition.y - transform.position.y),
                 (playerLastPosition.x - transform.position.x)) * Mathf.Rad2Deg);
 
@@ -129,8 +139,6 @@ public class EnemyController : MonoBehaviour
 
         if (patrolling)
         {
-            speed = 2.0f;
-
             if (obstacleCheck.collider != null)
             {
 
@@ -177,6 +185,16 @@ public class EnemyController : MonoBehaviour
                     goingtoweapon = false;
                 }
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        //Debug.Log(other.gameObject.name);
+
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            speed = -1f;
         }
     }
 }

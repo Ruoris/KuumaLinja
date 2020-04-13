@@ -13,6 +13,7 @@ public class PlayerFOV : MonoBehaviour
     public LayerMask obstacleMask;
 
     public GameObject player;
+    public bool enemySeen;
 
     public List<Transform> visibleTargets = new List<Transform>();
 
@@ -58,13 +59,6 @@ public class PlayerFOV : MonoBehaviour
         {
             Transform target = targetsInViewRadius[i].transform;
             target.GetComponent<Renderer>().enabled = false;
-            //target.GetComponent<Animator>().enabled = false;
-
-
-            //var enviromentLayer = GetComponent<EnviromentScript>().enviroment.layer;
-            //enviromentLayer.layer = "asd";
-
-
 
             Vector3 dirToTarget = (target.position - transform.position).normalized;
             if (Vector3.Angle(transform.up, dirToTarget) < viewAngle / 2)
@@ -74,7 +68,6 @@ public class PlayerFOV : MonoBehaviour
                 {
                     visibleTargets.Add(target);
                     target.GetComponent<Renderer>().enabled = true;
-                    //target.GetComponent<Animator>().enabled = true;
                 }
             }
         }
@@ -183,7 +176,7 @@ public class PlayerFOV : MonoBehaviour
 
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
     {
-            angleInDegrees -= transform.eulerAngles.z;
+        angleInDegrees -= transform.eulerAngles.z;
 
         return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
