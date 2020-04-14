@@ -46,7 +46,7 @@ public class Weapons : MonoBehaviour
 
     void EquipGun()
     {
-        bulletForce = 15;
+        bulletForce = 12;
 
         bothHands.SetActive(false);
         oneHand.SetActive(false);

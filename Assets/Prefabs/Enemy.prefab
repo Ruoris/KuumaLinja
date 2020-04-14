@@ -217,15 +217,9 @@ MonoBehaviour:
   ammoCapacity: 0
   ammoLeft: 0
   playerLastPosition: {x: 0, y: 0, z: 0}
-  moving: 1
-  patrolling: 1
-  pursuing: 0
-  hasGun: 0
-  goingtoweapon: 0
-  goingtolastloc: 0
+  speed: 0.2
   clockwise: 1
   stationary: 0
-  enemyType: 1
   walkAnimation: {fileID: 4002979554662983208}
 --- !u!114 &4002979554525059708
 MonoBehaviour:
@@ -278,7 +272,8 @@ MonoBehaviour:
   bulletForce: 50
   counter: 0
   explosionCounter: 3
-  gunSound: {fileID: 0}
+  gunSound: {fileID: 5512089778880251789, guid: 3b7b30189db0afd4d8f6fb6ccb5a1857,
+    type: 3}
   firePoint: {fileID: 4002979555508632949}
   player: {fileID: 4002979554525059714}
   bulletprefab: {fileID: 5005290098821576133, guid: 3dfb09dca58c4aa4c861b7ec19d0d4a6,

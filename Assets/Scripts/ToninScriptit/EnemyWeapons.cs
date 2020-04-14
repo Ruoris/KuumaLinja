@@ -130,7 +130,7 @@ public class EnemyWeapons : MonoBehaviour
 
     public void FireControl()
     {
-        bulletForce = 40;
+        bulletForce = 10;
 
         if (equippedGun == 0)
         {
