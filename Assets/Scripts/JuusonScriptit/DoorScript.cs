@@ -15,21 +15,17 @@ public class DoorScript : MonoBehaviour
     }
         private void OnCollisionEnter2D(Collision2D other)
     {
-        //if(Time.time > 1)
-        //{
             var doorAnimation = GetComponent<Animator>();
             if (other.gameObject.name == "Player" && gameObject.name == "DoorDown")
             {
-                upSide.SetActive(false);
-
                 doorAnimation.enabled = true;
+                upSide.SetActive(false);
             }
 
             else if (other.gameObject.name == "Player" && gameObject.name == "DoorUp")
             {
-                downSide.SetActive(false);
                 doorAnimation.enabled = true;
+                downSide.SetActive(false);
             }
-        //}
     }
 }
