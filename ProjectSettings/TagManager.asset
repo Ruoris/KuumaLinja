@@ -4,14 +4,25 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - LevelGenerator
-  - LevelController
-  - Wall
-  - Floor
-  - Fow
-  - Object
-  - Enemy
   - Bullet
+  - Enemy
+  - EnemyBullet
+  - PistolBox
+  - PistolBulletImage
+  - Arbox
+  - Wall
+  - FOV
+  - Grenadebox
+  - soundsettings
+  - ShotgunBox
+  - FTbox
+  - ShotGunDrop
+  - RifleDrop
+  - PistolDrop
+  - activeBulletCounter
+  - RoomController
+  - Door
+  - AmmoSpawn
   layers:
   - Default
   - TransparentFX
@@ -21,11 +32,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Enviroment
+  - Enemy
+  - Player
+  - Equipment
+  - Obstacle
   - 
   - 
   - 
@@ -48,4 +59,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: backGround
+    uniqueID: 628643849
+    locked: 0
+  - name: foreGround
+    uniqueID: 3833441929
     locked: 0

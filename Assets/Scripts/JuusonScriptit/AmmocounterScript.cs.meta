@@ -1,20 +1,9 @@
 fileFormatVersion: 2
-<<<<<<< HEAD
-<<<<<<< HEAD
 guid: 005399f7f4be7864c99f64b4ed0ced92
-=======
-guid: 3ea46f6fe9157f142910d1c7a543f530
->>>>>>> JuusonBranch2
-=======
-guid: 005399f7f4be7864c99f64b4ed0ced92
->>>>>>> Roopenbranch
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - pistolbullet: {fileID: 1384786691984070482, guid: 956d29ce5664256469384fc5d4703309,
-      type: 3}
-  - uiBulletCounter: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

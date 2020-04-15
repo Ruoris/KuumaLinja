@@ -1,73 +1,211 @@
-﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
-using CodeMonkey.Utils;
 
 public class PlayerFOV : MonoBehaviour
 {
+    
+    public float viewRadius;
+    [Range(0, 360)]
+    public float viewAngle;
 
-    [SerializeField] private LayerMask layerMask;
-    private Mesh mesh;
-    public float fov;
-    public float viewDistance;
-    private Vector3 origin;
-    public float startingAngle;
+    public LayerMask targetMask;
+    public LayerMask obstacleMask;
 
-    private void Start()
+    public GameObject player;
+    public bool enemySeen;
+
+    public List<Transform> visibleTargets = new List<Transform>();
+
+    public float meshResolution;
+    public int edgeResolveIterations;
+    public float edgeDstThreshold;
+
+    public MeshFilter viewMeshFilter;
+    Mesh viewMesh;
+
+    void Start()
     {
-        mesh = new Mesh();
-        GetComponent<MeshFilter>().mesh = mesh;
-        origin = Vector3.zero;
+
+        viewMesh = new Mesh();
+        viewMesh.name = "View Mesh";
+        viewMeshFilter.mesh = viewMesh;
+
+        StartCoroutine("FindTargetsWithDelay", 0.08f);
     }
 
-    private void LateUpdate()
+
+    IEnumerator FindTargetsWithDelay(float delay)
     {
-        int rayCount = 9;
-        float angle = startingAngle;
-        float angleIncrease = fov / rayCount;
-
-        Vector3[] vertices = new Vector3[rayCount + 1 + 1];
-        Vector2[] uv = new Vector2[vertices.Length];
-        int[] triangles = new int[rayCount * 3];
-
-        vertices[0] = origin;
-
-        int vertexIndex = 1;
-        int triangleIndex = 0;
-        for (int i = 0; i <= rayCount; i++)
+        while (true)
         {
-            Vector3 vertex;
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(origin, UtilsClass.GetVectorFromAngle(angle), viewDistance, layerMask);
-            if (raycastHit2D.collider == null)
+            yield return new WaitForSeconds(delay);
+            FindVisibleTargets();
+        }
+    }
+
+    void LateUpdate()
+    {
+        DrawFieldOfView();
+    }
+
+    void FindVisibleTargets()
+    {
+        visibleTargets.Clear();
+        Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
+
+
+        for (int i = 0; i < targetsInViewRadius.Length; i++)
+        {
+            Transform target = targetsInViewRadius[i].transform;
+            target.GetComponent<Renderer>().enabled = false;
+
+            Vector3 dirToTarget = (target.position - transform.position).normalized;
+            if (Vector3.Angle(transform.up, dirToTarget) < viewAngle / 2)
             {
-                vertex = origin + UtilsClass.GetVectorFromAngle(angle) * viewDistance;
+                float dstToTarget = Vector3.Distance(transform.position, target.position);
+                if (!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
+                {
+                    visibleTargets.Add(target);
+                    target.GetComponent<Renderer>().enabled = true;
+                }
             }
-            else
-            {
-                Debug.Log("osuu");
-                vertex = raycastHit2D.point;
-            }
-            vertices[vertexIndex] = vertex;
+        }
+    }
+
+    void DrawFieldOfView()
+    {
+        int stepCount = Mathf.RoundToInt(viewAngle * meshResolution);
+        float stepAngleSize = viewAngle / stepCount;
+        List<Vector3> viewPoints = new List<Vector3>();
+        ViewCastInfo oldViewCast = new ViewCastInfo();
+        for (int i = 0; i <= stepCount; i++)
+        {
+            float angle = transform.eulerAngles.y - viewAngle / 2 + stepAngleSize * i;
+            ViewCastInfo newViewCast = ViewCast(angle);
 
             if (i > 0)
             {
-                triangles[triangleIndex + 0] = 0;
-                triangles[triangleIndex + 1] = vertexIndex - 1;
-                triangles[triangleIndex + 2] = vertexIndex;
-
-                triangleIndex += 3;
+                bool edgeDstThresholdExceeded = Mathf.Abs(oldViewCast.dst - newViewCast.dst) > edgeDstThreshold;
+                if (oldViewCast.hit != newViewCast.hit || (oldViewCast.hit && newViewCast.hit && edgeDstThresholdExceeded))
+                {
+                    EdgeInfo edge = FindEdge(oldViewCast, newViewCast);
+                    if (edge.pointA != Vector3.zero)
+                    {
+                        viewPoints.Add(edge.pointA);
+                    }
+                    if (edge.pointB != Vector3.zero)
+                    {
+                        viewPoints.Add(edge.pointB);
+                    }
+                }
             }
 
-            vertexIndex++;
-            angle -= angleIncrease;
+            viewPoints.Add(newViewCast.point);
+            oldViewCast = newViewCast;
         }
 
+        int vertexCount = viewPoints.Count + 1;
+        Vector3[] vertices = new Vector3[vertexCount];
+        int[] triangles = new int[(vertexCount - 2) * 3];
 
-        mesh.vertices = vertices;
-        mesh.uv = uv;
-        mesh.triangles = triangles;
-        //mesh.bounds = new Bounds(origin, Vector3.one * 1000f);
+        vertices[0] = Vector3.zero;
+        for (int i = 0; i < vertexCount - 1; i++)
+        {
+            vertices[i + 1] = transform.InverseTransformPoint(viewPoints[i]);
+
+            if (i < vertexCount - 2)
+            {
+                triangles[i * 3] = 0;
+                triangles[i * 3 + 1] = i + 1;
+                triangles[i * 3 + 2] = i + 2;
+            }
+        }
+
+        viewMesh.Clear();
+
+        viewMesh.vertices = vertices;
+        viewMesh.triangles = triangles;
+        viewMesh.RecalculateNormals();
+    }
+
+
+    EdgeInfo FindEdge(ViewCastInfo minViewCast, ViewCastInfo maxViewCast)
+    {
+        float minAngle = minViewCast.angle;
+        float maxAngle = maxViewCast.angle;
+        Vector3 minPoint = Vector3.zero;
+        Vector3 maxPoint = Vector3.zero;
+
+        for (int i = 0; i < edgeResolveIterations; i++)
+        {
+            float angle = (minAngle + maxAngle) / 2;
+            ViewCastInfo newViewCast = ViewCast(angle);
+
+            bool edgeDstThresholdExceeded = Mathf.Abs(minViewCast.dst - newViewCast.dst) > edgeDstThreshold;
+            if (newViewCast.hit == minViewCast.hit && !edgeDstThresholdExceeded)
+            {
+                minAngle = angle;
+                minPoint = newViewCast.point;
+            }
+            else
+            {
+                maxAngle = angle;
+                maxPoint = newViewCast.point;
+            }
+        }
+
+        return new EdgeInfo(minPoint, maxPoint);
+    }
+
+
+    ViewCastInfo ViewCast(float globalAngle)
+    {
+        Vector3 dir = DirFromAngle(globalAngle, true);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir);
+
+        if (Physics2D.Raycast(transform.position, dir, viewRadius, obstacleMask))
+        {
+            return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
+        }
+        else
+        {
+            return new ViewCastInfo(false, transform.position + dir * viewRadius, viewRadius, globalAngle);
+        }
+    }
+
+    public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
+    {
+        angleInDegrees -= transform.eulerAngles.z;
+
+        return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
+    }
+
+    public struct ViewCastInfo
+    {
+        public bool hit;
+        public Vector3 point;
+        public float dst;
+        public float angle;
+
+        public ViewCastInfo(bool _hit, Vector3 _point, float _dst, float _angle)
+        {
+            hit = _hit;
+            point = _point;
+            dst = _dst;
+            angle = _angle;
+        }
+    }
+
+    public struct EdgeInfo
+    {
+        public Vector3 pointA;
+        public Vector3 pointB;
+
+        public EdgeInfo(Vector3 _pointA, Vector3 _pointB)
+        {
+            pointA = _pointA;
+            pointB = _pointB;
+        }
     }
 }

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Prefabs/DeathAnimation.anim.meta
+guid: 57a9d02b43838ee499b2bb1d1a2921a2
+=======
 guid: fb84984f30308e143b6297da06ce8d60
+>>>>>>> origin/Roopenbranch:Assets/Materials/ViewVisualization.mat.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 0

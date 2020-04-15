@@ -41,14 +41,6 @@ public class Door : MonoBehaviour
             StartCoroutine("OpenDoor");
         }       
     }
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player" && open == true && active == false)
-        {
-            StopAllCoroutines();
-        }
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player"&& open == true && active == false)
@@ -56,5 +48,4 @@ public class Door : MonoBehaviour
             StartCoroutine("CloseDoor");                     
         }
     }
-
 }

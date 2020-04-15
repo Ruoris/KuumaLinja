@@ -5,68 +5,41 @@ using UnityEngine.UI;
 
 public class AmmocounterScript : MonoBehaviour
 {
-        public GameObject[] pistolBullets;
-    //    public gameobject player;
-    //    private int bulletsleft;
+    public GameObject[] pistolBullets;
+    public GameObject player;
 
-    //    void update()
-    //    {
-
-
-
-    //        if (input.getbutton("fire1"))
-    //        {
-    //            changecolor();
-    //<<<<<<< head
-
-    //=======
-    //>>>>>>> juusonbranch2
-    //        }
-    //    }
-
-    //    void start()
-    //    {
-
-
-
-    //    }
-    //    public void getpistolbullets(int ammocapacity)
-    //    {
-    //<<<<<<< head
-    //        //gameobject pistolbullets[ammocapacity];
-    //=======
-    //>>>>>>> juusonbranch2
-    //    }
-
-
-    //    public void changecolor()
-    //    {
-    //<<<<<<< head
-    //        //bool emptymagazine = player.getcomponent<weapons>().emptymagazine;
-    //        int bulletsleft = player.getcomponent<weapons>().ammoleft;
-
-    //        //if (emptymagazine)
-    //        //{
-    //        //    returncolor();
-    //        //}
-
-    //        color used = new color32(75, 75, 75, 255);
-    //        pistolbullets[bulletsleft].getcomponent<image>().color = used;
-    //=======
-    //        int bulletsleft = player.getcomponent<weapons>().ammoleft;
-
-    //        color used = new color32(75, 75, 75, 255);
-    //        pistolbullets[bulletsleft].getcomponent<image>().color = used;
-    //>>>>>>> juusonbranch2
-    //    }
-
-    public void ReturnColor(int ammocapacity)
+    public void Update()
     {
-        for (int i = 0; i < ammocapacity; i++)
+        pistolBullets = GameObject.FindGameObjectsWithTag("PistolBulletImage");
+    }
+
+    public void ChangeColor()
+    {
+
+        int bulletsLeft = player.GetComponent<Weapons>().ammoLeft;
+
+        Color used = new Color32(75, 75, 75, 255);
+        pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
+    }
+
+    public void ReturnColor(int ammoCapacity)
+    {
+        for (int i = 0; i < ammoCapacity; i++)
         {
             Color used = new Color32(255, 255, 255, 255);
 
             pistolBullets[i].GetComponent<Image>().color = used;
+        }
+    }
+
+    public void PartialColorToUsed(int ammoCapacity, int ammoleft)
+    {
+        while(ammoleft < ammoCapacity)
+        {
+            Color used = new Color32(75, 75, 75, 255);
+
+            pistolBullets[ammoleft].GetComponent<Image>().color = used;
+            ammoleft++;
         }
     }
 }

@@ -5,12 +5,12 @@ using UnityEngine.Audio;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    public float movSpeed;
-    public GameObject player, aim, walkAnimation;
-
+    private float movementSpeed;
+    public GameObject player, aim, playerCamera;
+    public GameObject walkAnimation, deathAnimation;
+    private int playerHealth = 1;
+    public GameObject pauser;
     public bool crouching;
-    private float timer = 0.3f;
-    private float crouchTimer;
 
     public Rigidbody2D playerRB;
 
@@ -18,60 +18,74 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
+        pauser = GameObject.FindWithTag("soundsettings");
+        player.SetActive(true);
+        movementSpeed = 1.8f;
+
+        // lisätään kunhan saadaan playerin prefab "valmiiksi"
+        //Instantiate(PlayerPrefab, startPoint.transform.position, Quaternion.identity);
+
         playerRB = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        FaceMouse();
-        Crouch();
-
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-
-        if (movement.x != 0 || movement.y != 0)
+        if (pauser.GetComponent<Pause>().paused == false)
         {
-            walkAnimation.SetActive(true);
-            walkAnimation.transform.position = player.transform.position;
+            FaceMouse();
+            Crouch();
+            //var walkAnimation = GetComponent<Animator>();
+            //var idle = GetComponent<SpriteRenderer>();
 
-            float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
-            walkAnimation.transform.rotation = Quaternion.AngleAxis(-walkAngle, Vector3.forward);
-        }
-        else
-        {
-            walkAnimation.SetActive(false);
-        }
+            playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
 
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+
+
+            if (movement.x != 0 || movement.y != 0)
+            {
+                walkAnimation.SetActive(true);
+
+
+                //walkAnimation.enabled = true;
+
+                walkAnimation.transform.position = player.transform.position;
+
+                float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
+                walkAnimation.transform.rotation = Quaternion.AngleAxis(-walkAngle, Vector3.forward);
+            }
+            else
+            {
+                walkAnimation.SetActive(false);
+                //walkAnimation.enabled = false;
+            }
+        }
     }
 
     void FixedUpdate()
     {
-        playerRB.MovePosition(playerRB.position + movement * movSpeed * Time.fixedDeltaTime);
+        playerRB.MovePosition(playerRB.position + movement * movementSpeed * Time.fixedDeltaTime);
     }
 
     void Crouch()
     {
-        crouchTimer = crouchTimer + Time.deltaTime;
-
-        if (Input.GetButton("Crouch") && !crouching && timer < crouchTimer)
+        if (Input.GetButtonDown("Crouch") && !crouching)
         {
-            crouchTimer = 0;
             crouching = true;
-            movSpeed = 2;
+            movementSpeed = 1.8f;
         }
-        if (Input.GetButton("Crouch") && crouching && timer < crouchTimer)
+        else if (Input.GetButtonDown("Crouch") && crouching)
         {
-            crouchTimer = 0;
             crouching = false;
-            movSpeed = 4;
+            movementSpeed = 1.0f;
         }
     }
 
     void FaceMouse()
     {
         Vector3 mousePosition = Input.mousePosition;
-        
+
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         aim.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
@@ -85,10 +99,26 @@ public class PlayerCtrl : MonoBehaviour
         transform.up = direction;
     }
 
-    public void reverseWalk()
+    //public void reverseWalk()
+    //{
+    //    Debug.Log("ASD");
+    //    float angle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
+    //    walkAnimation.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    //} // ei toimi vielä
+
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("ASD");
-        float angle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
-        walkAnimation.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (other.gameObject.CompareTag("EnemyBullet"))
+        {
+            playerHealth--;
+            if(playerHealth <= 0)
+            {
+                player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
+                Instantiate(deathAnimation, player.transform.position, player.transform.rotation);
+
+                player.SetActive(false);
+            }
+            Destroy(other.gameObject);
+        }
     }
 }

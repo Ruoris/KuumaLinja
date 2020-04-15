@@ -53,7 +53,7 @@ public class Pause : MonoBehaviour
         }
         if (!paused)
         {
-            menu.SetActive(false);
+             menu.SetActive(false);
             audioSettings.SetActive(false);
             backButton.SetActive(false);
             Time.timeScale = 1;
