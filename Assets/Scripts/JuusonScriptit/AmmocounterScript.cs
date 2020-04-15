@@ -6,63 +6,45 @@ using UnityEngine.UI;
 public class AmmocounterScript : MonoBehaviour
 {
         public GameObject[] pistolBullets;
-    //    public gameobject player;
-    //    private int bulletsleft;
+        public GameObject Player;
+        private int bulletsleft;
 
-    //    void update()
-    //    {
-
-
-
-    //        if (input.getbutton("fire1"))
-    //        {
-    //            changecolor();
-    //<<<<<<< head
-
-    //=======
-    //>>>>>>> juusonbranch2
-    //        }
-    //    }
-
-    //    void start()
-    //    {
+       void update()
+       {
 
 
 
-    //    }
-    //    public void getpistolbullets(int ammocapacity)
-    //    {
-    //<<<<<<< head
-    //        //gameobject pistolbullets[ammocapacity];
-    //=======
-    //>>>>>>> juusonbranch2
-    //    }
+            if (Input.GetButton("fire1"))
+            {
+                changecolor();
+  
+
+  
+            }
+       }
+
+ 
+       public void Getpistolbullets(int  ammoCapacity)
+       {
+
+            //GameObject pistolBullets[ ammoCapacity];
+
+       }
 
 
-    //    public void changecolor()
-    //    {
-    //<<<<<<< head
-    //        //bool emptymagazine = player.getcomponent<weapons>().emptymagazine;
-    //        int bulletsleft = player.getcomponent<weapons>().ammoleft;
+       public void changecolor()
+       {
 
-    //        //if (emptymagazine)
-    //        //{
-    //        //    returncolor();
-    //        //}
+        int bulletsLeft = Player.GetComponent<Weapons>().ammoLeft;
 
-    //        color used = new color32(75, 75, 75, 255);
-    //        pistolbullets[bulletsleft].getcomponent<image>().color = used;
-    //=======
-    //        int bulletsleft = player.getcomponent<weapons>().ammoleft;
+        Color used = new Color32(75, 75, 75, 255);
+        pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
 
-    //        color used = new color32(75, 75, 75, 255);
-    //        pistolbullets[bulletsleft].getcomponent<image>().color = used;
-    //>>>>>>> juusonbranch2
-    //    }
+       }
 
-    public void ReturnColor(int ammocapacity)
+    public void ReturnColor(int ammoCapacity)
     {
-        for (int i = 0; i < ammocapacity; i++)
+        for (int i = 0; i < ammoCapacity; i++)
         {
             Color used = new Color32(255, 255, 255, 255);
 
