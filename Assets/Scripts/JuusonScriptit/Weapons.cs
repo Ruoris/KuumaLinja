@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
-    public GameObject pistol, shotgun, assaultRifle, machineGun, flameThrower, grenade;
-    public GameObject player, playerMelee, playerOneHand, playerBothHands;
+    public GameObject pistol, shotgun, assaultRifle, pipe;
+    public GameObject player, melee, oneHand, bothHands, pipeHands;
     public int bulletForce;
     public float fireRate;
     public bool emptyMagazine;
@@ -16,6 +16,7 @@ public class Weapons : MonoBehaviour
     public GameObject[] otherWeapons;
     public Transform firePoint;
 
+
     public int equippedGun, ammoCapacity, ammoLeft, previousEquippedGun, previousAmmoCapacity, previousAmmoLeft;
    
 
@@ -24,6 +25,7 @@ public class Weapons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        equippedGun = 0;
         emptyMagazine = true;
         ammoLeft = 0;
     }
@@ -90,7 +92,18 @@ public class Weapons : MonoBehaviour
 
     void EquipGun()
     {
-        bulletForce = 30;
+        bulletForce = 12;
+
+        bothHands.SetActive(false);
+        oneHand.SetActive(false);
+        pipeHands.SetActive(false);
+        pipe.SetActive(false);
+
+        pistol.SetActive(false);
+        shotgun.SetActive(false);
+
+        uiAmmoCounter.SetActive(true);
+
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
         {
             for (int i = 0; i < player.transform.childCount; i++)
@@ -126,12 +139,15 @@ public class Weapons : MonoBehaviour
                         uiRifleCounter.SetActive(false);
                     }
 
-                    playerBothHands.SetActive(false);
-                    playerOneHand.SetActive(false);
-                    playerMelee.SetActive(false);
-                    //uiWeaponSelection.SetActive(false);
+                    uiAmmoCounter.SetActive(false);
+                    pipeHands.SetActive(true);
+                    pipe.SetActive(true);
+
                     emptyMagazine = true;
                     ammoCapacity = 0;
+
+                    fireRate = 0f;
+
                     break;
 
                 case 1:
@@ -149,10 +165,10 @@ public class Weapons : MonoBehaviour
 
                     uiAmmoCounter.SetActive(true);
                     pistol.SetActive(true);
-                    playerOneHand.SetActive(true);
+                    oneHand.SetActive(true);
                     emptyMagazine = false;
                     fireRate = 0.3f;
-
+                    ammoCapacity = 10;
                     break;
                 case 2:
                     if (uiAmmoCounter.activeSelf == true)
@@ -167,8 +183,9 @@ public class Weapons : MonoBehaviour
                     }
                     uiShellCounter.SetActive(true);
                     shotgun.SetActive(true);
-                    playerBothHands.SetActive(true);
+                    bothHands.SetActive(true);
                     emptyMagazine = false;
+                    ammoCapacity = 5;
                     fireRate = 1;
                     break;
 
@@ -186,20 +203,21 @@ public class Weapons : MonoBehaviour
 
                     uiRifleCounter.SetActive(true);
                     assaultRifle.SetActive(true);
-                    playerBothHands.SetActive(true);
+                    bothHands.SetActive(true);
                     emptyMagazine = false;
                     fireRate = 0.1f;
+                    ammoCapacity = 30;
                     break;
                     // alla piilotettuna lisää aseita
                 //case 4:
                 //    machineGun.SetActive(true);
-                //    playerBothHands.SetActive(true);
+                //    playerbothHands.SetActive(true);
                 //    emptyMagazine = false;
                 //    break;
 
                 //case 5:
                 //    flameThrower.SetActive(true);
-                //    playerBothHands.SetActive(true);
+                //    playerbothHands.SetActive(true);
                 //    emptyMagazine = false;
                 //    ammoCapacity = 300;
                 //    fireRate = 0.005f;
@@ -207,7 +225,7 @@ public class Weapons : MonoBehaviour
 
                 //case 6:
                 //    grenade.SetActive(true);
-                //    playerOneHand.SetActive(true);
+                //    playeroneHand.SetActive(true);
                 //    emptyMagazine = false;
                 //    ammoCapacity = 3;
                 //    bulletForce = 10;
@@ -218,19 +236,26 @@ public class Weapons : MonoBehaviour
                 //    break;
             }
         }
-    }
+    }  
+
+    //private void OnCollisionEnter2D(Collision2D other)
+    //{
+    //    equipClip.Play();
+
+    //    uiAmmoCounter.SetActive(true);
 
     public void DropGun()
     {
-        GameObject ammoSpawn = GameObject.FindWithTag("ammoSpawn");
-      Transform  firePoint = ammoSpawn.GetComponent<Transform>();
-       
+
+        GameObject ammoSpawn = GameObject.FindWithTag("AmmoSpawn");
+        Transform firePoint = ammoSpawn.GetComponent<Transform>();
+
         if (equippedGun == 1)
         {
             var droppedPistol = Instantiate(pistolDrop, gameThrow.transform.position, Quaternion.identity);
             droppedPistol.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedPistol.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
-          
+
 
             Rigidbody2D rb1 = droppedPistol.GetComponent<Rigidbody2D>();
             float spreadAngle = Random.Range(19, 5);
@@ -239,7 +264,7 @@ public class Weapons : MonoBehaviour
             float rotateAngle = spreadAngle + (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
             var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
             rb1.AddForce(MovementDirection * 2, ForceMode2D.Impulse);
-         
+
             equippedGun = 0;
             ammoLeft = 0;
         }
@@ -248,7 +273,7 @@ public class Weapons : MonoBehaviour
             var droppedShotgun = Instantiate(shotGunDrop, gameThrow.transform.position, Quaternion.identity);          
             droppedShotgun.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedShotgun.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
-         
+
 
             Rigidbody2D rb1 = droppedShotgun.GetComponent<Rigidbody2D>();
             float spreadAngle = Random.Range(19, 5);
@@ -266,7 +291,6 @@ public class Weapons : MonoBehaviour
             var droppedRifle = Instantiate(rifleDrop, gameThrow.transform.position, Quaternion.identity);
             droppedRifle.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedRifle.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
-         
 
             Rigidbody2D rb1 = droppedRifle.GetComponent<Rigidbody2D>();
             float spreadAngle = Random.Range(19, 5);
@@ -291,10 +315,12 @@ public class Weapons : MonoBehaviour
         {
             uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
         }
+
         if (equippedGun == 2)
         {
             uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
         }
+
         if (equippedGun == 3)
         {
             uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
@@ -319,31 +345,18 @@ public class Weapons : MonoBehaviour
         previousAmmoLeft = tempAmmoLeft;
         previousEquippedGun = tempEquippedweapon;
     }
+
     void OnTriggerStay2D(Collider2D other)
     {
-     Debug.Log("collide");
+        Debug.Log("collide");
         if (other.gameObject.layer == 11 && Input.GetKey(KeyCode.E)) // 11 = Equipment
         {
-           
+
+
             emptyMagazine = false;
 
 
-            if (other.gameObject.tag == "PistolBox")
-            {
-            Debug.Log("onTrigger");
-            if (equippedGun != 0)
-            {
-                previousEquippedGun = equippedGun;
-                previousAmmoLeft = ammoLeft;
-                previousAmmoCapacity = ammoCapacity;
-            }
-
-            equippedGun = 1;
-            ammoCapacity = 10;
-            ammoLeft = 10;
-            Destroy(other.gameObject);
-        }
-        
+            
             if (other.gameObject.tag == "PistolDrop")
             {
                 if (equippedGun != 0)
@@ -359,20 +372,7 @@ public class Weapons : MonoBehaviour
                 ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
                 Destroy(other.gameObject);
             }
-            if (other.gameObject.tag == "ShotgunBox")
-            {
-                if (equippedGun != 0)
-                {
-                    previousEquippedGun = equippedGun;
-                    previousAmmoLeft = ammoLeft;
-                    previousAmmoCapacity = ammoCapacity;
-                }
-
-                equippedGun = 2;
-                ammoCapacity = 5;
-                ammoLeft = 5;
-                Destroy(other.gameObject);
-            }
+          
             if (other.gameObject.tag == "ShotGunDrop")
             {
                 if (equippedGun != 0)
@@ -388,21 +388,7 @@ public class Weapons : MonoBehaviour
                 ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
                 Destroy(other.gameObject);
             }
-
-            if (other.gameObject.tag == "Arbox")
-            {
-                if (equippedGun != 0)
-                {
-                    previousEquippedGun = equippedGun;
-                    previousAmmoLeft = ammoLeft;
-                    previousAmmoCapacity = ammoCapacity;
-                }
-
-                equippedGun = 3;
-                ammoCapacity = 30;
-                ammoLeft = 30;
-                Destroy(other.gameObject);
-            }
+  
             if (other.gameObject.tag == "RifleDrop")
             {
                 if (equippedGun != 0)
@@ -416,11 +402,6 @@ public class Weapons : MonoBehaviour
                 ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
                 ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
                 Destroy(other.gameObject);
-            }
-            if (other.gameObject.tag == "FTbox")
-            {
-
-                equippedGun = 5;
             }
 
             if (other.gameObject.tag == "Grenadebox")

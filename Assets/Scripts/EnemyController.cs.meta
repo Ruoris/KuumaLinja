@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Scripts/EnemyController.cs.meta
 guid: ea5f2edbb8d3f5f4e86cfcdceb031a0a
+=======
+guid: 0a9edfd1fce818b45beedb91096736fe
+>>>>>>> Roopenbranch:Assets/Scripts/RoopenScriptit/Closet.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +13,7 @@ public class PlayerFOV : MonoBehaviour
     public LayerMask obstacleMask;
 
     public GameObject player;
+    public bool enemySeen;
 
     public List<Transform> visibleTargets = new List<Transform>();
 
@@ -30,7 +31,7 @@ public class PlayerFOV : MonoBehaviour
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
 
-        StartCoroutine("FindTargetsWithDelay", 0.05f);
+        StartCoroutine("FindTargetsWithDelay", 0.08f);
     }
 
 
@@ -53,9 +54,12 @@ public class PlayerFOV : MonoBehaviour
         visibleTargets.Clear();
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
 
+
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
+            target.GetComponent<Renderer>().enabled = false;
+
             Vector3 dirToTarget = (target.position - transform.position).normalized;
             if (Vector3.Angle(transform.up, dirToTarget) < viewAngle / 2)
             {
@@ -63,6 +67,7 @@ public class PlayerFOV : MonoBehaviour
                 if (!Physics2D.Raycast(transform.position, dirToTarget, dstToTarget, obstacleMask))
                 {
                     visibleTargets.Add(target);
+                    target.GetComponent<Renderer>().enabled = true;
                 }
             }
         }
@@ -161,7 +166,6 @@ public class PlayerFOV : MonoBehaviour
 
         if (Physics2D.Raycast(transform.position, dir, viewRadius, obstacleMask))
         {
-            Debug.Log("OSUU");
             return new ViewCastInfo(true, hit.point, hit.distance, globalAngle);
         }
         else
@@ -172,7 +176,7 @@ public class PlayerFOV : MonoBehaviour
 
     public Vector3 DirFromAngle(float angleInDegrees, bool angleIsGlobal)
     {
-            angleInDegrees -= transform.eulerAngles.z;
+        angleInDegrees -= transform.eulerAngles.z;
 
         return new Vector2(Mathf.Sin(angleInDegrees * Mathf.Deg2Rad), Mathf.Cos(angleInDegrees * Mathf.Deg2Rad));
     }
@@ -205,4 +209,3 @@ public class PlayerFOV : MonoBehaviour
         }
     }
 }
-

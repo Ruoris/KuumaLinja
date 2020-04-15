@@ -4,17 +4,21 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject player, enemy;
+    public GameObject player, enemy, aseDroppisjiainti, pistolDrop;
+    public GameObject enemySprite, footPrints;
+
     Rigidbody2D enemyRb;
     public int ammoCapacity, ammoLeft;
     public Vector3 playerLastPosition;
     RaycastHit2D rayToPlayer;
-    float speed = 3f;
-    float detectionDistance = 10f;
+    public float speed = 0.4f;
+    float wallDetectionDistance = 0.2f;
+    float playerDetectionDistance = 2f;
+    float distanceFromLastLocation = 1f; //kuinka pitkälle vihollinen jahtaa pelaajaa
 
     bool moving = true, patrolling = true, pursuing = false, hasGun = false, goingtoweapon = false, goingtolastloc = false,dying;
     public bool clockwise = false, stationary = false;
-    public int enemyType = 1;
+
 
     public GameObject walkAnimation;
 
@@ -33,17 +37,25 @@ public class EnemyController : MonoBehaviour
     {
         Movement();
         PlayerDetect();
-        walkAnimation.SetActive(true);
+        if (gameObject.GetComponent<SpriteRenderer>().enabled == true && Time.time > 1)
+        {
+            footPrints.SetActive(true);
+            enemySprite.SetActive(true);
+            footPrints.transform.position = enemy.transform.position;
+            footPrints.transform.rotation = enemy.transform.rotation;
+        }
+        else
+        {
+            enemySprite.SetActive(false);
+            footPrints.transform.parent = null;
+        }
     }
 
     void KilledByBullet()
     {
-  
-            Debug.Log("kuoli");
-            GetComponent<EnemyWeapons>().DropGun();
+           GetComponent<EnemyWeapons>().DropGun();
            Destroy(gameObject);
 
-          
     }
 
 
@@ -65,67 +77,35 @@ public class EnemyController : MonoBehaviour
         Vector3 direction = player.transform.position - enemyRb.transform.position;
         rayToPlayer = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(direction.x, direction.y), distance);
         Debug.DrawRay(transform.position, direction, Color.red);
-        Vector3 f = transform.TransformDirection(Vector3.right);
-        RaycastHit2D obstacleCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(f.x, f.y), 1.2f);
-        
+        Vector3 f = transform.TransformDirection(Vector3.up);
+        RaycastHit2D obstacleCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(f.x, f.y), wallDetectionDistance);
+
 
         if (moving)
         {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
+            transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
 
         if (pursuing)
         {
-            speed = 3.0f;
-            enemyRb.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((playerLastPosition.y - transform.position.y), 
-                (playerLastPosition.x - transform.position.x)) * Mathf.Rad2Deg);
+            speed = 0.8f;
+            transform.up = player.transform.position - transform.position;
 
             if (rayToPlayer.collider.gameObject.CompareTag("Player"))
             {
                 playerLastPosition = player.transform.position;
                 Debug.Log("seuraa");
 
-
-                //if ( GetComponent<EnemyPshoot>().fireRate < canFire && !emptyMagazine)
-                //{
-                //    gunSound.Play();
-                //    Fire();
-                //    gunFlareAnimation.SetActive(true);
-
-                //    GetComponent<Weapons>().ammoLeft--;
-
-                //    if (equippedGun == 2)
-                //    {
-                //        // if a shotgun is equipped
-                //        Fire();
-                //        Fire();
-                //        Fire();
-                //        Fire();
-                //        Fire();
-                //        Fire();
-                //    }
-                //}
-
-
             }
         }
 
         if (goingtolastloc)
         {
-            speed = 2.5f;
-            enemyRb.transform.eulerAngles = new Vector3(0, 0, Mathf.Atan2((playerLastPosition.y - transform.position.y),
-                (playerLastPosition.x - transform.position.x)) * Mathf.Rad2Deg);
+            speed = 0.6f;
+            transform.up = player.transform.position - transform.position;
 
-            if (Vector3.Distance(transform.position, playerLastPosition) < 1.5f)
+            if (Vector3.Distance(transform.position, playerLastPosition) < distanceFromLastLocation)
             {
-
-                if(clockwise)
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, 180);
-                } else
-                {
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
-                }
                 patrolling = true;
                 goingtolastloc = false;
             }
@@ -133,7 +113,7 @@ public class EnemyController : MonoBehaviour
 
         if (patrolling)
         {
-            speed = 2.0f;
+            speed = 0.4f;
 
             if (obstacleCheck.collider != null)
             {
@@ -159,19 +139,19 @@ public class EnemyController : MonoBehaviour
     {
 
         Vector3 pos = this.transform.InverseTransformPoint(player.transform.position);
-     //   Debug.Log("POS: "+ pos + "distance: " + Vector3.Distance(transform.position, player.transform.position));
+        //   Debug.Log("POS: "+ pos + "distance: " + Vector3.Distance(transform.position, player.transform.position));
         if (rayToPlayer.collider != null)
-          
+
         {
 
-            Debug.Log("hit collider hit: "+ rayToPlayer.collider.gameObject.ToString());
-            if (rayToPlayer.collider.CompareTag("Player") && Vector3.Distance(transform.position, player.transform.position)<detectionDistance)
+            //Debug.Log("hit collider hit: "+ rayToPlayer.collider.gameObject.ToString());
+            if (rayToPlayer.collider.CompareTag("Player") && Vector3.Distance(transform.position, player.transform.position) < playerDetectionDistance)
             {
                 patrolling = false;
                 pursuing = true;
                 goingtoweapon = false;
-                Debug.Log("player detected");
-            } 
+                //Debug.Log("player detected");
+            }
             else
             {
                 if (pursuing)
@@ -183,10 +163,14 @@ public class EnemyController : MonoBehaviour
             }
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        //Debug.Log(other.gameObject.name);
+
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            speed = -0.5f;
+        }
+    }
 }
-
-            
-            
-                
-
-    

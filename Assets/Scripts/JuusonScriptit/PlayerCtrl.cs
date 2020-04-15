@@ -5,7 +5,7 @@ using UnityEngine.Audio;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    public float movSpeed;
+    private float movementSpeed;
     public GameObject player, aim, playerCamera;
     public GameObject walkAnimation, deathAnimation;
     private int playerHealth = 1;
@@ -18,8 +18,9 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
-       pauser = GameObject.FindWithTag("soundsettings");
+        pauser = GameObject.FindWithTag("soundsettings");
         player.SetActive(true);
+        movementSpeed = 1.8f;
 
         // lisätään kunhan saadaan playerin prefab "valmiiksi"
         //Instantiate(PlayerPrefab, startPoint.transform.position, Quaternion.identity);
@@ -29,10 +30,15 @@ public class PlayerCtrl : MonoBehaviour
 
     void Update()
     {
+
         if (pauser.GetComponent<Pause>().paused == false)
         {
             FaceMouse();
             Crouch();
+
+            //var walkAnimation = GetComponent<Animator>();
+            var idle = GetComponent<SpriteRenderer>();
+
 
             playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
 
@@ -40,9 +46,14 @@ public class PlayerCtrl : MonoBehaviour
             movement.y = Input.GetAxisRaw("Vertical");
 
 
+
             if (movement.x != 0 || movement.y != 0)
             {
                 walkAnimation.SetActive(true);
+
+
+                //walkAnimation.enabled = true;
+
                 walkAnimation.transform.position = player.transform.position;
 
                 float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
@@ -51,13 +62,15 @@ public class PlayerCtrl : MonoBehaviour
             else
             {
                 walkAnimation.SetActive(false);
+                //walkAnimation.enabled = false;
+
             }
         }
     }
 
     void FixedUpdate()
     {
-        playerRB.MovePosition(playerRB.position + movement * movSpeed * Time.fixedDeltaTime);
+        playerRB.MovePosition(playerRB.position + movement * movementSpeed * Time.fixedDeltaTime);
     }
 
     void Crouch()
@@ -65,12 +78,12 @@ public class PlayerCtrl : MonoBehaviour
         if (Input.GetButtonDown("Crouch") && !crouching)
         {
             crouching = true;
-            movSpeed = 2;
+            movementSpeed = 1.8f;
         }
         else if (Input.GetButtonDown("Crouch") && crouching)
         {
             crouching = false;
-            movSpeed = 4;
+            movementSpeed = 1.0f;
         }
     }
 
@@ -100,7 +113,11 @@ public class PlayerCtrl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+
+        //Debug.Log(other.gameObject.name);
+
         if (other.gameObject.CompareTag("EnemyBullet"))
+
         {
             playerHealth--;
             if (playerHealth <= 0)
