@@ -6,6 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     public GameObject player, enemy, aseDroppisjiainti, pistolDrop;
     public GameObject enemySprite, footPrints;
+    public GameObject deathAnimation;
 
     Rigidbody2D enemyRb;
     public int ammoCapacity, ammoLeft;
@@ -16,8 +17,10 @@ public class EnemyController : MonoBehaviour
     float playerDetectionDistance = 2f;
     float distanceFromLastLocation = 1f; //kuinka pitkälle vihollinen jahtaa pelaajaa
 
-    bool moving = true, patrolling = true, pursuing = false, hasGun = false, goingtoweapon = false, goingtolastloc = false,dying;
+    bool moving = true, patrolling = true, pursuing = false, goingtoweapon = false, goingtolastloc = false;
+    public bool hasGun = false;
     public bool clockwise = false, stationary = false;
+    public bool dying;
 
 
     public GameObject walkAnimation;
@@ -53,15 +56,19 @@ public class EnemyController : MonoBehaviour
 
     void KilledByBullet()
     {
-           GetComponent<EnemyWeapons>().DropGun();
-           Destroy(gameObject);
+        Debug.Log("kuoli");
+        GetComponent<EnemyWeapons>().DropGun();
+        enemy.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
+        Instantiate(deathAnimation, enemy.transform.position, player.transform.rotation);
+
+        gameObject.SetActive(false);
 
     }
 
 
     void OnTriggerEnter2D(Collider2D c2d)
     {
-        if (c2d.gameObject.CompareTag("Bullet")&&dying==false)
+        if (c2d.gameObject.CompareTag("Bullet") && dying == false)
         {
             dying = true;
             KilledByBullet();
@@ -167,6 +174,10 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         //Debug.Log(other.gameObject.name);
+        if(other.gameObject.CompareTag("Bullet"))
+        {
+            KilledByBullet();
+        }
 
         if (other.gameObject.CompareTag("Wall"))
         {

@@ -33,7 +33,7 @@ public class EnemyPshoot : MonoBehaviour
         bool pursuing = GetComponent<EnemyController>().GetPursuing();
         if (pursuing == true && fireRate < canFire && !emptyMagazine && pauser.GetComponent<Pause>().paused == false)
         {
-            gunSound.Play();
+
             Fire();
             gunFlareAnimation.SetActive(true);
 
@@ -59,6 +59,7 @@ public class EnemyPshoot : MonoBehaviour
     {
         canFire = 0;
         counter = 0;
+        gunSound.Play();
 
         int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
         fireRate = GetComponent<EnemyWeapons>().fireRate;

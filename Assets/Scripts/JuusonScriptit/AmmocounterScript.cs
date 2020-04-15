@@ -21,9 +21,9 @@ public class AmmocounterScript : MonoBehaviour
         pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
     }
 
-    public void ReturnColor(int ammocapacity)
+    public void ReturnColor(int ammoCapacity)
     {
-        for (int i = 0; i < ammocapacity; i++)
+        for (int i = 0; i < ammoCapacity; i++)
         {
             Color used = new Color32(255, 255, 255, 255);
 

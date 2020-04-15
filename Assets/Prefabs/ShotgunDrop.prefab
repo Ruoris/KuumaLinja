@@ -122,10 +122,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7c581f7ec84b804dadb25e58da59615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletsLeft: 0
-  ammoCapacity: 0
+  bulletsLeft: 5
+  ammoCapacity: 5
   timer: 0
---- !u!50 &2585305452495274026
+--- !u!50 &8354402516531960489
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
