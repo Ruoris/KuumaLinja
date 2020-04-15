@@ -15,8 +15,9 @@ public class Pshoot : MonoBehaviour
     public Transform firePoint;
     public GameObject player;
     public GameObject bulletprefab, flameprefab, grenadeprefab, gunFlareAnimation, explosion;
+    private GameObject ammopanel;
 
-    
+
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class Pshoot : MonoBehaviour
 
     void Update()
     {
+        GameObject pauser = GameObject.FindWithTag("soundsettings");
         int equippedGun = GetComponent<Weapons>().equippedGun;
         bool emptyMagazine = GetComponent<Weapons>().emptyMagazine;
         gunFlareAnimation.SetActive(false);
@@ -35,14 +37,18 @@ public class Pshoot : MonoBehaviour
            // shotsFired = 0;
         }
 
-        if (Input.GetButton("Fire1") && fireRate < canFire && !emptyMagazine)
+        if (Input.GetButton("Fire1") && fireRate < canFire && !emptyMagazine && pauser.GetComponent<Pause>().paused == false)
         {
+            ammopanel = GameObject.FindWithTag("activeBulletCounter");
             gunSound.Play();
             Fire();
             gunFlareAnimation.SetActive(true);
+            
+           
+            
 
             GetComponent<Weapons>().ammoLeft--;
-
+            AmmoCounter(equippedGun);
             if (equippedGun == 2)
             {
                 // if a shotgun is equipped
@@ -56,7 +62,13 @@ public class Pshoot : MonoBehaviour
         }
         canFire += Time.deltaTime;
     }
-
+    void AmmoCounter(int equippedGun)
+    {
+        ammopanel = GameObject.FindWithTag("activeBulletCounter");
+       
+            ammopanel.GetComponent<AmmocounterScript>().ChangeColor();
+     
+    }
     void Fire()
     {
         canFire = 0;

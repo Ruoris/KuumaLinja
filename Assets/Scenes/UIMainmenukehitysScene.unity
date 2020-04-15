@@ -266,7 +266,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Select LeveL
+  m_Text: SELECT LEVEL
 --- !u!222 &28055915
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -867,7 +867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &155672389
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1129,6 +1129,7 @@ GameObject:
   - component: {fileID: 365214926}
   - component: {fileID: 365214925}
   - component: {fileID: 365214924}
+  - component: {fileID: 365214927}
   m_Layer: 5
   m_Name: 'Level3Button '
   m_TagString: Untagged
@@ -1235,6 +1236,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 365214922}
   m_CullTransparentMesh: 0
+--- !u!114 &365214927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365214922}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8461420d9a390c641badc6a40f18398d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelToLoad: 
+  cleared: 0
 --- !u!1 &384261712
 GameObject:
   m_ObjectHideFlags: 0
@@ -1493,6 +1508,7 @@ GameObject:
   - component: {fileID: 511271349}
   - component: {fileID: 511271348}
   - component: {fileID: 511271347}
+  - component: {fileID: 511271350}
   m_Layer: 5
   m_Name: Level4Button
   m_TagString: Untagged
@@ -1599,6 +1615,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 511271345}
   m_CullTransparentMesh: 0
+--- !u!114 &511271350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 511271345}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8461420d9a390c641badc6a40f18398d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelToLoad: 
+  cleared: 0
 --- !u!1 &600388002
 GameObject:
   m_ObjectHideFlags: 0
@@ -1817,6 +1847,7 @@ GameObject:
   - component: {fileID: 628283335}
   - component: {fileID: 628283334}
   - component: {fileID: 628283333}
+  - component: {fileID: 628283336}
   m_Layer: 5
   m_Name: 'Level5Button '
   m_TagString: Untagged
@@ -1923,6 +1954,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 628283331}
   m_CullTransparentMesh: 0
+--- !u!114 &628283336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628283331}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8461420d9a390c641badc6a40f18398d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelToLoad: 
+  cleared: 0
 --- !u!1 &709762273
 GameObject:
   m_ObjectHideFlags: 0
@@ -3076,7 +3121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1201430203
 Transform:
   m_ObjectHideFlags: 0
@@ -3108,6 +3153,7 @@ GameObject:
   - component: {fileID: 1209514493}
   - component: {fileID: 1209514492}
   - component: {fileID: 1209514491}
+  - component: {fileID: 1209514494}
   m_Layer: 5
   m_Name: 'Level6Button '
   m_TagString: Untagged
@@ -3214,6 +3260,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209514489}
   m_CullTransparentMesh: 0
+--- !u!114 &1209514494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209514489}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8461420d9a390c641badc6a40f18398d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelToLoad: 
+  cleared: 0
 --- !u!1 &1249029287
 GameObject:
   m_ObjectHideFlags: 0
@@ -3573,6 +3633,7 @@ GameObject:
   - component: {fileID: 1534128341}
   - component: {fileID: 1534128340}
   - component: {fileID: 1534128339}
+  - component: {fileID: 1534128342}
   m_Layer: 5
   m_Name: 'Level2Button '
   m_TagString: Untagged
@@ -3679,6 +3740,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534128337}
   m_CullTransparentMesh: 0
+--- !u!114 &1534128342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534128337}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8461420d9a390c641badc6a40f18398d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelToLoad: 
+  cleared: 0
 --- !u!1 &1571947873
 GameObject:
   m_ObjectHideFlags: 0
@@ -3933,6 +4008,7 @@ GameObject:
   - component: {fileID: 1624877537}
   - component: {fileID: 1624877536}
   - component: {fileID: 1624877535}
+  - component: {fileID: 1624877538}
   m_Layer: 5
   m_Name: Level1Button
   m_TagString: Untagged
@@ -4002,7 +4078,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1624877536}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1624877538}
+        m_MethodName: Loadscene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1624877536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4039,6 +4126,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1624877533}
   m_CullTransparentMesh: 0
+--- !u!114 &1624877538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1624877533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8461420d9a390c641badc6a40f18398d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LevelToLoad: juusonsceneUIlla
+  cleared: 0
 --- !u!1 &1792209939
 GameObject:
   m_ObjectHideFlags: 0

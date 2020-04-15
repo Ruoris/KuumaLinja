@@ -12,8 +12,9 @@ public class Weapons : MonoBehaviour
 
     public AudioClip equipClip;
 
-    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, pistolDrop, shotGunDrop, rifleDrop, gameThrow;
-    //public GameObject uiWeaponSelection;
+    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, pistolDrop, shotGunDrop, rifleDrop, gameThrow,secondaryWeaponContainer;
+    public GameObject[] otherWeapons;
+    public Transform firePoint;
 
     public int equippedGun, ammoCapacity, ammoLeft, previousEquippedGun, previousAmmoCapacity, previousAmmoLeft;
    
@@ -30,6 +31,7 @@ public class Weapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SecondaryWeapon();
         EquipGun();
 
         if (Input.GetKeyDown(KeyCode.Q))
@@ -44,6 +46,46 @@ public class Weapons : MonoBehaviour
         {
             equippedGun = 0;
         }
+    }
+
+    void SecondaryWeapon()
+    {
+
+        
+        
+        if (previousEquippedGun == 0)
+        {
+            secondaryWeaponContainer.SetActive(false);
+            otherWeapons[0].SetActive(false);
+            otherWeapons[1].SetActive(false);
+            otherWeapons[2].SetActive(false);
+        }
+        if (previousEquippedGun == 1)
+        {
+            secondaryWeaponContainer.SetActive(true);
+            otherWeapons[0].SetActive(true);
+            otherWeapons[1].SetActive(false);
+            otherWeapons[2].SetActive(false);
+        }
+        if (previousEquippedGun == 2)
+        {
+            secondaryWeaponContainer.SetActive(true);
+            otherWeapons[0].SetActive(false);
+            otherWeapons[1].SetActive(true);
+            otherWeapons[2].SetActive(false);
+        }
+        if (previousEquippedGun == 3)
+        {
+            secondaryWeaponContainer.SetActive(true);
+            otherWeapons[0].SetActive(false);
+            otherWeapons[1].SetActive(false);
+            otherWeapons[2].SetActive(true);
+        }
+
+
+
+
+
     }
 
     void EquipGun()
@@ -180,21 +222,41 @@ public class Weapons : MonoBehaviour
 
     public void DropGun()
     {
+        GameObject ammoSpawn = GameObject.FindWithTag("ammoSpawn");
+      Transform  firePoint = ammoSpawn.GetComponent<Transform>();
+       
         if (equippedGun == 1)
         {
             var droppedPistol = Instantiate(pistolDrop, gameThrow.transform.position, Quaternion.identity);
             droppedPistol.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedPistol.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
-            
+          
+
+            Rigidbody2D rb1 = droppedPistol.GetComponent<Rigidbody2D>();
+            float spreadAngle = Random.Range(19, 5);
+            var x = firePoint.position.x - player.transform.position.x;
+            var y = firePoint.position.y - player.transform.position.y;
+            float rotateAngle = spreadAngle + (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
+            var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
+            rb1.AddForce(MovementDirection * 2, ForceMode2D.Impulse);
+         
             equippedGun = 0;
             ammoLeft = 0;
         }
         if (equippedGun == 2)
         {
-            var droppedShotgun = Instantiate(shotGunDrop, gameThrow.transform.position, Quaternion.identity);
+            var droppedShotgun = Instantiate(shotGunDrop, gameThrow.transform.position, Quaternion.identity);          
             droppedShotgun.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedShotgun.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
-          
+         
+
+            Rigidbody2D rb1 = droppedShotgun.GetComponent<Rigidbody2D>();
+            float spreadAngle = Random.Range(19, 5);
+            var x = firePoint.position.x - player.transform.position.x;
+            var y = firePoint.position.y - player.transform.position.y;
+            float rotateAngle = spreadAngle + (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
+            var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
+            rb1.AddForce(MovementDirection * 2, ForceMode2D.Impulse);
             equippedGun = 0;
             ammoLeft = 0;
         }
@@ -204,7 +266,15 @@ public class Weapons : MonoBehaviour
             var droppedRifle = Instantiate(rifleDrop, gameThrow.transform.position, Quaternion.identity);
             droppedRifle.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedRifle.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
-          
+         
+
+            Rigidbody2D rb1 = droppedRifle.GetComponent<Rigidbody2D>();
+            float spreadAngle = Random.Range(19, 5);
+            var x = firePoint.position.x - player.transform.position.x;
+            var y = firePoint.position.y - player.transform.position.y;
+            float rotateAngle = spreadAngle + (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
+            var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
+            rb1.AddForce(MovementDirection * 2, ForceMode2D.Impulse);
             equippedGun = 0;
             ammoLeft = 0;
         }
@@ -249,31 +319,31 @@ public class Weapons : MonoBehaviour
         previousAmmoLeft = tempAmmoLeft;
         previousEquippedGun = tempEquippedweapon;
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnTriggerStay2D(Collider2D other)
     {
-        //GetComponent<AudioSource>().Play();
-        //equipClip.Play();
-
-        if(other.gameObject.layer == 11) // 11 = Equipment
+     Debug.Log("collide");
+        if (other.gameObject.layer == 11 && Input.GetKey(KeyCode.E)) // 11 = Equipment
         {
+           
             emptyMagazine = false;
 
-            Destroy(other.gameObject);
 
             if (other.gameObject.tag == "PistolBox")
             {
-                if (equippedGun != 0)
-                {
-                    previousEquippedGun = equippedGun;
-                    previousAmmoLeft = ammoLeft;
-                    previousAmmoCapacity = ammoCapacity;
-                }
-
-                equippedGun = 1;
-                ammoCapacity = 10;
-                ammoLeft = 10;
+            Debug.Log("onTrigger");
+            if (equippedGun != 0)
+            {
+                previousEquippedGun = equippedGun;
+                previousAmmoLeft = ammoLeft;
+                previousAmmoCapacity = ammoCapacity;
             }
+
+            equippedGun = 1;
+            ammoCapacity = 10;
+            ammoLeft = 10;
+            Destroy(other.gameObject);
+        }
+        
             if (other.gameObject.tag == "PistolDrop")
             {
                 if (equippedGun != 0)
@@ -287,6 +357,7 @@ public class Weapons : MonoBehaviour
                 equippedGun = 1;
                 ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
                 ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+                Destroy(other.gameObject);
             }
             if (other.gameObject.tag == "ShotgunBox")
             {
@@ -300,6 +371,7 @@ public class Weapons : MonoBehaviour
                 equippedGun = 2;
                 ammoCapacity = 5;
                 ammoLeft = 5;
+                Destroy(other.gameObject);
             }
             if (other.gameObject.tag == "ShotGunDrop")
             {
@@ -314,6 +386,7 @@ public class Weapons : MonoBehaviour
                 equippedGun = 2;
                 ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
                 ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+                Destroy(other.gameObject);
             }
 
             if (other.gameObject.tag == "Arbox")
@@ -328,6 +401,7 @@ public class Weapons : MonoBehaviour
                 equippedGun = 3;
                 ammoCapacity = 30;
                 ammoLeft = 30;
+                Destroy(other.gameObject);
             }
             if (other.gameObject.tag == "RifleDrop")
             {
@@ -341,7 +415,120 @@ public class Weapons : MonoBehaviour
                 equippedGun = 3;
                 ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
                 ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+                Destroy(other.gameObject);
             }
+            if (other.gameObject.tag == "FTbox")
+            {
+
+                equippedGun = 5;
+            }
+
+            if (other.gameObject.tag == "Grenadebox")
+            {
+                GetComponent<Pshoot>().shotsFired = 0;
+                equippedGun = 6;
+            }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        //GetComponent<AudioSource>().Play();
+        //equipClip.Play();
+
+        if(other.gameObject.layer == 11) // 11 = Equipment
+        {
+            //Debug.Log("collide");
+            //emptyMagazine = false;
+
+           
+
+            //if (other.gameObject.tag == "PistolBox")
+            //{
+            //    if (equippedGun != 0)
+            //    {
+            //        previousEquippedGun = equippedGun;
+            //        previousAmmoLeft = ammoLeft;
+            //        previousAmmoCapacity = ammoCapacity;
+            //    }
+
+            //    equippedGun = 1;
+            //    ammoCapacity = 10;
+            //    ammoLeft = 10;
+            //    Destroy(other.gameObject);
+            //}
+            //if (other.gameObject.tag == "PistolDrop")
+            //{
+            //    if (equippedGun != 0)
+            //    {
+            //        previousEquippedGun = equippedGun;
+            //        previousAmmoLeft = ammoLeft;
+            //        previousAmmoCapacity = ammoCapacity;
+            //    }
+
+            //    uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
+            //    equippedGun = 1;
+            //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
+            //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+            //    Destroy(other.gameObject);
+            //}
+            //if (other.gameObject.tag == "ShotgunBox")
+            //{
+            //    if (equippedGun != 0)
+            //    {
+            //        previousEquippedGun = equippedGun;
+            //        previousAmmoLeft = ammoLeft;
+            //        previousAmmoCapacity = ammoCapacity;
+            //    }
+
+            //    equippedGun = 2;
+            //    ammoCapacity = 5;
+            //    ammoLeft = 5;
+            //    Destroy(other.gameObject);
+            //}
+            //if (other.gameObject.tag == "ShotGunDrop")
+            //{
+            //    if (equippedGun != 0)
+            //    {
+            //        previousEquippedGun = equippedGun;
+            //        previousAmmoLeft = ammoLeft;
+            //        previousAmmoCapacity = ammoCapacity;
+            //    }
+
+            //    uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
+            //    equippedGun = 2;
+            //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
+            //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+            //    Destroy(other.gameObject);
+            //}
+
+            //if (other.gameObject.tag == "Arbox")
+            //{
+            //    if (equippedGun != 0)
+            //    {
+            //        previousEquippedGun = equippedGun;
+            //        previousAmmoLeft = ammoLeft;
+            //        previousAmmoCapacity = ammoCapacity;
+            //    }
+
+            //    equippedGun = 3;
+            //    ammoCapacity = 30;
+            //    ammoLeft = 30;
+            //    Destroy(other.gameObject);
+            //}
+            //if (other.gameObject.tag == "RifleDrop")
+            //{
+            //    if (equippedGun != 0)
+            //    {
+            //        previousEquippedGun = equippedGun;
+            //        previousAmmoLeft = ammoLeft;
+            //        previousAmmoCapacity = ammoCapacity;
+            //    }
+            //    uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
+            //    equippedGun = 3;
+            //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
+            //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+            //    Destroy(other.gameObject);
+            //}
             if (other.gameObject.tag == "FTbox")
             {
 

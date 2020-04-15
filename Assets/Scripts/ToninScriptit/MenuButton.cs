@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MenuButton : MonoBehaviour
 {
@@ -53,5 +54,14 @@ public class MenuButton : MonoBehaviour
         }
 
 
+    }
+    public void Restart()
+    {
+      
+        SceneManager.LoadScene(GameStatus.status.currentLevel);
+    }
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene("UIMainmenukehitysScene");
     }
 }

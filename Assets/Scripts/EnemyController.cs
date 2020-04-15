@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    public GameObject player, enemy,aseDroppisjiainti,pistolDrop;
+    public GameObject player, enemy;
     Rigidbody2D enemyRb;
     public int ammoCapacity, ammoLeft;
     public Vector3 playerLastPosition;
@@ -12,7 +12,7 @@ public class EnemyController : MonoBehaviour
     float speed = 3f;
     float detectionDistance = 10f;
 
-    bool moving = true, patrolling = true, pursuing = false, hasGun = false, goingtoweapon = false, goingtolastloc = false;
+    bool moving = true, patrolling = true, pursuing = false, hasGun = false, goingtoweapon = false, goingtolastloc = false,dying;
     public bool clockwise = false, stationary = false;
     public int enemyType = 1;
 
@@ -38,16 +38,20 @@ public class EnemyController : MonoBehaviour
 
     void KilledByBullet()
     {
-   
-        GetComponent<EnemyWeapons>().DropGun();
-        Destroy(gameObject);
+  
+            Debug.Log("kuoli");
+            GetComponent<EnemyWeapons>().DropGun();
+           Destroy(gameObject);
+
+          
     }
 
 
     void OnTriggerEnter2D(Collider2D c2d)
     {
-        if (c2d.gameObject.CompareTag("Bullet"))
+        if (c2d.gameObject.CompareTag("Bullet")&&dying==false)
         {
+            dying = true;
             KilledByBullet();
         }
     }

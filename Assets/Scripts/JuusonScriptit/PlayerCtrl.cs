@@ -9,7 +9,7 @@ public class PlayerCtrl : MonoBehaviour
     public GameObject player, aim, playerCamera;
     public GameObject walkAnimation, deathAnimation;
     private int playerHealth = 1;
-
+    private GameObject pauser;
     public bool crouching;
 
     public Rigidbody2D playerRB;
@@ -18,6 +18,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
+       pauser = GameObject.FindWithTag("soundsettings");
         player.SetActive(true);
 
         // lisätään kunhan saadaan playerin prefab "valmiiksi"
@@ -28,26 +29,29 @@ public class PlayerCtrl : MonoBehaviour
 
     void Update()
     {
-        FaceMouse();
-        Crouch();
-
-        playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
-
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
-
-
-        if (movement.x != 0 || movement.y != 0)
+        if (pauser.GetComponent<Pause>().paused == false)
         {
-            walkAnimation.SetActive(true);
-            walkAnimation.transform.position = player.transform.position;
+            FaceMouse();
+            Crouch();
 
-            float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
-            walkAnimation.transform.rotation = Quaternion.AngleAxis(-walkAngle, Vector3.forward);
-        }
-        else
-        {
-            walkAnimation.SetActive(false);
+            playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
+
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
+
+
+            if (movement.x != 0 || movement.y != 0)
+            {
+                walkAnimation.SetActive(true);
+                walkAnimation.transform.position = player.transform.position;
+
+                float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
+                walkAnimation.transform.rotation = Quaternion.AngleAxis(-walkAngle, Vector3.forward);
+            }
+            else
+            {
+                walkAnimation.SetActive(false);
+            }
         }
     }
 
@@ -96,10 +100,10 @@ public class PlayerCtrl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.gameObject.CompareTag("EnemyBullet"))
+        if (other.gameObject.CompareTag("EnemyBullet"))
         {
             playerHealth--;
-            if(playerHealth <= 0)
+            if (playerHealth <= 0)
             {
                 player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
                 Instantiate(deathAnimation, player.transform.position, player.transform.rotation);

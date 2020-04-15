@@ -22,11 +22,27 @@ public class EnemyWeapons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+      
+
         
+        equippedGun = Random.Range(1,4);
+        if (equippedGun == 1)
+        {
+            ammoCapacity = 10;
+            ammoLeft = 10;
+        }
+        if (equippedGun == 2)
+        {
+            ammoCapacity = 5;
+            ammoLeft = 5;
+        }
+
+        if (equippedGun == 3)
+        {
+            ammoCapacity = 30;
+            ammoLeft = 30;
+        }
         
-        equippedGun = 1;
-        ammoLeft = 10;
-        ammoCapacity = 10;
         emptyMagazine = false;
 
     }
@@ -172,8 +188,7 @@ public class EnemyWeapons : MonoBehaviour
             droppedPistol.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedPistol.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
-            equippedGun = 0;
-            ammoLeft = 0;
+          
         }
         if (equippedGun == 2)
         {
@@ -181,8 +196,7 @@ public class EnemyWeapons : MonoBehaviour
             droppedShotgun.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedShotgun.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
-            equippedGun = 0;
-            ammoLeft = 0;
+            
         }
 
         if (equippedGun == 3)
@@ -191,8 +205,7 @@ public class EnemyWeapons : MonoBehaviour
             droppedRifle.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedRifle.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
-            equippedGun = 0;
-            ammoLeft = 0;
+           
         }
 
 

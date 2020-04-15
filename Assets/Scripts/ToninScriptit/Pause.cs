@@ -44,7 +44,7 @@ public class Pause : MonoBehaviour
         if (paused)
         {
            // GameObject soundButton = GameObject.FindWithTag("soundsettings");
-            Time.timeScale = 0.0001F;
+            Time.timeScale = 0.00001F;
 
             if (menu.activeSelf == true ||audioSettings.activeSelf==true  )
             {

@@ -26,11 +26,12 @@ public class EnemyPshoot : MonoBehaviour
 
     void Update()
     {
+        GameObject pauser = GameObject.FindWithTag("soundsettings");
         int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
         bool emptyMagazine = GetComponent<EnemyWeapons>().emptyMagazine;
         gunFlareAnimation.SetActive(false);
         bool pursuing = GetComponent<EnemyController>().GetPursuing();
-        if (pursuing == true && fireRate < canFire && !emptyMagazine)
+        if (pursuing == true && fireRate < canFire && !emptyMagazine && pauser.GetComponent<Pause>().paused == false)
         {
             gunSound.Play();
             Fire();
