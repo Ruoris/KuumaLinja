@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomType: Basic
   wall: {fileID: 3774421203553046307, guid: 35793fe8ffc6c404d804d710198f6469, type: 3}
-  door: {fileID: 887399108115539395, guid: 345fda539cb1b0f44bca33d9ea8fc226, type: 3}
+  door: {fileID: 4842926141376734876, guid: 7edffa66f74905d4b8a4898221bca289, type: 3}
   floor: {fileID: 4478715479393370695, guid: 765082d5eae742c45b969230be13ac46, type: 3}
   furniture:
   - {fileID: 6162643745567351147, guid: fa93eb3dcff2d03488a3af710ce32c58, type: 3}

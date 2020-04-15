@@ -178,8 +178,8 @@ MonoBehaviour:
   - 0-0
   roomLayouts:
   - a1-2, b2-1, c3-2,
-  floorX: 15
-  floorY: 15
+  floorX: 20
+  floorY: 20
   floorSpawn: 7-14
   nextFloor: 2-4
   player: {fileID: 7519949920170052916, guid: 7e410048cede15e42af5016166a91956, type: 3}
@@ -263,8 +263,8 @@ MonoBehaviour:
   - 0-0
   roomLayouts:
   - a1-2, b2-1, c3-2,
-  floorX: 15
-  floorY: 15
+  floorX: 20
+  floorY: 20
   floorSpawn: 2-4
   nextFloor: .
   player: {fileID: 7519949920170052916, guid: 7e410048cede15e42af5016166a91956, type: 3}
@@ -351,7 +351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598492851164139800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.81, y: 1.86, z: -10}
+  m_LocalPosition: {x: 5, y: 4.5, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -402,7 +402,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -546,20 +546,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rooms:
   - {fileID: 11400000, guid: b0c53475895f74442a0662953085afdc, type: 2}
+  - {fileID: 11400000, guid: b0c53475895f74442a0662953085afdc, type: 2}
+  - {fileID: 11400000, guid: b0c53475895f74442a0662953085afdc, type: 2}
+  - {fileID: 11400000, guid: b0c53475895f74442a0662953085afdc, type: 2}
   roomCoordinates:
   - 2-4
+  - 4-8
+  - 10-7
+  - 15-15
   roomSizes:
   - 6-6
+  - 6-6
+  - 6-6
+  - 4-4
   roomDoors:
   - 4-0
+  - 4-0
+  - 4-0
+  - 2-0
   roomWindows:
+  - 0-0
+  - 0-0
+  - 0-0
   - 0-0
   roomLayouts:
   - a2-2, b4-2, c5-4,
-  floorX: 15
-  floorY: 15
+  - a2-2, b4-2, c5-4,
+  - a2-2, b4-2, c5-4,
+  - a2-2, b2-2, c3-4,
+  floorX: 20
+  floorY: 20
   floorSpawn: 1-3
-  nextFloor: 7-14
+  nextFloor: 8-19
   player: {fileID: 7519949920170052916, guid: 7e410048cede15e42af5016166a91956, type: 3}
   aim: {fileID: 203596257180371919, guid: 44c2585661122d84f83186925fccae9e, type: 3}
   fogTile: {fileID: 6574885273630796412, guid: f70a40b347682c748b1cd2ca468e0215, type: 3}
