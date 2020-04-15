@@ -22,12 +22,29 @@ public class EnemyWeapons : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-        
-        equippedGun = 1;
-        ammoLeft = 10;
-        ammoCapacity = 10;
+
+        equippedGun = Random.Range(1, 4);
+        if (equippedGun == 1)
+        {
+            ammoCapacity = 10;
+            ammoLeft = 10;
+        }
+        if (equippedGun == 2)
+        {
+            ammoCapacity = 5;
+            ammoLeft = 5;
+        }
+
+        if (equippedGun == 3)
+        {
+            ammoCapacity = 30;
+            ammoLeft = 30;
+        }
+
         emptyMagazine = false;
+        //equippedGun = 1;
+        //ammoLeft = 10;
+        //ammoCapacity = 10;
 
     }
 
@@ -43,10 +60,6 @@ public class EnemyWeapons : MonoBehaviour
 
 
 
-        if (ammoLeft <= 0)
-        {
-            equippedGun = 0;
-        }
 
     }
 
@@ -110,20 +123,20 @@ public class EnemyWeapons : MonoBehaviour
                     emptyMagazine = false;
                     //  ammoCapacity = 100;
                     break;
-                case 5:
-                    flameThrower.SetActive(true);
-                    //playerBothHands.SetActive(true);
-                    emptyMagazine = false;
-                    ammoCapacity = 300;
-                    break;
-                case 6:
-                    grenade.SetActive(true);
-                    //playerOneHand.SetActive(true);
-                    emptyMagazine = false;
-                    ammoCapacity = 3;
-                    break;
-                default:
-                    break;
+                //case 5:
+                //    flameThrower.SetActive(true);
+                //    //playerBothHands.SetActive(true);
+                //    emptyMagazine = false;
+                //    ammoCapacity = 300;
+                //    break;
+                //case 6:
+                //    grenade.SetActive(true);
+                //    //playerOneHand.SetActive(true);
+                //    emptyMagazine = false;
+                //    ammoCapacity = 3;
+                //    break;
+                //default:
+                //    break;
             }
         }
     }
@@ -194,7 +207,5 @@ public class EnemyWeapons : MonoBehaviour
             equippedGun = 0;
             ammoLeft = 0;
         }
-
-
     }
 }

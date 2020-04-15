@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6736972667378776604
+--- !u!1 &8970550520037321070
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 640146444184544259}
-  - component: {fileID: 597098389620947613}
-  - component: {fileID: 8910014908309254481}
-  - component: {fileID: 6030378607645698333}
-  - component: {fileID: 779861282840735343}
+  - component: {fileID: 4041489872670749227}
+  - component: {fileID: 5615550480736055266}
+  - component: {fileID: 7789725225774710736}
+  - component: {fileID: 749898883410503519}
+  - component: {fileID: 776972986923773862}
   m_Layer: 11
   m_Name: RifleDrop
   m_TagString: RifleDrop
@@ -20,27 +20,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &640146444184544259
+--- !u!4 &4041489872670749227
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6736972667378776604}
+  m_GameObject: {fileID: 8970550520037321070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.25, y: 0.8, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &597098389620947613
+--- !u!212 &5615550480736055266
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6736972667378776604}
+  m_GameObject: {fileID: 8970550520037321070}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -461525367
   m_SortingLayer: 2
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: f9567851cac59d34d89982c0e64b0107, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 751d9122ea0bcac42b57cf3bbc0c26da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -84,54 +84,55 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &8910014908309254481
+--- !u!61 &7789725225774710736
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6736972667378776604}
+  m_GameObject: {fileID: 8970550520037321070}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.012686014, y: 0.025355175}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 0.98, y: 0.32}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.954309, y: 0.26928964}
   m_EdgeRadius: 0
---- !u!114 &6030378607645698333
+--- !u!114 &749898883410503519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6736972667378776604}
+  m_GameObject: {fileID: 8970550520037321070}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7c581f7ec84b804dadb25e58da59615, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletsLeft: 0
-  ammoCapacity: 0
---- !u!50 &779861282840735343
+  bulletsLeft: 30
+  ammoCapacity: 30
+  timer: 0
+--- !u!50 &776972986923773862
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6736972667378776604}
+  m_GameObject: {fileID: 8970550520037321070}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
