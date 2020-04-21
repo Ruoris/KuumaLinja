@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -21,6 +22,8 @@ public class EnemyController : MonoBehaviour
     public bool clockwise = false, stationary = false;
     public bool dying;
 
+    public int randomDirection = 4;
+
 
     public GameObject walkAnimation;
 
@@ -37,6 +40,7 @@ public class EnemyController : MonoBehaviour
     }
     void FixedUpdate()
     {
+
         Movement();
         PlayerDetect();
         if (gameObject.GetComponent<SpriteRenderer>().enabled == true && Time.time > 1)
@@ -55,22 +59,13 @@ public class EnemyController : MonoBehaviour
 
     void KilledByBullet()
     {
+        Destroy(footPrints);
         Debug.Log("kuoli");
         GetComponent<EnemyWeapons>().DropGun();
-        enemy.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
-        Instantiate(deathAnimation, enemy.transform.position, player.transform.rotation);
+        enemy.transform.eulerAngles = new Vector3(0, 0, enemy.transform.eulerAngles.z - 180);
+        Instantiate(deathAnimation, enemy.transform.position, enemy.transform.rotation);
 
         gameObject.SetActive(false);
-    }
-
-
-    void OnTriggerEnter2D(Collider2D c2d)
-    {
-        if (c2d.gameObject.CompareTag("Bullet") && dying == false)
-        {
-            dying = true;
-            KilledByBullet();
-        }
     }
 
     void Movement()
@@ -91,7 +86,7 @@ public class EnemyController : MonoBehaviour
             transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
 
-        if (pursuing)
+        if (pursuing && playerLastPosition != null)
         {
             speed = 0.8f;
             transform.up = player.transform.position - transform.position;
@@ -100,13 +95,12 @@ public class EnemyController : MonoBehaviour
             {
                 playerLastPosition = player.transform.position;
                 Debug.Log("seuraa");
-
             }
         }
 
         if (goingtolastloc)
         {
-            speed = 0.6f;
+            speed = 1f;
             transform.up = player.transform.position - transform.position;
 
             if (Vector3.Distance(transform.position, playerLastPosition) < distanceFromLastLocation)
@@ -119,19 +113,28 @@ public class EnemyController : MonoBehaviour
         if (patrolling)
         {
             speed = 0.4f;
-
+            randomDirection = Random.Range(1, 4);
             if (obstacleCheck.collider != null)
             {
-
                 if (obstacleCheck.collider.gameObject.CompareTag("Wall"))
                 {
-                    if (clockwise)
+                    Debug.Log(randomDirection);
+
+                    if (randomDirection == 1)
                     {
-                        transform.Rotate(0, 0, -90);
+                        transform.Rotate(0, 0, 50);
+                    }
+                    else if (randomDirection == 3)
+                    {
+                        transform.Rotate(0, 0, -50);
+                    }
+                    else if (randomDirection == 2)
+                    {
+                        transform.Rotate(0, 0, 180);
                     }
                     else
                     {
-                        transform.Rotate(0, 0, 90);
+                        transform.Rotate(0, 0, 180);
                     }
                 }
 
@@ -172,8 +175,9 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         //Debug.Log(other.gameObject.name);
-        if(other.gameObject.CompareTag("Bullet"))
+        if (other.gameObject.CompareTag("Bullet") && dying == false)
         {
+            dying = true;
             KilledByBullet();
         }
 

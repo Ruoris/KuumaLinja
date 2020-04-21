@@ -23,7 +23,7 @@ public class DoorScript : MonoBehaviour
         if (other.gameObject.name == "Player" && gameObject.name == "DoorDown")
         {
             doorAnimation.enabled = true;
-            //doorSound.enabled = true;
+            doorSound.enabled = true;
             upSide.SetActive(false);
         }
 
@@ -31,7 +31,7 @@ public class DoorScript : MonoBehaviour
         {
 
             doorAnimation.enabled = true;
-            //doorSound.enabled = true;
+            doorSound.enabled = true;
             downSide.SetActive(false);
         }
     }

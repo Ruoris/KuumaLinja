@@ -9,7 +9,6 @@ public class Pshoot : MonoBehaviour
     private float fireRate;
     private float canFire;
     public float counter;
-    public float explosionCounter = 3;
     public AudioSource gunSound;
 
     public Transform firePoint;
@@ -21,8 +20,6 @@ public class Pshoot : MonoBehaviour
 
     void Start()
     {
-        //shotsFired = 0;
-        explosionCounter = 3;
     }
 
     void Update()
@@ -80,36 +77,15 @@ public class Pshoot : MonoBehaviour
 
         var tempBullet = (GameObject)Instantiate(bulletprefab, firePoint.position, firePoint.rotation);
 
-        if (equippedGun == 5 || equippedGun == 6)
-        {
-            gunSound.Stop();
-            // if weapon is flamethrower or grenade
-
-            tempBullet = (GameObject)Instantiate(flameprefab, firePoint.position, firePoint.rotation);
-            //if (equippedGun == 6)
-            //{
-            //    tempBullet = (GameObject)Instantiate(grenadeprefab, firePoint.position, firePoint.rotation);
-
-            //    counter += Time.deltaTime;
-
-            //    if(counter >= explosionCounter)
-            //    {
-            //        Instantiate(explosion, grenadeprefab.transform.position, Quaternion.identity);
-            //    }
-            //    Destroy(tempBullet, 3.1f);
-            //}
-
-            GameObject duplicate = GameObject.Find("bullet(Clone)");
-            if (duplicate)
-            {
-                Destroy(duplicate.gameObject);
-            }
-        }
-
         Rigidbody2D tempBulletRB = tempBullet.GetComponent<Rigidbody2D>();
 
         // sets the random spread of the weapons
-        float spreadAngle = Random.Range(19, 5);
+ 
+        float spreadAngle = Random.Range(8, 18);
+        if (equippedGun == 2)
+        {
+            spreadAngle = Random.Range(2, 22);
+        }
 
         var x = firePoint.position.x - player.transform.position.x;
         var y = firePoint.position.y - player.transform.position.y;

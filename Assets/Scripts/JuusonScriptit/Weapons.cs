@@ -12,7 +12,8 @@ public class Weapons : MonoBehaviour
 
     //public AudioClip equipClip;
 
-    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, pistolDrop, shotGunDrop, rifleDrop, gameThrow, secondaryWeaponContainer;
+    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, secondaryWeaponContainer;
+    public GameObject pistolDrop, shotGunDrop, rifleDrop, gameThrow;
     public GameObject[] otherWeapons;
     public Transform firePoint;
 
@@ -92,7 +93,7 @@ public class Weapons : MonoBehaviour
     {
         pipeHands.SetActive(false);
         pipe.SetActive(false);
-        bulletForce = 30;
+        bulletForce = 8;
 
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
         {
@@ -133,9 +134,6 @@ public class Weapons : MonoBehaviour
                     playerOneHand.SetActive(false);
                     pipeHands.SetActive(true);
                     pipe.SetActive(true);
-
-                    //playerMelee.SetActive(false);
-                    //uiWeaponSelection.SetActive(false);
                     emptyMagazine = true;
                     ammoCapacity = 0;
                     break;
@@ -196,32 +194,6 @@ public class Weapons : MonoBehaviour
                     emptyMagazine = false;
                     fireRate = 0.1f;
                     break;
-                    // alla piilotettuna lisää aseita
-                    //case 4:
-                    //    machineGun.SetActive(true);
-                    //    playerBothHands.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    break;
-
-                    //case 5:
-                    //    flameThrower.SetActive(true);
-                    //    playerBothHands.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    ammoCapacity = 300;
-                    //    fireRate = 0.005f;
-                    //    break;
-
-                    //case 6:
-                    //    grenade.SetActive(true);
-                    //    playerOneHand.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    ammoCapacity = 3;
-                    //    bulletForce = 10;
-                    //    fireRate = 2f;
-                    //    break;
-
-                    //default:
-                    //    break;
             }
         }
     }

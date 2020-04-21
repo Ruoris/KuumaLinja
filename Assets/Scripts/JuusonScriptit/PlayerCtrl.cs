@@ -18,6 +18,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         pauser = GameObject.FindWithTag("soundsettings");
         player.SetActive(true);
         movementSpeed = 1.8f;
@@ -111,7 +112,7 @@ public class PlayerCtrl : MonoBehaviour
         if (other.gameObject.CompareTag("EnemyBullet"))
         {
             playerHealth--;
-            if(playerHealth <= 0)
+            if(playerHealth == 0)
             {
                 player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
                 Instantiate(deathAnimation, player.transform.position, player.transform.rotation);

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerFOV : MonoBehaviour
+public class PikkuFOV : MonoBehaviour
 {
     
     public float viewRadius;
@@ -30,19 +30,7 @@ public class PlayerFOV : MonoBehaviour
         viewMesh = new Mesh();
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
-
-        //StartCoroutine("FindTargetsWithDelay", 0.3f);
     }
-
-
-    //IEnumerator FindTargetsWithDelay(float delay)
-    //{
-    //    while (true)
-    //    {
-    //        yield return new WaitForSeconds(delay);
-    //        FindVisibleTargets();
-    //    }
-    //}
 
     void LateUpdate()
     {
