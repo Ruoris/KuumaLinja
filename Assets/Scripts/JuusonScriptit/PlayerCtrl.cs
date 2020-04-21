@@ -22,6 +22,7 @@ public class PlayerCtrl : MonoBehaviour
         pauser = GameObject.FindWithTag("soundsettings");
         player.SetActive(true);
         movementSpeed = 1.8f;
+        Instantiate(aim, player.transform.position, player.transform.rotation);
 
         // lisätään kunhan saadaan playerin prefab "valmiiksi"
         //Instantiate(PlayerPrefab, startPoint.transform.position, Quaternion.identity);
@@ -49,7 +50,6 @@ public class PlayerCtrl : MonoBehaviour
                 walkAnimation.SetActive(true);
 
 
-                //walkAnimation.enabled = true;
 
                 walkAnimation.transform.position = player.transform.position;
 
@@ -59,7 +59,6 @@ public class PlayerCtrl : MonoBehaviour
             else
             {
                 walkAnimation.SetActive(false);
-                //walkAnimation.enabled = false;
             }
         }
     }
@@ -88,24 +87,12 @@ public class PlayerCtrl : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
 
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        aim.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
-
-        //if(mousePosition.x < player.transform.position.y && movement.x != 0 || movement.y != 0)
-        //{
-        //    reverseWalk();
-        //}
+        //aim.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
         transform.up = direction;
     }
-
-    //public void reverseWalk()
-    //{
-    //    Debug.Log("ASD");
-    //    float angle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
-    //    walkAnimation.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    //} // ei toimi vielä
 
     private void OnCollisionEnter2D(Collision2D other)
     {

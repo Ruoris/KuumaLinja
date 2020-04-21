@@ -215,7 +215,7 @@ MonoBehaviour:
   pistolDrop: {fileID: 0}
   enemySprite: {fileID: 4002979554702144698}
   footPrints: {fileID: 8295605604073107270}
-  deathAnimation: {fileID: 1188397757194692661, guid: cb9fe317f15eba249b8be90d3f9742c6,
+  deathAnimation: {fileID: 8221500802495092798, guid: 48572c29ef3b640489d7a8bd4b7e0a69,
     type: 3}
   ammoCapacity: 0
   ammoLeft: 0
@@ -277,19 +277,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletForce: 50
   counter: 0
-  explosionCounter: 3
   gunSound: {fileID: 361474721409557939}
   firePoint: {fileID: 4002979555508632949}
   enemy: {fileID: 4002979554525059714}
   bulletprefab: {fileID: 5005290098821576133, guid: 3dfb09dca58c4aa4c861b7ec19d0d4a6,
     type: 3}
-  flameprefab: {fileID: 8188961442984270172, guid: fb4f2e76f3750734288e54f5ae12a872,
-    type: 3}
-  grenadeprefab: {fileID: 7914945404230016146, guid: 19de3477acd45f24d9bf7793ad7e40ce,
-    type: 3}
   gunFlareAnimation: {fileID: 4002979554738376048}
-  explosion: {fileID: 8461336238876154066, guid: d21943c4b064e0f4eb849209e5a88fb4,
-    type: 3}
 --- !u!70 &4002979554525059710
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -875,7 +868,7 @@ SpriteRenderer:
   m_Size: {x: 0.26, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1001 &5294780891961123390
