@@ -7,13 +7,10 @@ public class PikkuFOV : MonoBehaviour
     
     public float viewRadius;
     [Range(0, 360)]
-    public float viewAngle;
+    private float viewAngle;
 
     public LayerMask targetMask;
     public LayerMask obstacleMask;
-
-    public GameObject player;
-    public bool enemySeen;
 
     public List<Transform> visibleTargets = new List<Transform>();
 
@@ -21,20 +18,10 @@ public class PikkuFOV : MonoBehaviour
     public int edgeResolveIterations;
     public float edgeDstThreshold;
 
-    public MeshFilter viewMeshFilter;
-    Mesh viewMesh;
-
-    void Start()
-    {
-
-        viewMesh = new Mesh();
-        viewMesh.name = "View Mesh";
-        viewMeshFilter.mesh = viewMesh;
-    }
-
     void LateUpdate()
     {
         DrawFieldOfView();
+
         FindVisibleTargets();
     }
 
@@ -46,7 +33,7 @@ public class PikkuFOV : MonoBehaviour
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {
             Transform target = targetsInViewRadius[i].transform;
-            target.GetComponent<Renderer>().enabled = false;
+            target.GetComponent<Renderer>().enabled = true;
 
             Vector3 dirToTarget = (target.position - transform.position).normalized;
             if (Vector3.Angle(transform.up, dirToTarget) < viewAngle / 2)
@@ -109,12 +96,6 @@ public class PikkuFOV : MonoBehaviour
                 triangles[i * 3 + 2] = i + 2;
             }
         }
-
-        viewMesh.Clear();
-
-        viewMesh.vertices = vertices;
-        viewMesh.triangles = triangles;
-        viewMesh.RecalculateNormals();
     }
 
 

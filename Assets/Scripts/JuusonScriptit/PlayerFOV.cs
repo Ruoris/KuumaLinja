@@ -31,23 +31,22 @@ public class PlayerFOV : MonoBehaviour
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
 
-        //StartCoroutine("FindTargetsWithDelay", 0.3f);
+        StartCoroutine("FindTargetsWithDelay", 0.2f);
     }
 
 
-    //IEnumerator FindTargetsWithDelay(float delay)
-    //{
-    //    while (true)
-    //    {
-    //        yield return new WaitForSeconds(delay);
-    //        FindVisibleTargets();
-    //    }
-    //}
+    IEnumerator FindTargetsWithDelay(float delay)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(delay);
+            FindVisibleTargets();
+        }
+    }
 
     void LateUpdate()
     {
         DrawFieldOfView();
-        FindVisibleTargets();
     }
 
     void FindVisibleTargets()

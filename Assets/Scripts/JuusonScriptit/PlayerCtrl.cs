@@ -6,9 +6,9 @@ using UnityEngine.Audio;
 public class PlayerCtrl : MonoBehaviour
 {
     private float movementSpeed;
-    public GameObject player, aim, playerCamera;
-    public GameObject walkAnimation, deathAnimation;
-    private int playerHealth = 1;
+    public GameObject player, aim, playerCamera, startPoint;
+    public GameObject walkAnimation, deathAnimation, bloodFrame;
+    public int playerHealth = 1;
     public GameObject pauser;
     public bool crouching;
 
@@ -22,10 +22,13 @@ public class PlayerCtrl : MonoBehaviour
         pauser = GameObject.FindWithTag("soundsettings");
         player.SetActive(true);
         movementSpeed = 1.8f;
+
+        Vector3 campPos = player.transform.position + new Vector3(0, 0, -10);
         Instantiate(aim, player.transform.position, player.transform.rotation);
+        //Instantiate(playerCamera, campPos, Quaternion.identity);
 
         // lisätään kunhan saadaan playerin prefab "valmiiksi"
-        //Instantiate(PlayerPrefab, startPoint.transform.position, Quaternion.identity);
+        //Instantiate(player, startPoint.transform.position, Quaternion.identity);
 
         playerRB = GetComponent<Rigidbody2D>();
     }
@@ -36,8 +39,6 @@ public class PlayerCtrl : MonoBehaviour
         {
             FaceMouse();
             Crouch();
-            //var walkAnimation = GetComponent<Animator>();
-            //var idle = GetComponent<SpriteRenderer>();
 
             playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
 
@@ -87,7 +88,6 @@ public class PlayerCtrl : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
 
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        //aim.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
@@ -96,17 +96,20 @@ public class PlayerCtrl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("EnemyBullet"))
+        Debug.Log(other.collider.name);
+        if (other.collider.CompareTag("EnemyBullet"))
         {
+
             playerHealth--;
-            if(playerHealth == 0)
+            if(playerHealth < 1)
             {
                 player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
                 Instantiate(deathAnimation, player.transform.position, player.transform.rotation);
+                Instantiate(bloodFrame, player.transform.position, player.transform.rotation);
+
 
                 player.SetActive(false);
             }
-            Destroy(other.gameObject);
         }
     }
 }

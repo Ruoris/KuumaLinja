@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
-    public GameObject pistol, shotgun, assaultRifle, pipe;
+    public GameObject pistol, shotgun, assaultRifle;
     public GameObject player, playerMelee, playerOneHand, playerBothHands, pipeHands;
     public int bulletForce;
     public float fireRate;
@@ -51,12 +51,13 @@ public class Weapons : MonoBehaviour
 
     void SecondaryWeapon()
     {
+        secondaryWeaponContainer.SetActive(false);
 
 
 
         if (previousEquippedGun == 0)
         {
-            secondaryWeaponContainer.SetActive(false);
+            secondaryWeaponContainer.SetActive(true);
             otherWeapons[0].SetActive(false);
             otherWeapons[1].SetActive(false);
             otherWeapons[2].SetActive(false);
@@ -92,8 +93,8 @@ public class Weapons : MonoBehaviour
     void EquipGun()
     {
         pipeHands.SetActive(false);
-        pipe.SetActive(false);
-        bulletForce = 8;
+        //pipe.SetActive(false);
+        bulletForce = 10;
 
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
         {
@@ -132,8 +133,13 @@ public class Weapons : MonoBehaviour
 
                     playerBothHands.SetActive(false);
                     playerOneHand.SetActive(false);
-                    pipeHands.SetActive(true);
-                    pipe.SetActive(true);
+
+                    bool melee = GetComponent<Pshoot>().melee;
+                    if(melee == false)
+                    {
+                        pipeHands.SetActive(true);
+                    }
+
                     emptyMagazine = true;
                     ammoCapacity = 0;
                     break;

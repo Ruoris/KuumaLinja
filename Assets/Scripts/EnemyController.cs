@@ -6,8 +6,8 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     public GameObject player, enemy, aseDroppisjiainti, pistolDrop;
-    public GameObject enemySprite, footPrints;
-    public GameObject deathAnimation;
+    public GameObject enemySprite, footPrints, enemyWeapon;
+    public GameObject death, death2;
     Rigidbody2D enemyRb;
     public int ammoCapacity, ammoLeft;
     public Vector3 playerLastPosition;
@@ -29,11 +29,13 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
+        enemyWeapon.SetActive(false);
         Physics2D.queriesStartInColliders = false;
         player = GameObject.FindGameObjectWithTag("Player");
         playerLastPosition = player.transform.position;
         enemyRb = this.GetComponent<Rigidbody2D>();
     }
+
     public bool GetPursuing()
     {
         return this.pursuing;
@@ -45,6 +47,7 @@ public class EnemyController : MonoBehaviour
         PlayerDetect();
         if (gameObject.GetComponent<SpriteRenderer>().enabled == true && Time.time > 1)
         {
+            enemyWeapon.SetActive(true);
             footPrints.SetActive(true);
             enemySprite.SetActive(true);
             footPrints.transform.position = enemy.transform.position;
@@ -52,6 +55,7 @@ public class EnemyController : MonoBehaviour
         }
         else
         {
+            enemyWeapon.SetActive(false);
             enemySprite.SetActive(false);
             footPrints.transform.parent = null;
         }
@@ -59,11 +63,23 @@ public class EnemyController : MonoBehaviour
 
     void KilledByBullet()
     {
+        int deathInt = Random.Range(1, 3);
+
         Destroy(footPrints);
-        Debug.Log("kuoli");
+        Debug.Log(deathInt);
         GetComponent<EnemyWeapons>().DropGun();
+
         enemy.transform.eulerAngles = new Vector3(0, 0, enemy.transform.eulerAngles.z - 180);
-        Instantiate(deathAnimation, enemy.transform.position, enemy.transform.rotation);
+        
+        if (deathInt == 2)
+        {
+            Instantiate(death2, enemy.transform.position, enemy.transform.rotation);
+        }
+        else
+        {
+            Instantiate(death, enemy.transform.position, enemy.transform.rotation);
+        }
+
 
         gameObject.SetActive(false);
     }
@@ -79,7 +95,6 @@ public class EnemyController : MonoBehaviour
         Debug.DrawRay(transform.position, direction, Color.red);
         Vector3 f = transform.TransformDirection(Vector3.up);
         RaycastHit2D obstacleCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(f.x, f.y), wallDetectionDistance);
-
 
         if (moving)
         {
