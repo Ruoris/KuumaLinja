@@ -12,15 +12,18 @@ public class EnemyController : MonoBehaviour
     public int ammoCapacity, ammoLeft;
     public Vector3 playerLastPosition;
     RaycastHit2D rayToPlayer;
-    public float speed = 0.4f;
-    float wallDetectionDistance = 0.2f;
+    public float speed;
+    float wallDetectionDistance = 0.05f;
     float playerDetectionDistance = 2f;
     float distanceFromLastLocation = 1f; //kuinka pitkälle vihollinen jahtaa pelaajaa
+    public GameObject collisionDetector;
 
     bool moving = true, patrolling = true, pursuing = false, goingtoweapon = false, goingtolastloc = false;
     public bool hasGun = false;
     public bool clockwise = false, stationary = false;
     public bool dying;
+    public bool backToPatrol;
+    public bool playerDetected;
 
     public int randomDirection = 4;
 
@@ -66,7 +69,6 @@ public class EnemyController : MonoBehaviour
         int deathInt = Random.Range(1, 3);
 
         Destroy(footPrints);
-        Debug.Log(deathInt);
         GetComponent<EnemyWeapons>().DropGun();
 
         enemy.transform.eulerAngles = new Vector3(0, 0, enemy.transform.eulerAngles.z - 180);
@@ -88,6 +90,7 @@ public class EnemyController : MonoBehaviour
     {
         walkAnimation.transform.position = enemy.transform.position;
         walkAnimation.transform.rotation = enemy.transform.rotation;
+        enemyRb.transform.rotation = collisionDetector.transform.rotation;
 
         float distance = Vector2.Distance(player.transform.position, enemyRb.transform.position);
         Vector3 direction = player.transform.position - enemyRb.transform.position;
@@ -96,85 +99,86 @@ public class EnemyController : MonoBehaviour
         Vector3 f = transform.TransformDirection(Vector3.up);
         RaycastHit2D obstacleCheck = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(f.x, f.y), wallDetectionDistance);
 
+        if (obstacleCheck.collider != null)
+        {
+            if (obstacleCheck.collider.gameObject.CompareTag("Wall"))
+            {
+                StartCoroutine("BackToPatrol");
+
+                if (randomDirection == 1)
+                {
+                    transform.Rotate(0, 0, 50);
+                }
+                else if (randomDirection == 3)
+                {
+                    transform.Rotate(0, 0, -50);
+                }
+                else if (randomDirection == 2)
+                {
+                    transform.Rotate(0, 0, 180);
+                }
+                else
+                {
+                    transform.Rotate(0, 0, 180);
+                }
+            }
+        }
+
         if (moving)
         {
             transform.Translate(Vector3.up * speed * Time.deltaTime);
         }
 
-        if (pursuing && playerLastPosition != null)
+        if(!backToPatrol)
         {
-            speed = 0.8f;
-            transform.up = player.transform.position - transform.position;
-
-            if (rayToPlayer.collider.gameObject.CompareTag("Player"))
+            if (pursuing && playerLastPosition != null)
             {
-                playerLastPosition = player.transform.position;
-                Debug.Log("seuraa");
+                //speed = 0.8f;
+                transform.up = player.transform.position - transform.position;
+
+                if(player != null && rayToPlayer.collider != null)
+                {
+                    if (rayToPlayer.collider.gameObject.CompareTag("Player"))
+                    {
+                        playerLastPosition = player.transform.position;
+                    }
+                }
             }
-        }
 
-        if (goingtolastloc)
-        {
-            speed = 1f;
-            transform.up = player.transform.position - transform.position;
-
-            if (Vector3.Distance(transform.position, playerLastPosition) < distanceFromLastLocation)
+            if (goingtolastloc)
             {
-                patrolling = true;
-                goingtolastloc = false;
+                //speed = 1f;
+                transform.up = player.transform.position - transform.position;
+
+                if (Vector3.Distance(transform.position, playerLastPosition) < distanceFromLastLocation)
+                {
+                    patrolling = true;
+                    goingtolastloc = false;
+                }
             }
         }
 
         if (patrolling)
         {
-            speed = 0.4f;
+            //speed = 0.4f;
             randomDirection = Random.Range(1, 4);
-            if (obstacleCheck.collider != null)
-            {
-                if (obstacleCheck.collider.gameObject.CompareTag("Wall"))
-                {
-                    Debug.Log(randomDirection);
-
-                    if (randomDirection == 1)
-                    {
-                        transform.Rotate(0, 0, 50);
-                    }
-                    else if (randomDirection == 3)
-                    {
-                        transform.Rotate(0, 0, -50);
-                    }
-                    else if (randomDirection == 2)
-                    {
-                        transform.Rotate(0, 0, 180);
-                    }
-                    else
-                    {
-                        transform.Rotate(0, 0, 180);
-                    }
-                }
-
-            }
         }
-
     }
 
     void PlayerDetect()
     {
-
+        playerDetected = true;
         Vector3 pos = this.transform.InverseTransformPoint(player.transform.position);
         //   Debug.Log("POS: "+ pos + "distance: " + Vector3.Distance(transform.position, player.transform.position));
         if (rayToPlayer.collider != null)
-
         {
-
-            //Debug.Log("hit collider hit: "+ rayToPlayer.collider.gameObject.ToString());
             if (rayToPlayer.collider.CompareTag("Player") && Vector3.Distance(transform.position, player.transform.position) < playerDetectionDistance)
             {
                 patrolling = false;
                 pursuing = true;
                 goingtoweapon = false;
-                //Debug.Log("player detected");
             }
+
             else
             {
                 if (pursuing)
@@ -185,6 +189,14 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
+    }
+
+    IEnumerator BackToPatrol()
+    {
+        playerDetected = false;
+        backToPatrol = true;
+        yield return new WaitForSeconds(0.5f);
+        backToPatrol = false;
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -198,7 +210,7 @@ public class EnemyController : MonoBehaviour
 
         if (other.gameObject.CompareTag("Wall"))
         {
-            speed = -0.5f;
+            //speed = -0.5f;
         }
     }
 }

@@ -104,6 +104,7 @@ Transform:
   - {fileID: 4002979555508632949}
   - {fileID: 8295605604073107271}
   - {fileID: 361474721409557936}
+  - {fileID: 4474216316018058086}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -216,17 +217,20 @@ MonoBehaviour:
     type: 3}
   enemySprite: {fileID: 4002979554702144698}
   footPrints: {fileID: 8295605604073107270}
-  enemyWeapon: {fileID: 4002979553945055935}
+  enemyWeapon: {fileID: 4002979554997890369}
   death: {fileID: 8882732688370399333, guid: 48572c29ef3b640489d7a8bd4b7e0a69, type: 3}
   death2: {fileID: 4500538536963064803, guid: c0e8f3252ec04ec4cafea8a5fe6428fc, type: 3}
   ammoCapacity: 0
   ammoLeft: 0
   playerLastPosition: {x: 0, y: 0, z: 0}
-  speed: 0.2
+  speed: 0.5
+  collisionDetector: {fileID: 5252996218892109566}
   hasGun: 0
   clockwise: 1
   stationary: 0
   dying: 0
+  backToPatrol: 0
+  playerDetected: 0
   randomDirection: 4
   walkAnimation: {fileID: 4002979554662983208}
 --- !u!114 &4002979554525059708
@@ -278,6 +282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 50
+  readyToShoot: 0
   counter: 0
   gunSound: {fileID: 361474721409557939}
   firePoint: {fileID: 4002979555508632949}
@@ -298,8 +303,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.03029542}
-  m_Size: {x: 0.19449252, y: 0.1075978}
+  m_Offset: {x: -0.0009606501, y: -0.015893245}
+  m_Size: {x: 0.2617457, y: 0.20937417}
   m_Direction: 1
 --- !u!82 &-2432760689772227318
 AudioSource:
@@ -785,7 +790,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4002979555508632948}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.106, z: 0}
+  m_LocalPosition: {x: 0, y: 0.129, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4002979554738376051}
@@ -873,6 +878,104 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &5252996218892109566
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4474216316018058086}
+  - component: {fileID: 977671617575852298}
+  - component: {fileID: 7381773471897736163}
+  m_Layer: 9
+  m_Name: CollisionDetector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4474216316018058086
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5252996218892109566}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4002979554525059705}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &977671617575852298
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5252996218892109566}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0021927431, y: -0.023131937}
+  serializedVersion: 2
+  m_Radius: 0.07147656
+--- !u!212 &7381773471897736163
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5252996218892109566}
+  m_Enabled: 0
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 379d4b99a367fb448ace3cf08faaf0bc, type: 3}
+  m_Color: {r: 0.8000001, g: 0.8000001, b: 0.8000001, a: 0}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 3.59, y: 5}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &5294780891961123390
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -884,6 +987,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GunSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512089778880251788, guid: 3b7b30189db0afd4d8f6fb6ccb5a1857,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 5512089778880251790, guid: 3b7b30189db0afd4d8f6fb6ccb5a1857,
         type: 3}
@@ -1035,6 +1143,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2317068116596282495, guid: 50b052f2c4f8ab9429262fc3b5fd9141,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50b052f2c4f8ab9429262fc3b5fd9141, type: 3}

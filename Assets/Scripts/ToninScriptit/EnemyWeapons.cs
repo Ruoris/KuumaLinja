@@ -97,7 +97,7 @@ public class EnemyWeapons : MonoBehaviour
 
 
 
-                    pistol.SetActive(true);
+                    //pistol.SetActive(true);
                     //playerOneHand.SetActive(true);
                     emptyMagazine = false;
                     //   ammoCapacity = 10;
@@ -105,14 +105,14 @@ public class EnemyWeapons : MonoBehaviour
                 case 2:
 
 
-                    shotgun.SetActive(true);
+                    //shotgun.SetActive(true);
                     //playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     // ammoCapacity = 5;
                     break;
                 case 3:
 
-                    assaultRifle.SetActive(true);
+                    //assaultRifle.SetActive(true);
                     //playerBothHands.SetActive(true);
                     emptyMagazine = false;
                     //   ammoCapacity = 30;

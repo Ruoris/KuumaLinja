@@ -23,9 +23,11 @@ public class PlayerCtrl : MonoBehaviour
         player.SetActive(true);
         movementSpeed = 1.8f;
 
-        Vector3 campPos = player.transform.position + new Vector3(0, 0, -10);
+        //Vector3 campPos = player.transform.position + new Vector3(0, 0, -10);
         Instantiate(aim, player.transform.position, player.transform.rotation);
-        //Instantiate(playerCamera, campPos, Quaternion.identity);
+        Instantiate(playerCamera, player.transform.position, player.transform.rotation);
+
+
 
         // lisätään kunhan saadaan playerin prefab "valmiiksi"
         //Instantiate(player, startPoint.transform.position, Quaternion.identity);
@@ -35,7 +37,7 @@ public class PlayerCtrl : MonoBehaviour
 
     void Update()
     {
-        if (pauser.GetComponent<Pause>().paused == false)
+        //if (pauser.GetComponent<Pause>().paused == false)
         {
             FaceMouse();
             Crouch();

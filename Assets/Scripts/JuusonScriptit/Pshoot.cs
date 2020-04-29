@@ -39,7 +39,7 @@ public class Pshoot : MonoBehaviour
             // shotsFired = 0;
         }
 
-        if (Input.GetButton("Fire1") && fireRate < canFire /*&& !emptyMagazine*/ && pauser.GetComponent<Pause>().paused == false)
+        if (Input.GetButton("Fire1") && fireRate < canFire /*&& !emptyMagazine && pauser.GetComponent<Pause>().paused == false*/)
         {
             if(equippedGun != 0)
             {

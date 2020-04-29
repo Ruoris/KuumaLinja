@@ -27,6 +27,15 @@ public class Weapons : MonoBehaviour
     {
         emptyMagazine = true;
         ammoLeft = 0;
+
+        secondaryWeaponContainer = GameObject.Find("Misc stuff/Canvas/otherWeapon/secondaryWeaponContainer");
+        otherWeapons[0] = GameObject.Find("Misc stuff/Canvas/otherWeapon/uiPistol");
+        otherWeapons[1] = GameObject.Find("Misc stuff/Canvas/otherWeapon/uiShotgun");
+        otherWeapons[2] = GameObject.Find("Misc stuff/Canvas/otherWeapon/uiAR");
+        uiAmmoCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiBulletCounter");
+        uiShellCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiShotgunShellCounter");
+        uiRifleCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiRifleCounter");
+
     }
 
     // Update is called once per frame

@@ -19,8 +19,6 @@ public class Boss : MonoBehaviour
     {
         Look();
         PlayerDetect();
-
-
     }
 
     IEnumerator FireStrike()

@@ -8,6 +8,7 @@ public class EnemyPshoot : MonoBehaviour
 
     private float fireRate;
     private float canFire;
+    public bool readyToShoot;
     public float counter;
     public AudioSource gunSound;
 
@@ -19,6 +20,7 @@ public class EnemyPshoot : MonoBehaviour
 
     void Start()
     {
+        readyToShoot = false;
     }
 
     void Update()
@@ -27,6 +29,7 @@ public class EnemyPshoot : MonoBehaviour
         bool emptyMagazine = GetComponent<EnemyWeapons>().emptyMagazine;
         gunFlareAnimation.SetActive(false);
         bool pursuing = GetComponent<EnemyController>().GetPursuing();
+
         if (pursuing == true && fireRate < canFire && !emptyMagazine)
         {
 
@@ -53,29 +56,44 @@ public class EnemyPshoot : MonoBehaviour
 
     void Fire()
     {
-        canFire = 0;
-        counter = 0;
-        gunSound.Play();
+        bool playerDetected = GetComponent<EnemyController>().playerDetected;
+        if(playerDetected && !readyToShoot)
+        {
+            StartCoroutine("FireCooldown");
+        }
+        
+        if(readyToShoot)
+        {
+            canFire = 0;
+            counter = 0;
+            gunSound.Play();
 
-        int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
-        fireRate = GetComponent<EnemyWeapons>().fireRate;
-        bulletForce = GetComponent<EnemyWeapons>().bulletForce;
+            int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
+            fireRate = GetComponent<EnemyWeapons>().fireRate;
+            bulletForce = GetComponent<EnemyWeapons>().bulletForce;
 
-        var tempBullet = (GameObject)Instantiate(bulletprefab, firePoint.position, Quaternion.identity);
+            var tempBullet = (GameObject)Instantiate(bulletprefab, firePoint.position, Quaternion.identity);
 
-        Rigidbody2D tempBulletRB = tempBullet.GetComponent<Rigidbody2D>();
+            Rigidbody2D tempBulletRB = tempBullet.GetComponent<Rigidbody2D>();
 
-        // sets the random spread of the weapons
-        float spreadAngle = Random.Range(-10, 10);
+            // sets the random spread of the weapons
+            float spreadAngle = Random.Range(-10, 10);
 
-        var x = firePoint.position.x - enemy.transform.position.x;
-        var y = firePoint.position.y - enemy.transform.position.y;
-        float rotateAngle = spreadAngle + (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
+            var x = firePoint.position.x - enemy.transform.position.x;
+            var y = firePoint.position.y - enemy.transform.position.y;
+            float rotateAngle = spreadAngle + (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
 
-        var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
+            var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
 
-        tempBulletRB.velocity = MovementDirection * bulletForce;
+            tempBulletRB.velocity = MovementDirection * bulletForce;
 
-        Destroy(tempBullet, 0.3f);
+            Destroy(tempBullet, 0.3f);
+        }
+    }
+
+    IEnumerator FireCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        readyToShoot = true;
     }
 }
