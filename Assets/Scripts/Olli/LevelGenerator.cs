@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.AccessControl;
 using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
@@ -235,9 +236,15 @@ public class LevelGenerator : MonoBehaviour
                     int.TryParse(spawnString, out spawnYint);
                 }
             }
-            Debug.Log("Spawn:" + spawnXint + ", " + spawnYint);
-            GetComponent<RoomGenerator>().GenerateRoom(rooms[r], location, spawnXint, spawnYint, roomDoors[r], roomWindows[r], this.gameObject);
-            GetComponent<RoomGenerator>().GenerateFurniture(roomLayouts, location, rooms[r], this.gameObject);
+            GameObject room = GetComponent<RoomGenerator>().GenerateRoom(rooms[r], location, spawnXint, spawnYint, roomDoors[r], roomWindows[r], this.gameObject);
+            room.transform.rotation = new Quaternion(0, 0, 0, 0);
+
+            Vector2 fixY = room.transform.position;
+            fixY.x = fixY.x * -1;
+            room.transform.position = fixY;
+
+            GetComponent<RoomGenerator>().GenerateFurniture(roomLayouts[r], location, rooms[r], this.gameObject);
+            transform.rotation = new Quaternion(0, 0, 0, 0);
         }
     }
 }
