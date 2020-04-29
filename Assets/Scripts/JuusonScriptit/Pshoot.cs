@@ -70,7 +70,7 @@ public class Pshoot : MonoBehaviour
         ammopanel = GameObject.FindWithTag("activeBulletCounter");
 
 
-        ammopanel.GetComponent<AmmocounterScript>().ChangeColor();
+        ammopanel.GetComponent<AmmocounterScript>().ChangeColor(GetComponent<Weapons>().ammoLeft);
 
     }
     void Fire()

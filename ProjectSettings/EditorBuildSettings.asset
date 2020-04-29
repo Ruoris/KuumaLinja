@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/juusonsceneUIlla.unity
     guid: 51e7f9bc00410cc42a7a6c98ac1cdd82
+  - enabled: 1
+    path: Assets/Scenes/Olli/Level 1.2.unity
+    guid: 8dad8558738ffb94e83e775a01fa235d
   m_configObjects: {}

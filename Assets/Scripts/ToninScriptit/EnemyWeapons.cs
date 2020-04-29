@@ -10,6 +10,7 @@ public class EnemyWeapons : MonoBehaviour
     public int bulletForce;
     public float fireRate;
     public bool emptyMagazine;
+    public float reload = 0;
 
     public AudioClip equipClip;
 
@@ -52,15 +53,22 @@ public class EnemyWeapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         EquipGun();
         FireControl();
-
-
-     
-
-
-
+        if (ammoLeft <= 0)
+        {
+            emptyMagazine = true;
+        }
+        if (emptyMagazine)
+        {
+            reload += Time.deltaTime;
+            if (reload > 5.5f)
+            {
+                ammoLeft = ammoCapacity;
+                emptyMagazine = false;
+                reload = 0;
+            }
+        }
 
     }
 
@@ -100,7 +108,7 @@ public class EnemyWeapons : MonoBehaviour
 
                     pistol.SetActive(true);
                     //playerOneHand.SetActive(true);
-                    emptyMagazine = false;
+                    //emptyMagazine = false;
                     //   ammoCapacity = 10;
                     break;
                 case 2:
@@ -108,36 +116,36 @@ public class EnemyWeapons : MonoBehaviour
 
                     shotgun.SetActive(true);
                     //playerBothHands.SetActive(true);
-                    emptyMagazine = false;
+                    //emptyMagazine = false;
                     // ammoCapacity = 5;
                     break;
                 case 3:
 
                     assaultRifle.SetActive(true);
                     //playerBothHands.SetActive(true);
-                    emptyMagazine = false;
+                    //emptyMagazine = false;
                     //   ammoCapacity = 30;
                     break;
                 case 4:
                     machineGun.SetActive(true);
                     //playerBothHands.SetActive(true);
-                    emptyMagazine = false;
+                    //emptyMagazine = false;
                     //  ammoCapacity = 100;
                     break;
-                //case 5:
-                //    flameThrower.SetActive(true);
-                //    //playerBothHands.SetActive(true);
-                //    emptyMagazine = false;
-                //    ammoCapacity = 300;
-                //    break;
-                //case 6:
-                //    grenade.SetActive(true);
-                //    //playerOneHand.SetActive(true);
-                //    emptyMagazine = false;
-                //    ammoCapacity = 3;
-                //    break;
-                //default:
-                //    break;
+                    //case 5:
+                    //    flameThrower.SetActive(true);
+                    //    //playerBothHands.SetActive(true);
+                    //    emptyMagazine = false;
+                    //    ammoCapacity = 300;
+                    //    break;
+                    //case 6:
+                    //    grenade.SetActive(true);
+                    //    //playerOneHand.SetActive(true);
+                    //    emptyMagazine = false;
+                    //    ammoCapacity = 3;
+                    //    break;
+                    //default:
+                    //    break;
             }
         }
     }
@@ -186,7 +194,7 @@ public class EnemyWeapons : MonoBehaviour
             droppedPistol.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedPistol.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
-          
+
         }
         if (equippedGun == 2)
         {
@@ -194,7 +202,7 @@ public class EnemyWeapons : MonoBehaviour
             droppedShotgun.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedShotgun.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
-            
+
         }
 
         if (equippedGun == 3)
@@ -203,7 +211,7 @@ public class EnemyWeapons : MonoBehaviour
             droppedRifle.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedRifle.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
-           
+
         }
     }
 }

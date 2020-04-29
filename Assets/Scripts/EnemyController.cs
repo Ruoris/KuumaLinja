@@ -20,7 +20,7 @@ public class EnemyController : MonoBehaviour
     bool moving = true, patrolling = true, pursuing = false, goingtoweapon = false, goingtolastloc = false;
     public bool hasGun = false;
     public bool clockwise = false, stationary = false;
-    public bool dying;
+    public bool dying=false;
 
 
     public GameObject walkAnimation;
@@ -66,14 +66,6 @@ public class EnemyController : MonoBehaviour
     }
 
 
-    void OnTriggerEnter2D(Collider2D c2d)
-    {
-        if (c2d.gameObject.CompareTag("Bullet") && dying == false)
-        {
-            dying = true;
-            KilledByBullet();
-        }
-    }
 
     void Movement()
     {
@@ -174,8 +166,9 @@ public class EnemyController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         //Debug.Log(other.gameObject.name);
-        if(other.gameObject.CompareTag("Bullet"))
+        if(other.gameObject.CompareTag("Bullet") && dying == false)
         {
+            dying = true;
             KilledByBullet();
         }
 

@@ -20,7 +20,9 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentFloor = 0;
+        currentFloor = GameStatus.status.currentFloor;
+        Debug.Log("LevelController");
+            
     }
 
     // Update is called once per frame

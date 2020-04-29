@@ -8,7 +8,7 @@ public class PlayerCtrl : MonoBehaviour
     private float movementSpeed;
     public GameObject player, aim, playerCamera;
     public GameObject walkAnimation, deathAnimation;
-    private int playerHealth = 1;
+    public int playerHealth = 1;
     public GameObject pauser;
     public bool crouching;
 
@@ -18,21 +18,36 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = false;
         pauser = GameObject.FindWithTag("soundsettings");
         player.SetActive(true);
         movementSpeed = 1.8f;
-
+        playerCamera = GameObject.FindWithTag("MainCamera");
         // lisätään kunhan saadaan playerin prefab "valmiiksi"
         //Instantiate(PlayerPrefab, startPoint.transform.position, Quaternion.identity);
 
         playerRB = GetComponent<Rigidbody2D>();
     }
-
+   
     void Update()
     {
-
-        if (pauser.GetComponent<Pause>().paused == false)
+        if (Input.GetKeyDown(KeyCode.F))
         {
+           playerHealth--;
+            Debug.Log("f painettu");
+        }
+        if (playerHealth <= 0)
+        {
+            player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
+            Instantiate(deathAnimation, player.transform.position, player.transform.rotation);
+            GameObject deathPanel = GameObject.Find("/Misc stuff/Canvas/DeathPanel");
+            deathPanel.SetActive(true);
+            pauser.GetComponent<Pause>().alive = false;
+            Cursor.visible = true;
+            player.SetActive(false);
+        }
+        if (pauser.GetComponent<Pause>().paused == false)
+        { 
             FaceMouse();
             Crouch();
             //var walkAnimation = GetComponent<Animator>();
@@ -63,7 +78,7 @@ public class PlayerCtrl : MonoBehaviour
             {
                 walkAnimation.SetActive(false);
                 //walkAnimation.enabled = false;
-
+                
             }
         }
     }
@@ -121,7 +136,10 @@ public class PlayerCtrl : MonoBehaviour
             {
                 player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
                 Instantiate(deathAnimation, player.transform.position, player.transform.rotation);
-
+                GameObject deathPanel  = GameObject.Find("/Misc stuff/Canvas/DeathPanel");
+                deathPanel.SetActive(true);
+                pauser.GetComponent<Pause>().alive = false;
+                Cursor.visible = true;
                 player.SetActive(false);
             }
             Destroy(other.gameObject);

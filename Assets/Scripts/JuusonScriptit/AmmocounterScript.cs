@@ -6,17 +6,19 @@ using UnityEngine.UI;
 public class AmmocounterScript : MonoBehaviour
 {
     public GameObject[] pistolBullets;
-    public GameObject player;
+   
 
-
+    public void Start()
+    {
+        
+    }
     public void Update()
     {
         pistolBullets=GameObject.FindGameObjectsWithTag("PistolBulletImage");
     }
-    public void ChangeColor()
+    public void ChangeColor(int bulletsLeft)
     {
-        
-        int bulletsLeft = player.GetComponent<Weapons>().ammoLeft;
+
         Color used = new Color32(75, 75, 75, 255);
         pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
     }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyPshoot : MonoBehaviour
 {
     public float bulletForce;
-
+    
     private float fireRate;
     private float canFire;
     public float counter;
@@ -16,11 +16,12 @@ public class EnemyPshoot : MonoBehaviour
     public GameObject player;
     public GameObject bulletprefab, flameprefab, grenadeprefab, gunFlareAnimation, explosion;
 
-
+    public float readyToFire = 0;  
+    private bool waitOver = false;
 
     void Start()
     {
-
+        readyToFire = Random.Range(0.5f, 2);
         explosionCounter = 3;
     }
 
@@ -31,7 +32,20 @@ public class EnemyPshoot : MonoBehaviour
         bool emptyMagazine = GetComponent<EnemyWeapons>().emptyMagazine;
         gunFlareAnimation.SetActive(false);
         bool pursuing = GetComponent<EnemyController>().GetPursuing();
-        if (pursuing == true && fireRate < canFire && !emptyMagazine && pauser.GetComponent<Pause>().paused == false)
+        
+        if (pursuing== true)
+        {
+            readyToFire -= Time.deltaTime;
+            if (readyToFire<0) 
+            { 
+                waitOver = true; 
+            }
+        }
+        //else
+        //{
+        //    readyToFire = 0;
+        //}
+        if (waitOver==true && pursuing == true && fireRate < canFire && !emptyMagazine && pauser.GetComponent<Pause>().paused == false)
         {
 
             Fire();

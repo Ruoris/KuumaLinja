@@ -1,33 +1,45 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
    
-    public GameObject menu;
+    private GameObject menu;
     public bool paused;
-    public GameObject backButton;
-    public GameObject audioSettings;
-
-
+    private GameObject backButton;
+    private GameObject audioSettings;
+    private GameObject player;
+    public bool alive;
+    void Start()
+    {
+        menu = GameObject.Find("/Misc stuff/Canvas/Mainmenu");
+        backButton= GameObject.Find("/Misc stuff/Canvas/BacktoMainMenuFromAudio");
+        audioSettings = GameObject.Find("/Misc stuff/Canvas/SoundSettingsPanel");
+        player = GameObject.Find("Player");
+    }
 
     void Awake()
     {
         paused = false;
-
+        alive = true;
     }
 
     // Update is called once per frame
     void Update()
     {
         Pauser();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            RestartFromSpace();
+        }
     }
 
     public void Unpause()
     {
             paused = false;
-    }
+    } 
     
     public void Pauser()
     {
@@ -36,8 +48,9 @@ public class Pause : MonoBehaviour
             paused = !paused;
 
         }
-        if (paused)
+        if (paused&&alive == true)
         {
+            Cursor.visible = true;
            // GameObject soundButton = GameObject.FindWithTag("soundsettings");
             Time.timeScale = 0.00001F;
 
@@ -51,12 +64,29 @@ public class Pause : MonoBehaviour
             }
 
         }
-        if (!paused)
+        if (!paused&&alive==true)
         {
-             menu.SetActive(false);
+            Cursor.visible = false;
+            menu.SetActive(false);
             audioSettings.SetActive(false);
             backButton.SetActive(false);
             Time.timeScale = 1;
         }
+        if(alive != true)
+        {
+            Cursor.visible = true;
+            // GameObject soundButton = GameObject.FindWithTag("soundsettings");
+            Time.timeScale = 0.00001F;
+
+        
+        }
     }
+    public void RestartFromSpace()
+    {
+       
+        
+            SceneManager.LoadScene(GameStatus.status.currentLevel);
+        
+    }
+   
 }

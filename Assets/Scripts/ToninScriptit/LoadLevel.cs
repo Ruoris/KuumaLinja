@@ -27,6 +27,7 @@ public class LoadLevel : MonoBehaviour
     {
         GameStatus.status.currentLevel = LevelToLoad;
         SceneManager.LoadScene(LevelToLoad);
+        AudioImmortality.immortal.ChangeBackgroundMusic(LevelToLoad);
     }
     public void Cleared(bool isClear)
     {
