@@ -9,7 +9,7 @@ public class Text : MonoBehaviour
     private int index;
     public float typingSpeed;
     public GameObject continueButtuon;
-    public AudioSource audioclip;
+    public AudioSource textSound;
     void Start()
     {
         StartCoroutine(Type());
@@ -19,8 +19,8 @@ public class Text : MonoBehaviour
         if(textDisplay.text== sentences[index])
         {
             continueButtuon.SetActive(true);
-            audioclip.Stop();
-            if (Input.GetButton("Jump"))
+            textSound.Stop();
+            if (Input.GetKeyDown("space"))
             {
                 NextSentence();
             }
@@ -31,7 +31,7 @@ public class Text : MonoBehaviour
         foreach (char letter in sentences[index].ToCharArray())
         {
             textDisplay.text += letter;
-            audioclip.Play();
+            textSound.Play();
             yield return new WaitForSeconds(typingSpeed);
         }
     }
