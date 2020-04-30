@@ -267,7 +267,86 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1586206463
+--- !u!114 &1591914672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591914671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd157c215fe49874baba069343a8127c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connections: 0
+  playerOnTile: 0
+--- !u!114 &1591914673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591914671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5432ca27e9d9dde42bd23f06c90594d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rooms:
+  - {fileID: 11400000, guid: b5339b52516fbb549826fc6eb8baff95, type: 2}
+  - {fileID: 11400000, guid: 9d3b542ab8a13394eb4ae1c23f2ef340, type: 2}
+  - {fileID: 11400000, guid: b0c53475895f74442a0662953085afdc, type: 2}
+  - {fileID: 11400000, guid: b0c53475895f74442a0662953085afdc, type: 2}
+  - {fileID: 11400000, guid: b5339b52516fbb549826fc6eb8baff95, type: 2}
+  roomCoordinates:
+  - 11-2
+  - 0-5
+  - 10-10
+  - 6-0
+  - 2-0
+  roomSizes:
+  - 7-6
+  - 8-9
+  - 10-10
+  - 3-3
+  - 3-3
+  roomDoors:
+  - 5-0, 6-4
+  - 3-0, 3-8
+  - 3-0, 0-6
+  - 2-1
+  - 1-2
+  roomWindows:
+  - 0-0
+  - 0-0
+  - 0-0
+  - 0-0
+  - 
+  roomLayouts:
+  - d4-3, a6-1, f8-0, f9-0, f6-3, f7-3, a6-4,
+  - f9-1, f10-1, f11-1, e9-5, e10-5, f3-4, f6-4, e4-4, e5-4, c6-8, a2-1, a10-2, a2-10,
+    i2-13, c4-14, c8-14, d6-10,
+  - h2-1, h9-1, h2-8, h9-8, b4-3, f1-5, f2-5, e3-5, e4-5, e5-5, f6-5, f7-5, j4-9,
+    j7-9, a7-7,
+  - b1-3, b1-4,
+  - 
+  floorX: 20
+  floorY: 20
+  floorSpawn: 4-1
+  nextFloor: 8-1
+  player: {fileID: 6441582434102132489, guid: 82d048926c6820740baf61b929396dd0, type: 3}
+  aim: {fileID: 203596257180371919, guid: 44c2585661122d84f83186925fccae9e, type: 3}
+  hallwayFloor: {fileID: 4478715479393370695, guid: dd86258358b695b4da3f6dddf094df3c,
+    type: 3}
+  hallwayCorners: {fileID: 300425294304570222, guid: 41dde6a0f6b0c6643b68ef0f4bb4a3c2,
+    type: 3}
+  wallFloor: {fileID: 300425294304570222, guid: a7f2abd125c5c574a9d07449d6af2961,
+    type: 3}
+  stairs: {fileID: 8792128641301137700, guid: 6899db2395243034f97f89d78aa7c4c5, type: 3}
+  mainCamera: {fileID: 1598492851164139802}
+  levelController: {fileID: 0}
+--- !u!4 &1591914674
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -298,8 +377,7 @@ MonoBehaviour:
   floorNum: 1
   floors:
   - {fileID: 8466223695220719353}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1591914671}
   currentFloor: 0
   playerSpawned: 0
   firstRoomSpawned: 0
@@ -315,7 +393,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &770674610594475655
 GameObject:
@@ -342,11 +420,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598492851164139800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4, y: 3.1, z: -10}
+  m_LocalPosition: {x: 4, y: 2.9, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1598492851164139800
 GameObject:
@@ -536,38 +614,54 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rooms:
+  - {fileID: 11400000, guid: 9d3b542ab8a13394eb4ae1c23f2ef340, type: 2}
+  - {fileID: 11400000, guid: 9d3b542ab8a13394eb4ae1c23f2ef340, type: 2}
+  - {fileID: 11400000, guid: 9d3b542ab8a13394eb4ae1c23f2ef340, type: 2}
   - {fileID: 11400000, guid: b0c53475895f74442a0662953085afdc, type: 2}
-  - {fileID: 11400000, guid: b0c53475895f74442a0662953085afdc, type: 2}
-  - {fileID: 11400000, guid: b0c53475895f74442a0662953085afdc, type: 2}
+  - {fileID: 11400000, guid: b5339b52516fbb549826fc6eb8baff95, type: 2}
   roomCoordinates:
   - 11-2
   - 0-5
   - 10-10
+  - 6-0
+  - 2-0
   roomSizes:
   - 7-6
   - 8-9
   - 10-10
+  - 3-3
+  - 3-3
   roomDoors:
   - 5-0, 6-4
-  - 
-  - 
+  - 3-0, 3-8
+  - 3-0, 0-6
+  - 2-1
+  - 1-2
   roomWindows:
   - 0-0
   - 0-0
   - 0-0
+  - 0-0
+  - 
   roomLayouts:
-  - d6-3, e6-2, a2-2,
-  - e0-0,
-  - e0-0,
+  - d4-3, a6-1, f8-0, f9-0, f6-3, f7-3, a6-4,
+  - f9-1, f10-1, f11-1, e9-5, e10-5, f3-4, f6-4, e4-4, e5-4, c6-8, a2-1, a10-2, a2-10,
+    i2-13, c4-14, c8-14, d6-10,
+  - h2-1, h9-1, h2-8, h9-8, b4-3, f1-5, f2-5, e3-5, e4-5, e5-5, f6-5, f7-5, j4-9,
+    j7-9, a7-7,
+  - b1-3, b1-4,
+  - 
   floorX: 20
   floorY: 20
-  floorSpawn: 1-0
-  nextFloor: 20-19
-  player: {fileID: 69640893337760595, guid: ef297f99b9bcb4b408dd4ccf8048da63, type: 3}
-  fogTile: {fileID: 6574885273630796412, guid: f70a40b347682c748b1cd2ca468e0215, type: 3}
+  floorSpawn: 4-1
+  nextFloor: 8-1
+  player: {fileID: 6441582434102132489, guid: 82d048926c6820740baf61b929396dd0, type: 3}
+  aim: {fileID: 203596257180371919, guid: 44c2585661122d84f83186925fccae9e, type: 3}
   hallwayFloor: {fileID: 4478715479393370695, guid: dd86258358b695b4da3f6dddf094df3c,
     type: 3}
-  wallFloor: {fileID: 3774421203553046307, guid: 96bdb3a275e210e479170b14360309ad,
+  hallwayCorners: {fileID: 300425294304570222, guid: 41dde6a0f6b0c6643b68ef0f4bb4a3c2,
+    type: 3}
+  wallFloor: {fileID: 300425294304570222, guid: a7f2abd125c5c574a9d07449d6af2961,
     type: 3}
   stairs: {fileID: 8792128641301137700, guid: 6899db2395243034f97f89d78aa7c4c5, type: 3}
   mainCamera: {fileID: 1598492851164139802}

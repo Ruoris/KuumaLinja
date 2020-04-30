@@ -21,9 +21,8 @@ public class LevelGenerator : MonoBehaviour
     public GameObject player;
     //public GameObject aim;
 
-    public GameObject fogTile;
-
     public GameObject hallwayFloor;
+    public GameObject hallwayCorners;
     public GameObject wallFloor;
     public GameObject stairs;
 
@@ -77,7 +76,32 @@ public class LevelGenerator : MonoBehaviour
                 location.x = location.x + 0.32f;
                 GameObject floor = Instantiate(hallwayFloor, location, transform.rotation = new Quaternion(0, 0, 0, 0));
                 floor.transform.parent = levelController.transform;
-                //Instantiate(fogTile, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+
+                //CornerGenerator
+                if (_x == 0 && _y == 0)
+                {
+                    GameObject downLeftCorner = Instantiate(hallwayCorners, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                    downLeftCorner.transform.parent = levelController.transform;
+                }
+
+                if (_x == floorX - 1 && _y == 0)
+                {
+                    GameObject downRightCorner = Instantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                    downRightCorner.transform.parent = levelController.transform;
+                }
+
+                if (_x == 0 && _y == floorY - 1)
+                {
+                    GameObject topLeftCorner = Instantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                    topLeftCorner.transform.parent = levelController.transform;
+                }
+
+                if (_x == floorX - 1 && _y == floorY -1)
+                {
+                    GameObject topRightCorner = Instantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                    topRightCorner.transform.parent = levelController.transform;
+                }
+
                 _x++;
                 if (_y == 0)
                 {
