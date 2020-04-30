@@ -210,7 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5f2edbb8d3f5f4e86cfcdceb031a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2952056909992804213, guid: ef297f99b9bcb4b408dd4ccf8048da63, type: 3}
+  player: {fileID: 69640893337760595, guid: ef297f99b9bcb4b408dd4ccf8048da63, type: 3}
   enemy: {fileID: 4002979554525059714}
   aseDroppisjiainti: {fileID: 0}
   pistolDrop: {fileID: 2240815205682665118, guid: 4a1e3a497c2cd1a418d3fa85e250d6aa,
@@ -255,6 +255,7 @@ MonoBehaviour:
   bulletForce: 0
   fireRate: 0
   emptyMagazine: 0
+  reload: 0
   equipClip: {fileID: 0}
   pistolDrop: {fileID: 2240815205682665118, guid: 4a1e3a497c2cd1a418d3fa85e250d6aa,
     type: 3}
@@ -303,8 +304,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0009606501, y: -0.015893245}
-  m_Size: {x: 0.2617457, y: 0.20937417}
+  m_Offset: {x: -0.0009606497, y: -0.012489245}
+  m_Size: {x: 0.2753704, y: 0.21618244}
   m_Direction: 1
 --- !u!82 &-2432760689772227318
 AudioSource:
@@ -923,9 +924,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0021927431, y: -0.023131937}
+  m_Offset: {x: 0.0033281147, y: -0.023131937}
   serializedVersion: 2
-  m_Radius: 0.07147656
+  m_Radius: 0.09304878
 --- !u!212 &7381773471897736163
 SpriteRenderer:
   m_ObjectHideFlags: 0

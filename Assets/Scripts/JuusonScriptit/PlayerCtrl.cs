@@ -98,7 +98,7 @@ public class PlayerCtrl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.collider.name);
+        //Debug.Log(other.collider.name);
         if (other.collider.CompareTag("EnemyBullet"))
         {
 

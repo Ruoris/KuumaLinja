@@ -14,7 +14,7 @@ public class WeaponDrop : MonoBehaviour
     {
         timer = 0;
         started = true;
-
+        bulletsLeft = ammoCapacity;
     }
     public void Update()
     {
