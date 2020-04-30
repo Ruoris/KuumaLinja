@@ -193,10 +193,13 @@ MonoBehaviour:
   ammoLeft: 0
   playerLastPosition: {x: 0, y: 0, z: 0}
   speed: 0.2
+  collisionDetector: {fileID: 0}
   hasGun: 0
   clockwise: 1
   stationary: 0
   dying: 0
+  backToPatrol: 0
+  playerDetected: 0
   randomDirection: 4
   walkAnimation: {fileID: 6884956436865830740}
 --- !u!114 &6884956436726936320
@@ -248,6 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 50
+  readyToShoot: 0
   counter: 0
   gunSound: {fileID: 7855685728651283663}
   firePoint: {fileID: 6884956437890847753}
