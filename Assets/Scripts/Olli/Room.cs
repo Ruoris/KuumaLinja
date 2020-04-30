@@ -9,6 +9,8 @@ public class Room : ScriptableObject
     public new string roomType;
 
     public GameObject wall;
+    public GameObject halfWall;
+    public GameObject wallCorner;
     public GameObject door;
     public GameObject floor;
 

@@ -13,20 +13,23 @@ MonoBehaviour:
   m_Name: BasicRoom
   m_EditorClassIdentifier: 
   roomType: Basic
-  wall: {fileID: 300425294304570222, guid: 13dc85cebb98dc64b9789ae48cf98e75, type: 3}
+  wall: {fileID: 300425294304570222, guid: a7f2abd125c5c574a9d07449d6af2961, type: 3}
+  halfWall: {fileID: 300425294304570222, guid: 13dc85cebb98dc64b9789ae48cf98e75, type: 3}
+  wallCorner: {fileID: 300425294304570222, guid: 41dde6a0f6b0c6643b68ef0f4bb4a3c2,
+    type: 3}
   door: {fileID: 300425294304570222, guid: 6ba506a9ba52f09448975e2c6486c906, type: 3}
   floor: {fileID: 300425294304570222, guid: 146fab454544f2b4dbb5175520f296dc, type: 3}
   furniture:
   - {fileID: 4002979554525059714, guid: 9a0521e50c53e794294ce8e358348071, type: 3}
   - {fileID: 480266412212940813, guid: 501bb520987421047af6e29985af453a, type: 3}
-  - {fileID: 3046656407633791674, guid: 49f2851afff65b248aad263b7bdc0afb, type: 3}
-  - {fileID: 5987125364007317072, guid: 202b86fbcbe41064eb3cb57f728ad92b, type: 3}
-  - {fileID: 8969906090989165875, guid: a13a520f396e4d046815d910b37e95f3, type: 3}
-  - {fileID: 8979572659438965584, guid: d9afefc495f06454fa2df131f28b95b9, type: 3}
-  - {fileID: 8426502817049430613, guid: 03236e524d3fc204681fbbb046c54475, type: 3}
-  - {fileID: 4006323245689507792, guid: 8d1a9a8bb57fa624684de3c47fcb2bfb, type: 3}
-  - {fileID: 5454608919814120261, guid: 2256ca83c6c9c4e49afa3ce2df98902f, type: 3}
-  - {fileID: 8182729280601584312, guid: 4904a6f54b08a104ab6089060771cc3f, type: 3}
+  - {fileID: 300425294304570222, guid: 3dd15c8dd4457744b9b1507b43007424, type: 3}
+  - {fileID: 300425294304570222, guid: 9b09e3b3c388b1e42bd1009ca8c4237e, type: 3}
+  - {fileID: 8457984322104792458, guid: 9de39c7940c407f49bfcd7d656add972, type: 3}
+  - {fileID: 575432821271881660, guid: fca494c4d94940445a6a41fc78b2c2e2, type: 3}
+  - {fileID: 575432821271881660, guid: ed5eaa2cdb020ca4bbd76462b1cb1c05, type: 3}
+  - {fileID: 3125838865019598219, guid: b133db0bbfa475f4fbf2d07a55dea0ba, type: 3}
+  - {fileID: 713108434180244025, guid: fd0852f017bc04442b0823558cd2825f, type: 3}
+  - {fileID: 300425294304570222, guid: 3ffdad40b6981744099d7269c87b368f, type: 3}
   - {fileID: 7320061698837239793, guid: cd5fb442ffdef4848a4bb3bd52deaf88, type: 3}
   - {fileID: 7511827956135903679, guid: 2e543fc350414064fa07675552482748, type: 3}
   roomX: 0

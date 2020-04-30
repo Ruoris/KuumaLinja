@@ -28,6 +28,10 @@ public class RoomGenerator : MonoBehaviour
         Vector2 v2Orig = v2;
         int _x = 0;
         int _y = 0;
+        bool doorPlacedLeft = false;
+        bool doorPlacedRight = false;
+        bool doorPlacedTop = false;
+        bool doorPlacedBot = false;
         newRoom = Instantiate(new GameObject("Room"), v2, transform.rotation = new Quaternion(0, 0, 0, 0));
 
         bool[] forbiddenX = new bool[rX];
@@ -78,49 +82,130 @@ public class RoomGenerator : MonoBehaviour
                 GameObject floors = Instantiate(room.floor, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
                 floors.transform.parent = newRoom.transform;
 
+                //CornerGenerator
+                if (_x == 0 && _y == 0)
+                {
+                    GameObject downLeftCorner = Instantiate(room.wallCorner, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                    downLeftCorner.transform.parent = newRoom.transform;
+                }
 
+                if (_x == forbiddenX.Length-1 && _y == 0)
+                {
+                    GameObject downRightCorner = Instantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                    downRightCorner.transform.parent = newRoom.transform;
+                }
+
+                if (_x == 0 && _y == forbiddenY.Length-1)
+                {
+                    GameObject topLeftCorner = Instantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                    topLeftCorner.transform.parent = newRoom.transform;
+                }
+
+                if (_x == forbiddenX.Length-1 && _y == forbiddenY.Length-1)
+                {
+                    GameObject topRightCorner = Instantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                    topRightCorner.transform.parent = newRoom.transform;
+                }
+
+                //Bot Wall Generator
                 if (_y == 0)
                 {
-                    if ((_x == forbiddenX.Length-1 && _y == 0) || (_x == 0 && _y== 0))
+                    if ((_x == forbiddenX.Length - 1 && _y == 0) || (_x == 0 && _y == 0))
                     {
-                        GameObject botWalls = Instantiate(room.wall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
-                        botWalls.transform.parent = newRoom.transform;
+                        if (doorPlacedBot == true)
+                        {
+                            GameObject botHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                            botHalfWalls.transform.parent = newRoom.transform;
+                            doorPlacedBot = false;
+                        }
+                        else
+                        {
+                            GameObject botWalls = Instantiate(room.wall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                            botWalls.transform.parent = newRoom.transform;
+                        }
+
                     }
                     else if (forbiddenX[_x] == true && forbiddenY[_y] == true)
                     {
                         GameObject door = Instantiate(room.door, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
                         door.transform.parent = newRoom.transform;
+                        doorPlacedBot = true;
                     }
                     else
                     {
-                        GameObject botWalls = Instantiate(room.wall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
-                        botWalls.transform.parent = newRoom.transform;
+                        if (doorPlacedBot == true)
+                        {
+                            GameObject botHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                            botHalfWalls.transform.parent = newRoom.transform;
+                            doorPlacedBot = false;
+                        }
+                        else
+                        {
+                            GameObject botWalls = Instantiate(room.wall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                            botWalls.transform.parent = newRoom.transform;
+                        }
                     }
                 }
+
+                //Top Walls Generator
                 if (_y == rY - 1)
                 {
                     Vector2 v2Temp = v2;
                     v2Temp.y = v2.y;
+
+                    Vector2 doorLocalScale;
+
                     if ((_x == forbiddenX.Length - 1 && _y == forbiddenY.Length - 1) || (_x == 0 && _y == forbiddenY.Length - 1))
                     {
-                        GameObject topWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
-                        topWalls.transform.parent = newRoom.transform;
+                        if (doorPlacedTop == true)
+                        {
+                            GameObject topHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                            doorLocalScale = topHalfWalls.transform.localScale;
+                            doorLocalScale.x = doorLocalScale.x * -1;
+                            topHalfWalls.transform.localScale = doorLocalScale;
+                            topHalfWalls.transform.parent = newRoom.transform;
+                            doorPlacedTop = false;
+                        }
+                        else
+                        {
+                            GameObject topWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                            topWalls.transform.parent = newRoom.transform;
+                        }
                     }
                     else if (forbiddenX[_x] == true && forbiddenY[_y] == true)
                     {
                         GameObject door = Instantiate(room.door, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                        doorLocalScale = door.transform.localScale;
+                        doorLocalScale.x = doorLocalScale.x * -1;
+                        door.transform.localScale = doorLocalScale;
                         door.transform.parent = newRoom.transform;
+                        doorPlacedTop = true;
                     }
                     else
                     {
-                        GameObject topWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
-                        topWalls.transform.parent = newRoom.transform;
+                        if (doorPlacedTop == true)
+                        {
+                            GameObject topHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                            doorLocalScale = topHalfWalls.transform.localScale;
+                            doorLocalScale.x = doorLocalScale.x * -1;
+                            topHalfWalls.transform.localScale = doorLocalScale;
+                            topHalfWalls.transform.parent = newRoom.transform;
+                            doorPlacedTop = false;
+                        }
+                        else
+                        {
+                            GameObject topWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                            topWalls.transform.parent = newRoom.transform;
+                        }
                     }
                 }
+
+                //Left Wall Generator
                 if (_x == 0)
                 {
                     Vector2 v2Temp = v2;
                     v2Temp.x = v2.x;
+                    Vector2 doorLocalScale;
 
                     if ((_y == forbiddenY.Length - 1 && _x == 0) || (_x == 0 && _y == 0))
                     {
@@ -129,31 +214,80 @@ public class RoomGenerator : MonoBehaviour
                     }
                     else if (forbiddenX[_x] == true && forbiddenY[_y] == true)
                     {
-                        GameObject door = Instantiate(room.door, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
-                        door.transform.parent = newRoom.transform;
+                        if (doorPlacedLeft == true)
+                        {
+                            GameObject leftHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            doorLocalScale = leftHalfWalls.transform.localScale;
+                            doorLocalScale.x = doorLocalScale.x * -1;
+                            leftHalfWalls.transform.localScale = doorLocalScale;
+                            leftHalfWalls.transform.parent = newRoom.transform;
+                            doorPlacedLeft = false;
+                        }
+                        else
+                        {
+                            GameObject door = Instantiate(room.door, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            doorLocalScale = door.transform.localScale;
+                            doorLocalScale.x = doorLocalScale.x * -1;
+                            door.transform.localScale = doorLocalScale;
+                            door.transform.parent = newRoom.transform;
+                            doorPlacedLeft = true;
+                        }
                     }
                     else
                     {
-                        GameObject leftWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
-                        leftWalls.transform.parent = newRoom.transform;
+                        if (doorPlacedLeft == true)
+                        {
+                            GameObject leftHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            doorLocalScale = leftHalfWalls.transform.localScale;
+                            doorLocalScale.x = doorLocalScale.x * -1;
+                            leftHalfWalls.transform.localScale = doorLocalScale;
+                            leftHalfWalls.transform.parent = newRoom.transform;
+                            doorPlacedLeft = false;
+                        }
+                        else
+                        {
+                            GameObject leftWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            leftWalls.transform.parent = newRoom.transform;
+                        }
                     }
                 }
+
+                //Right Wall Generator
                 if (_x == rX - 1)
                 {
-                    if ((_x == forbiddenX.Length-1 && _y == 0) || (_x == forbiddenX.Length - 1 && _y == forbiddenY.Length - 1))
+                    if ((_x == forbiddenX.Length - 1 && _y == 0) || (_x == forbiddenX.Length - 1 && _y == forbiddenY.Length - 1))
                     {
-                        GameObject rightWalls = Instantiate(room.wall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
-                        rightWalls.transform.parent = newRoom.transform;
+                        if (doorPlacedRight == true)
+                        {
+                            GameObject rightHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                            rightHalfWalls.transform.parent = newRoom.transform;
+                            doorPlacedRight = false;
+                        }
+                        else
+                        {
+                            GameObject rightWalls = Instantiate(room.wall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                            rightWalls.transform.parent = newRoom.transform;
+                        }
                     }
                     else if (forbiddenX[_x] == true && forbiddenY[_y] == true)
                     {
                         GameObject door = Instantiate(room.door, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
                         door.transform.parent = newRoom.transform;
+                        doorPlacedRight = true;
                     }
                     else
                     {
-                        GameObject rightWalls = Instantiate(room.wall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
-                        rightWalls.transform.parent = newRoom.transform;
+                        if (doorPlacedRight == true)
+                        {
+                            GameObject rightHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                            rightHalfWalls.transform.parent = newRoom.transform;
+                            doorPlacedRight = false;
+                        }
+                        else
+                        {
+                            GameObject rightWalls = Instantiate(room.wall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                            rightWalls.transform.parent = newRoom.transform;
+                        }
                     }
                 }
                 _x++;
@@ -247,6 +381,36 @@ public class RoomGenerator : MonoBehaviour
             else if (layouts[x] == 'f')
             {
                 objectToGenerate = room.furniture[5];
+                x++;
+                nextC = x;
+            }
+            else if (layouts[x] == 'g')
+            {
+                objectToGenerate = room.furniture[6];
+                x++;
+                nextC = x;
+            }
+            else if (layouts[x] == 'h')
+            {
+                objectToGenerate = room.furniture[7];
+                x++;
+                nextC = x;
+            }
+            else if (layouts[x] == 'i')
+            {
+                objectToGenerate = room.furniture[8];
+                x++;
+                nextC = x;
+            }
+            else if (layouts[x] == 'j')
+            {
+                objectToGenerate = room.furniture[9];
+                x++;
+                nextC = x;
+            }
+            else if (layouts[x] == 'k')
+            {
+                objectToGenerate = room.furniture[10];
                 x++;
                 nextC = x;
             }

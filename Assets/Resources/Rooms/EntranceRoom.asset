@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aaaa78adb154541479db27d2cb62caa4, type: 3}
-  m_Name: ElevatorRoom
+  m_Name: Entrance
   m_EditorClassIdentifier: 
-  roomType: Elevator
+  roomType: Entrance
   wall: {fileID: 300425294304570222, guid: a7f2abd125c5c574a9d07449d6af2961, type: 3}
   halfWall: {fileID: 300425294304570222, guid: 13dc85cebb98dc64b9789ae48cf98e75, type: 3}
   wallCorner: {fileID: 300425294304570222, guid: 41dde6a0f6b0c6643b68ef0f4bb4a3c2,
     type: 3}
   door: {fileID: 300425294304570222, guid: 6ba506a9ba52f09448975e2c6486c906, type: 3}
-  floor: {fileID: 4478715479393370695, guid: 765082d5eae742c45b969230be13ac46, type: 3}
+  floor: {fileID: 3636157490044775428, guid: 711cec2dd22801044adc0f8b4f34ee40, type: 3}
   furniture:
   - {fileID: 4002979554525059714, guid: 9a0521e50c53e794294ce8e358348071, type: 3}
   - {fileID: 575432821271881660, guid: ed5eaa2cdb020ca4bbd76462b1cb1c05, type: 3}
