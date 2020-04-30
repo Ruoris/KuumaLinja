@@ -8,20 +8,19 @@ public class EnemyPshoot : MonoBehaviour
 
     private float fireRate;
     private float canFire;
+    public bool readyToShoot;
     public float counter;
-    public float explosionCounter = 3;
     public AudioSource gunSound;
 
     public Transform firePoint;
-    public GameObject player;
-    public GameObject bulletprefab, flameprefab, grenadeprefab, gunFlareAnimation, explosion;
+    public GameObject enemy;
+    public GameObject bulletprefab, gunFlareAnimation;
 
 
 
     void Start()
     {
-
-        explosionCounter = 3;
+        readyToShoot = false;
     }
 
     void Update()
@@ -30,6 +29,7 @@ public class EnemyPshoot : MonoBehaviour
         bool emptyMagazine = GetComponent<EnemyWeapons>().emptyMagazine;
         gunFlareAnimation.SetActive(false);
         bool pursuing = GetComponent<EnemyController>().GetPursuing();
+
         if (pursuing == true && fireRate < canFire && !emptyMagazine)
         {
 
@@ -56,58 +56,44 @@ public class EnemyPshoot : MonoBehaviour
 
     void Fire()
     {
-        canFire = 0;
-        counter = 0;
-        gunSound.Play();
-
-        int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
-        fireRate = GetComponent<EnemyWeapons>().fireRate;
-        bulletForce = GetComponent<EnemyWeapons>().bulletForce;
-
-        var tempBullet = (GameObject)Instantiate(bulletprefab, firePoint.position, firePoint.rotation);
-
-        if (equippedGun == 5 || equippedGun == 6)
+        bool playerDetected = GetComponent<EnemyController>().playerDetected;
+        if(playerDetected && !readyToShoot)
         {
-            gunSound.Stop();
-            // if weapon is flamethrower or grenade
-
-            tempBullet = (GameObject)Instantiate(flameprefab, firePoint.position, firePoint.rotation);
-            //if (equippedGun == 6)
-            //{
-            //    tempBullet = (GameObject)Instantiate(grenadeprefab, firePoint.position, firePoint.rotation);
-
-            //    counter += Time.deltaTime;
-
-            //    if(counter >= explosionCounter)
-            //    {
-            //        Instantiate(explosion, grenadeprefab.transform.position, Quaternion.identity);
-            //    }
-            //    Destroy(tempBullet, 3.1f);
-            //}
-
-            GameObject duplicate = GameObject.Find("bullet(Clone)");
-            if (duplicate)
-            {
-                Destroy(duplicate.gameObject);
-            }
+            StartCoroutine("FireCooldown");
         }
-
-        Rigidbody2D tempBulletRB = tempBullet.GetComponent<Rigidbody2D>();
-
-        // sets the random spread of the weapons
-        float spreadAngle = Random.Range(19, 5);
-
-        var x = firePoint.position.x - player.transform.position.x;
-        var y = firePoint.position.y - player.transform.position.y;
-        float rotateAngle = spreadAngle + (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
-
-        var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
-
-        tempBulletRB.velocity = MovementDirection * bulletForce;
-
-        if (equippedGun != 6)
+        
+        if(readyToShoot)
         {
+            canFire = 0;
+            counter = 0;
+            gunSound.Play();
+
+            int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
+            fireRate = GetComponent<EnemyWeapons>().fireRate;
+            bulletForce = GetComponent<EnemyWeapons>().bulletForce;
+
+            var tempBullet = (GameObject)Instantiate(bulletprefab, firePoint.position, Quaternion.identity);
+
+            Rigidbody2D tempBulletRB = tempBullet.GetComponent<Rigidbody2D>();
+
+            // sets the random spread of the weapons
+            float spreadAngle = Random.Range(-10, 10);
+
+            var x = firePoint.position.x - enemy.transform.position.x;
+            var y = firePoint.position.y - enemy.transform.position.y;
+            float rotateAngle = spreadAngle + (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
+
+            var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
+
+            tempBulletRB.velocity = MovementDirection * bulletForce;
+
             Destroy(tempBullet, 0.3f);
         }
+    }
+
+    IEnumerator FireCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        readyToShoot = true;
     }
 }

@@ -20,18 +20,18 @@ public class DoorScript : MonoBehaviour
         var doorAnimation = GetComponent<Animator>();
         var doorSound = GetComponent<AudioSource>();
 
-        if (other.gameObject.name == "Player" && gameObject.name == "DoorDown")
+        if (other.gameObject.name == "Player(Clone)" && gameObject.name == "DoorDown")
         {
             doorAnimation.enabled = true;
-            //doorSound.enabled = true;
+            doorSound.enabled = true;
             upSide.SetActive(false);
         }
 
-        else if (other.gameObject.name == "Player" && gameObject.name == "DoorUp")
+        else if (other.gameObject.name == "Player(Clone)" && gameObject.name == "DoorUp")
         {
 
             doorAnimation.enabled = true;
-            //doorSound.enabled = true;
+            doorSound.enabled = true;
             downSide.SetActive(false);
         }
     }

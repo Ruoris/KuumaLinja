@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Weapons : MonoBehaviour
 {
-    public GameObject pistol, shotgun, assaultRifle, pipe;
+    public GameObject pistol, shotgun, assaultRifle;
     public GameObject player, playerMelee, playerOneHand, playerBothHands, pipeHands;
     public int bulletForce;
     public float fireRate;
@@ -12,7 +12,8 @@ public class Weapons : MonoBehaviour
 
     //public AudioClip equipClip;
 
-    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, pistolDrop, shotGunDrop, rifleDrop, gameThrow, secondaryWeaponContainer;
+    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, secondaryWeaponContainer;
+    public GameObject pistolDrop, shotGunDrop, rifleDrop, gameThrow;
     public GameObject[] otherWeapons;
     public Transform firePoint;
 
@@ -26,6 +27,15 @@ public class Weapons : MonoBehaviour
     {
         emptyMagazine = true;
         ammoLeft = 0;
+
+        secondaryWeaponContainer = GameObject.Find("Misc stuff/Canvas/otherWeapon/secondaryWeaponContainer");
+        otherWeapons[0] = GameObject.Find("Misc stuff/Canvas/otherWeapon/uiPistol");
+        otherWeapons[1] = GameObject.Find("Misc stuff/Canvas/otherWeapon/uiShotgun");
+        otherWeapons[2] = GameObject.Find("Misc stuff/Canvas/otherWeapon/uiAR");
+        uiAmmoCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiBulletCounter");
+        uiShellCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiShotgunShellCounter");
+        uiRifleCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiRifleCounter");
+
     }
 
     // Update is called once per frame
@@ -50,12 +60,13 @@ public class Weapons : MonoBehaviour
 
     void SecondaryWeapon()
     {
+        secondaryWeaponContainer.SetActive(false);
 
 
 
         if (previousEquippedGun == 0)
         {
-            secondaryWeaponContainer.SetActive(false);
+            secondaryWeaponContainer.SetActive(true);
             otherWeapons[0].SetActive(false);
             otherWeapons[1].SetActive(false);
             otherWeapons[2].SetActive(false);
@@ -91,8 +102,8 @@ public class Weapons : MonoBehaviour
     void EquipGun()
     {
         pipeHands.SetActive(false);
-        pipe.SetActive(false);
-        bulletForce = 30;
+        //pipe.SetActive(false);
+        bulletForce = 10;
 
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
         {
@@ -131,11 +142,13 @@ public class Weapons : MonoBehaviour
 
                     playerBothHands.SetActive(false);
                     playerOneHand.SetActive(false);
-                    pipeHands.SetActive(true);
-                    pipe.SetActive(true);
 
-                    //playerMelee.SetActive(false);
-                    //uiWeaponSelection.SetActive(false);
+                    bool melee = GetComponent<Pshoot>().melee;
+                    if(melee == false)
+                    {
+                        pipeHands.SetActive(true);
+                    }
+
                     emptyMagazine = true;
                     ammoCapacity = 0;
                     break;
@@ -196,32 +209,6 @@ public class Weapons : MonoBehaviour
                     emptyMagazine = false;
                     fireRate = 0.1f;
                     break;
-                    // alla piilotettuna lisää aseita
-                    //case 4:
-                    //    machineGun.SetActive(true);
-                    //    playerBothHands.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    break;
-
-                    //case 5:
-                    //    flameThrower.SetActive(true);
-                    //    playerBothHands.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    ammoCapacity = 300;
-                    //    fireRate = 0.005f;
-                    //    break;
-
-                    //case 6:
-                    //    grenade.SetActive(true);
-                    //    playerOneHand.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    ammoCapacity = 3;
-                    //    bulletForce = 10;
-                    //    fireRate = 2f;
-                    //    break;
-
-                    //default:
-                    //    break;
             }
         }
     }

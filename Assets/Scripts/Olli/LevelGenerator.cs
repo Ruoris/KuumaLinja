@@ -19,7 +19,7 @@ public class LevelGenerator : MonoBehaviour
     public string nextFloor;
 
     public GameObject player;
-    public GameObject aim;
+    //public GameObject aim;
 
     public GameObject hallwayFloor;
     public GameObject hallwayCorners;
@@ -50,8 +50,8 @@ public class LevelGenerator : MonoBehaviour
         {
             Vector2 temp2 = new Vector2(1, 1);
             GameObject _player = Instantiate(player, temp2, transform.rotation = new Quaternion(0, 0, 0, 0));
-            GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
-            _player.GetComponent<PlayerCtrl>().aim = _aim;
+            //GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+            //_player.GetComponent<PlayerCtrl>().aim = _aim;
             levelController.GetComponent<LevelController>().playerSpawned = true;
         }
         GetRooms();
