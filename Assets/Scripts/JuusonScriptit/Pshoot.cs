@@ -18,6 +18,8 @@ public class Pshoot : MonoBehaviour
     private GameObject ammopanel;
     public bool melee;
 
+    public GameObject dialogueTrigger;
+
 
 
     void Start()
@@ -26,6 +28,8 @@ public class Pshoot : MonoBehaviour
 
     void Update()
     {
+        dialogueTrigger = GameObject.Find("DialogueTrigger");
+
         meleeAnimation.transform.position = player.transform.position;
         meleeAnimation.transform.rotation = player.transform.rotation;
 
@@ -79,7 +83,7 @@ public class Pshoot : MonoBehaviour
     {
         while(true && melee == true)
         {
-            Debug.Log("melee");
+            //Debug.Log("melee");
 
             yield return new WaitForSeconds(delay);
             meleeAnimation.SetActive(false);

@@ -13,7 +13,7 @@ public class EnemyController : MonoBehaviour
     public Vector3 playerLastPosition;
     RaycastHit2D rayToPlayer;
     public float speed;
-    float wallDetectionDistance = 0.05f;
+    float wallDetectionDistance = 0.2f;
     float playerDetectionDistance = 2f;
     float distanceFromLastLocation = 1f; //kuinka pitkälle vihollinen jahtaa pelaajaa
     public GameObject collisionDetector;
@@ -45,7 +45,6 @@ public class EnemyController : MonoBehaviour
     }
     void FixedUpdate()
     {
-
         Movement();
         PlayerDetect();
         if (gameObject.GetComponent<SpriteRenderer>().enabled == true && Time.time > 1)
@@ -104,6 +103,7 @@ public class EnemyController : MonoBehaviour
             if (obstacleCheck.collider.gameObject.CompareTag("Wall"))
             {
                 StartCoroutine("BackToPatrol");
+                randomDirection = Random.Range(1, 4);
 
                 if (randomDirection == 1)
                 {
@@ -161,19 +161,22 @@ public class EnemyController : MonoBehaviour
         if (patrolling)
         {
             //speed = 0.4f;
-            randomDirection = Random.Range(1, 4);
+
         }
     }
 
     void PlayerDetect()
     {
-        playerDetected = true;
+
         Vector3 pos = this.transform.InverseTransformPoint(player.transform.position);
         //   Debug.Log("POS: "+ pos + "distance: " + Vector3.Distance(transform.position, player.transform.position));
         if (rayToPlayer.collider != null)
         {
+
+
             if (rayToPlayer.collider.CompareTag("Player") && Vector3.Distance(transform.position, player.transform.position) < playerDetectionDistance)
             {
+                playerDetected = true;
                 patrolling = false;
                 pursuing = true;
                 goingtoweapon = false;
@@ -181,6 +184,8 @@ public class EnemyController : MonoBehaviour
 
             else
             {
+                playerDetected = false;
+
                 if (pursuing)
                 {
                     goingtolastloc = true;
@@ -206,11 +211,6 @@ public class EnemyController : MonoBehaviour
         {
             dying = true;
             KilledByBullet();
-        }
-
-        if (other.gameObject.CompareTag("Wall"))
-        {
-            //speed = -0.5f;
         }
     }
 }

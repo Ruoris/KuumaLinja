@@ -9,19 +9,23 @@ public class Pause : MonoBehaviour
     public bool paused;
     public GameObject backButton;
     public GameObject audioSettings;
-
+    public GameObject dialogueTrigger, dialogueTrigger2;
 
 
     void Awake()
     {
         paused = false;
-
+        dialogueTrigger = GameObject.Find("DialogueTrigger1");
+        dialogueTrigger2 = GameObject.Find("DialogueTrigger2");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Pauser();
+        if (dialogueTrigger.GetComponent<DialogueScript>().dialogue == false && dialogueTrigger2.GetComponent<DialogueiScript2>().dialogue == false)
+        {
+            Pauser();
+        }
     }
 
     public void Unpause()
