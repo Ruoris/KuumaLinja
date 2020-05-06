@@ -37,6 +37,7 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         location = new Vector2(0, 0);
+        Instantiate(mainCamera, player.transform.position + new Vector3(0, 0, -10), player.transform.rotation);
 
         levelController = GameObject.FindGameObjectWithTag("LevelController");
 
@@ -49,7 +50,7 @@ public class LevelGenerator : MonoBehaviour
         if (levelController.GetComponent<LevelController>().playerSpawned == false)
         {
             Vector2 temp2 = new Vector2(1, 1);
-            GameObject _player = Instantiate(player, temp2, transform.rotation = new Quaternion(0, 0, 0, 0));
+            //GameObject _player = Instantiate(player, temp2, transform.rotation = new Quaternion(0, 0, 0, 0));
             //GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
             //_player.GetComponent<PlayerCtrl>().aim = _aim;
             levelController.GetComponent<LevelController>().playerSpawned = true;

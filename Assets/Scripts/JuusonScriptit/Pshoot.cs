@@ -28,7 +28,7 @@ public class Pshoot : MonoBehaviour
 
     void Update()
     {
-        dialogueTrigger = GameObject.Find("DialogueTrigger");
+        //dialogueTrigger = GameObject.Find("DialogueTrigger");
 
         meleeAnimation.transform.position = player.transform.position;
         meleeAnimation.transform.rotation = player.transform.rotation;

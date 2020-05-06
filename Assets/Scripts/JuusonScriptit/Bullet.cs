@@ -7,9 +7,13 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.tag == "Untagged")
         {
-            Destroy(gameObject);
+            Physics2D.IgnoreCollision(other.collider, other.collider);
         }
+        //if (other.gameObject.CompareTag("Wall") || other.gameObject.CompareTag("Enemy"))
+        //{
+        //    Destroy(gameObject);
+        //}
     }
 }

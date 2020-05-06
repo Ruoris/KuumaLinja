@@ -28,7 +28,7 @@ public class PlayerCtrl : MonoBehaviour
         movementSpeed = 0;
 
         Instantiate(aim, player.transform.position, player.transform.rotation);
-        Instantiate(playerCamera, player.transform.position, player.transform.rotation);
+        //Instantiate(playerCamera, player.transform.position + new Vector3(0,0,-10), player.transform.rotation);
 
         playerRB = GetComponent<Rigidbody2D>();
         
@@ -43,7 +43,7 @@ public class PlayerCtrl : MonoBehaviour
         FaceMouse();
         Crouch();
 
-        playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
+        //playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");

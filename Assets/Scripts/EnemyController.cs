@@ -33,6 +33,8 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         enemyWeapon.SetActive(false);
+        footPrints.SetActive(false);
+        enemySprite.SetActive(false);
         Physics2D.queriesStartInColliders = false;
         player = GameObject.FindGameObjectWithTag("Player");
         playerLastPosition = player.transform.position;

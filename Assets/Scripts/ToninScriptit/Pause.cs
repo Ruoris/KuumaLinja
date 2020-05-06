@@ -9,7 +9,7 @@ public class Pause : MonoBehaviour
     public bool paused;
     public GameObject backButton;
     public GameObject audioSettings;
-    public GameObject dialogueTrigger, dialogueTrigger2;
+    public GameObject dialogueTrigger, dialogueTrigger2, dialogueTrigger3, dialogueTrigger4;
 
 
     void Awake()
@@ -17,12 +17,14 @@ public class Pause : MonoBehaviour
         paused = false;
         dialogueTrigger = GameObject.Find("DialogueTrigger1");
         dialogueTrigger2 = GameObject.Find("DialogueTrigger2");
+        dialogueTrigger3 = GameObject.Find("DialogueTrigger3");
+        dialogueTrigger4 = GameObject.Find("DialogueTrigger4");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (dialogueTrigger.GetComponent<DialogueScript>().dialogue == false && dialogueTrigger2.GetComponent<DialogueiScript2>().dialogue == false)
+        if (dialogueTrigger.GetComponent<DialogueScript>().dialogue == false && dialogueTrigger2.GetComponent<DialogueScript>().dialogue == false && dialogueTrigger3.GetComponent<DialogueScript>().dialogue == false && dialogueTrigger4.GetComponent<DialogueScript>().dialogue == false)
         {
             Pauser();
         }
