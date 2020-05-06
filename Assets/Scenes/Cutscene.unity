@@ -329,153 +329,132 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &4963803247067140801
+--- !u!1001 &1886773325
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4963803246173178480, guid: 19bb52dc91a250b49a1feceec0d24def,
-        type: 3}
-      propertyPath: sentences.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 4963803246173178480, guid: 19bb52dc91a250b49a1feceec0d24def,
-        type: 3}
-      propertyPath: sentences.Array.data[2]
-      value: It is already dark outside as you step inside the building.  Not knowing
-        what lies ahead, you start the investigation.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4963803246173178480, guid: 19bb52dc91a250b49a1feceec0d24def,
-        type: 3}
-      propertyPath: sentences.Array.data[0]
-      value: World has fallen into chaos. A new drug capable of mutating humans into
-        beasts has gone viral and now instead of ingesting the drug, the effects
-        of it can be transferred from human to human with just touch.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4963803246173178480, guid: 19bb52dc91a250b49a1feceec0d24def,
-        type: 3}
-      propertyPath: sentences.Array.data[1]
-      value: You are an agent tasked with infiltrating a skyscraper to stop the organization
-        believed to be behind this.
-      objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357140, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978528, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_Name
-      value: DialogueCanvas
+      value: DialogueTrigger1
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.938
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.75
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 2525688594382978541, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 7489473697128123623, guid: 7ac85316087ea874291e906f15af5372,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489473697128123627, guid: 7ac85316087ea874291e906f15af5372,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489473697128123627, guid: 7ac85316087ea874291e906f15af5372,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489473697128123627, guid: 7ac85316087ea874291e906f15af5372,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489473697128123627, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 7489473697128123627, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 7489473697932465091, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 0
+      propertyPath: sentences.Array.size
+      value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 7489473697932465091, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 0
+      propertyPath: sentences.Array.data[0]
+      value: 'World has fallen into chaos. A new drug capable of mutating humans
+        into beasts has gone viral and now instead of ingesting the drug, the effects
+        of it can be transferred from human to human with just touch. '
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 7489473697932465091, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
+      propertyPath: sentences.Array.data[1]
+      value: You are an agent tasked with investigating the matter to stop the organization
+        believed to be behind this.
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 7489473697932465091, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
+      propertyPath: sentences.Array.data[2]
+      value: 'It is dark and rainy outside as you step inside the building. '
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
+    - target: {fileID: 7489473697932465091, guid: 7ac85316087ea874291e906f15af5372,
         type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
+      propertyPath: sentences.Array.data[3]
+      value: Not knowing what lies ahead, you start the investigation.
       objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
-        type: 3}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357144, guid: 19bb52dc91a250b49a1feceec0d24def,
-        type: 3}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4963803246977357145, guid: 19bb52dc91a250b49a1feceec0d24def,
-        type: 3}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 818086254}
     m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 19bb52dc91a250b49a1feceec0d24def, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 7ac85316087ea874291e906f15af5372, type: 3}

@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 69640893337760605}
   - component: {fileID: 69640893337760604}
   - component: {fileID: 69640893337760601}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -216,6 +216,7 @@ MonoBehaviour:
   meleeAnimation: {fileID: 387397056410143226}
   pipeHands: {fileID: 387397054322394624}
   melee: 0
+  dialogueTrigger: {fileID: 0}
 --- !u!114 &69640893337760605
 MonoBehaviour:
   m_ObjectHideFlags: 0
