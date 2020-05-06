@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 788313701594616249}
   - component: {fileID: 5769784641917822349}
   m_Layer: 8
-  m_Name: desk 1
-  m_TagString: Wall
+  m_Name: desk 3
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

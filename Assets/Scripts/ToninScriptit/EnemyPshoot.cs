@@ -36,7 +36,7 @@ public class EnemyPshoot : MonoBehaviour
             Fire();
             gunFlareAnimation.SetActive(true);
 
-            GetComponent<EnemyWeapons>().ammoLeft--;
+
 
             if (equippedGun == 2)
             {
@@ -56,6 +56,10 @@ public class EnemyPshoot : MonoBehaviour
 
     void Fire()
     {
+        int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
+        fireRate = GetComponent<EnemyWeapons>().fireRate;
+        bulletForce = GetComponent<EnemyWeapons>().bulletForce;
+
         bool playerDetected = GetComponent<EnemyController>().playerDetected;
         if(playerDetected && !readyToShoot)
         {
@@ -64,13 +68,12 @@ public class EnemyPshoot : MonoBehaviour
         
         if(readyToShoot)
         {
+            GetComponent<EnemyWeapons>().ammoLeft--;
             canFire = 0;
             counter = 0;
             gunSound.Play();
 
-            int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
-            fireRate = GetComponent<EnemyWeapons>().fireRate;
-            bulletForce = GetComponent<EnemyWeapons>().bulletForce;
+
 
             var tempBullet = (GameObject)Instantiate(bulletprefab, firePoint.position, Quaternion.identity);
 

@@ -188,6 +188,8 @@ MonoBehaviour:
   pauser: {fileID: 0}
   crouching: 0
   playerRB: {fileID: 69640893337760600}
+  dialogueTrigger: {fileID: 6749529398471079634, guid: 98db27a6161865b48b292147d7ec3875,
+    type: 3}
 --- !u!114 &6028789882009322062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,8 +273,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df9b501d4bb1d9640ab79f92c87ce115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  viewRadius: 3.5
-  viewAngle: 130
+  viewRadius: 3.2
+  viewAngle: 160
   targetMask:
     serializedVersion: 2
     m_Bits: 2560
@@ -282,9 +284,9 @@ MonoBehaviour:
   player: {fileID: 69640893337760595}
   enemySeen: 0
   visibleTargets: []
-  meshResolution: 0.4
-  edgeResolveIterations: 4
-  edgeDstThreshold: 0.5
+  meshResolution: 0.5
+  edgeResolveIterations: 0
+  edgeDstThreshold: 0
   viewMeshFilter: {fileID: 387397055336159785}
 --- !u!114 &69640893337760601
 MonoBehaviour:
