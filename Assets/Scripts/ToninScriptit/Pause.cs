@@ -9,24 +9,31 @@ public class Pause : MonoBehaviour
     public bool paused;
     public GameObject backButton;
     public GameObject audioSettings;
-    public GameObject dialogueTrigger, dialogueTrigger2, dialogueTrigger3, dialogueTrigger4;
+    public GameObject DT1, DT2, DT3, DT4, DT5, DT6; // dialogue trigger
 
 
     void Awake()
     {
         paused = false;
-        dialogueTrigger = GameObject.Find("DialogueTrigger1");
-        dialogueTrigger2 = GameObject.Find("DialogueTrigger2");
-        dialogueTrigger3 = GameObject.Find("DialogueTrigger3");
-        dialogueTrigger4 = GameObject.Find("DialogueTrigger4");
+        DT1 = GameObject.Find("DT1");
+        DT2 = GameObject.Find("DT2");
+        DT3 = GameObject.Find("DT3");
+        DT4 = GameObject.Find("DT4");
+        DT5 = GameObject.Find("DT5");
+        DT6 = GameObject.Find("DT6");
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (dialogueTrigger.GetComponent<DialogueScript>().dialogue == false && dialogueTrigger2.GetComponent<DialogueScript>().dialogue == false && dialogueTrigger3.GetComponent<DialogueScript>().dialogue == false && dialogueTrigger4.GetComponent<DialogueScript>().dialogue == false)
+        if (DT1 != null && DT2 != null && DT3 != null && DT4 != null && DT5 != null && DT6 != null)
         {
-            Pauser();
+            if (DT1.GetComponent<DialogueScript>().dialogue == false && DT2.GetComponent<DialogueScript>().dialogue == false && DT3.GetComponent<DialogueScript>().dialogue == false && 
+                DT4.GetComponent<DialogueScript>().dialogue == false && DT5.GetComponent<DialogueScript>().dialogue == false && DT6.GetComponent<DialogueScript>().dialogue == false)
+            {
+                Pauser();
+            }
         }
     }
 

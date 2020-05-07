@@ -73,8 +73,6 @@ public class EnemyPshoot : MonoBehaviour
             counter = 0;
             gunSound.Play();
 
-
-
             var tempBullet = (GameObject)Instantiate(bulletprefab, firePoint.position, Quaternion.identity);
 
             Rigidbody2D tempBulletRB = tempBullet.GetComponent<Rigidbody2D>();
@@ -96,7 +94,7 @@ public class EnemyPshoot : MonoBehaviour
 
     IEnumerator FireCooldown()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         readyToShoot = true;
     }
 }

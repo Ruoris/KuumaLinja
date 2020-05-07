@@ -14,7 +14,7 @@ public class TextScript : MonoBehaviour
     public float typingSpeed;
     public GameObject continueButtuon;
     public AudioSource textSound;
-    public GameObject character1, character2;
+    public GameObject character1, character2, character3;
     public bool npc = false;
 
     void Start()
@@ -46,11 +46,23 @@ public class TextScript : MonoBehaviour
                 Debug.Log("character 2 active");
                 character1.SetActive(false);
                 character2.SetActive(true);
+                character3.SetActive(false);
             }
+
+            else if (letter == '~')
+            {
+                npc = true;
+                Debug.Log("character 3 active");
+                character1.SetActive(false);
+                character2.SetActive(false);
+                character3.SetActive(true);
+            }
+
             else if (!npc)
             {
                 character1.SetActive(true);
                 character2.SetActive(false);
+                character3.SetActive(false);
             }
 
             dialoguePause = true;
@@ -91,10 +103,13 @@ public class TextScript : MonoBehaviour
 /*
 World has fallen into chaos. A new drug capable of mutating humans into beasts has gone viral and
 now instead of ingesting the drug, the effects of it can be transferred from human to human with just
-touch. You are an agent tasked with infiltrating a skyscraper to stop the organization
+touch. 
+
+You are an agent tasked with investigating the matter to stop the organization
 believed to be behind this.
 
-It is already dark outside as you step inside the building. 
+It is dark and rainy outside as you step inside the building. 
+
 Not knowing what lies ahead, you start the investigation.
 
 
@@ -123,6 +138,28 @@ Time to take matters to my own hands.
 
 --------------------
 NPC: You can't come in here! It's employees only!
-I come wherever I please.
+I walk wherever I please.
 NPC: No! Guards! Help!
+
+    --------------
+~Help! In here!
+???
+
+    --------------
+Hello? Someone in here?
+~Thank God you're here!
+~They captured me to stop me from giving information to the public!
+What kind of information?
+~The organization I work for went mad and started making monsters out of ordinary people.
+~Me and some of my colleagues tried to stop this but they forced us to make even stronger drugs for them.
+~I... I couldn't bear it... They had gone too far.
+~I tried to escape the company grounds but couldn't get far before they caught me.
+~Maybe you could help the others?
+Where exactly is all this taking place?
+~In the big building, you should be able to see it from here.
+~Please help the others. 
+I doubt I can make it without help.
+~It's dangerous to go alone, take this.
+What a strange thing to say.
+But anyhow, I will take care of this.
  */
