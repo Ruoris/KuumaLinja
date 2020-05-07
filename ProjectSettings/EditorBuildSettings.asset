@@ -9,6 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Cutscene.unity
     guid: 2d10b5380197a0d47895ac5fae5ce8a7
   - enabled: 1
-    path: Assets/Scenes/Olli/Level 1.2.unity
+    path: Assets/Scenes/Olli/Level1.unity
     guid: 8dad8558738ffb94e83e775a01fa235d
   m_configObjects: {}

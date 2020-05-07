@@ -252,9 +252,9 @@ MonoBehaviour:
     type: 3}
   gameThrow: {fileID: 387397055264878871}
   otherWeapons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2240815205682665118, guid: 4a1e3a497c2cd1a418d3fa85e250d6aa, type: 3}
+  - {fileID: 1764569589546099640, guid: f9e03e828832949419606133a7f5393f, type: 3}
+  - {fileID: 8845930403911128201, guid: 3da5ea25f3e680a4288c2b1f3cb98e21, type: 3}
   firePoint: {fileID: 7361711517003233927}
   equippedGun: 0
   ammoCapacity: 0

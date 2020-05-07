@@ -102,7 +102,7 @@ public class EnemyController : MonoBehaviour
 
         if (obstacleCheck.collider != null)
         {
-            if (obstacleCheck.collider.gameObject.CompareTag("Wall"))
+            if (obstacleCheck.collider.gameObject.CompareTag("Wall") || obstacleCheck.collider.gameObject.CompareTag("Untagged"))
             {
                 StartCoroutine("BackToPatrol");
                 randomDirection = Random.Range(1, 4);

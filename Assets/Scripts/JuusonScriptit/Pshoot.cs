@@ -8,7 +8,7 @@ public class Pshoot : MonoBehaviour
     public int shotsFired;
     private float fireRate;
     private float canFire;
-    //public float counter;
+
     public AudioSource gunSound;
 
     public Transform firePoint;
@@ -28,8 +28,6 @@ public class Pshoot : MonoBehaviour
 
     void Update()
     {
-        //dialogueTrigger = GameObject.Find("DialogueTrigger");
-
         meleeAnimation.transform.position = player.transform.position;
         meleeAnimation.transform.rotation = player.transform.rotation;
 
