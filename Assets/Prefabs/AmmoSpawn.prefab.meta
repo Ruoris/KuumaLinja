@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Prefabs/Misc/FlameAnimation.prefab.meta
-guid: f757423320e78c34e9222c293a6797b2
-=======
-guid: b868711a715e2d34294ab21c61676587
->>>>>>> juusonbranch1:Assets/Prefabs/AmmoSpawn.prefab.meta
+guid: e2db6efa37f501a47a08eb2c660e33dd
 PrefabImporter:
   externalObjects: {}
   userData: 

@@ -8,12 +8,6 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-<<<<<<< HEAD
-  - component: {fileID: 3153516057909606036}
-  m_Layer: 0
-  m_Name: AmmoSpawn
-  m_TagString: AmmoSpawn
-=======
   - component: {fileID: 387397055751779116}
   - component: {fileID: 69640893337760606}
   - component: {fileID: 69640893337760600}
@@ -27,7 +21,6 @@ GameObject:
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
->>>>>>> juusonbranch1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,15 +31,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-<<<<<<< HEAD
-  m_GameObject: {fileID: 1913287611420957332}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.053, y: 0.343, z: 0}
-=======
-  m_GameObject: {fileID: 69640893337760595}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
->>>>>>> juusonbranch1
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5226928927627596939}
@@ -154,9 +138,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
-<<<<<<< HEAD
---- !u!1 &5226928927818797503
-=======
 --- !u!50 &69640893337760600
 Rigidbody2D:
   serializedVersion: 4
@@ -364,7 +345,6 @@ MonoBehaviour:
   edgeResolveIterations: 4
   edgeDstThreshold: 0.5
 --- !u!1 &387397054322394624
->>>>>>> juusonbranch1
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
