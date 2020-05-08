@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4002979553945055931}
   m_Layer: 9
   m_Name: ase
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 4002979554414100261}
   m_Layer: 9
   m_Name: gun throw
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -146,8 +146,13 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -461525367
   m_SortingLayer: 2
+<<<<<<< HEAD
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: b0cf70a113b4bad458b63ced60d70fbd, type: 3}
+=======
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 10d6d0123fff0a841a40ddf23b5c5558, type: 3}
+>>>>>>> juusonbranch1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -210,7 +215,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea5f2edbb8d3f5f4e86cfcdceb031a0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   player: {fileID: 5557140388003512128, guid: ef297f99b9bcb4b408dd4ccf8048da63, type: 3}
+=======
+  player: {fileID: 69640893337760595, guid: ef297f99b9bcb4b408dd4ccf8048da63, type: 3}
+>>>>>>> juusonbranch1
   enemy: {fileID: 4002979554525059714}
   aseDroppisjiainti: {fileID: 0}
   pistolDrop: {fileID: 0}
@@ -249,6 +258,7 @@ MonoBehaviour:
   bulletForce: 0
   fireRate: 0
   emptyMagazine: 0
+  reload: 0
   equipClip: {fileID: 0}
   pistolDrop: {fileID: 7792095761249478487, guid: 4a1e3a497c2cd1a418d3fa85e250d6aa,
     type: 3}
@@ -303,8 +313,13 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
+<<<<<<< HEAD
   m_Offset: {x: 0, y: -0.03029542}
   m_Size: {x: 0.19449252, y: 0.1075978}
+=======
+  m_Offset: {x: -0.0009606497, y: -0.012489245}
+  m_Size: {x: 0.2753704, y: 0.21618244}
+>>>>>>> juusonbranch1
   m_Direction: 1
 --- !u!82 &-2432760689772227318
 AudioSource:
@@ -415,7 +430,7 @@ GameObject:
   - component: {fileID: 4002979554662983209}
   m_Layer: 9
   m_Name: WalkAnimation
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -515,7 +530,7 @@ GameObject:
   - component: {fileID: 4002979554702144692}
   m_Layer: 9
   m_Name: EnemySprite
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -573,7 +588,7 @@ SpriteRenderer:
   m_SortingLayerID: -461525367
   m_SortingLayer: 2
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: b0cf70a113b4bad458b63ced60d70fbd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 10d6d0123fff0a841a40ddf23b5c5558, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -597,7 +612,7 @@ GameObject:
   - component: {fileID: 4002979554738376049}
   m_Layer: 9
   m_Name: FlareAnimation
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -685,7 +700,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+<<<<<<< HEAD
 --- !u!1 &4002979554997890369
+=======
+--- !u!1 &4002979555508632948
+>>>>>>> juusonbranch1
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -693,6 +712,7 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 4002979554997890371}
   - component: {fileID: 4002979554997890370}
   m_Layer: 9
@@ -703,11 +723,23 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!4 &4002979554997890371
+=======
+  - component: {fileID: 4002979555508632949}
+  m_Layer: 9
+  m_Name: AmmoSpawn
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4002979555508632949
+>>>>>>> juusonbranch1
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 4002979554997890369}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.092, y: 0.076, z: 0}
@@ -767,6 +799,18 @@ SpriteRenderer:
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &4002979555181973576
+=======
+  m_GameObject: {fileID: 4002979555508632948}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.129, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4002979554738376051}
+  m_Father: {fileID: 4002979554525059705}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4002979555632240178
+>>>>>>> juusonbranch1
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -777,8 +821,13 @@ GameObject:
   - component: {fileID: 4002979555181973577}
   - component: {fileID: 4002979555181973578}
   m_Layer: 9
+<<<<<<< HEAD
   m_Name: EnemySprite
   m_TagString: Untagged
+=======
+  m_Name: Weapon Grenade
+  m_TagString: Enemy
+>>>>>>> juusonbranch1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -857,8 +906,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4002979555508632949}
   m_Layer: 9
+<<<<<<< HEAD
   m_Name: AmmoSpawn
   m_TagString: Untagged
+=======
+  m_Name: CollisionDetector
+  m_TagString: Enemy
+>>>>>>> juusonbranch1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -884,6 +938,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4002979555632240172}
@@ -910,6 +965,19 @@ Transform:
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4002979555632240179
+=======
+  m_GameObject: {fileID: 5252996218892109566}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0033281147, y: -0.023131937}
+  serializedVersion: 2
+  m_Radius: 0.09304878
+--- !u!212 &7381773471897736163
+>>>>>>> juusonbranch1
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -971,6 +1039,19 @@ PrefabInstance:
       propertyPath: m_Name
       value: GunSound
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
+    - target: {fileID: 5512089778880251788, guid: 3b7b30189db0afd4d8f6fb6ccb5a1857,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5512089778880251788, guid: 3b7b30189db0afd4d8f6fb6ccb5a1857,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+>>>>>>> juusonbranch1
     - target: {fileID: 5512089778880251790, guid: 3b7b30189db0afd4d8f6fb6ccb5a1857,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1117,13 +1198,113 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2317068116596282495, guid: 50b052f2c4f8ab9429262fc3b5fd9141,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 50b052f2c4f8ab9429262fc3b5fd9141, type: 3}
 --- !u!4 &8295605604073107271 stripped
+<<<<<<< HEAD
+=======
 Transform:
   m_CorrespondingSourceObject: {fileID: 2317068116596282494, guid: 50b052f2c4f8ab9429262fc3b5fd9141,
     type: 3}
   m_PrefabInstance: {fileID: 5996552201133013817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8295605604073107270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2317068116596282495, guid: 50b052f2c4f8ab9429262fc3b5fd9141,
+    type: 3}
+  m_PrefabInstance: {fileID: 5996552201133013817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7364928398137823350
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4002979554525059705}
+    m_Modifications:
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.092
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.076
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046903, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_Name
+      value: Weapon Shotgun
+      objectReference: {fileID: 0}
+    - target: {fileID: 5888469609048046903, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+        type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4693b77a9e6f8cd45bc7828e7ce50639, type: 3}
+--- !u!4 &4002979554997890371 stripped
+>>>>>>> juusonbranch1
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5888469609048046901, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+    type: 3}
+  m_PrefabInstance: {fileID: 7364928398137823350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4002979554997890369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5888469609048046903, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
+    type: 3}
+  m_PrefabInstance: {fileID: 7364928398137823350}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &8295605604073107270 stripped
 GameObject:
