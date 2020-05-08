@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Room : ScriptableObject
 {
     public new string roomType;
+    public int difficulty;
 
     public GameObject wall;
     public GameObject halfWall;

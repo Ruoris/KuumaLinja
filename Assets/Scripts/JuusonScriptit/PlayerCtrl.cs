@@ -6,9 +6,9 @@ using UnityEngine.Audio;
 public class PlayerCtrl : MonoBehaviour
 {
     private float movementSpeed;
-    public GameObject player, aim, playerCamera, startPoint;
-    public GameObject walkAnimation, deathAnimation, bloodFrame;
-    public int playerHealth = 1;
+    public GameObject player, aim, playerCamera;
+    public GameObject walkAnimation, deathAnimation;
+    private int playerHealth = 1;
     public GameObject pauser;
     public bool crouching;
 
@@ -18,29 +18,24 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
         pauser = GameObject.FindWithTag("soundsettings");
         player.SetActive(true);
         movementSpeed = 1.8f;
 
-        //Vector3 campPos = player.transform.position + new Vector3(0, 0, -10);
-        Instantiate(aim, player.transform.position, player.transform.rotation);
-        Instantiate(playerCamera, player.transform.position, player.transform.rotation);
-
-
-
         // lisätään kunhan saadaan playerin prefab "valmiiksi"
-        //Instantiate(player, startPoint.transform.position, Quaternion.identity);
+        //Instantiate(PlayerPrefab, startPoint.transform.position, Quaternion.identity);
 
         playerRB = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        //if (pauser.GetComponent<Pause>().paused == false)
+        if (pauser.GetComponent<Pause>().paused == false)
         {
             FaceMouse();
             Crouch();
+            //var walkAnimation = GetComponent<Animator>();
+            //var idle = GetComponent<SpriteRenderer>();
 
             playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
 
@@ -53,6 +48,7 @@ public class PlayerCtrl : MonoBehaviour
                 walkAnimation.SetActive(true);
 
 
+                //walkAnimation.enabled = true;
 
                 walkAnimation.transform.position = player.transform.position;
 
@@ -62,6 +58,7 @@ public class PlayerCtrl : MonoBehaviour
             else
             {
                 walkAnimation.SetActive(false);
+                //walkAnimation.enabled = false;
             }
         }
     }
@@ -90,28 +87,38 @@ public class PlayerCtrl : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
 
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        aim.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
+
+        //if(mousePosition.x < player.transform.position.y && movement.x != 0 || movement.y != 0)
+        //{
+        //    reverseWalk();
+        //}
 
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
         transform.up = direction;
     }
 
+    //public void reverseWalk()
+    //{
+    //    Debug.Log("ASD");
+    //    float angle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
+    //    walkAnimation.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+    //} // ei toimi vielä
+
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log(other.collider.name);
-        if (other.collider.CompareTag("EnemyBullet"))
+        if (other.gameObject.CompareTag("EnemyBullet"))
         {
-
             playerHealth--;
-            if(playerHealth < 1)
+            if(playerHealth <= 0)
             {
                 player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
                 Instantiate(deathAnimation, player.transform.position, player.transform.rotation);
-                Instantiate(bloodFrame, player.transform.position, player.transform.rotation);
-
 
                 player.SetActive(false);
             }
+            Destroy(other.gameObject);
         }
     }
 }

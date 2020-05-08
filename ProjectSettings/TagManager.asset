@@ -23,12 +23,6 @@ TagManager:
   - RoomController
   - Door
   - AmmoSpawn
-  - CheckPoint
-  - BossMelee
-  - LevelController
-  - LevelGenerator
-  - Floor
-  - Fow
   layers:
   - Default
   - TransparentFX
@@ -43,8 +37,8 @@ TagManager:
   - Player
   - Equipment
   - Obstacle
-  - Floor
-  - Wall
+  - 
+  - 
   - 
   - 
   - 

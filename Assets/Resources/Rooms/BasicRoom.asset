@@ -13,16 +13,12 @@ MonoBehaviour:
   m_Name: BasicRoom
   m_EditorClassIdentifier: 
   roomType: Basic
-<<<<<<< HEAD
+  difficulty: 1
   wall: {fileID: 300425294304570222, guid: a7f2abd125c5c574a9d07449d6af2961, type: 3}
   halfWall: {fileID: 300425294304570222, guid: 13dc85cebb98dc64b9789ae48cf98e75, type: 3}
   wallCorner: {fileID: 300425294304570222, guid: 41dde6a0f6b0c6643b68ef0f4bb4a3c2,
     type: 3}
   door: {fileID: 300425294304570222, guid: 6ba506a9ba52f09448975e2c6486c906, type: 3}
-=======
-  wall: {fileID: 300425294304570222, guid: 13dc85cebb98dc64b9789ae48cf98e75, type: 3}
-  door: {fileID: 5033305931559746826, guid: 41755da6dd60c0b40a5d5d0d5a5448d3, type: 3}
->>>>>>> origin/juusonbranch1
   floor: {fileID: 300425294304570222, guid: 146fab454544f2b4dbb5175520f296dc, type: 3}
   furniture:
   - {fileID: 4002979554525059714, guid: 9a0521e50c53e794294ce8e358348071, type: 3}

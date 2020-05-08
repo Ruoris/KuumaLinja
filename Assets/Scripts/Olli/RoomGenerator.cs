@@ -22,7 +22,7 @@ public class RoomGenerator : MonoBehaviour
     void Update()
     {
     }
-    public GameObject GenerateRoom(Room room, Vector2 vec2, int rX, int rY, string doors, string windows, GameObject _parent)
+    public GameObject GenerateRoom(Room room, Vector2 vec2, int rX, int rY, string doors, GameObject _parent)
     {
         v2 = vec2;
         Vector2 v2Orig = v2;
@@ -341,112 +341,114 @@ public class RoomGenerator : MonoBehaviour
         Vector2 vectorOrig = vec2;
         int nextC = 0;
         GameObject objectToGenerate = room.furniture[0];
-
-        for (int x = 0; x < layouts.Length; x++)
+        if (layouts != null)
         {
-            if (layouts[x] == ' ')
+            for (int x = 0; x < layouts.Length; x++)
             {
-                x++;
-            }
-            if (layouts[x] == 'a')
-            {
-                objectToGenerate = room.furniture[0];
-                x++;
-                nextC = x;
-            }
-            else if (layouts[x] == 'b')
-            {
-                objectToGenerate = room.furniture[1];
-                x++;
-                nextC = x;
-            }
-            else if (layouts[x] == 'c')
-            {
-                objectToGenerate = room.furniture[2];
-                x++;
-                nextC = x;
-            }
-            else if (layouts[x] == 'd')
-            {
-                objectToGenerate = room.furniture[3];
-                x++;
-                nextC = x;
-            }
-            else if (layouts[x] == 'e')
-            {
-                objectToGenerate = room.furniture[4];
-                x++;
-                nextC = x;
-            }
-            else if (layouts[x] == 'f')
-            {
-                objectToGenerate = room.furniture[5];
-                x++;
-                nextC = x;
-            }
-            else if (layouts[x] == 'g')
-            {
-                objectToGenerate = room.furniture[6];
-                x++;
-                nextC = x;
-            }
-            else if (layouts[x] == 'h')
-            {
-                objectToGenerate = room.furniture[7];
-                x++;
-                nextC = x;
-            }
-            else if (layouts[x] == 'i')
-            {
-                objectToGenerate = room.furniture[8];
-                x++;
-                nextC = x;
-            }
-            else if (layouts[x] == 'j')
-            {
-                objectToGenerate = room.furniture[9];
-                x++;
-                nextC = x;
-            }
-            else if (layouts[x] == 'k')
-            {
-                objectToGenerate = room.furniture[10];
-                x++;
-                nextC = x;
-            }
-            if (layouts[x] == '-')
-            {
-                int save = x;
-                x = nextC;
-                string spawnString = null;
-                while (x < save)
+                if (layouts[x] == ' ')
                 {
-                    spawnString += layouts[x];
                     x++;
                 }
-                int.TryParse(spawnString, out spawnXint);
-                x++;
-                spawnString = null;
-                while (x < layouts.Length)
+                if (layouts[x] == 'a')
                 {
-                    spawnString += layouts[x];
-                    if (layouts[x] == ',')
+                    objectToGenerate = room.furniture[0];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'b')
+                {
+                    objectToGenerate = room.furniture[1];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'c')
+                {
+                    objectToGenerate = room.furniture[2];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'd')
+                {
+                    objectToGenerate = room.furniture[3];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'e')
+                {
+                    objectToGenerate = room.furniture[4];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'f')
+                {
+                    objectToGenerate = room.furniture[5];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'g')
+                {
+                    objectToGenerate = room.furniture[6];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'h')
+                {
+                    objectToGenerate = room.furniture[7];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'i')
+                {
+                    objectToGenerate = room.furniture[8];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'j')
+                {
+                    objectToGenerate = room.furniture[9];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'k')
+                {
+                    objectToGenerate = room.furniture[10];
+                    x++;
+                    nextC = x;
+                }
+                if (layouts[x] == '-')
+                {
+                    int save = x;
+                    x = nextC;
+                    string spawnString = null;
+                    while (x < save)
                     {
-                        break;
+                        spawnString += layouts[x];
+                        x++;
                     }
-                    int.TryParse(spawnString, out spawnYint);
+                    int.TryParse(spawnString, out spawnXint);
                     x++;
+                    spawnString = null;
+                    while (x < layouts.Length)
+                    {
+                        spawnString += layouts[x];
+                        if (layouts[x] == ',')
+                        {
+                            break;
+                        }
+                        int.TryParse(spawnString, out spawnYint);
+                        x++;
+                    }
+                    nextC = x;
+                    vec2.x += 0.32f * spawnXint;
+                    vec2.y += 0.32f * spawnYint;
+                    GameObject _object = Instantiate(objectToGenerate, vec2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                    vec2 = vectorOrig;
+                    _object.transform.parent = _parent.transform;
+                    //vec2 = _parent.transform.position;
+                    //vec2.x += spawnXint * 0.32f;
+                    //vec2.y += spawnYint * 0.32f;
+                    //_object.transform.position = vec2;
                 }
-                nextC = x;
-                vec2.x += 0.32f * spawnXint;
-                vec2.y += 0.32f * spawnYint;
-                GameObject _object = Instantiate(objectToGenerate, vec2, transform.rotation = new Quaternion(0, 0, 0, 0));
-                vec2 = vectorOrig;
-                _object.transform.parent = _parent.transform;
-                //vec2 = _parent.transform.position;
-                //vec2.x += spawnXint * 0.32f;
-                //vec2.y += spawnYint * 0.32f;
-                //_object.transform.position = vec2;
             }
         }
     }

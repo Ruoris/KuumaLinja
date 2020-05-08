@@ -6,11 +6,9 @@ using UnityEngine;
 public class LevelGenerator : MonoBehaviour
 {
     public Room[] rooms;
-
     public string[] roomCoordinates;
     public string[] roomSizes;
     public string[] roomDoors;
-    public string[] roomWindows;
     public string[] roomLayouts;
 
     public int floorX, floorY;
@@ -19,7 +17,7 @@ public class LevelGenerator : MonoBehaviour
     public string nextFloor;
 
     public GameObject player;
-    //public GameObject aim;
+    public GameObject aim;
 
     public GameObject hallwayFloor;
     public GameObject hallwayCorners;
@@ -32,6 +30,7 @@ public class LevelGenerator : MonoBehaviour
     public Camera mainCamera;
 
     public GameObject levelController;
+    public GameObject levelGenerator;
 
     // Start is called before the first frame update
     void Start()
@@ -50,8 +49,8 @@ public class LevelGenerator : MonoBehaviour
         {
             Vector2 temp2 = new Vector2(1, 1);
             GameObject _player = Instantiate(player, temp2, transform.rotation = new Quaternion(0, 0, 0, 0));
-            //GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
-            //_player.GetComponent<PlayerCtrl>().aim = _aim;
+            GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+            _player.GetComponent<PlayerCtrl>().aim = _aim;
             levelController.GetComponent<LevelController>().playerSpawned = true;
         }
         GetRooms();
@@ -260,14 +259,14 @@ public class LevelGenerator : MonoBehaviour
                     int.TryParse(spawnString, out spawnYint);
                 }
             }
-            GameObject room = GetComponent<RoomGenerator>().GenerateRoom(rooms[r], location, spawnXint, spawnYint, roomDoors[r], roomWindows[r], this.gameObject);
+            GameObject room = GetComponent<RoomGenerator>().GenerateRoom(rooms[r], location, spawnXint, spawnYint, roomDoors[r], levelGenerator);
             room.transform.rotation = new Quaternion(0, 0, 0, 0);
 
             Vector2 fixY = room.transform.position;
             fixY.x = fixY.x * -1;
             room.transform.position = fixY;
 
-            GetComponent<RoomGenerator>().GenerateFurniture(roomLayouts[r], location, rooms[r], this.gameObject);
+            GetComponent<RoomGenerator>().GenerateFurniture(roomLayouts[r], location, rooms[r], levelGenerator);
             transform.rotation = new Quaternion(0, 0, 0, 0);
         }
     }
