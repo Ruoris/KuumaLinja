@@ -19,16 +19,16 @@ TagManager:
   - ShotGunDrop
   - RifleDrop
   - PistolDrop
-  - Melee
   - activeBulletCounter
-  - ammoSpawn
-  - LevelGenerator
+  - RoomController
+  - Door
+  - AmmoSpawn
+  - CheckPoint
+  - BossMelee
   - LevelController
+  - LevelGenerator
   - Floor
   - Fow
-  - Object
-  - AmmoSpawn
-  - LevelEnd
   layers:
   - Default
   - TransparentFX
@@ -38,13 +38,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Enviroment
   - Enemy
   - Player
   - Equipment
   - Obstacle
-  - 
-  - 
+  - Floor
+  - Wall
   - 
   - 
   - 
@@ -67,8 +67,8 @@ TagManager:
     uniqueID: 0
     locked: 0
   - name: backGround
-    uniqueID: 2291048639
+    uniqueID: 628643849
     locked: 0
   - name: foreGround
-    uniqueID: 1510726973
+    uniqueID: 3833441929
     locked: 0

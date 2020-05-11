@@ -6,7 +6,7 @@ public class DoorScript : MonoBehaviour
 {
     public bool open;
 
-    public GameObject upSide, downSide;
+    public GameObject openUp, openDown;
 
     void Start()
     {
@@ -20,19 +20,29 @@ public class DoorScript : MonoBehaviour
         var doorAnimation = GetComponent<Animator>();
         var doorSound = GetComponent<AudioSource>();
 
-        if (other.gameObject.name == "Player(Clone)" && gameObject.name == "DoorDown")
+        if (other.gameObject.tag == "Player" && gameObject.name == "OpenUp")
         {
             doorAnimation.enabled = true;
             doorSound.enabled = true;
-            upSide.SetActive(false);
+            openDown.SetActive(false);
         }
 
-        else if (other.gameObject.name == "Player(Clone)" && gameObject.name == "DoorUp")
-        {
 
+        else if (other.gameObject.tag == "Player" && gameObject.name == "OpenDown")
+        {
             doorAnimation.enabled = true;
             doorSound.enabled = true;
-            downSide.SetActive(false);
+            openUp.SetActive(false);
+        }
+
+        else if (other.gameObject.tag == "Player" && gameObject.name == "DoorLeft")
+        {
+            doorAnimation.enabled = true;
+        }
+
+        else if (other.gameObject.tag == "Player" && gameObject.name == "DoorRight")
+        {
+            doorAnimation.enabled = true;
         }
     }
 }

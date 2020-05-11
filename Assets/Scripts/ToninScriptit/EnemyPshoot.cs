@@ -57,22 +57,23 @@ public class EnemyPshoot : MonoBehaviour
 
     void Fire()
     {
-        canFire = 0;
-        counter = 0;
-        gunSound.Play();
-        GetComponent<EnemyWeapons>().ammoLeft--;
+
         int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
         fireRate = GetComponent<EnemyWeapons>().fireRate;
         bulletForce = GetComponent<EnemyWeapons>().bulletForce;
+
         bool playerDetected = GetComponent<EnemyController>().playerDetected;
-        if (playerDetected && !readyToShoot)
+        if(playerDetected && !readyToShoot)
         {
             StartCoroutine("FireCooldown");
         }
-
-        if (readyToShoot)
+        
+        if(readyToShoot)
         {
-
+            GetComponent<EnemyWeapons>().ammoLeft--;
+            canFire = 0;
+            counter = 0;
+            gunSound.Play();
 
             var tempBullet = (GameObject)Instantiate(bulletprefab, firePoint.position, Quaternion.identity);
 
@@ -95,7 +96,7 @@ public class EnemyPshoot : MonoBehaviour
 
     IEnumerator FireCooldown()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         readyToShoot = true;
     }
 }

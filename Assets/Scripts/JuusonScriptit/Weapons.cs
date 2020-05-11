@@ -14,7 +14,8 @@ public class Weapons : MonoBehaviour
 
     //public AudioClip equipClip;
 
-    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, pistolDrop, shotGunDrop, rifleDrop, gameThrow, secondaryWeaponContainer;
+    public GameObject uiAmmoCounter, uiShellCounter, uiRifleCounter, secondaryWeaponContainer;
+    public GameObject pistolDrop, shotGunDrop, rifleDrop, gameThrow;
     public GameObject[] otherWeapons;
     public Transform firePoint;
 
@@ -28,13 +29,14 @@ public class Weapons : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {   pistolCapacity = 10;
+    { pistolCapacity = 10;
         shotgunCapacity = 5;
         assaultRifleCapacity = 15;
 
 
         emptyMagazine = true;
         ammoLeft = 0;
+
         secondaryWeaponContainer = GameObject.Find("Misc stuff/Canvas/otherWeapon/secondaryWeaponContainer");
         otherWeapons[0] = GameObject.Find("Misc stuff/Canvas/otherWeapon/uiPistol");
         otherWeapons[1] = GameObject.Find("Misc stuff/Canvas/otherWeapon/uiShotgun");
@@ -45,8 +47,8 @@ public class Weapons : MonoBehaviour
         AmmoBuff();
         RadiusIncrease();
         MovementSpeedBuff();
-    }
 
+    }
     // Update is called once per frame
     void Update()
     {
@@ -71,9 +73,15 @@ public class Weapons : MonoBehaviour
     void SecondaryWeapon()
     {
 
+
+        secondaryWeaponContainer.SetActive(false);
+
+
+
+
         if (previousEquippedGun == 0)
         {
-            secondaryWeaponContainer.SetActive(false);
+            secondaryWeaponContainer.SetActive(true);
             otherWeapons[0].SetActive(false);
             otherWeapons[1].SetActive(false);
             otherWeapons[2].SetActive(false);
@@ -108,9 +116,9 @@ public class Weapons : MonoBehaviour
 
     void EquipGun()
     {
-        pipeHands.SetActive(false);
-
-        bulletForce = 30;
+            pipeHands.SetActive(false);
+            //pipe.SetActive(false);
+            bulletForce = 10;
 
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
         {
@@ -149,16 +157,13 @@ public class Weapons : MonoBehaviour
 
                     playerBothHands.SetActive(false);
                     playerOneHand.SetActive(false);
-                    pipeHands.SetActive(true);
 
                     bool melee = GetComponent<Pshoot>().melee;
-                    if (melee == false)
+                    if(melee == false)
                     {
                         pipeHands.SetActive(true);
                     }
 
-                    //playerMelee.SetActive(false);
-                    //uiWeaponSelection.SetActive(false);
                     emptyMagazine = true;
                     ammoCapacity = 0;
                     break;
@@ -219,32 +224,6 @@ public class Weapons : MonoBehaviour
                     emptyMagazine = false;
                     fireRate = 0.1f;
                     break;
-                    // alla piilotettuna lisää aseita
-                    //case 4:
-                    //    machineGun.SetActive(true);
-                    //    playerBothHands.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    break;
-
-                    //case 5:
-                    //    flameThrower.SetActive(true);
-                    //    playerBothHands.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    ammoCapacity = 300;
-                    //    fireRate = 0.005f;
-                    //    break;
-
-                    //case 6:
-                    //    grenade.SetActive(true);
-                    //    playerOneHand.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    ammoCapacity = 3;
-                    //    bulletForce = 10;
-                    //    fireRate = 2f;
-                    //    break;
-
-                    //default:
-                    //    break;
             }
         }
     }
@@ -505,34 +484,19 @@ public class Weapons : MonoBehaviour
             }
         }
     }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.layer == 11) // 11 = Equipment
         {
-            //Debug.Log("collide");
-            //emptyMagazine = false;
+           
             if (other.gameObject.tag == "Scientist" && Input.GetKey(KeyCode.E))
             {
                 other.gameObject.GetComponent<Scientist>().Doping();
 
             }
-            if (other.gameObject.tag == "Speedboost")
-            {
-                pistolCapacity = 15;
-                for (int i = 10; i < uiAmmoCounter.transform.childCount; i++)
-                {
-                    // deactivates other weapons and stances
-                    var child = uiAmmoCounter.transform.GetChild(i).gameObject;
-
-                    if (child != null && child.name.Contains("bullet"))
-                    {
-                        child.SetActive(true);
-                    }
-                }
-
-            }
-            //GetComponent<AudioSource>().Play();
-            //equipClip.Play();
+        
+           
             if (other.collider.tag == "LevelEnd")
             {
                 Cursor.visible = true;
@@ -552,113 +516,8 @@ public class Weapons : MonoBehaviour
                 GameStatus.status.currentLevel = "UIMainmenukehitysScene";
                 GameStatus.status.Save();
             }
-            if (other.gameObject.layer == 11) // 11 = Equipment
-            {
-                //Debug.Log("collide");
-                //emptyMagazine = false;
-
-
-
-                //if (other.gameObject.tag == "PistolBox")
-                //{
-                //    if (equippedGun != 0)
-                //    {
-                //        previousEquippedGun = equippedGun;
-                //        previousAmmoLeft = ammoLeft;
-                //        previousAmmoCapacity = ammoCapacity;
-                //    }
-
-                //    equippedGun = 1;
-                //    ammoCapacity = 10;
-                //    ammoLeft = 10;
-                //    Destroy(other.gameObject);
-                //}
-                //if (other.gameObject.tag == "PistolDrop")
-                //{
-                //    if (equippedGun != 0)
-                //    {
-                //        previousEquippedGun = equippedGun;
-                //        previousAmmoLeft = ammoLeft;
-                //        previousAmmoCapacity = ammoCapacity;
-                //    }
-
-                //    uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
-                //    equippedGun = 1;
-                //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
-                //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
-                //    Destroy(other.gameObject);
-                //}
-                //if (other.gameObject.tag == "ShotgunBox")
-                //{
-                //    if (equippedGun != 0)
-                //    {
-                //        previousEquippedGun = equippedGun;
-                //        previousAmmoLeft = ammoLeft;
-                //        previousAmmoCapacity = ammoCapacity;
-                //    }
-
-                //    equippedGun = 2;
-                //    ammoCapacity = 5;
-                //    ammoLeft = 5;
-                //    Destroy(other.gameObject);
-                //}
-                //if (other.gameObject.tag == "ShotGunDrop")
-                //{
-                //    if (equippedGun != 0)
-                //    {
-                //        previousEquippedGun = equippedGun;
-                //        previousAmmoLeft = ammoLeft;
-                //        previousAmmoCapacity = ammoCapacity;
-                //    }
-
-                //    uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
-                //    equippedGun = 2;
-                //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
-                //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
-                //    Destroy(other.gameObject);
-                //}
-
-                //if (other.gameObject.tag == "Arbox")
-                //{
-                //    if (equippedGun != 0)
-                //    {
-                //        previousEquippedGun = equippedGun;
-                //        previousAmmoLeft = ammoLeft;
-                //        previousAmmoCapacity = ammoCapacity;
-                //    }
-
-                //    equippedGun = 3;
-                //    ammoCapacity = 30;
-                //    ammoLeft = 30;
-                //    Destroy(other.gameObject);
-                //}
-                //if (other.gameObject.tag == "RifleDrop")
-                //{
-                //    if (equippedGun != 0)
-                //    {
-                //        previousEquippedGun = equippedGun;
-                //        previousAmmoLeft = ammoLeft;
-                //        previousAmmoCapacity = ammoCapacity;
-                //    }
-                //    uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
-                //    equippedGun = 3;
-                //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
-                //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
-                //    Destroy(other.gameObject);
-                //}
-                if (other.gameObject.tag == "FTbox")
-                {
-
-                    equippedGun = 5;
-                }
-
-                if (other.gameObject.tag == "Grenadebox")
-                {
-                    GetComponent<Pshoot>().shotsFired = 0;
-                    equippedGun = 6;
-                }
+           
             }
         }
 
-    }
 }

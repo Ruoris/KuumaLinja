@@ -89,19 +89,20 @@ public class RoomGenerator : MonoBehaviour
                     downLeftCorner.transform.parent = newRoom.transform;
                 }
 
-                if (_x == forbiddenX.Length - 1 && _y == 0)
+
+                if (_x == forbiddenX.Length-1 && _y == 0)
                 {
                     GameObject downRightCorner = Instantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
                     downRightCorner.transform.parent = newRoom.transform;
                 }
 
-                if (_x == 0 && _y == forbiddenY.Length - 1)
+                if (_x == 0 && _y == forbiddenY.Length-1)
                 {
                     GameObject topLeftCorner = Instantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
                     topLeftCorner.transform.parent = newRoom.transform;
                 }
 
-                if (_x == forbiddenX.Length - 1 && _y == forbiddenY.Length - 1)
+                if (_x == forbiddenX.Length-1 && _y == forbiddenY.Length-1)
                 {
                     GameObject topRightCorner = Instantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
                     topRightCorner.transform.parent = newRoom.transform;

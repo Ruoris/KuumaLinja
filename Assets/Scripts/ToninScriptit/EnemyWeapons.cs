@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class EnemyWeapons : MonoBehaviour
@@ -44,7 +45,6 @@ public class EnemyWeapons : MonoBehaviour
             ammoLeft = 30;
         }
         emptyMagazine = false;
-        
 
     }
 
@@ -53,14 +53,6 @@ public class EnemyWeapons : MonoBehaviour
     {
         EquipGun();
         FireControl();
-        //if (ammoLeft <= 0)
-        //{
-        //    emptyMagazine = true;
-        //}
-        //if (emptyMagazine)
-        //{
-        //    ammoLeft = ammoCapacity;
-        //    emptyMagazine = false;}
         if (ammoLeft <= 0)
         {
             ammoLeft = ammoCapacity;
@@ -88,60 +80,24 @@ public class EnemyWeapons : MonoBehaviour
             {
                 // gun selection
                 case 0:
-
-
-                    //playerBothHands.SetActive(false);
-                    //playerOneHand.SetActive(false);
-                    //playerMelee.SetActive(false);
-
-
                     emptyMagazine = true;
                     ammoCapacity = 0;
                     break;
                 case 1:
-
-
-
-                    pistol.SetActive(true);
-                    //playerOneHand.SetActive(true);
-                    //emptyMagazine = false;
-                    //   ammoCapacity = 10;
+                    //pistol.SetActive(true);
                     break;
                 case 2:
 
 
-                    shotgun.SetActive(true);
-                    //playerBothHands.SetActive(true);
-                    //emptyMagazine = false;
-                    // ammoCapacity = 5;
+                    //shotgun.SetActive(true);
                     break;
                 case 3:
 
-                    assaultRifle.SetActive(true);
-                    //playerBothHands.SetActive(true);
-                    //emptyMagazine = false;
-                    //   ammoCapacity = 30;
+                    //assaultRifle.SetActive(true);
                     break;
                 case 4:
-                    machineGun.SetActive(true);
-                    //playerBothHands.SetActive(true);
-                    //emptyMagazine = false;
-                    //  ammoCapacity = 100;
+                    //machineGun.SetActive(true);
                     break;
-                    //case 5:
-                    //    flameThrower.SetActive(true);
-                    //    //playerBothHands.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    ammoCapacity = 300;
-                    //    break;
-                    //case 6:
-                    //    grenade.SetActive(true);
-                    //    //playerOneHand.SetActive(true);
-                    //    emptyMagazine = false;
-                    //    ammoCapacity = 3;
-                    //    break;
-                    //default:
-                    //    break;
             }
         }
     }

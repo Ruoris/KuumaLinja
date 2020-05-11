@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,6 +9,9 @@ public class Pause : MonoBehaviour
     private GameObject PausemenuPanel;
     private GameObject menu;
     public bool paused;
+
+    public GameObject backButton;
+    public GameObject audioSettings;
 
     private GameObject audioSettings;
     private GameObject player;
@@ -22,16 +26,25 @@ public class Pause : MonoBehaviour
     void Awake()
     {
         paused = false;
+
         alive = true;
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Pauser();
+        if (Input.GetKeyDown(KeyCode.Escape) == true || Input.GetKeyDown(KeyCode.P) == true)
+        {  
+            paused = !paused;
+            Pauser();
+        }
+        
         if (Input.GetKeyDown(KeyCode.Space))
         {
             RestartFromSpace();
+
         }
     }
 
@@ -42,11 +55,7 @@ public class Pause : MonoBehaviour
     
     public void Pauser()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)==true || Input.GetKeyDown(KeyCode.P) == true)
-        {
-            paused = !paused;
-
-        }
+   
         if (paused&&alive == true)
         {
             Cursor.visible = true;
@@ -66,12 +75,14 @@ public class Pause : MonoBehaviour
         }
         if (!paused&&alive==true)
         {
+
             PausemenuPanel.SetActive(false);
             Cursor.visible = false;
             menu.SetActive(false);
             audioSettings.SetActive(false);
             
             Time.timeScale = 1;
+
         }
         if(alive != true)
         {
