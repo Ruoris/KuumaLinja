@@ -18,11 +18,10 @@ public class LevelGenerator : MonoBehaviour
     public string nextFloor;
 
     public GameObject player;
-    public GameObject aim;
-
-    public GameObject fogTile;
+    //public GameObject aim;
 
     public GameObject hallwayFloor;
+    public GameObject hallwayCorners;
     public GameObject wallFloor;
     public GameObject stairs;
 
@@ -50,8 +49,8 @@ public class LevelGenerator : MonoBehaviour
         {
             Vector2 temp2 = new Vector2(1, 1);
             GameObject _player = Instantiate(player, temp2, transform.rotation = new Quaternion(0, 0, 0, 0));
-            GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
-            _player.GetComponent<PlayerCtrl>().aim = _aim;
+            //GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+            //_player.GetComponent<PlayerCtrl>().aim = _aim;
             levelController.GetComponent<LevelController>().playerSpawned = true;
         }
         GetRooms();
@@ -76,7 +75,32 @@ public class LevelGenerator : MonoBehaviour
                 location.x = location.x + 0.32f;
                 GameObject floor = Instantiate(hallwayFloor, location, transform.rotation = new Quaternion(0, 0, 0, 0));
                 floor.transform.parent = levelController.transform;
-                //Instantiate(fogTile, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+
+                //CornerGenerator
+                if (_x == 0 && _y == 0)
+                {
+                    GameObject downLeftCorner = Instantiate(hallwayCorners, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                    downLeftCorner.transform.parent = levelController.transform;
+                }
+
+                if (_x == floorX - 1 && _y == 0)
+                {
+                    GameObject downRightCorner = Instantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                    downRightCorner.transform.parent = levelController.transform;
+                }
+
+                if (_x == 0 && _y == floorY - 1)
+                {
+                    GameObject topLeftCorner = Instantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                    topLeftCorner.transform.parent = levelController.transform;
+                }
+
+                if (_x == floorX - 1 && _y == floorY - 1)
+                {
+                    GameObject topRightCorner = Instantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                    topRightCorner.transform.parent = levelController.transform;
+                }
+
                 _x++;
                 if (_y == 0)
                 {
@@ -146,7 +170,9 @@ public class LevelGenerator : MonoBehaviour
 
         if (nextFloor[0] == '.')
         {
-        } else { 
+        }
+        else
+        {
             //Next Floor Enterance
             for (int x = 0; x < floorSpawn.Length; x++)
             {
@@ -235,9 +261,15 @@ public class LevelGenerator : MonoBehaviour
                     int.TryParse(spawnString, out spawnYint);
                 }
             }
-            Debug.Log("Spawn:" + spawnXint + ", " + spawnYint);
-            GetComponent<RoomGenerator>().GenerateRoom(rooms[r], location, spawnXint, spawnYint, roomDoors[r], roomWindows[r], this.gameObject);
-            GetComponent<RoomGenerator>().GenerateFurniture(roomLayouts, location, rooms[r], this.gameObject);
+            GameObject room = GetComponent<RoomGenerator>().GenerateRoom(rooms[r], location, spawnXint, spawnYint, roomDoors[r], roomWindows[r], this.gameObject);
+            room.transform.rotation = new Quaternion(0, 0, 0, 0);
+
+            Vector2 fixY = room.transform.position;
+            fixY.x = fixY.x * -1;
+            room.transform.position = fixY;
+
+            GetComponent<RoomGenerator>().GenerateFurniture(roomLayouts[r], location, rooms[r], this.gameObject);
+            transform.rotation = new Quaternion(0, 0, 0, 0);
         }
     }
 }

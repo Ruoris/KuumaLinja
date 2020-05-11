@@ -31,7 +31,7 @@ public class PlayerFOV : MonoBehaviour
         viewMesh.name = "View Mesh";
         viewMeshFilter.mesh = viewMesh;
 
-        StartCoroutine("FindTargetsWithDelay", 0.08f);
+        StartCoroutine("FindTargetsWithDelay", 0.2f);
     }
 
 
@@ -53,7 +53,6 @@ public class PlayerFOV : MonoBehaviour
     {
         visibleTargets.Clear();
         Collider2D[] targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, viewRadius, targetMask);
-
 
         for (int i = 0; i < targetsInViewRadius.Length; i++)
         {

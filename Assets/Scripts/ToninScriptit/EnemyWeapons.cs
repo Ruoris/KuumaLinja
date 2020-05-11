@@ -44,9 +44,7 @@ public class EnemyWeapons : MonoBehaviour
             ammoLeft = 30;
         }
         emptyMagazine = false;
-        //equippedGun = 1;
-        //ammoLeft = 10;
-        //ammoCapacity = 10;
+        
 
     }
 
@@ -55,19 +53,17 @@ public class EnemyWeapons : MonoBehaviour
     {
         EquipGun();
         FireControl();
+        //if (ammoLeft <= 0)
+        //{
+        //    emptyMagazine = true;
+        //}
+        //if (emptyMagazine)
+        //{
+        //    ammoLeft = ammoCapacity;
+        //    emptyMagazine = false;}
         if (ammoLeft <= 0)
         {
-            emptyMagazine = true;
-        }
-        if (emptyMagazine)
-        {
-            reload += Time.deltaTime;
-            if (reload > 5.5f)
-            {
-                ammoLeft = ammoCapacity;
-                emptyMagazine = false;
-                reload = 0;
-            }
+            ammoLeft = ammoCapacity;
         }
 
     }

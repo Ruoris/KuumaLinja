@@ -5,9 +5,9 @@ using UnityEngine.Audio;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    private float movementSpeed;
+    public float movementSpeed;
     public GameObject player, aim, playerCamera;
-    public GameObject walkAnimation, deathAnimation;
+    public GameObject walkAnimation, deathAnimation, bloodFrame;
     public int playerHealth = 1;
     public GameObject pauser;
     public bool crouching;
@@ -22,10 +22,10 @@ public class PlayerCtrl : MonoBehaviour
         pauser = GameObject.FindWithTag("soundsettings");
         player.SetActive(true);
         movementSpeed = 1.8f;
-        playerCamera = GameObject.FindWithTag("MainCamera");
-        // lisätään kunhan saadaan playerin prefab "valmiiksi"
-        //Instantiate(PlayerPrefab, startPoint.transform.position, Quaternion.identity);
-
+     
+        
+        Instantiate(aim, player.transform.position, player.transform.rotation);
+        //Instantiate(playerCamera, player.transform.position, player.transform.rotation);
         playerRB = GetComponent<Rigidbody2D>();
     }
    
@@ -46,12 +46,10 @@ public class PlayerCtrl : MonoBehaviour
             Cursor.visible = true;
             player.SetActive(false);
         }
-        if (pauser.GetComponent<Pause>().paused == false)
-        { 
+        //if (pauser.GetComponent<Pause>().paused == false){
+        
             FaceMouse();
             Crouch();
-            //var walkAnimation = GetComponent<Animator>();
-            //var idle = GetComponent<SpriteRenderer>();
 
             playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
 
@@ -63,13 +61,9 @@ public class PlayerCtrl : MonoBehaviour
             {
                 walkAnimation.SetActive(true);
 
-            movement.x = Input.GetAxisRaw("Horizontal");
-            movement.y = Input.GetAxisRaw("Vertical");
 
-                //walkAnimation.enabled = true;
 
                 walkAnimation.transform.position = player.transform.position;
-
 
                 float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
                 walkAnimation.transform.rotation = Quaternion.AngleAxis(-walkAngle, Vector3.forward);
@@ -77,11 +71,11 @@ public class PlayerCtrl : MonoBehaviour
             else
             {
                 walkAnimation.SetActive(false);
-                //walkAnimation.enabled = false;
-                
             }
-        }
+        
     }
+        
+    
 
     void FixedUpdate()
     {
@@ -109,10 +103,6 @@ public class PlayerCtrl : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
         aim.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
-        //if(mousePosition.x < player.transform.position.y && movement.x != 0 || movement.y != 0)
-        //{
-        //    reverseWalk();
-        //}
 
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
@@ -136,6 +126,7 @@ public class PlayerCtrl : MonoBehaviour
             {
                 player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
                 Instantiate(deathAnimation, player.transform.position, player.transform.rotation);
+                Instantiate(bloodFrame, player.transform.position, player.transform.rotation);
                 GameObject deathPanel  = GameObject.Find("/Misc stuff/Canvas/DeathPanel");
                 deathPanel.SetActive(true);
                 pauser.GetComponent<Pause>().alive = false;

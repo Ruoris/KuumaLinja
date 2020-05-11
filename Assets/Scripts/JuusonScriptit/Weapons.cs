@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Weapons : MonoBehaviour
 {
-    public GameObject pistol, shotgun, assaultRifle, pipe;
+    public GameObject pistol, shotgun, assaultRifle;
     public GameObject player, playerMelee, playerOneHand, playerBothHands, pipeHands;
     public int bulletForce;
     public float fireRate;
@@ -20,13 +20,19 @@ public class Weapons : MonoBehaviour
 
 
     public int equippedGun, ammoCapacity, ammoLeft, previousEquippedGun, previousAmmoCapacity, previousAmmoLeft;
-
+    public int pistolCapacity = 10;
+    public int shotgunCapacity = 5;
+    public int assaultRifleCapacity = 15;
 
 
 
     // Start is called before the first frame update
     void Start()
-    {
+    {   pistolCapacity = 10;
+        shotgunCapacity = 5;
+        assaultRifleCapacity = 15;
+
+
         emptyMagazine = true;
         ammoLeft = 0;
         secondaryWeaponContainer = GameObject.Find("Misc stuff/Canvas/otherWeapon/secondaryWeaponContainer");
@@ -36,6 +42,9 @@ public class Weapons : MonoBehaviour
         uiAmmoCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiBulletCounter");
         uiShellCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiShotgunShellCounter");
         uiRifleCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiRifleCounter");
+        AmmoBuff();
+        RadiusIncrease();
+        MovementSpeedBuff();
     }
 
     // Update is called once per frame
@@ -48,7 +57,7 @@ public class Weapons : MonoBehaviour
         {
             SwitchGunWithButton();
         }
-       
+
         if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             DropGun();
@@ -60,8 +69,8 @@ public class Weapons : MonoBehaviour
     }
 
     void SecondaryWeapon()
-    { 
-        
+    {
+
         if (previousEquippedGun == 0)
         {
             secondaryWeaponContainer.SetActive(false);
@@ -100,7 +109,7 @@ public class Weapons : MonoBehaviour
     void EquipGun()
     {
         pipeHands.SetActive(false);
-        pipe.SetActive(false);
+
         bulletForce = 30;
 
         foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
@@ -141,7 +150,12 @@ public class Weapons : MonoBehaviour
                     playerBothHands.SetActive(false);
                     playerOneHand.SetActive(false);
                     pipeHands.SetActive(true);
-                    pipe.SetActive(true);
+
+                    bool melee = GetComponent<Pshoot>().melee;
+                    if (melee == false)
+                    {
+                        pipeHands.SetActive(true);
+                    }
 
                     //playerMelee.SetActive(false);
                     //uiWeaponSelection.SetActive(false);
@@ -152,13 +166,13 @@ public class Weapons : MonoBehaviour
                 case 1:
                     if (uiShellCounter.activeSelf == true)
                     {
-                        uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+                        uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(shotgunCapacity);
                         uiShellCounter.SetActive(false);
                     }
 
                     if (uiRifleCounter.activeSelf == true)
                     {
-                        uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+                        uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(assaultRifleCapacity);
                         uiRifleCounter.SetActive(false);
                     }
 
@@ -172,12 +186,12 @@ public class Weapons : MonoBehaviour
                 case 2:
                     if (uiAmmoCounter.activeSelf == true)
                     {
-                        uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+                        uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(pistolCapacity);
                         uiAmmoCounter.SetActive(false);
                     }
                     if (uiRifleCounter.activeSelf == true)
                     {
-                        uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(30);
+                        uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(assaultRifleCapacity);
                         uiRifleCounter.SetActive(false);
                     }
                     uiShellCounter.SetActive(true);
@@ -190,12 +204,12 @@ public class Weapons : MonoBehaviour
                 case 3:
                     if (uiShellCounter.activeSelf == true)
                     {
-                        uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(5);
+                        uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(shotgunCapacity);
                         uiShellCounter.SetActive(false);
                     }
                     if (uiAmmoCounter.activeSelf == true)
                     {
-                        uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(10);
+                        uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(pistolCapacity);
                         uiAmmoCounter.SetActive(false);
                     }
 
@@ -261,7 +275,7 @@ public class Weapons : MonoBehaviour
         }
         if (equippedGun == 2)
         {
-            var droppedShotgun = Instantiate(shotGunDrop, gameThrow.transform.position, Quaternion.identity);          
+            var droppedShotgun = Instantiate(shotGunDrop, gameThrow.transform.position, Quaternion.identity);
             droppedShotgun.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedShotgun.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
@@ -305,15 +319,15 @@ public class Weapons : MonoBehaviour
         int tempEquippedweapon = equippedGun;
         if (equippedGun == 1)
         {
-            uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+            uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(pistolCapacity);
         }
         if (equippedGun == 2)
         {
-            uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+            uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(shotgunCapacity);
         }
         if (equippedGun == 3)
         {
-            uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(ammoCapacity);
+            uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(assaultRifleCapacity);
         }
         ammoCapacity = previousAmmoCapacity;
         ammoLeft = previousAmmoLeft;
@@ -335,6 +349,96 @@ public class Weapons : MonoBehaviour
         previousAmmoLeft = tempAmmoLeft;
         previousEquippedGun = tempEquippedweapon;
     }
+    public void MovementSpeedBuff()
+    {
+        player.GetComponent<PlayerCtrl>().movementSpeed =1.8f+GameStatus.status.movementSpeedAmount ;
+    }
+    public void AmmoBuff()
+    {   uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(shotgunCapacity);
+        uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(pistolCapacity);
+       
+        uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(assaultRifleCapacity);
+        pistolCapacity =10+GameStatus.status.ammobuffAmount;
+        shotgunCapacity = 5+ GameStatus.status.ammobuffAmount;
+        assaultRifleCapacity = 15+ GameStatus.status.ammobuffAmount;
+
+
+        if (equippedGun == 1)
+        {
+            ammoCapacity = 10+GameStatus.status.ammobuffAmount;
+            ammoLeft = ammoCapacity;
+
+        }
+        if (equippedGun == 2)
+        {
+            ammoCapacity = 5+ GameStatus.status.ammobuffAmount;
+            ammoLeft = ammoCapacity;
+
+        }
+
+        if (equippedGun == 3)
+        {
+            ammoCapacity = 15+ GameStatus.status.ammobuffAmount;
+            ammoLeft = ammoCapacity;
+
+        }
+        if (previousEquippedGun == 1)
+        {
+            previousAmmoCapacity = 10+ GameStatus.status.ammobuffAmount;
+            previousAmmoLeft = previousAmmoCapacity;
+        }
+        if (previousEquippedGun == 2)
+        {
+            previousAmmoCapacity = 5+ GameStatus.status.ammobuffAmount;
+            previousAmmoLeft = previousAmmoCapacity;
+        }
+
+        if (previousEquippedGun == 3)
+        {
+            previousAmmoCapacity = 15+ GameStatus.status.ammobuffAmount;
+            previousAmmoLeft = previousAmmoCapacity;
+
+        }
+
+      
+        for (int i = 5; i < shotgunCapacity; i++)
+        {
+
+            var child = uiShellCounter.transform.GetChild(i).gameObject;
+
+
+            if (child != null && child.name.Contains("shell5"))
+            {
+                child.SetActive(true);
+            }
+        } 
+        for (int i = 10; i < pistolCapacity; i++)
+        {
+
+            var child = uiAmmoCounter.transform.GetChild(i).gameObject;
+
+
+            if (child != null && child.name.Contains("bullet"))
+            {
+                child.SetActive(true);
+            }
+        }
+        for (int i = 15; i <assaultRifleCapacity; i++)
+        {
+
+            var child = uiRifleCounter.transform.GetChild(i).gameObject;
+
+
+            if (child != null && child.name.Contains("rifle"))
+            {
+                child.SetActive(true);
+            }
+        }
+    }
+    public void RadiusIncrease()
+    {
+        GetComponent<PikkuFOV>().viewRadius = 0.5f+GameStatus.status.radiusIncreaseAmount;
+    }
     void OnTriggerStay2D(Collider2D other)
     {
         if (other.gameObject.layer == 11 && Input.GetKey(KeyCode.E)) // 11 = Equipment
@@ -344,7 +448,7 @@ public class Weapons : MonoBehaviour
             emptyMagazine = false;
 
 
-            
+
             if (other.gameObject.tag == "PistolDrop")
             {
                 if (equippedGun != 0)
@@ -356,8 +460,8 @@ public class Weapons : MonoBehaviour
 
 
                 equippedGun = 1;
-                ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
-                ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+                ammoCapacity = pistolCapacity;
+                ammoLeft = pistolCapacity;
                 uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
                 Destroy(other.gameObject);
             }
@@ -373,8 +477,8 @@ public class Weapons : MonoBehaviour
 
 
                 equippedGun = 2;
-                ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
-                ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+                ammoCapacity = shotgunCapacity;
+                ammoLeft = shotgunCapacity;
                 uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
                 Destroy(other.gameObject);
             }
@@ -388,8 +492,8 @@ public class Weapons : MonoBehaviour
                 }
 
                 equippedGun = 3;
-                ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
-                ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+                ammoCapacity =assaultRifleCapacity;
+                ammoLeft = assaultRifleCapacity;
                 uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
                 Destroy(other.gameObject);
             }
@@ -403,132 +507,158 @@ public class Weapons : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        //GetComponent<AudioSource>().Play();
-        //equipClip.Play();
-        if (other.collider.tag == "LevelEnd")
-            {Cursor.visible = true;
-            Debug.Log("levelComplete");
-            Scene scene = SceneManager.GetActiveScene();
-            if (scene.buildIndex == 2)
-            {
-             GameStatus.status.Level1 = true;
-            }
-            if (scene.buildIndex == 3)
-            {
-                GameStatus.status.Level2 = true;
-            }
-
-            SceneManager.LoadScene("UIMainmenukehitysScene");
-            AudioImmortality.immortal.ChangeBackgroundMusic("UIMainmenukehitysScene");
-            GameStatus.status.currentLevel = "UIMainmenukehitysScene";
-            GameStatus.status.Save();
-        }
-        if(other.gameObject.layer == 11) // 11 = Equipment
+        if (other.gameObject.layer == 11) // 11 = Equipment
         {
             //Debug.Log("collide");
             //emptyMagazine = false;
-
-           
-
-            //if (other.gameObject.tag == "PistolBox")
-            //{
-            //    if (equippedGun != 0)
-            //    {
-            //        previousEquippedGun = equippedGun;
-            //        previousAmmoLeft = ammoLeft;
-            //        previousAmmoCapacity = ammoCapacity;
-            //    }
-
-            //    equippedGun = 1;
-            //    ammoCapacity = 10;
-            //    ammoLeft = 10;
-            //    Destroy(other.gameObject);
-            //}
-            //if (other.gameObject.tag == "PistolDrop")
-            //{
-            //    if (equippedGun != 0)
-            //    {
-            //        previousEquippedGun = equippedGun;
-            //        previousAmmoLeft = ammoLeft;
-            //        previousAmmoCapacity = ammoCapacity;
-            //    }
-
-            //    uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
-            //    equippedGun = 1;
-            //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
-            //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
-            //    Destroy(other.gameObject);
-            //}
-            //if (other.gameObject.tag == "ShotgunBox")
-            //{
-            //    if (equippedGun != 0)
-            //    {
-            //        previousEquippedGun = equippedGun;
-            //        previousAmmoLeft = ammoLeft;
-            //        previousAmmoCapacity = ammoCapacity;
-            //    }
-
-            //    equippedGun = 2;
-            //    ammoCapacity = 5;
-            //    ammoLeft = 5;
-            //    Destroy(other.gameObject);
-            //}
-            //if (other.gameObject.tag == "ShotGunDrop")
-            //{
-            //    if (equippedGun != 0)
-            //    {
-            //        previousEquippedGun = equippedGun;
-            //        previousAmmoLeft = ammoLeft;
-            //        previousAmmoCapacity = ammoCapacity;
-            //    }
-
-            //    uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
-            //    equippedGun = 2;
-            //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
-            //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
-            //    Destroy(other.gameObject);
-            //}
-
-            //if (other.gameObject.tag == "Arbox")
-            //{
-            //    if (equippedGun != 0)
-            //    {
-            //        previousEquippedGun = equippedGun;
-            //        previousAmmoLeft = ammoLeft;
-            //        previousAmmoCapacity = ammoCapacity;
-            //    }
-
-            //    equippedGun = 3;
-            //    ammoCapacity = 30;
-            //    ammoLeft = 30;
-            //    Destroy(other.gameObject);
-            //}
-            //if (other.gameObject.tag == "RifleDrop")
-            //{
-            //    if (equippedGun != 0)
-            //    {
-            //        previousEquippedGun = equippedGun;
-            //        previousAmmoLeft = ammoLeft;
-            //        previousAmmoCapacity = ammoCapacity;
-            //    }
-            //    uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
-            //    equippedGun = 3;
-            //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
-            //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
-            //    Destroy(other.gameObject);
-            //}
-            if (other.gameObject.tag == "FTbox")
+            if (other.gameObject.tag == "Scientist" && Input.GetKey(KeyCode.E))
             {
+                other.gameObject.GetComponent<Scientist>().Doping();
 
-                equippedGun = 5;
             }
-
-            if (other.gameObject.tag == "Grenadebox")
+            if (other.gameObject.tag == "Speedboost")
             {
-                GetComponent<Pshoot>().shotsFired = 0;
-                equippedGun = 6;
+                pistolCapacity = 15;
+                for (int i = 10; i < uiAmmoCounter.transform.childCount; i++)
+                {
+                    // deactivates other weapons and stances
+                    var child = uiAmmoCounter.transform.GetChild(i).gameObject;
+
+                    if (child != null && child.name.Contains("bullet"))
+                    {
+                        child.SetActive(true);
+                    }
+                }
+
+            }
+            //GetComponent<AudioSource>().Play();
+            //equipClip.Play();
+            if (other.collider.tag == "LevelEnd")
+            {
+                Cursor.visible = true;
+                Debug.Log("levelComplete");
+                Scene scene = SceneManager.GetActiveScene();
+                if (scene.buildIndex == 2)
+                {
+                    GameStatus.status.Level1 = true;
+                }
+                if (scene.buildIndex == 3)
+                {
+                    GameStatus.status.Level2 = true;
+                }
+
+                SceneManager.LoadScene("UIMainmenukehitysScene");
+                AudioImmortality.immortal.ChangeBackgroundMusic("UIMainmenukehitysScene");
+                GameStatus.status.currentLevel = "UIMainmenukehitysScene";
+                GameStatus.status.Save();
+            }
+            if (other.gameObject.layer == 11) // 11 = Equipment
+            {
+                //Debug.Log("collide");
+                //emptyMagazine = false;
+
+
+
+                //if (other.gameObject.tag == "PistolBox")
+                //{
+                //    if (equippedGun != 0)
+                //    {
+                //        previousEquippedGun = equippedGun;
+                //        previousAmmoLeft = ammoLeft;
+                //        previousAmmoCapacity = ammoCapacity;
+                //    }
+
+                //    equippedGun = 1;
+                //    ammoCapacity = 10;
+                //    ammoLeft = 10;
+                //    Destroy(other.gameObject);
+                //}
+                //if (other.gameObject.tag == "PistolDrop")
+                //{
+                //    if (equippedGun != 0)
+                //    {
+                //        previousEquippedGun = equippedGun;
+                //        previousAmmoLeft = ammoLeft;
+                //        previousAmmoCapacity = ammoCapacity;
+                //    }
+
+                //    uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
+                //    equippedGun = 1;
+                //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
+                //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+                //    Destroy(other.gameObject);
+                //}
+                //if (other.gameObject.tag == "ShotgunBox")
+                //{
+                //    if (equippedGun != 0)
+                //    {
+                //        previousEquippedGun = equippedGun;
+                //        previousAmmoLeft = ammoLeft;
+                //        previousAmmoCapacity = ammoCapacity;
+                //    }
+
+                //    equippedGun = 2;
+                //    ammoCapacity = 5;
+                //    ammoLeft = 5;
+                //    Destroy(other.gameObject);
+                //}
+                //if (other.gameObject.tag == "ShotGunDrop")
+                //{
+                //    if (equippedGun != 0)
+                //    {
+                //        previousEquippedGun = equippedGun;
+                //        previousAmmoLeft = ammoLeft;
+                //        previousAmmoCapacity = ammoCapacity;
+                //    }
+
+                //    uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
+                //    equippedGun = 2;
+                //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
+                //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+                //    Destroy(other.gameObject);
+                //}
+
+                //if (other.gameObject.tag == "Arbox")
+                //{
+                //    if (equippedGun != 0)
+                //    {
+                //        previousEquippedGun = equippedGun;
+                //        previousAmmoLeft = ammoLeft;
+                //        previousAmmoCapacity = ammoCapacity;
+                //    }
+
+                //    equippedGun = 3;
+                //    ammoCapacity = 30;
+                //    ammoLeft = 30;
+                //    Destroy(other.gameObject);
+                //}
+                //if (other.gameObject.tag == "RifleDrop")
+                //{
+                //    if (equippedGun != 0)
+                //    {
+                //        previousEquippedGun = equippedGun;
+                //        previousAmmoLeft = ammoLeft;
+                //        previousAmmoCapacity = ammoCapacity;
+                //    }
+                //    uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(other.gameObject.GetComponent<WeaponDrop>().ammoCapacity, other.gameObject.GetComponent<WeaponDrop>().bulletsLeft);
+                //    equippedGun = 3;
+                //    ammoCapacity = other.gameObject.GetComponent<WeaponDrop>().ammoCapacity;
+                //    ammoLeft = other.gameObject.GetComponent<WeaponDrop>().bulletsLeft;
+                //    Destroy(other.gameObject);
+                //}
+                if (other.gameObject.tag == "FTbox")
+                {
+
+                    equippedGun = 5;
+                }
+
+                if (other.gameObject.tag == "Grenadebox")
+                {
+                    GetComponent<Pshoot>().shotsFired = 0;
+                    equippedGun = 6;
+                }
             }
         }
+
     }
-  
 }

@@ -15,7 +15,7 @@ public class LevelController : MonoBehaviour
     public bool playerSpawned;
 
     public bool firstRoomSpawned;
-
+    private GameObject rooms;
 
     // Start is called before the first frame update
     void Start()

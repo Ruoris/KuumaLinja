@@ -15,14 +15,26 @@ public class Pshoot : MonoBehaviour
     public Transform firePoint;
     public GameObject player;
     public GameObject bulletprefab, flameprefab, grenadeprefab, gunFlareAnimation, explosion;
+    public GameObject meleeAnimation, pipeHands;
     private GameObject ammopanel;
-
-
+    public bool melee;
+    public GameObject wallChecker;
 
     void Start()
     {
+        //for (int i = 0; i < player.transform.childCount; i++)
+        //{
+        //    // deactivates other weapons and stances
+        //    var child = player.transform.GetChild(i).gameObject;
+
+        //    if (child != null && child.name.Contains("Weapon") || child.name.Contains("Hand"))
+        //    {
+        //        child.SetActive(false);
+        //    }
+        //}
         //shotsFired = 0;
         explosionCounter = 3;
+        wallChecker= this.gameObject.transform.GetChild(17).gameObject;
     }
 
     void Update()
@@ -36,34 +48,58 @@ public class Pshoot : MonoBehaviour
         {
             // shotsFired = 0;
         }
-
-        if (Input.GetButton("Fire1") && fireRate < canFire && !emptyMagazine && pauser.GetComponent<Pause>().paused == false)
+        
+        if (Input.GetButton("Fire1") && fireRate < canFire && pauser.GetComponent<Pause>().paused == false
+            &&wallChecker.GetComponent<ShootEnable>().canShoot==true)
         {
-            ammopanel = GameObject.FindWithTag("activeBulletCounter");
-            gunSound.Play();
-            Fire();
-            gunFlareAnimation.SetActive(true);
-            
-           
-            
-
-
-
-
-            GetComponent<Weapons>().ammoLeft--;
-            AmmoCounter(equippedGun);
-            if (equippedGun == 2)
+            if (equippedGun != 0)
             {
-                // if a shotgun is equipped
+                ammopanel = GameObject.FindWithTag("activeBulletCounter");
+                gunSound.Play();
                 Fire();
-                Fire();
-                Fire();
-                Fire();
-                Fire();
-                Fire();
+                gunFlareAnimation.SetActive(true);
+
+
+
+
+
+
+
+                GetComponent<Weapons>().ammoLeft--;
+                AmmoCounter(equippedGun);
+                if (equippedGun == 2)
+                {
+                    // if a shotgun is equipped
+                    Fire();
+                    Fire();
+                    Fire();
+                    Fire();
+                    Fire();
+                    Fire();
+                }
+            }
+            else
+            {
+                melee = true;
+                meleeAnimation.SetActive(true);
+                pipeHands.SetActive(false);
+                StartCoroutine("MeleeAnimation", 0.25f);
             }
         }
         canFire += Time.deltaTime;
+    }
+    IEnumerator MeleeAnimation(float delay)
+    {
+        while (true && melee == true)
+        {
+            Debug.Log("melee");
+
+            yield return new WaitForSeconds(delay);
+            meleeAnimation.SetActive(false);
+            pipeHands.SetActive(true);
+            melee = false;
+        }
+
     }
     void AmmoCounter(int equippedGun)
     {
