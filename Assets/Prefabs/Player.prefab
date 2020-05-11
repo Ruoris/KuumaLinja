@@ -125,7 +125,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &69640893337760607
 CapsuleCollider2D:
@@ -176,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 69640893337760595}
   aim: {fileID: 9197297088747507156, guid: dceb36f3e6680384c8200dc81ec1a6b9, type: 3}
-  playerCamera: {fileID: 738387375072604425, guid: eab467a7cf4effc4aafb096704412526,
+  playerCamera: {fileID: 809194335311716553, guid: eab467a7cf4effc4aafb096704412526,
     type: 3}
   startPoint: {fileID: 0}
   walkAnimation: {fileID: 387397055106195131}
@@ -307,7 +307,7 @@ MonoBehaviour:
     m_Bits: 2560
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 4096
+    m_Bits: 20480
   visibleTargets: []
   meshResolution: 0.4
   edgeResolveIterations: 4
@@ -1741,9 +1741,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: -461525367
+  m_SortingLayer: 2
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

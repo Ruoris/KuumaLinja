@@ -16,6 +16,7 @@ public class TextScript : MonoBehaviour
     public AudioSource textSound;
     public GameObject character1, character2, character3;
     public bool npc = false;
+    public int dialogues;
 
     void Start()
     {
@@ -91,10 +92,16 @@ public class TextScript : MonoBehaviour
             textDisplay.text = "";
             continueButtuon.SetActive(false);
 
-            if (SceneManager.GetActiveScene().name == "Cutscene")
+            if (SceneManager.GetActiveScene().name == "Cutscene 1")
             {
-                Debug.Log("Loading level 1");
-                SceneManager.LoadScene("Level 1.2");
+                Debug.Log("Loading level 2");
+                SceneManager.LoadScene("Level2");
+            }
+
+            else if (SceneManager.GetActiveScene().name == "Cutscene 2")
+            {
+                Debug.Log("Loading level 3");
+                SceneManager.LoadScene("Level3");
             }
         }  
     }

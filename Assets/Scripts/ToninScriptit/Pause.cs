@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Pause : MonoBehaviour
@@ -9,7 +10,7 @@ public class Pause : MonoBehaviour
     public bool paused;
     public GameObject backButton;
     public GameObject audioSettings;
-    public GameObject DT1, DT2, DT3, DT4, DT5, DT6; // dialogue trigger
+    public GameObject DT1, DT2, DT3, DT4, DT5, DT6, DT7; // dialogue trigger
 
 
     void Awake()
@@ -21,16 +22,18 @@ public class Pause : MonoBehaviour
         DT4 = GameObject.Find("DT4");
         DT5 = GameObject.Find("DT5");
         DT6 = GameObject.Find("DT6");
+        DT7 = GameObject.Find("DT7");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (DT1 != null && DT2 != null && DT3 != null && DT4 != null && DT5 != null && DT6 != null)
+        if (DT1 != null && DT2 != null && DT3 != null && DT4 != null && DT5 != null && DT6 != null && DT7 != null)
         {
             if (DT1.GetComponent<DialogueScript>().dialogue == false && DT2.GetComponent<DialogueScript>().dialogue == false && DT3.GetComponent<DialogueScript>().dialogue == false && 
-                DT4.GetComponent<DialogueScript>().dialogue == false && DT5.GetComponent<DialogueScript>().dialogue == false && DT6.GetComponent<DialogueScript>().dialogue == false)
+                DT4.GetComponent<DialogueScript>().dialogue == false && DT5.GetComponent<DialogueScript>().dialogue == false && DT6.GetComponent<DialogueScript>().dialogue == false && 
+                DT7.GetComponent<DialogueScript>().dialogue == false)
             {
                 Pauser();
             }
@@ -66,10 +69,10 @@ public class Pause : MonoBehaviour
         }
         if (!paused)
         {
-             menu.SetActive(false);
-            audioSettings.SetActive(false);
-            backButton.SetActive(false);
-            Time.timeScale = 1;
+            // menu.SetActive(false);
+            //audioSettings.SetActive(false);
+            //backButton.SetActive(false);
+            //Time.timeScale = 1;
         }
     }
 }
