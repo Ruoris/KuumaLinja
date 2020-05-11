@@ -9,9 +9,7 @@ public class MenuButton : MonoBehaviour
     public GameObject mainMenu;
     public bool changer;
     public GameObject backButton;
-    private GameObject masterSyringe;
-    private GameObject musicSyringe;
-    private GameObject effectsSyringe;
+
 
     void Start()
     {
@@ -20,17 +18,10 @@ public class MenuButton : MonoBehaviour
         if (scene.buildIndex != 1)
         {
 
-
             mainMenu = GameObject.Find("/Misc stuff/Canvas/Mainmenu");
-            backButton = GameObject.Find("/Misc stuff/Canvas/BacktoMainMenuFromAudio");
+          //  backButton = GameObject.Find("/Misc stuff/Canvas/BacktoMainMenuFromAudio");
             audioSettings = GameObject.Find("/Misc stuff/Canvas/SoundSettingsPanel");
 
-        }
-        if (scene.buildIndex == 1 )
-        {
-            masterSyringe = GameObject.Find("/Misc stuff/Canvas/AudioSettingsPanel/BaseImage/MasterVolumeSlider");
-            musicSyringe = GameObject.Find("/Misc stuff/Canvas/AudioSettingsPanel/BaseImage/MusicVolumeSlider");
-            effectsSyringe = GameObject.Find("/Misc stuff/Canvas/AudioSettingsPanel/BaseImage/EffectVolumeSlider");
         }
     }
 
@@ -41,16 +32,10 @@ public class MenuButton : MonoBehaviour
             audioSettings.SetActive(false);
             backButton.SetActive(false);
             mainMenu.SetActive(true);
-            masterSyringe.SetActive(false);
-            musicSyringe.SetActive(false);
-            effectsSyringe.SetActive(false);
+            
         }
         else
         {
-            masterSyringe.SetActive(true);
-            musicSyringe.SetActive(true);
-            effectsSyringe.SetActive(true);
-
             audioSettings.SetActive(true);
             backButton.SetActive(true);
             mainMenu.SetActive(false);
@@ -68,6 +53,22 @@ public class MenuButton : MonoBehaviour
         {
             audioSettings.SetActive(true);
             backButton.SetActive(true);
+            mainMenu.SetActive(false);
+        }
+
+    }
+    public void SettingsMenuDisablerInGame()
+    {
+        if (mainMenu.activeSelf == false)
+        {
+            audioSettings.SetActive(false);
+         
+            mainMenu.SetActive(true);
+        }
+        else
+        {
+            audioSettings.SetActive(true);
+           
             mainMenu.SetActive(false);
         }
 

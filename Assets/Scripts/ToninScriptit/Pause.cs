@@ -5,19 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
-   
+    private GameObject PausemenuPanel;
     private GameObject menu;
     public bool paused;
-    private GameObject backButton;
+
     private GameObject audioSettings;
     private GameObject player;
     public bool alive;
     void Start()
-    {
+    {   PausemenuPanel = GameObject.Find("/Misc stuff/Canvas/PauseMenu");
         menu = GameObject.Find("/Misc stuff/Canvas/Mainmenu");
-        backButton= GameObject.Find("/Misc stuff/Canvas/BacktoMainMenuFromAudio");
         audioSettings = GameObject.Find("/Misc stuff/Canvas/SoundSettingsPanel");
-        player = GameObject.Find("Player");
+        player = GameObject.Find("Player(Clone)");
     }
 
     void Awake()
@@ -51,8 +50,9 @@ public class Pause : MonoBehaviour
         if (paused&&alive == true)
         {
             Cursor.visible = true;
-           // GameObject soundButton = GameObject.FindWithTag("soundsettings");
+           
             Time.timeScale = 0.00001F;
+            PausemenuPanel.SetActive(true);
 
             if (menu.activeSelf == true ||audioSettings.activeSelf==true  )
             {
@@ -66,10 +66,11 @@ public class Pause : MonoBehaviour
         }
         if (!paused&&alive==true)
         {
+            PausemenuPanel.SetActive(false);
             Cursor.visible = false;
             menu.SetActive(false);
             audioSettings.SetActive(false);
-            backButton.SetActive(false);
+            
             Time.timeScale = 1;
         }
         if(alive != true)
@@ -83,10 +84,7 @@ public class Pause : MonoBehaviour
     }
     public void RestartFromSpace()
     {
-       
-        
-            SceneManager.LoadScene(GameStatus.status.currentLevel);
-        
+    SceneManager.LoadScene(GameStatus.status.currentLevel);
     }
    
 }

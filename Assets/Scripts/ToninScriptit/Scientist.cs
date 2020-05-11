@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Scientist : MonoBehaviour
-{
+{   
     GameObject[] buffs=new GameObject[3];
     private int buffToActivate;
 
