@@ -5,26 +5,45 @@ using UnityEngine.Audio;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    public float movSpeed;
-    public GameObject player, aim, walkAnimation;
-
+    private float movementSpeed;
+    public GameObject player, aim, playerCamera, startPoint;
+    public GameObject walkAnimation, deathAnimation, bloodFrame;
+    public int playerHealth = 1;
+    public GameObject pauser;
     public bool crouching;
-    private float timer = 0.3f;
-    private float crouchTimer;
 
     public Rigidbody2D playerRB;
 
     Vector2 movement;
 
+    public GameObject dialogueTrigger;
+
     void Start()
     {
+        //dialogue = false;
+
+        Cursor.visible = false;
+        pauser = GameObject.FindWithTag("soundsettings");
+        player.SetActive(true);
+        movementSpeed = 0;
+
+        Instantiate(aim, player.transform.position, player.transform.rotation);
+        //Instantiate(playerCamera, player.transform.position + new Vector3(0,0,-10), player.transform.rotation);
+
         playerRB = GetComponent<Rigidbody2D>();
+        
     }
 
     void Update()
     {
+        //if (pauser.GetComponent<Pause>().paused == false)
+
+        movementSpeed = 1.8f;
+        playerRB.MovePosition(playerRB.position + movement * movementSpeed * Time.fixedDeltaTime);
         FaceMouse();
         Crouch();
+
+        //playerCamera.transform.position = player.transform.position + new Vector3(0, 0, -10);
 
         movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
@@ -33,6 +52,9 @@ public class PlayerCtrl : MonoBehaviour
         if (movement.x != 0 || movement.y != 0)
         {
             walkAnimation.SetActive(true);
+
+
+
             walkAnimation.transform.position = player.transform.position;
 
             float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
@@ -42,53 +64,52 @@ public class PlayerCtrl : MonoBehaviour
         {
             walkAnimation.SetActive(false);
         }
-
     }
 
     void FixedUpdate()
     {
-        playerRB.MovePosition(playerRB.position + movement * movSpeed * Time.fixedDeltaTime);
+        
     }
 
     void Crouch()
     {
-        crouchTimer = crouchTimer + Time.deltaTime;
-
-        if (Input.GetButton("Crouch") && !crouching && timer < crouchTimer)
+        if (Input.GetButtonDown("Crouch") && !crouching)
         {
-            crouchTimer = 0;
             crouching = true;
-            movSpeed = 2;
+            movementSpeed = 1.0f;
         }
-        if (Input.GetButton("Crouch") && crouching && timer < crouchTimer)
+        else if (Input.GetButtonDown("Crouch") && crouching)
         {
-            crouchTimer = 0;
             crouching = false;
-            movSpeed = 4;
+            movementSpeed = 1.8f;
         }
     }
 
     void FaceMouse()
     {
         Vector3 mousePosition = Input.mousePosition;
-        
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        aim.transform.position = new Vector3(mousePosition.x, mousePosition.y, 0);
 
-        //if(mousePosition.x < player.transform.position.y && movement.x != 0 || movement.y != 0)
-        //{
-        //    reverseWalk();
-        //}
+        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
         Vector2 direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
         transform.up = direction;
     }
 
-    public void reverseWalk()
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("ASD");
-        float angle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
-        walkAnimation.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        if (other.collider.CompareTag("EnemyBullet"))
+        {
+            playerHealth--;
+            if(playerHealth < 1)
+            {
+                player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
+                Instantiate(deathAnimation, player.transform.position, player.transform.rotation);
+                Instantiate(bloodFrame, player.transform.position, player.transform.rotation);
+
+
+                player.SetActive(false);
+            }
+        }
     }
 }

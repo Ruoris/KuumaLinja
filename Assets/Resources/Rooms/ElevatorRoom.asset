@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaaa78adb154541479db27d2cb62caa4, type: 3}
+  m_Name: ElevatorRoom
+  m_EditorClassIdentifier: 
+  roomType: Elevator
+  wall: {fileID: 300425294304570222, guid: a7f2abd125c5c574a9d07449d6af2961, type: 3}
+  halfWall: {fileID: 300425294304570222, guid: 13dc85cebb98dc64b9789ae48cf98e75, type: 3}
+  wallCorner: {fileID: 300425294304570222, guid: 41dde6a0f6b0c6643b68ef0f4bb4a3c2,
+    type: 3}
+  door: {fileID: 300425294304570222, guid: 6ba506a9ba52f09448975e2c6486c906, type: 3}
+  floor: {fileID: 4478715479393370695, guid: 765082d5eae742c45b969230be13ac46, type: 3}
+  furniture:
+  - {fileID: 4002979554525059714, guid: 9a0521e50c53e794294ce8e358348071, type: 3}
+  - {fileID: 575432821271881660, guid: ed5eaa2cdb020ca4bbd76462b1cb1c05, type: 3}
+  - {fileID: 575432821271881660, guid: fca494c4d94940445a6a41fc78b2c2e2, type: 3}
+  - {fileID: 5987125364007317072, guid: 202b86fbcbe41064eb3cb57f728ad92b, type: 3}
+  - {fileID: 8969906090989165875, guid: a13a520f396e4d046815d910b37e95f3, type: 3}
+  - {fileID: 8979572659438965584, guid: d9afefc495f06454fa2df131f28b95b9, type: 3}
+  - {fileID: 8426502817049430613, guid: 03236e524d3fc204681fbbb046c54475, type: 3}
+  - {fileID: 4006323245689507792, guid: 8d1a9a8bb57fa624684de3c47fcb2bfb, type: 3}
+  - {fileID: 5454608919814120261, guid: 2256ca83c6c9c4e49afa3ce2df98902f, type: 3}
+  - {fileID: 8182729280601584312, guid: 4904a6f54b08a104ab6089060771cc3f, type: 3}
+  - {fileID: 7320061698837239793, guid: cd5fb442ffdef4848a4bb3bd52deaf88, type: 3}
+  - {fileID: 7511827956135903679, guid: 2e543fc350414064fa07675552482748, type: 3}
+  roomX: 0
+  roomY: 0

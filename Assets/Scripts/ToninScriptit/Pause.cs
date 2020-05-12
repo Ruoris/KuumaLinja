@@ -9,29 +9,37 @@ public class Pause : MonoBehaviour
     public bool paused;
     public GameObject backButton;
     public GameObject audioSettings;
-
+    public GameObject DT1, DT2, DT3, DT4, DT5, DT6; // dialogue trigger
 
 
     void Awake()
     {
         paused = false;
+        DT1 = GameObject.Find("DT1");
+        DT2 = GameObject.Find("DT2");
+        DT3 = GameObject.Find("DT3");
+        DT4 = GameObject.Find("DT4");
+        DT5 = GameObject.Find("DT5");
+        DT6 = GameObject.Find("DT6");
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Pauser();
+        if (DT1 != null && DT2 != null && DT3 != null && DT4 != null && DT5 != null && DT6 != null)
+        {
+            if (DT1.GetComponent<DialogueScript>().dialogue == false && DT2.GetComponent<DialogueScript>().dialogue == false && DT3.GetComponent<DialogueScript>().dialogue == false && 
+                DT4.GetComponent<DialogueScript>().dialogue == false && DT5.GetComponent<DialogueScript>().dialogue == false && DT6.GetComponent<DialogueScript>().dialogue == false)
+            {
+                Pauser();
+            }
+        }
     }
 
     public void Unpause()
     {
-
-        
             paused = false;
-
-       
-
     }
     
     public void Pauser()
@@ -62,7 +70,6 @@ public class Pause : MonoBehaviour
             audioSettings.SetActive(false);
             backButton.SetActive(false);
             Time.timeScale = 1;
-         
         }
     }
 }
