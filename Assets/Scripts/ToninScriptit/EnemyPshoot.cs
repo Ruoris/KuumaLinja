@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyPshoot : MonoBehaviour
 {
+
     public float bulletForce;
 
     private float fireRate;
@@ -49,13 +50,14 @@ public class EnemyPshoot : MonoBehaviour
                 Fire();
             }
         }
-       
+
 
         canFire += Time.deltaTime;
     }
 
     void Fire()
     {
+
         int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
         fireRate = GetComponent<EnemyWeapons>().fireRate;
         bulletForce = GetComponent<EnemyWeapons>().bulletForce;

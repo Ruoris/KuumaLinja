@@ -172,7 +172,9 @@ public class LevelGenerator : MonoBehaviour
 
         if (nextFloor[0] == '.')
         {
-        } else { 
+        }
+        else
+        {
             //Next Floor Enterance
             for (int x = 0; x < floorSpawn.Length; x++)
             {

@@ -18,12 +18,14 @@ public class Pshoot : MonoBehaviour
     private GameObject ammopanel;
     public bool melee;
 
+    public GameObject wallChecker;
     public GameObject dialogueTrigger;
-
-
-
     void Start()
     {
+        
+        wallChecker= this.gameObject.transform.GetChild(17).gameObject;
+
+
     }
 
     void Update()
@@ -41,17 +43,17 @@ public class Pshoot : MonoBehaviour
             // shotsFired = 0;
         }
 
-        if (Input.GetButton("Fire1") && fireRate < canFire /*&& !emptyMagazine && pauser.GetComponent<Pause>().paused == false*/)
+        
+        if (Input.GetButton("Fire1") && fireRate < canFire && pauser.GetComponent<Pause>().paused == false
+            &&wallChecker.GetComponent<ShootEnable>().canShoot==true)
         {
-            if(equippedGun != 0)
+            if (equippedGun != 0)
+
             {
                 ammopanel = GameObject.FindWithTag("activeBulletCounter");
                 gunSound.Play();
                 Fire();
                 gunFlareAnimation.SetActive(true);
-
-
-
 
                 GetComponent<Weapons>().ammoLeft--;
                 AmmoCounter(equippedGun);
@@ -99,6 +101,7 @@ public class Pshoot : MonoBehaviour
 
     }
     void Fire()
+
     {
         canFire = 0;
 

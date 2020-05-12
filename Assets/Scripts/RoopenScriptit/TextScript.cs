@@ -95,13 +95,15 @@ public class TextScript : MonoBehaviour
             if (SceneManager.GetActiveScene().name == "Cutscene 1")
             {
                 Debug.Log("Loading level 2");
-                SceneManager.LoadScene("Level2");
+                //SceneManager.LoadScene("Level2");
+                GameStatus.status.LevelEnd();
             }
 
             else if (SceneManager.GetActiveScene().name == "Cutscene 2")
             {
                 Debug.Log("Loading level 3");
-                SceneManager.LoadScene("Level3");
+                //SceneManager.LoadScene("Level3");
+                GameStatus.status.LevelEnd();
             }
         }  
     }

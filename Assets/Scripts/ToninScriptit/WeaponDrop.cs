@@ -9,14 +9,14 @@ public class WeaponDrop : MonoBehaviour
     private bool started;
     public float timer;
 
-
     public void Start()
     {
         timer = 0;
         started = true;
         //bulletsLeft = ammoCapacity;
     }
-    public void Update()
+    public void FixedUpdate()
+
     {
         if (started)
         {

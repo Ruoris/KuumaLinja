@@ -15,13 +15,14 @@ public class LevelController : MonoBehaviour
     public bool playerSpawned;
 
     public bool firstRoomSpawned;
-
     private GameObject rooms;
 
     // Start is called before the first frame update
     void Start()
     {
-        currentFloor = 0;
+        currentFloor = GameStatus.status.currentFloor;
+        Debug.Log("LevelController");
+            
     }
 
     // Update is called once per frame

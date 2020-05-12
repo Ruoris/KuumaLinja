@@ -291,8 +291,8 @@ Camera:
   m_GameObject: {fileID: 1754085146}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -339,6 +339,62 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1899290316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1899290317}
+  - component: {fileID: 1899290318}
+  m_Layer: 0
+  m_Name: GameStatus
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1899290317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899290316}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 173.37517, y: 309.25436, z: -120.875}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1899290318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1899290316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95dacb78b3d5da84098b563f3a4dcca6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Level1: 0
+  Level2: 0
+  Level3: 0
+  Level4: 0
+  currentFloor: 0
+  score: 0
+  currentLevel: 
+  ammobuffsCollected: 0
+  ammobuffAmount: 0
+  movementSpeedsCollected: 0
+  movementSpeedAmount: 0
+  radiusIncreasesCollected: 0
+  radiusIncreaseAmount: 0
 --- !u!1 &1916757492
 GameObject:
   m_ObjectHideFlags: 0
@@ -368,9 +424,9 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1655462591543370242, guid: dad76038e9f59bc4391ba2c841f8d294,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 745395b8ab239494180555cdebef250d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.616
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -477,6 +533,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1916757492}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afc77044f9cb4f54cb6e13e59aa87c77, type: 3}
+  m_Script: {fileID: 11500000, guid: bb15fafbd14101c4ebfe36e6582b1ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stageSelection: {fileID: 8300000, guid: 01131df438370f74b95777b03c5b0dde, type: 3}
+  level1: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
+  level2: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
+  cutScene: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
+  cutScene2: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
