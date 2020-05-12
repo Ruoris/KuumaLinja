@@ -11,8 +11,11 @@ public class Boss : MonoBehaviour
     public RaycastHit2D rayToPlayer;
     float playerDetectionDistance = 10f;
     public GameObject fireStrike, blob;
+    public GameObject boss;
+    public GameObject lastDialogue;
     private float fireRate = 3f;
     private float canFire;
+    public int health = 5;
 
 
     void Update()
@@ -72,5 +75,19 @@ public class Boss : MonoBehaviour
         Vector3 direction = player.transform.position - enemyRb.transform.position;
         rayToPlayer = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(direction.x, direction.y), distance);
         Debug.DrawRay(transform.position, direction, Color.red);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        //Debug.Log(other.gameObject.name);
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            health--;
+            if(health < 1)
+            {
+                lastDialogue.SetActive(true);
+                Destroy(boss);
+            }
+        }
     }
 }
