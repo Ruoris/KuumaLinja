@@ -38,11 +38,13 @@ public class DoorScript : MonoBehaviour
         else if (other.gameObject.tag == "Player" && gameObject.name == "DoorLeft")
         {
             doorAnimation.enabled = true;
+            doorSound.enabled = true;
         }
 
         else if (other.gameObject.tag == "Player" && gameObject.name == "DoorRight")
         {
             doorAnimation.enabled = true;
+            doorSound.enabled = true;
         }
     }
 }

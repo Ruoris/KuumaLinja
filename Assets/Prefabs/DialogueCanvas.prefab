@@ -90,7 +90,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4963803245491741027
 RectTransform:
   m_ObjectHideFlags: 0
@@ -279,9 +279,15 @@ MonoBehaviour:
     infiltrating a skyscraper to stop the organization believed to be behind this.
   - It is already dark outside as you step inside the building.  Not knowing what
     lies ahead, you start the investigation.
+  dialoguePause: 0
   typingSpeed: 0.05
   continueButtuon: {fileID: 4963803246540978152}
   textSound: {fileID: 4963803246250540866}
+  character1: {fileID: 0}
+  character2: {fileID: 0}
+  character3: {fileID: 0}
+  npc: 0
+  dialogues: 0
 --- !u!1 &4963803246250540990
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,8 +671,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 37ef372b3e2d94b45bf89392775a049d, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
