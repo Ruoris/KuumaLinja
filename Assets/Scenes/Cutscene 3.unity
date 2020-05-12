@@ -134,6 +134,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: eb1bf6f2ef7975649a071b4c178a6462,
         type: 3}
+    - target: {fileID: 2288779685688450690, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2407667841743429746, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -160,6 +165,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: e7898537126c7744bb11ec7b363a6ed7,
         type: 3}
+    - target: {fileID: 5069778983960914574, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5069778983960914575, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: m_IsActive
@@ -283,65 +293,64 @@ PrefabInstance:
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.size
-      value: 15
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[0]
-      value: -Next night...
+      value: Now that the supposed head of this incident has been cut off, the agent
+        starts investigating how far and wide the drug has spread and starts making
+        preparations for the challenges ahead.
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[1]
-      value: -*Bzzzz*
+      value: To be continued...
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[2]
-      value: Um... Hello?
+      value: CREDITS
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[3]
-      value: ~Hi! Have you arrived at the building yet?
+      value: 'Executice producer & level generation: Olli Rantala'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[4]
-      value: Just about got here, yes.
+      value: 'Level design: Juuso Pesonen, Roope-, Tuomas-.'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[5]
-      value: ~Remember, these are some dangerous people, better not take any chances
-        with them.
+      value: 'Artificial intelligence: Tuomas-, Juuso Pesonen.'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[6]
-      value: Yeah I figured.
+      value: 'Menus & UI: Toni Ruoranen'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[7]
-      value: ~I'm sure you can handle them though.
+      value: 'Art: Sonja.'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[8]
-      value: ~I just wanted to call because I remembered that my colleagues might
-        have recovered some of the old company tech and might be able to help you
-        in your task.
+      value: 'Animations: Sonja Helin, Juuso Peaonen.'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[9]
-      value: Alright sounds good.
+      value: 'Story: sonja, juuso, roope'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[10]
-      value: ~So if you see any of them, say hello from me.
+      value: 'Sound FX: roope'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
