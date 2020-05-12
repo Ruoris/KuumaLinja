@@ -91,6 +91,7 @@ public class Pause : MonoBehaviour
             Time.timeScale = 0.00001F;
 
         
+
         }
     }
     public void RestartFromSpace()

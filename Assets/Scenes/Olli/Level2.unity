@@ -9943,6 +9943,12 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 498262456316034022}
     m_Modifications:
+    - target: {fileID: 2260580526710513614, guid: 94c623a279a705e468ad5181ad64d6c6,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eb1bf6f2ef7975649a071b4c178a6462,
+        type: 3}
     - target: {fileID: 2260580527476562927, guid: 94c623a279a705e468ad5181ad64d6c6,
         type: 3}
       propertyPath: m_Sprite
@@ -10668,6 +10674,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 498262456316034022}
     m_Modifications:
+    - target: {fileID: 3315011606995629910, guid: 3073f909fab432a47ab4b70878f17ae9,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eb1bf6f2ef7975649a071b4c178a6462,
+        type: 3}
+    - target: {fileID: 3315011606995629910, guid: 3073f909fab432a47ab4b70878f17ae9,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3424327376015155104, guid: 3073f909fab432a47ab4b70878f17ae9,
         type: 3}
       propertyPath: m_Name
@@ -11358,7 +11375,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!61 &4675405702541977297
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11795,6 +11812,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DT1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985009286833, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cb9611b7c276504b99869857e03a55c, type: 3}
@@ -20909,7 +20931,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1001 &5707809627015990885
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25014,6 +25036,12 @@ PrefabInstance:
       propertyPath: sentences.Array.data[1]
       value: I walk wherever I please.
       objectReference: {fileID: 0}
+    - target: {fileID: 6068620363026578404, guid: 16993d75c7ecd954aa5d1ca47dfdd2f8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d907916fdca7b474e9488f476b6bf6d4,
+        type: 3}
     - target: {fileID: 6068620364178526475, guid: 16993d75c7ecd954aa5d1ca47dfdd2f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -25582,6 +25610,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5707809627007145048}
     m_Modifications:
+    - target: {fileID: 6583695851606871933, guid: 9086752de12acde4eb08e2bea71e7f10,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 347
+      objectReference: {fileID: 0}
+    - target: {fileID: 6583695851606871935, guid: 9086752de12acde4eb08e2bea71e7f10,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d907916fdca7b474e9488f476b6bf6d4,
+        type: 3}
     - target: {fileID: 6583695852097894899, guid: 9086752de12acde4eb08e2bea71e7f10,
         type: 3}
       propertyPath: m_LocalPosition.x

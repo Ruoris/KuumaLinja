@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossMovement : MonoBehaviour
 {
     public List<Transform> checkPoints = new List<Transform>();
-    public GameObject player;
+    //public GameObject player;
     public Rigidbody2D enemyRb;
     public int i = 0;
     public float speed = 0.4f;
