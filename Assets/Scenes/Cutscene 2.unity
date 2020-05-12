@@ -128,16 +128,42 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2288779685688450690, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eb1bf6f2ef7975649a071b4c178a6462,
+        type: 3}
+    - target: {fileID: 2407667841743429746, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 387
+      objectReference: {fileID: 0}
+    - target: {fileID: 2407667841743429746, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 366
+      objectReference: {fileID: 0}
+    - target: {fileID: 4574431977629067672, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778983960914560, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5069778983960914574, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 4449a8ec0eb63ab4698579385a6b3b46,
+      objectReference: {fileID: 21300000, guid: e7898537126c7744bb11ec7b363a6ed7,
         type: 3}
     - target: {fileID: 5069778983960914575, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5069778984566069421, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
@@ -229,33 +255,558 @@ PrefabInstance:
       propertyPath: m_Name
       value: DT1
       objectReference: {fileID: 0}
+    - target: {fileID: 5069778985100970883, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985673490689, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0.8000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985673490689, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.8000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985673490689, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 0.8000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985673490689, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.size
-      value: 4
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[0]
-      value: 'World has fallen into chaos. A new drug capable of mutating humans
-        into beasts has gone viral and now instead of ingesting the drug, the effects
-        of it can be transferred from human to human with just touch. '
+      value: -Next night...
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[1]
-      value: You are an agent tasked with investigating the matter to stop the organization
-        believed to be behind this.
+      value: -*Bzzzz*
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[2]
-      value: 'It is dark and rainy outside as you step inside the building. '
+      value: Um... Hello?
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[3]
-      value: Not knowing what lies ahead, you start the investigation.
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[4]
+      value: Just about got here, yes.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[5]
+      value: ~Remember, these are some dangerous people, better not take any chances
+        with them.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[6]
+      value: Yeah I figured.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[7]
+      value: ~I'm sure you can handle them though.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[8]
+      value: ~I just wanted to call because I remembered that my colleagues might
+        have recovered some of the old company tech and might be able to help you
+        in your task.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[9]
+      value: Alright sounds good.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[10]
+      value: ~So if you see any of them, say hello from me.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[11]
+      value: ~Alright bye bye!
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[12]
+      value: '*Click*'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[13]
+      value: ...
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[14]
+      value: I hope not all of them are as weird as this one.
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[15]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[16]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[17]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[18]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[19]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[20]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[21]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[22]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[23]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[24]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[25]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[26]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[27]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[28]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[29]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[30]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[31]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[32]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[33]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[34]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[35]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[36]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[37]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[38]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[39]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[40]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[41]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[42]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[43]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[44]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[45]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[46]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[47]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[48]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[49]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[50]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[51]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[52]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[53]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[54]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[55]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[56]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[57]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[58]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[59]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[60]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[61]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[62]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[63]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[64]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[65]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[66]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[67]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[68]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[69]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[70]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[71]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[72]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[73]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[74]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[75]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[76]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[77]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[78]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[79]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[80]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[81]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[82]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[83]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[84]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[85]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[86]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[87]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[88]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[89]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[90]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[91]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[92]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[93]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[94]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[95]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[96]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[97]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[98]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[99]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[100]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[101]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[102]
+      value: ~Hi! Have you arrived at the building yet?
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: sentences.Array.data[103]
+      value: ~Hi! Have you arrived at the building yet?
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cb9611b7c276504b99869857e03a55c, type: 3}
