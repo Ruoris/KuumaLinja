@@ -395,6 +395,7 @@ MonoBehaviour:
   movementSpeedAmount: 0
   radiusIncreasesCollected: 0
   radiusIncreaseAmount: 0
+  nextlevel: 
 --- !u!1 &1916757492
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,8 +537,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb15fafbd14101c4ebfe36e6582b1ba0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageSelection: {fileID: 8300000, guid: 01131df438370f74b95777b03c5b0dde, type: 3}
-  level1: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
-  level2: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
+  stageSelection: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
+  level1: {fileID: 8300000, guid: 463743ca1ea4bf04a84cb523af5dcf63, type: 3}
+  level2: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
   cutScene: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
-  cutScene2: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
+  cutScene2: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
+  Level3: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
+  cutScene3: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
+  cutScene4: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
+  credits: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
+  boss: {fileID: 8300000, guid: 01131df438370f74b95777b03c5b0dde, type: 3}

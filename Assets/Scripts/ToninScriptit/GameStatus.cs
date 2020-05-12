@@ -26,6 +26,8 @@ public class GameStatus : MonoBehaviour
     public int radiusIncreasesCollected;
     public float radiusIncreaseAmount;
 
+    public string nextlevel;
+
     void Start()
     {
         ammobuffsCollected = 0;
@@ -70,29 +72,60 @@ public class GameStatus : MonoBehaviour
         Scene scene = SceneManager.GetActiveScene();
         if(scene.buildIndex == 2)
         {
-            string nextlevel = "Level2";
+           nextlevel = "Level2";
         }
         if (scene.buildIndex == 3)
         {
             GameStatus.status.Level1 = true;
-            string nextlevel = "Cutscene 2";
+             nextlevel = "Cutscene 2";
         }
         if (scene.buildIndex == 4)
         {
             
-            string nextlevel = "Level2.1";
+           nextlevel = "Level2.1";
         }
+        //if (scene.buildIndex == 5)
+        //{
+        //    GameStatus.status.Level2 = true;
+        //     nextlevel = "Cutscene 3";
+        //}
         if (scene.buildIndex == 5)
         {
-            GameStatus.status.Level2 = true;
-            string nextlevel = "Cutscene3";
+            
+            nextlevel = "Boss Scene";
         }
+        if (scene.buildIndex == 6)
+        {
+            GameStatus.status.Level3 = true;
+            nextlevel = "Cutscene 3";
+        }
+        if (scene.buildIndex == 7)
+        {
+            
+            nextlevel = "Credits";
+        }  
+        if (scene.buildIndex != 7)
+        {
         int sceneToLoad = scene.buildIndex + 1;
         SceneManager.LoadScene(sceneToLoad);
-        AudioImmortality.immortal.ChangeBackgroundMusic(SceneManager.GetActiveScene().name);
-        GameStatus.status.currentLevel = SceneManager.GetActiveScene().name;
+        AudioImmortality.immortal.ChangeBackgroundMusic(nextlevel);
+        GameStatus.status.currentLevel = nextlevel;
         Debug.Log(SceneManager.GetActiveScene().name);
         GameStatus.status.Save();
+        }
+        if(scene.buildIndex == 7)
+            {
+          
+            SceneManager.LoadScene("UIMainmenukehitysScene");
+            AudioImmortality.immortal.ChangeBackgroundMusic("UIMainmenukehitysScene");
+            GameStatus.status.currentLevel = nextlevel;
+            Debug.Log(SceneManager.GetActiveScene().name);
+            GameStatus.status.Save();
+
+            GameStatus.status.currentLevel = "UIMainmenukehitysScene";
+        }
+      
+       
     }
     public void MovementSpeedSetter()
     {

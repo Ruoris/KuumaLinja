@@ -11,6 +11,11 @@ public class AudioImmortality : MonoBehaviour
     public AudioClip level2;
     public AudioClip cutScene;
     public AudioClip cutScene2;
+    public AudioClip Level3;
+    public AudioClip cutScene3;
+    public AudioClip cutScene4;
+    public AudioClip credits;
+    public AudioClip boss;
 
     void Awake()
     {
@@ -36,8 +41,14 @@ public class AudioImmortality : MonoBehaviour
             backgroundMusic.clip = stageSelection;
             backgroundMusic.Play();
         }
-
         if (sceneName == "Level2")
+        {
+            backgroundMusic.Stop();
+            backgroundMusic.clip = level1;
+            backgroundMusic.Play();
+
+        }
+        if (sceneName == "Level2.1")
         {
             backgroundMusic.Stop();
             backgroundMusic.clip = level1;
@@ -51,12 +62,37 @@ public class AudioImmortality : MonoBehaviour
             backgroundMusic.Play();
 
         }
-        if (sceneName == "Cutscene2")
+        if (sceneName == "Cutscene 2")
         {
             backgroundMusic.Stop();
             backgroundMusic.clip = cutScene2;
             backgroundMusic.Play();
 
+        }
+        if (sceneName == "Cutscene 3")
+        {
+            backgroundMusic.Stop();
+            backgroundMusic.clip = credits;
+            backgroundMusic.Play();
+
+        }
+        if (sceneName == "Cutscene 4")
+        {
+            backgroundMusic.Stop();
+            backgroundMusic.clip = cutScene4;
+            backgroundMusic.Play();
+        }
+        //if (sceneName == "Credits")
+        //{
+        //    backgroundMusic.Stop();
+        //    backgroundMusic.clip = credits;
+        //    backgroundMusic.Play();
+        //}
+        if (sceneName == "Boss Scene")
+        {
+            backgroundMusic.Stop();
+            backgroundMusic.clip = boss;
+            backgroundMusic.Play();
         }
 
     }

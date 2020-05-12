@@ -105,6 +105,12 @@ public class TextScript : MonoBehaviour
                 //SceneManager.LoadScene("Level3");
                 GameStatus.status.LevelEnd();
             }
+            else if (SceneManager.GetActiveScene().name == "Boss Scene")
+            {
+                Debug.Log("Loading Credits");
+                //SceneManager.LoadScene("Level3");
+                GameStatus.status.LevelEnd();
+            }
         }  
     }
 }

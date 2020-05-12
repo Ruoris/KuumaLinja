@@ -48,9 +48,9 @@ public class Weapons : MonoBehaviour
         uiAmmoCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiBulletCounter");
         uiShellCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiShotgunShellCounter");
         uiRifleCounter = GameObject.Find("Misc stuff/Canvas/Panel/uiRifleCounter");
-        //  AmmoBuff();
-        //  RadiusIncrease();
-        //MovementSpeedBuff();
+        AmmoBuff();
+        RadiusIncrease();
+        MovementSpeedBuff();
 
     }
     // Update is called once per frame
