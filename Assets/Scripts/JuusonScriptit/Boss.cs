@@ -30,8 +30,8 @@ public class Boss : MonoBehaviour
 
     void PlayerDetect()
     {
-        float randX = Random.Range(-0.4f, 0.4f);
-        float randY = Random.Range(-0.4f, 0.4f);
+        float randX = Random.Range(0f, 6.36f);
+        float randY = Random.Range(0f, 5f);
 
         Vector3 pos = this.transform.InverseTransformPoint(player.transform.position);
         if (rayToPlayer.collider != null)
@@ -60,7 +60,7 @@ public class Boss : MonoBehaviour
             }
             else
             {
-                
+               
             }
             
         }
