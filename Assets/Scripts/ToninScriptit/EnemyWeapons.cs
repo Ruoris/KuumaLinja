@@ -19,7 +19,7 @@ public class EnemyWeapons : MonoBehaviour
 
     public int equippedGun, ammoCapacity, ammoLeft, previousequippedGun, previousammoCapacity, previousAmmoLeft;
 
-
+   // public GameObject speedBoost, ammoBoost, radiusBoost;
 
     // Start is called before the first frame update
     void Start()
@@ -139,6 +139,19 @@ public class EnemyWeapons : MonoBehaviour
     }
     public void DropGun()
     {
+     //int buffToActivate = Random.Range(0 , 10);
+     //   if (buffToActivate < 2)
+     //   {
+     //       var droppedspeedBoost = Instantiate(speedBoost, gameThrow.transform.position, Quaternion.identity);
+     //   }
+     //   if (buffToActivate > 2&&buffToActivate<5)
+     //   {
+     //       var droppedradiusBoost = Instantiate(radiusBoost, gameThrow.transform.position, Quaternion.identity);
+     //   }
+     //   if (buffToActivate ==8)
+     //   {
+     //       var droppedammoBoost = Instantiate(ammoBoost, gameThrow.transform.position, Quaternion.identity);
+     //   }
         if (equippedGun == 1)
         {
             Debug.Log("ase pudotettu");

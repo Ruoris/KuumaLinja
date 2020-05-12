@@ -8,6 +8,10 @@ public class AudioImmortality : MonoBehaviour
     private AudioSource backgroundMusic;
     public AudioClip stageSelection;
     public AudioClip level1;
+    public AudioClip level2;
+    public AudioClip cutScene;
+    public AudioClip cutScene2;
+
     void Awake()
     {
         if (immortal == null)
@@ -32,13 +36,28 @@ public class AudioImmortality : MonoBehaviour
             backgroundMusic.clip = stageSelection;
             backgroundMusic.Play();
         }
-        if (sceneName == "juusonsceneUIlla")
+
+        if (sceneName == "Level2")
         {
             backgroundMusic.Stop();
             backgroundMusic.clip = level1;
             backgroundMusic.Play();
 
         }
-        
+        if (sceneName == "Cutscene")
+        {
+            backgroundMusic.Stop();
+            backgroundMusic.clip = cutScene;
+            backgroundMusic.Play();
+
+        }
+        if (sceneName == "Cutscene2")
+        {
+            backgroundMusic.Stop();
+            backgroundMusic.clip = cutScene2;
+            backgroundMusic.Play();
+
+        }
+
     }
 }

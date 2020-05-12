@@ -12,16 +12,14 @@ public class ShootEnable : MonoBehaviour
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Wall" && other.gameObject.name=="Wall 3(Clone)" 
-            || other.gameObject.name == "WallObjectSideways(Clone)")
+        if (other.gameObject.tag == "Wall")
         {
             canShoot = false;
         }
     }
     void OnTriggerExit2D(Collider2D exiter)
     {
-        if (exiter.gameObject.tag == "Wall" && exiter.gameObject.name == "Wall 3(Clone)" 
-            || exiter.gameObject.name == "WallObjectSideways(Clone)")
+        if (exiter.gameObject.tag == "Wall")
         {
             canShoot = true;
         }

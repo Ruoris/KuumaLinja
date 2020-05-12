@@ -10,17 +10,16 @@ public class Pause : MonoBehaviour
     private GameObject menu;
     public bool paused;
 
-    public GameObject backButton;
-    public GameObject audioSettings;
-
+  
+  
     private GameObject audioSettings;
-    private GameObject player;
+   
     public bool alive;
     void Start()
     {   PausemenuPanel = GameObject.Find("/Misc stuff/Canvas/PauseMenu");
         menu = GameObject.Find("/Misc stuff/Canvas/Mainmenu");
         audioSettings = GameObject.Find("/Misc stuff/Canvas/SoundSettingsPanel");
-        player = GameObject.Find("Player(Clone)");
+        
     }
 
     void Awake()
@@ -36,11 +35,11 @@ public class Pause : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) == true || Input.GetKeyDown(KeyCode.P) == true)
-        {  
+        {
             paused = !paused;
             Pauser();
         }
-        
+       
         if (Input.GetKeyDown(KeyCode.Space))
         {
             RestartFromSpace();
@@ -51,11 +50,12 @@ public class Pause : MonoBehaviour
     public void Unpause()
     {
             paused = false;
+            Pauser();
     } 
     
     public void Pauser()
     {
-   
+       
         if (paused&&alive == true)
         {
             Cursor.visible = true;

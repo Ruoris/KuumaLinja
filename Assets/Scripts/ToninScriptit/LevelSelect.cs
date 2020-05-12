@@ -9,9 +9,9 @@ public class LevelSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levels[0] = GameObject.Find("Misc stuff/Canvas/LevelSelection/Level2Button");
-        levels[1] = GameObject.Find("Misc stuff/Canvas/LevelSelection/Level3Button");
-        levels[2] = GameObject.Find("Misc stuff/Canvas/LevelSelection/Level4Button");
+        levels[0] = GameObject.Find("Misc stuff/Canvas/Level Selection/Panel/Level2Button");
+        levels[1] = GameObject.Find("Misc stuff/Canvas/Level Selection/Panel/Level3Button");
+        levels[2] = GameObject.Find("Misc stuff/Canvas/Level Selection/Panel/Level4Button");
     }
 
     public void Shower()

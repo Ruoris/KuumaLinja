@@ -63,6 +63,37 @@ public class GameStatus : MonoBehaviour
             //SceneManager.LoadScene("MainMenu");
 
     }
+    public void LevelEnd()
+    {
+        Cursor.visible = true;
+        Debug.Log("levelComplete");
+        Scene scene = SceneManager.GetActiveScene();
+        if(scene.buildIndex == 2)
+        {
+            string nextlevel = "Level2";
+        }
+        if (scene.buildIndex == 3)
+        {
+            GameStatus.status.Level1 = true;
+            string nextlevel = "Cutscene 2";
+        }
+        if (scene.buildIndex == 4)
+        {
+            
+            string nextlevel = "Level2.1";
+        }
+        if (scene.buildIndex == 5)
+        {
+            GameStatus.status.Level2 = true;
+            string nextlevel = "Cutscene3";
+        }
+        int sceneToLoad = scene.buildIndex + 1;
+        SceneManager.LoadScene(sceneToLoad);
+        AudioImmortality.immortal.ChangeBackgroundMusic(SceneManager.GetActiveScene().name);
+        GameStatus.status.currentLevel = SceneManager.GetActiveScene().name;
+        Debug.Log(SceneManager.GetActiveScene().name);
+        GameStatus.status.Save();
+    }
     public void MovementSpeedSetter()
     {
         if (movementSpeedsCollected == 0)
@@ -108,9 +139,9 @@ public class GameStatus : MonoBehaviour
     }
     public void DeathRestart(int current)
     {
-        currentFloor = current;
+       // currentFloor = current;
 
-        SceneManager.LoadScene(currentLevel);      
+        SceneManager.LoadScene(current);      
         Debug.Log("GamesStatus");
     }
 

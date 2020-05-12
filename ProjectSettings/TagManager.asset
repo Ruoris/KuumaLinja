@@ -29,6 +29,14 @@ TagManager:
   - LevelGenerator
   - Floor
   - Fow
+  - BuffPanels
+  - PlayerPistolDrop
+  - PlayerShotgunDrop
+  - PlayerRifleDrop
+  - RadiusBoost
+  - SpeedBoost
+  - AmmoBoost
+  - LevelEnd
   layers:
   - Default
   - TransparentFX

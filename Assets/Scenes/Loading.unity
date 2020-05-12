@@ -389,6 +389,12 @@ MonoBehaviour:
   currentFloor: 0
   score: 0
   currentLevel: 
+  ammobuffsCollected: 0
+  ammobuffAmount: 0
+  movementSpeedsCollected: 0
+  movementSpeedAmount: 0
+  radiusIncreasesCollected: 0
+  radiusIncreaseAmount: 0
 --- !u!1 &1916757492
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,7 +424,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1655462591543370242, guid: dad76038e9f59bc4391ba2c841f8d294,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 577010f6c1c76c14c94da377ba315728, type: 3}
+  m_audioClip: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.616
   m_Pitch: 1
@@ -532,3 +538,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageSelection: {fileID: 8300000, guid: 01131df438370f74b95777b03c5b0dde, type: 3}
   level1: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
+  level2: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
+  cutScene: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
+  cutScene2: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}

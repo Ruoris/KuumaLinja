@@ -19,7 +19,7 @@ public class MenuButton : MonoBehaviour
         {
 
             mainMenu = GameObject.Find("/Misc stuff/Canvas/Mainmenu");
-          //  backButton = GameObject.Find("/Misc stuff/Canvas/BacktoMainMenuFromAudio");
+            backButton = GameObject.Find("/Misc stuff/Canvas/SoundSettingsPanel/AudioSettingsPanel/BacktoMainMenuFromAudio");
             audioSettings = GameObject.Find("/Misc stuff/Canvas/SoundSettingsPanel");
 
         }
@@ -106,16 +106,20 @@ public class MenuButton : MonoBehaviour
     }
     public void Restart()
     {
-        GameObject levelController = GameObject.Find("LevelController");
-        GameStatus.status.DeathRestart(levelController.GetComponent<LevelController>().currentFloor);
-
+        //GameObject levelController = GameObject.Find("LevelController");
+       
+        Scene scene = SceneManager.GetActiveScene();
+        int sceneToLoad = scene.buildIndex;
+        GameStatus.status.DeathRestart(sceneToLoad);
     }
     public void UnLoad()
     {
         GameStatus.status.UnLoad();
+        SettingsMenuDisabler();
     }
     public void BackToMenu()
     {
+        GameStatus.status.currentLevel = "UIMainmenukehitysScene";
         SceneManager.LoadScene("UIMainmenukehitysScene");
         AudioImmortality.immortal.ChangeBackgroundMusic("UIMainmenukehitysScene");
     }
