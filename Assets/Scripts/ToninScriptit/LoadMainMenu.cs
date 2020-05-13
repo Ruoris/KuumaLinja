@@ -8,6 +8,7 @@ public class LoadMainMenu : MonoBehaviour
     void Start()
     {
         SceneManager.LoadScene("UIMainmenukehitysScene");
+        GameStatus.status.currentLevel = "UIMainmenukehitysScene";
     }
 
     

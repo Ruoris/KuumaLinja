@@ -42,6 +42,7 @@ public class GameStatus : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+       
         if (status == null)
         {
             DontDestroyOnLoad(gameObject);
@@ -51,15 +52,15 @@ public class GameStatus : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        Cursor.visible = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (currentLevel == "UIMainmenukehitysScene")
-        {
+        
             Cursor.visible = true;
-        }
+        
         
             //GameStatus.status.currentLevel = "";
             //SceneManager.LoadScene("MainMenu");
@@ -67,7 +68,7 @@ public class GameStatus : MonoBehaviour
     }
     public void LevelEnd()
     {
-        Cursor.visible = true;
+        //Cursor.visible = true;
         Debug.Log("levelComplete");
         Scene scene = SceneManager.GetActiveScene();
         if(scene.buildIndex == 2)
@@ -91,7 +92,7 @@ public class GameStatus : MonoBehaviour
         //}
         if (scene.buildIndex == 5)
         {
-            
+            GameStatus.status.Level2 = true;
             nextlevel = "Boss Scene";
         }
         if (scene.buildIndex == 6)

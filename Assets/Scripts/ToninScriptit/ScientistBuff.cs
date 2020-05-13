@@ -57,6 +57,8 @@ public class ScientistBuff : MonoBehaviour
     }
     public void No()
     {
+        GameObject boostPanel = GameObject.FindWithTag("BuffPanels");
+        boostPanel.SetActive(false);
         scientistPanel.SetActive(false);
         Time.timeScale = 1;
     }

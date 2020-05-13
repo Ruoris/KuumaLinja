@@ -25,14 +25,15 @@ public class Weapons : MonoBehaviour
     public int shotgunCapacity = 5;
     public int assaultRifleCapacity = 15;
 
-    public bool eDown, doingStuff;
+
+
 
 
     // Start is called before the first frame update
     void Start()
     {
-        doingStuff = false;
-        eDown = false;
+        Cursor.visible = true;
+
         pistolCapacity = 10;
         shotgunCapacity = 5;
         assaultRifleCapacity = 15;
@@ -56,6 +57,7 @@ public class Weapons : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         SecondaryWeapon();
         EquipGun();
 
@@ -71,15 +73,6 @@ public class Weapons : MonoBehaviour
         if (ammoLeft <= 0)
         {
             equippedGun = 0;
-        }
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            eDown = true;
-
-        }
-        if (Input.GetKeyDown(KeyCode.E) == false)
-        {
-            eDown = false;
         }
     }
 
@@ -434,242 +427,136 @@ public class Weapons : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.layer == 11)
+        if (other.gameObject.layer == 11 && Input.GetKey(KeyCode.E))
         {
 
-            if (equippedGun > 0 && previousEquippedGun > 0 && eDown == true) // kädet ja selkä täynnä
+            emptyMagazine = false;
+
+           
+            if (other.gameObject.tag == "PistolDrop")
             {
-
-
-                emptyMagazine = false;
-
-                uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(shotgunCapacity);
                 uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(pistolCapacity);
+                if (equippedGun != 0)
+                {
+                    previousEquippedGun = equippedGun;
+                    previousAmmoLeft = ammoLeft;
+                    previousAmmoCapacity = ammoCapacity;
+                }
 
+
+                equippedGun = 1;
+                ammoCapacity = pistolCapacity;
+                ammoLeft = pistolCapacity;
+                uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
+                Destroy(other.gameObject);
+            }
+
+            if (other.gameObject.tag == "ShotGunDrop")
+            {
+                uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(shotgunCapacity);
+                if (equippedGun != 0)
+                {
+                    previousEquippedGun = equippedGun;
+                    previousAmmoLeft = ammoLeft;
+                    previousAmmoCapacity = ammoCapacity;
+                }
+
+
+                equippedGun = 2;
+                ammoCapacity = shotgunCapacity;
+                ammoLeft = shotgunCapacity;
+                uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
+                Destroy(other.gameObject);
+            }
+
+
+            if (other.gameObject.tag == "RifleDrop")
+            {
                 uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(assaultRifleCapacity);
-
-                if (other.gameObject.tag == "PistolDrop")
+                if (equippedGun != 0)
                 {
-
-
-                    Debug.Log("kädet täynnä");
-                    //previousEquippedGun = equippedGun;
-                    //previousAmmoLeft = ammoLeft;
-                    //previousAmmoCapacity = ammoCapacity;
-
-
-                    equippedGun = 1;
-                    ammoCapacity = pistolCapacity;
-                    ammoLeft = pistolCapacity;
-                    uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-
+                    previousEquippedGun = equippedGun;
+                    previousAmmoLeft = ammoLeft;
+                    previousAmmoCapacity = ammoCapacity;
                 }
 
-
-                if (other.gameObject.tag == "ShotGunDrop")
-                {
-                    Debug.Log("kädet täynnä");
-
-                    //previousEquippedGun = equippedGun;
-                    //previousAmmoLeft = ammoLeft;
-                    //previousAmmoCapacity = ammoCapacity;
-
-
-
-                    equippedGun = 2;
-                    ammoCapacity = shotgunCapacity;
-                    ammoLeft = shotgunCapacity;
-                    uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-
-                }
-
-
-                if (other.gameObject.tag == "RifleDrop")
-                {
-                    Debug.Log("kädet täynnä");
-                    //previousEquippedGun = equippedGun;
-                    //previousAmmoLeft = ammoLeft;
-                    //previousAmmoCapacity = ammoCapacity;
-
-
-                    equippedGun = 3;
-                    ammoCapacity = assaultRifleCapacity;
-                    ammoLeft = assaultRifleCapacity;
-                    uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-
-                }
-                if (other.gameObject.tag == "PlayerPistolDrop")
-                {
-                    Debug.Log("käsi täynnä");
-                    //previousEquippedGun = equippedGun;
-                    //previousAmmoLeft = ammoLeft;
-                    //previousAmmoCapacity = ammoCapacity;
-
-                    equippedGun = 1;
-                    ammoCapacity = pistolCapacity;
-                    ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
-                    uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-
-                }
-                if (other.gameObject.tag == "PlayerShotgunDrop")
-                {
-                    Debug.Log("käsi täynnä");
-                    //previousEquippedGun = equippedGun;
-                    //previousAmmoLeft = ammoLeft;
-                    //previousAmmoCapacity = ammoCapacity;
-
-                    equippedGun = 2;
-                    ammoCapacity = shotgunCapacity;
-                    ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
-                    uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-
-                }
-                if (other.gameObject.tag == "PlayerRifleDrop")
-                {
-                    Debug.Log("käsi täynnä");
-                    //previousEquippedGun = equippedGun;
-                    //previousAmmoLeft = ammoLeft;
-                    //previousAmmoCapacity = ammoCapacity;
-
-                    equippedGun = 3;
-                    ammoCapacity = assaultRifleCapacity;
-                    ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
-                    uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-
-                }
-
+                equippedGun = 3;
+                ammoCapacity = assaultRifleCapacity;
+                ammoLeft = assaultRifleCapacity;
+                uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
+                Destroy(other.gameObject);
             }
-            if (equippedGun == 0)
+            if (other.gameObject.tag == "PlayerPistolDrop")
             {
+                uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(pistolCapacity);
+                Debug.Log("käsi täynnä");
+                if (equippedGun != 0)
+                {
+                    previousEquippedGun = equippedGun;
+                    previousAmmoLeft = ammoLeft;
+                    previousAmmoCapacity = ammoCapacity;
+                }
 
-                if (other.gameObject.tag == "PistolDrop")
-                {
-                    Debug.Log("pistoldrop");
-                    equippedGun = 1;
-                    ammoCapacity = pistolCapacity;
-                    ammoLeft = pistolCapacity;
-                    uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-                }
-                if (other.gameObject.tag == "ShotGunDrop")
-                {
-                    Debug.Log("pistoldrop");
-                    equippedGun = 2;
-                    ammoCapacity = shotgunCapacity;
-                    ammoLeft = shotgunCapacity;
-                    uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-                }
-                if (other.gameObject.tag == "RifleDrop")
-                {
-                    Debug.Log("pistoldrop");
-                    equippedGun = 3;
-                    ammoCapacity = assaultRifleCapacity;
-                    ammoLeft = assaultRifleCapacity;
-                    uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-                }
-                if (other.gameObject.tag == "PlayerPistolDrop")
-                {
-                    Debug.Log("pistoldrop");
-                    equippedGun = 1;
-                    ammoCapacity = pistolCapacity;
-                    ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
-                    uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-                }
-                if (other.gameObject.tag == "PlayerShotgunDrop")
-                {
-                    Debug.Log("pistoldrop");
-                    equippedGun = 2;
-                    ammoCapacity = shotgunCapacity;
-                    ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
-                    uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-                }
-                if (other.gameObject.tag == "PlayerRifleDrop")
-                {
-                    Debug.Log("pistoldrop");
-                    equippedGun = 3;
-                    ammoCapacity = assaultRifleCapacity;
-                    ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
-                    uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-                }
-                return;
+                equippedGun = 1;
+                ammoCapacity = pistolCapacity;
+                ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
+                uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
+                Destroy(other.gameObject);
+
             }
-            if (equippedGun != 0 && previousEquippedGun == 0)
+            if (other.gameObject.tag == "PlayerShotgunDrop")
             {
-                if (other.gameObject.tag == "PistolDrop")
+                uiShellCounter.GetComponent<AmmocounterScript>().ReturnColor(shotgunCapacity);
+                Debug.Log("käsi täynnä");
+                if (equippedGun != 0)
                 {
-                    Debug.Log("selkää");
-                    previousEquippedGun = 1;
-                    previousAmmoLeft = pistolCapacity;
-                    previousAmmoCapacity = pistolCapacity;
-                    Destroy(other.gameObject);
+                    previousEquippedGun = equippedGun;
+                    previousAmmoLeft = ammoLeft;
+                    previousAmmoCapacity = ammoCapacity;
                 }
-                if (other.gameObject.tag == "ShotGunDrop")
-                {
-                    Debug.Log("selkää");
-                    previousEquippedGun = 2;
-                    previousAmmoLeft = shotgunCapacity;
-                    previousAmmoCapacity = shotgunCapacity;
-                    Destroy(other.gameObject);
-                }
-                if (other.gameObject.tag == "RifleDrop")
-                {
-                    Debug.Log("selkää");
-                    previousEquippedGun = 3;
-                    previousAmmoLeft = assaultRifleCapacity;
-                    previousAmmoCapacity = assaultRifleCapacity;
-                    Destroy(other.gameObject);
-                }
-                if (other.gameObject.tag == "PlayerPistolDrop")
-                {
-                    Debug.Log("selkää");
-                    previousEquippedGun = 1;
-                    previousAmmoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
-                    previousAmmoCapacity = pistolCapacity;
-                    Destroy(other.gameObject);
-                }
-                if (other.gameObject.tag == "PlayerShotgunDrop")
-                {
-                    Debug.Log("selkää");
-                    previousEquippedGun = 2;
-                    previousAmmoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
-                    previousAmmoCapacity = shotgunCapacity;
-                    Destroy(other.gameObject);
-                }
-                if (other.gameObject.tag == "PlayerRifleDrop")
-                {
-                    Debug.Log("selkää");
-                    previousEquippedGun = 3;
-                    previousAmmoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
-                    previousAmmoCapacity = assaultRifleCapacity;
-                    Destroy(other.gameObject);
-                }
-                return;
-            }
 
+                equippedGun = 2;
+                ammoCapacity = shotgunCapacity;
+                ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
+                uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
+                Destroy(other.gameObject);
+
+            }
+            if (other.gameObject.tag == "PlayerRifleDrop")
+            {
+                uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(assaultRifleCapacity);
+                Debug.Log("käsi täynnä");
+                if (equippedGun != 0)
+                {
+                    previousEquippedGun = equippedGun;
+                    previousAmmoLeft = ammoLeft;
+                    previousAmmoCapacity = ammoCapacity;
+                }
+
+                equippedGun = 3;
+                ammoCapacity = assaultRifleCapacity;
+                ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
+                uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
+                Destroy(other.gameObject);
+
+            }
 
         }
+
+
+
+
     }
 
 
 
-   
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.tag == "LevelEnd")
         {
             GameStatus.status.LevelEnd();
-            
+
         }
         if (other.gameObject.layer == 11) // 11 = Equipment
         {

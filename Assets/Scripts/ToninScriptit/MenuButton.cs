@@ -84,7 +84,7 @@ public class MenuButton : MonoBehaviour
             mainMenu.SetActive(false);
         }
     }
-    public void onClick()
+    public void OnClick()
     {
         if (audioSettings.activeSelf == false)
         {

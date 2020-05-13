@@ -40,7 +40,7 @@ public class Pause : MonoBehaviour
             Pauser();
         }
        
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.L))
         {
             RestartFromSpace();
 
@@ -58,7 +58,7 @@ public class Pause : MonoBehaviour
        
         if (paused&&alive == true)
         {
-            Cursor.visible = true;
+            //Cursor.visible = true;
            
             Time.timeScale = 0.00001F;
             PausemenuPanel.SetActive(true);
@@ -77,7 +77,7 @@ public class Pause : MonoBehaviour
         {
 
             PausemenuPanel.SetActive(false);
-            Cursor.visible = false;
+            //Cursor.visible = false;
             menu.SetActive(false);
             audioSettings.SetActive(false);
             
@@ -86,7 +86,7 @@ public class Pause : MonoBehaviour
         }
         if(alive != true)
         {
-            Cursor.visible = true;
+            //Cursor.visible = true;
             // GameObject soundButton = GameObject.FindWithTag("soundsettings");
             Time.timeScale = 0.00001F;
 
