@@ -19133,7 +19133,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8461420d9a390c641badc6a40f18398d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelToLoad: Endless
+  LevelToLoad: RandomGenerator
   cleared: 0
 --- !u!114 &1738813973
 MonoBehaviour:

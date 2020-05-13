@@ -547,3 +547,4 @@ MonoBehaviour:
   cutScene4: {fileID: 8300000, guid: d06e7bda6215feb4d8cb1f73b2bbb924, type: 3}
   credits: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
   boss: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}
+  randomGenerator: {fileID: 8300000, guid: b98dbc7d2cbf55542b8d8f8d54793cf4, type: 3}

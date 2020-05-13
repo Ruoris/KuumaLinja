@@ -16,7 +16,7 @@ public class AudioImmortality : MonoBehaviour
     public AudioClip cutScene4;
     public AudioClip credits;
     public AudioClip boss;
-
+    public AudioClip randomGenerator;
     void Awake()
     {
         if (immortal == null)
@@ -94,6 +94,11 @@ public class AudioImmortality : MonoBehaviour
             backgroundMusic.clip = boss;
             backgroundMusic.Play();
         }
-
+        if (sceneName == "RandomGenerator")
+        {
+            backgroundMusic.Stop();
+            backgroundMusic.clip = randomGenerator;
+            backgroundMusic.Play();
+        }
     }
 }

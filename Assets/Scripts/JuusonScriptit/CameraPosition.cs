@@ -26,7 +26,7 @@ public class CameraPosition : MonoBehaviour
     void LateUpdate()
     {
 
-        var player = GameObject.Find("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
 
         if (player != null)
         {

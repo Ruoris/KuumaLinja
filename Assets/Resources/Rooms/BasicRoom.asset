@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: BasicRoom
   m_EditorClassIdentifier: 
   roomType: Basic
+  difficulty: 0
   wall: {fileID: 300425294304570222, guid: a7f2abd125c5c574a9d07449d6af2961, type: 3}
   halfWall: {fileID: 300425294304570222, guid: 13dc85cebb98dc64b9789ae48cf98e75, type: 3}
   wallCorner: {fileID: 300425294304570222, guid: 41dde6a0f6b0c6643b68ef0f4bb4a3c2,
     type: 3}
-  door: {fileID: 300425294304570222, guid: 6ba506a9ba52f09448975e2c6486c906, type: 3}
-  floor: {fileID: 300425294304570222, guid: 146fab454544f2b4dbb5175520f296dc, type: 3}
+  door: {fileID: 7836846530912401516, guid: 3c749f30fb4143e4d87c174c9ea4fa0f, type: 3}
+  floor: {fileID: 300425294304570222, guid: ba6c4a4142d1e5a4a9e29fd053d84303, type: 3}
   furniture:
   - {fileID: 4002979554525059714, guid: 9a0521e50c53e794294ce8e358348071, type: 3}
   - {fileID: 480266412212940813, guid: 501bb520987421047af6e29985af453a, type: 3}
@@ -30,7 +31,7 @@ MonoBehaviour:
   - {fileID: 3125838865019598219, guid: b133db0bbfa475f4fbf2d07a55dea0ba, type: 3}
   - {fileID: 713108434180244025, guid: fd0852f017bc04442b0823558cd2825f, type: 3}
   - {fileID: 300425294304570222, guid: 3ffdad40b6981744099d7269c87b368f, type: 3}
-  - {fileID: 7320061698837239793, guid: cd5fb442ffdef4848a4bb3bd52deaf88, type: 3}
-  - {fileID: 7511827956135903679, guid: 2e543fc350414064fa07675552482748, type: 3}
+  - {fileID: 7338185952711147468, guid: c9d49b00c404c0a43b7e7cf653c907c4, type: 3}
+  - {fileID: 3650878930103310171, guid: 2dae0e8fd7bd9044ba40dbd0e10681c4, type: 3}
   roomX: 0
   roomY: 0

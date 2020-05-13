@@ -121,3 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6aa87b47906684d8ae742e23706794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpawn: 0
+  nextFloor: 0
+  currentFloor: 0
+  levelController: {fileID: 0}
