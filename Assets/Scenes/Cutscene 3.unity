@@ -260,6 +260,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5069778984951189111, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778984951189111, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778984951189111, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778984951189111, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5069778985009286833, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: m_Name
@@ -269,6 +289,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985100970895, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985673490689, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
@@ -293,7 +318,7 @@ PrefabInstance:
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.size
-      value: 11
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
@@ -320,12 +345,12 @@ PrefabInstance:
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[4]
-      value: 'Level design: Juuso Pesonen, Roope-, Tuomas-.'
+      value: 'Level design: Juuso Pesonen, Roope Jokelainen, Tuomas Pienisaari'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[5]
-      value: 'Artificial intelligence: Tuomas-, Juuso Pesonen.'
+      value: 'Artificial intelligence: Tuomas Pienisaari, Juuso Pesonen'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
@@ -335,37 +360,37 @@ PrefabInstance:
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[7]
-      value: 'Art: Sonja.'
+      value: 'Art: Sonja Helin'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[8]
-      value: 'Animations: Sonja Helin, Juuso Peaonen.'
+      value: 'Animations: Sonja Helin, Juuso Pesonen.'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[9]
-      value: 'Story: sonja, juuso, roope'
+      value: 'Story: Sonja Helin, Juuso Pesonen, Roope Jokelainen'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[10]
-      value: 'Sound FX: roope'
+      value: 'Sound FX: Roope Jokelainen'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[11]
-      value: ~Alright bye bye!
+      value: 'Voice acting: Tomi Kairavuo'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[12]
-      value: '*Click*'
+      value: 'Video editing: Olli Rantala, Toni Ruoranen'
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.data[13]
-      value: ...
+      value: Back to main menu
       objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
@@ -817,6 +842,11 @@ PrefabInstance:
       propertyPath: sentences.Array.data[103]
       value: ~Hi! Have you arrived at the building yet?
       objectReference: {fileID: 0}
+    - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: typingSpeed
+      value: 0.02
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cb9611b7c276504b99869857e03a55c, type: 3}
 --- !u!1 &818086252
@@ -918,7 +948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1706102290
 AudioSource:
   m_ObjectHideFlags: 0

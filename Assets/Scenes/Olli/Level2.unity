@@ -11368,7 +11368,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &4675405702541977297
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11740,7 +11740,7 @@ PrefabInstance:
     - target: {fileID: 5069778985009286833, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cb9611b7c276504b99869857e03a55c, type: 3}
@@ -20855,7 +20855,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1001 &5707809627015990885
 PrefabInstance:
   m_ObjectHideFlags: 0

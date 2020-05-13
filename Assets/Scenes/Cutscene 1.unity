@@ -234,6 +234,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: DT1
       objectReference: {fileID: 0}
+    - target: {fileID: 5069778985100970883, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778985100970895, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5069778985839707322, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: sentences.Array.size
