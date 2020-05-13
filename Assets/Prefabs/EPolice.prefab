@@ -232,6 +232,7 @@ MonoBehaviour:
   backToPatrol: 0
   playerDetected: 0
   randomDirection: 4
+  levelController: {fileID: 0}
   walkAnimation: {fileID: 4002979554662983208}
 --- !u!114 &4002979554525059708
 MonoBehaviour:
@@ -290,7 +291,6 @@ MonoBehaviour:
   enemy: {fileID: 4002979554525059714}
   bulletprefab: {fileID: 5005290098821576133, guid: 3dfb09dca58c4aa4c861b7ec19d0d4a6,
     type: 3}
-  gunFlareAnimation: {fileID: 4002979554738376048}
 --- !u!70 &4002979554525059710
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

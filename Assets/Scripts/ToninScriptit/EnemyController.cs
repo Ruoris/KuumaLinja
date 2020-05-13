@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
 
     public int randomDirection = 4;
 
-
+    public GameObject levelController;
     public GameObject walkAnimation;
 
     void Start()
@@ -39,6 +39,7 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerLastPosition = player.transform.position;
         enemyRb = this.GetComponent<Rigidbody2D>();
+        levelController = GameObject.FindGameObjectWithTag("LevelController");
     }
 
     public bool GetPursuing()
@@ -82,7 +83,12 @@ public class EnemyController : MonoBehaviour
         {
             Instantiate(death, enemy.transform.position, enemy.transform.rotation);
         }
+        if (GameStatus.status.currentLevel == "RandomGenerator")
+        {
+        levelController.GetComponent<LevelController>().enemiesKilled++;
+        }
 
+        
 
         gameObject.SetActive(false);
     }

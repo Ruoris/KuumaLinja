@@ -96,7 +96,7 @@ public class EnemyPshoot : MonoBehaviour
 
     IEnumerator FireCooldown()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3.5f);
         readyToShoot = true;
     }
 }
