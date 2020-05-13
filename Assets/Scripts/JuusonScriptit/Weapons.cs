@@ -427,7 +427,7 @@ public class Weapons : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.layer == 11 && Input.GetKey(KeyCode.E))
+        if (other.gameObject.layer == 11 && Input.GetKeyDown(KeyCode.E))
         {
 
             emptyMagazine = false;
