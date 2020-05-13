@@ -143,7 +143,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -461525367
+  m_SortingLayerID: 1510726973
   m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 10d6d0123fff0a841a40ddf23b5c5558, type: 3}
@@ -490,7 +490,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -461525367
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -571,7 +571,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -461525367
-  m_SortingLayer: 2
+  m_SortingLayer: 0
   m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 10d6d0123fff0a841a40ddf23b5c5558, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -693,7 +693,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4002979555508632949}
+  - component: {fileID: 4474216316018058086}
+  - component: {fileID: 977671617575852298}
+  - component: {fileID: 7381773471897736163}
   m_Layer: 9
   m_Name: AmmoSpawn
   m_TagString: Enemy
@@ -701,7 +703,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4002979555508632949
+--- !u!4 &4474216316018058086
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -711,8 +713,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.129, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 4002979554738376051}
+  m_Children: []
   m_Father: {fileID: 4002979554525059705}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1096,4 +1097,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5888469609048046903, guid: 4693b77a9e6f8cd45bc7828e7ce50639,
     type: 3}
   m_PrefabInstance: {fileID: 7364928398137823350}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8295605604073107271 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2317068116596282494, guid: 50b052f2c4f8ab9429262fc3b5fd9141,
+    type: 3}
+  m_PrefabInstance: {fileID: 5996552201133013817}
   m_PrefabAsset: {fileID: 0}

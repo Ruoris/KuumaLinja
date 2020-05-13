@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Sprites/12.5.meta
 guid: 4c3b4e97299cd0149849b567aeaed728
+=======
+guid: 257146eda54623341b8a3ee56f189fe2
+>>>>>>> toniBranch:Assets/Fonts.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

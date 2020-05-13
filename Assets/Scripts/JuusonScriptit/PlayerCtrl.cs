@@ -5,7 +5,8 @@ using UnityEngine.Audio;
 
 public class PlayerCtrl : MonoBehaviour
 {
-    private float movementSpeed;
+
+    public float movementSpeed;
     public GameObject player, aim, playerCamera, startPoint;
     public GameObject walkAnimation, deathAnimation, bloodFrame;
     public int playerHealth = 1;
@@ -20,25 +21,46 @@ public class PlayerCtrl : MonoBehaviour
 
     void Start()
     {
+
         //dialogue = false;
 
         Cursor.visible = false;
         pauser = GameObject.FindWithTag("soundsettings");
         player.SetActive(true);
-        movementSpeed = 0;
+        movementSpeed = 1.8f;
 
         Instantiate(aim, player.transform.position, player.transform.rotation);
         //Instantiate(playerCamera, player.transform.position + new Vector3(0,0,-10), player.transform.rotation);
 
+
         playerRB = GetComponent<Rigidbody2D>();
         
     }
-
+   
     void Update()
     {
-        //if (pauser.GetComponent<Pause>().paused == false)
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+           playerHealth--;
+            Debug.Log("f painettu");
+        }
+        if (playerHealth <= 0)
+        {
+            player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
+            Instantiate(deathAnimation, player.transform.position, player.transform.rotation);
+            GameObject deathPanel = GameObject.Find("/Misc stuff/Canvas/DeathPanel");
+            deathPanel.SetActive(true);
+            pauser.GetComponent<Pause>().alive = false;
+            Cursor.visible = true;
+            player.SetActive(false);
+        }
+        //if (pauser.GetComponent<Pause>().paused == false){
+        
+            FaceMouse();
+            Crouch();
 
-        movementSpeed = 1.8f;
+
+    
         playerRB.MovePosition(playerRB.position + movement * movementSpeed * Time.fixedDeltaTime);
         FaceMouse();
         Crouch();
@@ -55,6 +77,7 @@ public class PlayerCtrl : MonoBehaviour
 
 
 
+
             walkAnimation.transform.position = player.transform.position;
 
             float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
@@ -64,7 +87,10 @@ public class PlayerCtrl : MonoBehaviour
         {
             walkAnimation.SetActive(false);
         }
+
     }
+        
+    
 
     void FixedUpdate()
     {
@@ -98,15 +124,20 @@ public class PlayerCtrl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
+
         if (other.collider.CompareTag("EnemyBullet"))
         {
             playerHealth--;
             if(playerHealth < 1)
+
             {
                 player.transform.eulerAngles = new Vector3(0, 0, player.transform.eulerAngles.z - 180);
                 Instantiate(deathAnimation, player.transform.position, player.transform.rotation);
                 Instantiate(bloodFrame, player.transform.position, player.transform.rotation);
-
+                GameObject deathPanel  = GameObject.Find("/Misc stuff/Canvas/DeathPanel");
+                deathPanel.SetActive(true);
+                pauser.GetComponent<Pause>().alive = false;
+                Cursor.visible = true;
 
                 player.SetActive(false);
             }
