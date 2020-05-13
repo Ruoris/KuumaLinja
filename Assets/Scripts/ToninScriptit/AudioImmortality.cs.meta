@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD
+guid: bb15fafbd14101c4ebfe36e6582b1ba0
+=======
 guid: afc77044f9cb4f54cb6e13e59aa87c77
+>>>>>>> JuusonBranch2
+=======
+guid: bb15fafbd14101c4ebfe36e6582b1ba0
+>>>>>>> Roopenbranch
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

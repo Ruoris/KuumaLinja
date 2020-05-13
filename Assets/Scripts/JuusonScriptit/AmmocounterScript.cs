@@ -6,45 +6,16 @@ using UnityEngine.UI;
 public class AmmocounterScript : MonoBehaviour
 {
     public GameObject[] pistolBullets;
-    public GameObject Player;
-    private int bulletsLeft;
 
-    void Update()
+    public void Update()
     {
-
-
-
-        if (Input.GetButton("Fire1"))
-        {
-                ChangeColor();
-
-        }
+        pistolBullets = GameObject.FindGameObjectsWithTag("PistolBulletImage");
     }
-
-    void Start()
+    public void ChangeColor(int bulletsLeft)
     {
 
-
-
-    }
-    public void GetPistolBullets(int ammoCapacity)
-    {
-
-    }
-
-
-    public void ChangeColor()
-    {
-        //bool emptyMagazine = Player.GetComponent<Weapons>().emptyMagazine;
-        int bulletsLeft = Player.GetComponent<Weapons>().ammoLeft;
-
-        //if (emptyMagazine)
-        //{
-        //    ReturnColor();
-        //}
-
-            Color used = new Color32(75, 75, 75, 255);
-            pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
+        Color used = new Color32(75, 75, 75, 255);
+        pistolBullets[bulletsLeft].GetComponent<Image>().color = used;
     }
 
     public void ReturnColor(int ammoCapacity)
@@ -56,9 +27,10 @@ public class AmmocounterScript : MonoBehaviour
             pistolBullets[i].GetComponent<Image>().color = used;
         }
     }
+
     public void PartialColorToUsed(int ammoCapacity, int ammoleft)
     {
-        while(ammoleft < ammoCapacity)
+        while (ammoleft < ammoCapacity)
         {
             Color used = new Color32(75, 75, 75, 255);
 

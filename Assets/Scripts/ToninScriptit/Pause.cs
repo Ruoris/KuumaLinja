@@ -1,50 +1,67 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Pause : MonoBehaviour
 {
-   
-    public GameObject menu;
+    private GameObject PausemenuPanel;
+    private GameObject menu;
     public bool paused;
-    public GameObject backButton;
-    public GameObject audioSettings;
 
-
+  
+  
+    private GameObject audioSettings;
+   
+    public bool alive;
+    void Start()
+    {   PausemenuPanel = GameObject.Find("/Misc stuff/Canvas/PauseMenu");
+        menu = GameObject.Find("/Misc stuff/Canvas/Mainmenu");
+        audioSettings = GameObject.Find("/Misc stuff/Canvas/SoundSettingsPanel");
+        
+    }
 
     void Awake()
     {
         paused = false;
+
+        alive = true;
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        Pauser();
+        if (Input.GetKeyDown(KeyCode.Escape) == true || Input.GetKeyDown(KeyCode.P) == true)
+        {
+            paused = !paused;
+            Pauser();
+        }
+       
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            RestartFromSpace();
+
+        }
     }
 
     public void Unpause()
     {
-
-        
             paused = false;
-
-       
-
-    }
+            Pauser();
+    } 
     
     public void Pauser()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)==true || Input.GetKeyDown(KeyCode.P) == true)
+       
+        if (paused&&alive == true)
         {
-            paused = !paused;
-
-        }
-        if (paused)
-        {
-           // GameObject soundButton = GameObject.FindWithTag("soundsettings");
-            Time.timeScale = 0.0001F;
+            //Cursor.visible = true;
+           
+            Time.timeScale = 0.00001F;
+            PausemenuPanel.SetActive(true);
 
             if (menu.activeSelf == true ||audioSettings.activeSelf==true  )
             {
@@ -56,13 +73,31 @@ public class Pause : MonoBehaviour
             }
 
         }
-        if (!paused)
+        if (!paused&&alive==true)
         {
-             menu.SetActive(false);
+
+            PausemenuPanel.SetActive(false);
+            //Cursor.visible = false;
+            menu.SetActive(false);
             audioSettings.SetActive(false);
-            backButton.SetActive(false);
+            
             Time.timeScale = 1;
-         
+
+        }
+        if(alive != true)
+        {
+
+            Cursor.visible = true;
+            // GameObject soundButton = GameObject.FindWithTag("soundsettings");
+            Time.timeScale = 0.00001F;
+
+        
+
         }
     }
+    public void RestartFromSpace()
+    {
+    SceneManager.LoadScene(GameStatus.status.currentLevel);
+    }
+   
 }
