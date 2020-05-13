@@ -86,7 +86,8 @@ public class Pause : MonoBehaviour
         }
         if(alive != true)
         {
-            //Cursor.visible = true;
+
+            Cursor.visible = true;
             // GameObject soundButton = GameObject.FindWithTag("soundsettings");
             Time.timeScale = 0.00001F;
 
