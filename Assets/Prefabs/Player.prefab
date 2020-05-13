@@ -186,7 +186,7 @@ MonoBehaviour:
     type: 3}
   bloodFrame: {fileID: 5683224466201235956, guid: 89fb7652abcb6b44c868041a061f5d47,
     type: 3}
-  playerHealth: 95
+  playerHealth: 1
   pauser: {fileID: 0}
   crouching: 0
   playerRB: {fileID: 69640893337760600}

@@ -1764,12 +1764,12 @@ PrefabInstance:
     - target: {fileID: 2034528659180898939, guid: ba6c4a4142d1e5a4a9e29fd053d84303,
         type: 3}
       propertyPath: m_SortingLayerID
-      value: 628643849
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2034528659180898939, guid: ba6c4a4142d1e5a4a9e29fd053d84303,
         type: 3}
       propertyPath: m_SortingLayer
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2034528659180898939, guid: ba6c4a4142d1e5a4a9e29fd053d84303,
         type: 3}
@@ -2956,6 +2956,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1604789296}
     m_Modifications:
+    - target: {fileID: -659843492787310948, guid: cd73c1d4a72fdb84f9876d08474b0ed0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 359747281470283148, guid: cd73c1d4a72fdb84f9876d08474b0ed0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6492,6 +6497,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 591666858}
     m_Modifications:
+    - target: {fileID: -659843492787310948, guid: cd73c1d4a72fdb84f9876d08474b0ed0,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 359747281470283148, guid: cd73c1d4a72fdb84f9876d08474b0ed0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10330,7 +10340,8 @@ MonoBehaviour:
   floors:
   - {fileID: 1692860633}
   player: {fileID: 0}
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 809194335311716555, guid: eab467a7cf4effc4aafb096704412526,
+    type: 3}
   currentFloor: 0
   floorSpawn: {x: 0, y: 0}
   floorSpawnX: 0

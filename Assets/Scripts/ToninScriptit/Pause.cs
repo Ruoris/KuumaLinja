@@ -10,16 +10,17 @@ public class Pause : MonoBehaviour
     private GameObject menu;
     public bool paused;
 
-  
-  
+
+
     private GameObject audioSettings;
-   
+
     public bool alive;
     void Start()
-    {   PausemenuPanel = GameObject.Find("/Misc stuff/Canvas/PauseMenu");
+    {
+        PausemenuPanel = GameObject.Find("/Misc stuff/Canvas/PauseMenu");
         menu = GameObject.Find("/Misc stuff/Canvas/Mainmenu");
         audioSettings = GameObject.Find("/Misc stuff/Canvas/SoundSettingsPanel");
-        
+
     }
 
     void Awake()
@@ -39,31 +40,35 @@ public class Pause : MonoBehaviour
             paused = !paused;
             Pauser();
         }
-       
-        if (Input.GetKeyDown(KeyCode.L))
+        var deathPanel = GameObject.Find("/Misc stuff/Canvas/DeathPanel");
+        if (deathPanel.activeSelf == true)
         {
-            RestartFromSpace();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                RestartFromSpace();
 
+            }
         }
+
     }
 
     public void Unpause()
     {
-            paused = false;
-            Pauser();
-    } 
-    
+        paused = false;
+        Pauser();
+    }
+
     public void Pauser()
     {
-       
-        if (paused&&alive == true)
+
+        if (paused && alive == true)
         {
             //Cursor.visible = true;
-           
+
             Time.timeScale = 0.00001F;
             PausemenuPanel.SetActive(true);
 
-            if (menu.activeSelf == true ||audioSettings.activeSelf==true  )
+            if (menu.activeSelf == true || audioSettings.activeSelf == true)
             {
                 return;
             }
@@ -73,31 +78,31 @@ public class Pause : MonoBehaviour
             }
 
         }
-        if (!paused&&alive==true)
+        if (!paused && alive == true)
         {
 
             PausemenuPanel.SetActive(false);
             //Cursor.visible = false;
             menu.SetActive(false);
             audioSettings.SetActive(false);
-            
+
             Time.timeScale = 1;
 
         }
-        if(alive != true)
+        if (alive != true)
         {
 
             Cursor.visible = true;
             // GameObject soundButton = GameObject.FindWithTag("soundsettings");
             Time.timeScale = 0.00001F;
 
-        
+
 
         }
     }
     public void RestartFromSpace()
     {
-    SceneManager.LoadScene(GameStatus.status.currentLevel);
+        SceneManager.LoadScene(GameStatus.status.currentLevel);
     }
-   
+
 }
