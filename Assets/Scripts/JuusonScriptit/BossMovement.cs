@@ -5,7 +5,11 @@ using UnityEngine;
 public class BossMovement : MonoBehaviour
 {
     public List<Transform> checkPoints = new List<Transform>();
+<<<<<<< HEAD
     //public GameObject player;
+=======
+    public GameObject player;
+>>>>>>> origin/TuomaksenBranch2
     public Rigidbody2D enemyRb;
     public int i = 0;
     public float speed = 0.4f;

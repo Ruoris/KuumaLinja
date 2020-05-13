@@ -16,7 +16,10 @@ public class TextScript : MonoBehaviour
     public AudioSource textSound;
     public GameObject character1, character2, character3;
     public bool npc = false;
+<<<<<<< HEAD
     public int dialogues;
+=======
+>>>>>>> origin/TuomaksenBranch2
 
     void Start()
     {
@@ -92,6 +95,7 @@ public class TextScript : MonoBehaviour
             textDisplay.text = "";
             continueButtuon.SetActive(false);
 
+<<<<<<< HEAD
             if (SceneManager.GetActiveScene().name == "Cutscene 1")
             {
                 Debug.Log("Loading level 2");
@@ -117,6 +121,12 @@ public class TextScript : MonoBehaviour
                 Debug.Log("Loading Credits");
                 //SceneManager.LoadScene("Level3");
                 GameStatus.status.LevelEnd();
+=======
+            if (SceneManager.GetActiveScene().name == "Cutscene")
+            {
+                Debug.Log("Loading level 1");
+                SceneManager.LoadScene("Level 1.2");
+>>>>>>> origin/TuomaksenBranch2
             }
         }  
     }

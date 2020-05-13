@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class EnemyPshoot : MonoBehaviour
 {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/TuomaksenBranch2
     public float bulletForce;
 
     private float fireRate;
@@ -15,7 +18,11 @@ public class EnemyPshoot : MonoBehaviour
 
     public Transform firePoint;
     public GameObject enemy;
+<<<<<<< HEAD
     public GameObject bulletprefab;
+=======
+    public GameObject bulletprefab, gunFlareAnimation;
+>>>>>>> origin/TuomaksenBranch2
 
 
 
@@ -28,14 +35,22 @@ public class EnemyPshoot : MonoBehaviour
     {
         int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
         bool emptyMagazine = GetComponent<EnemyWeapons>().emptyMagazine;
+<<<<<<< HEAD
        
+=======
+        gunFlareAnimation.SetActive(false);
+>>>>>>> origin/TuomaksenBranch2
         bool pursuing = GetComponent<EnemyController>().GetPursuing();
 
         if (pursuing == true && fireRate < canFire && !emptyMagazine)
         {
 
             Fire();
+<<<<<<< HEAD
             
+=======
+            gunFlareAnimation.SetActive(true);
+>>>>>>> origin/TuomaksenBranch2
 
 
 
@@ -50,14 +65,21 @@ public class EnemyPshoot : MonoBehaviour
                 Fire();
             }
         }
+<<<<<<< HEAD
 
+=======
+       
+>>>>>>> origin/TuomaksenBranch2
 
         canFire += Time.deltaTime;
     }
 
     void Fire()
     {
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/TuomaksenBranch2
         int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
         fireRate = GetComponent<EnemyWeapons>().fireRate;
         bulletForce = GetComponent<EnemyWeapons>().bulletForce;

@@ -1,6 +1,10 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
 --- !u!1 &4574431977629067672
+=======
+--- !u!1 &831961416343731234
+>>>>>>> origin/TuomaksenBranch2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,50 +12,85 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 2407667841743429746}
   - component: {fileID: 5619681542092265247}
   - component: {fileID: 2288779685688450690}
   m_Layer: 0
   m_Name: Character3
+=======
+  - component: {fileID: 831961416343731247}
+  - component: {fileID: 831961416343731244}
+  - component: {fileID: 831961416343731245}
+  m_Layer: 0
+  m_Name: Character2 (1)
+>>>>>>> origin/TuomaksenBranch2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+<<<<<<< HEAD
 --- !u!224 &2407667841743429746
+=======
+--- !u!224 &831961416343731247
+>>>>>>> origin/TuomaksenBranch2
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 4574431977629067672}
+=======
+  m_GameObject: {fileID: 831961416343731234}
+>>>>>>> origin/TuomaksenBranch2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 5069778984648989356}
   m_RootOrder: 4
+=======
+  m_Father: {fileID: 831961417292638080}
+  m_RootOrder: 2
+>>>>>>> origin/TuomaksenBranch2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -382, y: -164}
   m_SizeDelta: {x: 238, y: 420}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
 --- !u!222 &5619681542092265247
+=======
+--- !u!222 &831961416343731244
+>>>>>>> origin/TuomaksenBranch2
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 4574431977629067672}
   m_CullTransparentMesh: 0
 --- !u!114 &2288779685688450690
+=======
+  m_GameObject: {fileID: 831961416343731234}
+  m_CullTransparentMesh: 0
+--- !u!114 &831961416343731245
+>>>>>>> origin/TuomaksenBranch2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 4574431977629067672}
+=======
+  m_GameObject: {fileID: 831961416343731234}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -63,7 +102,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: d2630b191c0184249b8e6c0a1cb6e20b, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: fc84939ddfd959949abd7800173e28b2, type: 3}
+>>>>>>> origin/TuomaksenBranch2
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -73,7 +116,11 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+<<<<<<< HEAD
 --- !u!1 &5069778983960914575
+=======
+--- !u!1 &831961416369437076
+>>>>>>> origin/TuomaksenBranch2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -81,22 +128,35 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 5069778983960914560}
   - component: {fileID: 5069778983960914561}
   - component: {fileID: 5069778983960914574}
   m_Layer: 0
   m_Name: Character
+=======
+  - component: {fileID: 831961416369437079}
+  - component: {fileID: 831961416369437078}
+  m_Layer: 0
+  m_Name: TextManager
+>>>>>>> origin/TuomaksenBranch2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!224 &5069778983960914560
 RectTransform:
+=======
+--- !u!4 &831961416369437079
+Transform:
+>>>>>>> origin/TuomaksenBranch2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778983960914575}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -111,20 +171,183 @@ RectTransform:
   m_SizeDelta: {x: 238, y: 420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5069778983960914561
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5069778983960914575}
-  m_CullTransparentMesh: 0
---- !u!114 &5069778983960914574
+=======
+  m_GameObject: {fileID: 831961416369437076}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 831961417292638080}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &831961416369437078
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831961416369437076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea66a96e30cd20045a229448d7bbca31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textDisplay: {fileID: 831961417173695795}
+  sentences:
+  - Phew. It's pouring out there, at least here I can dry myself off.
+  - This should be a good place to start based on the information I have.
+  - ...
+  - ...
+  - Such a fancy place... I wonder if they even care about what's going on outside.
+  - I need to hurry and get to the bottom of this, by force if necessary.
+  dialoguePause: 0
+  typingSpeed: 0.05
+  continueButtuon: {fileID: 831961416840754851}
+  textSound: {fileID: 831961417173695793}
+  character1: {fileID: 831961417711851427}
+  character2: {fileID: 831961416343731234}
+  character3: {fileID: 8262807917585241268}
+  npc: 0
+--- !u!1 &831961416713417629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 831961417383781761}
+  - component: {fileID: 831961416713417631}
+  - component: {fileID: 831961416713417628}
+  m_Layer: 0
+  m_Name: DT1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &831961417383781761
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831961416713417629}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.762, y: -57.25, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 831961417292638080}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &831961416713417631
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831961416713417629}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.03352353, y: -0.08542085}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.7275937, y: 0.2151308}
+  m_EdgeRadius: 0
+--- !u!114 &831961416713417628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831961416713417629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9775817157639f46b478c4480963988, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueTrigger: {fileID: 831961416713417629}
+  dialogue1: {fileID: 831961417292638081}
+  dialogue: 0
+  dialoguePause: {fileID: 0}
+--- !u!1 &831961416840754851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 831961416840754863}
+  - component: {fileID: 831961416840754860}
+  - component: {fileID: 831961416840754861}
+  - component: {fileID: 831961416840754850}
+  m_Layer: 0
+  m_Name: ContinueButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &831961416840754863
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831961416840754851}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 831961417601069912}
+  m_Father: {fileID: 831961417292638080}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 283, y: -281}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &831961416840754860
+>>>>>>> origin/TuomaksenBranch2
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778983960914575}
+  m_CullTransparentMesh: 0
+--- !u!114 &5069778983960914574
+=======
+  m_GameObject: {fileID: 831961416840754851}
+  m_CullTransparentMesh: 0
+--- !u!114 &831961416840754861
+>>>>>>> origin/TuomaksenBranch2
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 5069778983960914575}
+=======
+  m_GameObject: {fileID: 831961416840754851}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -136,8 +359,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 97f7035f02f96c547a476dbd55f576bf, type: 3}
   m_Type: 0
+=======
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+>>>>>>> origin/TuomaksenBranch2
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -146,7 +374,65 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+<<<<<<< HEAD
 --- !u!1 &5069778984490188826
+=======
+--- !u!114 &831961416840754850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831961416840754851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 831961416840754861}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 831961416369437078}
+        m_MethodName: NextSentence
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!1 &831961417173695798
+>>>>>>> origin/TuomaksenBranch2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -154,10 +440,17 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 5069778984490188830}
   - component: {fileID: 5069778984490188828}
   - component: {fileID: 5069778984490188831}
   - component: {fileID: 5069778984490188829}
+=======
+  - component: {fileID: 831961417173695794}
+  - component: {fileID: 831961417173695792}
+  - component: {fileID: 831961417173695795}
+  - component: {fileID: 831961417173695793}
+>>>>>>> origin/TuomaksenBranch2
   m_Layer: 0
   m_Name: Dialogue
   m_TagString: Untagged
@@ -165,40 +458,67 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!224 &5069778984490188830
+=======
+--- !u!224 &831961417173695794
+>>>>>>> origin/TuomaksenBranch2
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984490188826}
+=======
+  m_GameObject: {fileID: 831961417173695798}
+>>>>>>> origin/TuomaksenBranch2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 5069778984648989356}
   m_RootOrder: 1
+=======
+  m_Father: {fileID: 831961417292638080}
+  m_RootOrder: 0
+>>>>>>> origin/TuomaksenBranch2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 750, y: 650}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
 --- !u!222 &5069778984490188828
+=======
+--- !u!222 &831961417173695792
+>>>>>>> origin/TuomaksenBranch2
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984490188826}
   m_CullTransparentMesh: 0
 --- !u!114 &5069778984490188831
+=======
+  m_GameObject: {fileID: 831961417173695798}
+  m_CullTransparentMesh: 0
+--- !u!114 &831961417173695795
+>>>>>>> origin/TuomaksenBranch2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984490188826}
+=======
+  m_GameObject: {fileID: 831961417173695798}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -245,7 +565,11 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
+<<<<<<< HEAD
   m_textAlignment: 258
+=======
+  m_textAlignment: 257
+>>>>>>> origin/TuomaksenBranch2
   m_characterSpacing: 0
   m_wordSpacing: 0
   m_lineSpacing: 0
@@ -278,7 +602,11 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
+<<<<<<< HEAD
     textComponent: {fileID: 5069778984490188831}
+=======
+    textComponent: {fileID: 831961417173695795}
+>>>>>>> origin/TuomaksenBranch2
     characterCount: 0
     spriteCount: 0
     spaceCount: 0
@@ -302,13 +630,21 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< HEAD
 --- !u!82 &5069778984490188829
+=======
+--- !u!82 &831961417173695793
+>>>>>>> origin/TuomaksenBranch2
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984490188826}
+=======
+  m_GameObject: {fileID: 831961417173695798}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -398,7 +734,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+<<<<<<< HEAD
 --- !u!1 &5069778984648989357
+=======
+--- !u!1 &831961417292638081
+>>>>>>> origin/TuomaksenBranch2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -406,10 +746,17 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 5069778984648989356}
   - component: {fileID: 5069778984648989345}
   - component: {fileID: 5069778984648989358}
   - component: {fileID: 5069778984648989359}
+=======
+  - component: {fileID: 831961417292638080}
+  - component: {fileID: 831961417292638093}
+  - component: {fileID: 831961417292638082}
+  - component: {fileID: 831961417292638083}
+>>>>>>> origin/TuomaksenBranch2
   m_Layer: 0
   m_Name: Dialogue1
   m_TagString: Untagged
@@ -417,12 +764,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+<<<<<<< HEAD
 --- !u!224 &5069778984648989356
+=======
+--- !u!224 &831961417292638080
+>>>>>>> origin/TuomaksenBranch2
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984648989357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -437,20 +789,46 @@ RectTransform:
   - {fileID: 5069778984772921920}
   - {fileID: 5069778985839707323}
   m_Father: {fileID: 5069778984566069421}
+=======
+  m_GameObject: {fileID: 831961417292638081}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children:
+  - {fileID: 831961417173695794}
+  - {fileID: 831961417711851436}
+  - {fileID: 831961416343731247}
+  - {fileID: 7834293598707195230}
+  - {fileID: 831961416840754863}
+  - {fileID: 831961417418659692}
+  - {fileID: 831961416369437079}
+  m_Father: {fileID: 831961417383781761}
+>>>>>>> origin/TuomaksenBranch2
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
+<<<<<<< HEAD
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!223 &5069778984648989345
+=======
+  m_AnchoredPosition: {x: -0.938, y: -3.774}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0, y: 0}
+--- !u!223 &831961417292638093
+>>>>>>> origin/TuomaksenBranch2
 Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984648989357}
+=======
+  m_GameObject: {fileID: 831961417292638081}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 1
@@ -465,13 +843,21 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+<<<<<<< HEAD
 --- !u!114 &5069778984648989358
+=======
+--- !u!114 &831961417292638082
+>>>>>>> origin/TuomaksenBranch2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984648989357}
+=======
+  m_GameObject: {fileID: 831961417292638081}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
@@ -487,13 +873,21 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+<<<<<<< HEAD
 --- !u!114 &5069778984648989359
+=======
+--- !u!114 &831961417292638083
+>>>>>>> origin/TuomaksenBranch2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984648989357}
+=======
+  m_GameObject: {fileID: 831961417292638081}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
@@ -504,7 +898,11 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+<<<<<<< HEAD
 --- !u!1 &5069778984772921921
+=======
+--- !u!1 &831961417418659693
+>>>>>>> origin/TuomaksenBranch2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -512,9 +910,15 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 5069778984772921920}
   - component: {fileID: 5069778984772921922}
   - component: {fileID: 5069778984772921923}
+=======
+  - component: {fileID: 831961417418659692}
+  - component: {fileID: 831961417418659694}
+  - component: {fileID: 831961417418659695}
+>>>>>>> origin/TuomaksenBranch2
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -522,27 +926,46 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &5069778984772921920
+=======
+--- !u!4 &831961417418659692
+>>>>>>> origin/TuomaksenBranch2
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984772921921}
+=======
+  m_GameObject: {fileID: 831961417418659693}
+>>>>>>> origin/TuomaksenBranch2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 16.5, z: 1}
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 5069778984648989356}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5069778984772921922
+=======
+  m_Father: {fileID: 831961417292638080}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &831961417418659694
+>>>>>>> origin/TuomaksenBranch2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984772921921}
+=======
+  m_GameObject: {fileID: 831961417418659693}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
@@ -551,13 +974,21 @@ MonoBehaviour:
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
+<<<<<<< HEAD
 --- !u!114 &5069778984772921923
+=======
+--- !u!114 &831961417418659695
+>>>>>>> origin/TuomaksenBranch2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984772921921}
+=======
+  m_GameObject: {fileID: 831961417418659693}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
@@ -570,7 +1001,11 @@ MonoBehaviour:
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
   m_ForceModuleActive: 0
+<<<<<<< HEAD
 --- !u!1 &5069778984951189109
+=======
+--- !u!1 &831961417601069913
+>>>>>>> origin/TuomaksenBranch2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -578,28 +1013,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 5069778984951189108}
   - component: {fileID: 5069778984951189110}
   - component: {fileID: 5069778984951189111}
+=======
+  - component: {fileID: 831961417601069912}
+  - component: {fileID: 831961417601069914}
+  - component: {fileID: 831961417601069915}
+>>>>>>> origin/TuomaksenBranch2
   m_Layer: 0
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
+<<<<<<< HEAD
   m_IsActive: 0
 --- !u!224 &5069778984951189108
+=======
+  m_IsActive: 1
+--- !u!224 &831961417601069912
+>>>>>>> origin/TuomaksenBranch2
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984951189109}
+=======
+  m_GameObject: {fileID: 831961417601069913}
+>>>>>>> origin/TuomaksenBranch2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 5069778985100970883}
+=======
+  m_Father: {fileID: 831961416840754863}
+>>>>>>> origin/TuomaksenBranch2
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -607,21 +1061,35 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
 --- !u!222 &5069778984951189110
+=======
+--- !u!222 &831961417601069914
+>>>>>>> origin/TuomaksenBranch2
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984951189109}
   m_CullTransparentMesh: 0
 --- !u!114 &5069778984951189111
+=======
+  m_GameObject: {fileID: 831961417601069913}
+  m_CullTransparentMesh: 0
+--- !u!114 &831961417601069915
+>>>>>>> origin/TuomaksenBranch2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778984951189109}
+=======
+  m_GameObject: {fileID: 831961417601069913}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -633,7 +1101,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_text: 
+=======
+  m_text: Continue
+>>>>>>> origin/TuomaksenBranch2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -701,6 +1173,7 @@ MonoBehaviour:
   m_pageToDisplay: 1
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
+<<<<<<< HEAD
     textComponent: {fileID: 5069778984951189111}
     characterCount: 0
     spriteCount: 0
@@ -709,6 +1182,16 @@ MonoBehaviour:
     linkCount: 0
     lineCount: 0
     pageCount: 0
+=======
+    textComponent: {fileID: 831961417601069915}
+    characterCount: 8
+    spriteCount: 0
+    spaceCount: 0
+    wordCount: 1
+    linkCount: 0
+    lineCount: 1
+    pageCount: 1
+>>>>>>> origin/TuomaksenBranch2
     materialCount: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
@@ -725,7 +1208,11 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+<<<<<<< HEAD
 --- !u!1 &5069778985009286833
+=======
+--- !u!1 &831961417711851427
+>>>>>>> origin/TuomaksenBranch2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -733,16 +1220,25 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 5069778984566069421}
   - component: {fileID: 5069778985009286835}
   - component: {fileID: 5069778985009286832}
   m_Layer: 0
   m_Name: DT1
+=======
+  - component: {fileID: 831961417711851436}
+  - component: {fileID: 831961417711851437}
+  - component: {fileID: 831961417711851426}
+  m_Layer: 0
+  m_Name: Character
+>>>>>>> origin/TuomaksenBranch2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
 --- !u!4 &5069778984566069421
 Transform:
   m_ObjectHideFlags: 0
@@ -820,11 +1316,15 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 0
 --- !u!224 &5069778985100970883
+=======
+--- !u!224 &831961417711851436
+>>>>>>> origin/TuomaksenBranch2
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778985100970895}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -840,20 +1340,46 @@ RectTransform:
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5069778985100970880
+=======
+  m_GameObject: {fileID: 831961417711851427}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 831961417292638080}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -382, y: -164}
+  m_SizeDelta: {x: 238, y: 420}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &831961417711851437
+>>>>>>> origin/TuomaksenBranch2
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778985100970895}
   m_CullTransparentMesh: 0
 --- !u!114 &5069778985100970881
+=======
+  m_GameObject: {fileID: 831961417711851427}
+  m_CullTransparentMesh: 0
+--- !u!114 &831961417711851426
+>>>>>>> origin/TuomaksenBranch2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778985100970895}
+=======
+  m_GameObject: {fileID: 831961417711851427}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -865,7 +1391,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: 6faaa7ae5e5185c42b23c95d20f357e9, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: 97f7035f02f96c547a476dbd55f576bf, type: 3}
+>>>>>>> origin/TuomaksenBranch2
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -875,6 +1405,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+<<<<<<< HEAD
 --- !u!114 &5069778985100970894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -930,6 +1461,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &5069778985673490702
+=======
+--- !u!1 &8262807917585241268
+>>>>>>> origin/TuomaksenBranch2
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -937,28 +1471,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
   - component: {fileID: 5069778985673490691}
   - component: {fileID: 5069778985673490688}
   - component: {fileID: 5069778985673490689}
   m_Layer: 0
   m_Name: Character2 (1)
+=======
+  - component: {fileID: 7834293598707195230}
+  - component: {fileID: 12911801101068851}
+  - component: {fileID: 5914248165122876334}
+  m_Layer: 0
+  m_Name: Character3
+>>>>>>> origin/TuomaksenBranch2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
+<<<<<<< HEAD
 --- !u!224 &5069778985673490691
+=======
+--- !u!224 &7834293598707195230
+>>>>>>> origin/TuomaksenBranch2
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778985673490702}
+=======
+  m_GameObject: {fileID: 8262807917585241268}
+>>>>>>> origin/TuomaksenBranch2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+<<<<<<< HEAD
   m_Father: {fileID: 5069778984648989356}
+=======
+  m_Father: {fileID: 831961417292638080}
+>>>>>>> origin/TuomaksenBranch2
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -966,21 +1520,35 @@ RectTransform:
   m_AnchoredPosition: {x: -382, y: -164}
   m_SizeDelta: {x: 238, y: 420}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< HEAD
 --- !u!222 &5069778985673490688
+=======
+--- !u!222 &12911801101068851
+>>>>>>> origin/TuomaksenBranch2
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778985673490702}
   m_CullTransparentMesh: 0
 --- !u!114 &5069778985673490689
+=======
+  m_GameObject: {fileID: 8262807917585241268}
+  m_CullTransparentMesh: 0
+--- !u!114 &5914248165122876334
+>>>>>>> origin/TuomaksenBranch2
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
   m_GameObject: {fileID: 5069778985673490702}
+=======
+  m_GameObject: {fileID: 8262807917585241268}
+>>>>>>> origin/TuomaksenBranch2
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -992,7 +1560,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
   m_Sprite: {fileID: 21300000, guid: fc84939ddfd959949abd7800173e28b2, type: 3}
+=======
+  m_Sprite: {fileID: 21300000, guid: d2630b191c0184249b8e6c0a1cb6e20b, type: 3}
+>>>>>>> origin/TuomaksenBranch2
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1002,6 +1574,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+<<<<<<< HEAD
 --- !u!1 &5069778985839707320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1187,3 +1760,5 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 6871659415808094423}
   m_PrefabAsset: {fileID: 0}
+=======
+>>>>>>> origin/TuomaksenBranch2

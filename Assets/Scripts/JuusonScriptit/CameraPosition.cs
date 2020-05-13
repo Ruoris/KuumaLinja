@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/TuomaksenBranch2
 public class CameraPosition : MonoBehaviour
 {
     public GameObject player;

@@ -11,12 +11,18 @@ public class Boss : MonoBehaviour
     public RaycastHit2D rayToPlayer;
     float playerDetectionDistance = 10f;
     public GameObject fireStrike, blob;
+<<<<<<< HEAD
     public GameObject boss;
     public GameObject lastDialogue;
     private float fireRate = 3f;
     private float canFire;
     public int health = 5;
     public GameObject locker;
+=======
+    private float fireRate = 3f;
+    private float canFire;
+
+>>>>>>> origin/TuomaksenBranch2
 
     void Update()
     {
@@ -33,8 +39,13 @@ public class Boss : MonoBehaviour
 
     void PlayerDetect()
     {
+<<<<<<< HEAD
         float randX = Random.Range(0f, 6.36f);
         float randY = Random.Range(0f, 5f);
+=======
+        float randX = Random.Range(-0.4f, 0.4f);
+        float randY = Random.Range(-0.4f, 0.4f);
+>>>>>>> origin/TuomaksenBranch2
 
         Vector3 pos = this.transform.InverseTransformPoint(player.transform.position);
         if (rayToPlayer.collider != null)
@@ -63,7 +74,11 @@ public class Boss : MonoBehaviour
             }
             else
             {
+<<<<<<< HEAD
                
+=======
+                
+>>>>>>> origin/TuomaksenBranch2
             }
             
         }
@@ -76,6 +91,7 @@ public class Boss : MonoBehaviour
         rayToPlayer = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), new Vector2(direction.x, direction.y), distance);
         Debug.DrawRay(transform.position, direction, Color.red);
     }
+<<<<<<< HEAD
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -91,4 +107,6 @@ public class Boss : MonoBehaviour
             }
         }
     }
+=======
+>>>>>>> origin/TuomaksenBranch2
 }

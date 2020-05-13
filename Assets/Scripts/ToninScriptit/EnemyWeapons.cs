@@ -18,13 +18,22 @@ public class EnemyWeapons : MonoBehaviour
     public GameObject pistolDrop, shotGunDrop, rifleDrop, gameThrow;
 
     public int equippedGun, ammoCapacity, ammoLeft, previousequippedGun, previousammoCapacity, previousAmmoLeft;
+<<<<<<< HEAD
    
     // public GameObject speedBoost, ammoBoost, radiusBoost;
+=======
+
+
+>>>>>>> origin/TuomaksenBranch2
 
     // Start is called before the first frame update
     void Start()
     {
+<<<<<<< HEAD
       
+=======
+
+>>>>>>> origin/TuomaksenBranch2
 
         equippedGun = Random.Range(1, 4);
 
@@ -53,6 +62,10 @@ public class EnemyWeapons : MonoBehaviour
     {
         EquipGun();
         FireControl();
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/TuomaksenBranch2
         if (ammoLeft <= 0)
         {
             ammoLeft = ammoCapacity;
@@ -139,6 +152,7 @@ public class EnemyWeapons : MonoBehaviour
     }
     public void DropGun()
     {
+<<<<<<< HEAD
      //int buffToActivate = Random.Range(0 , 10);
      //   if (buffToActivate < 2)
      //   {
@@ -152,13 +166,19 @@ public class EnemyWeapons : MonoBehaviour
      //   {
      //       var droppedammoBoost = Instantiate(ammoBoost, gameThrow.transform.position, Quaternion.identity);
      //   }
+=======
+>>>>>>> origin/TuomaksenBranch2
         if (equippedGun == 1)
         {
             Debug.Log("ase pudotettu");
             var droppedPistol = Instantiate(pistolDrop, gameThrow.transform.position, Quaternion.identity);
             droppedPistol.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedPistol.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
+<<<<<<< HEAD
            
+=======
+
+>>>>>>> origin/TuomaksenBranch2
 
         }
         if (equippedGun == 2)
@@ -166,7 +186,11 @@ public class EnemyWeapons : MonoBehaviour
             var droppedShotgun = Instantiate(shotGunDrop, gameThrow.transform.position, Quaternion.identity);
             droppedShotgun.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedShotgun.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
+<<<<<<< HEAD
             
+=======
+
+>>>>>>> origin/TuomaksenBranch2
 
         }
 
@@ -176,7 +200,11 @@ public class EnemyWeapons : MonoBehaviour
             droppedRifle.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedRifle.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
+<<<<<<< HEAD
            
+=======
+
+>>>>>>> origin/TuomaksenBranch2
         }
     }
 }
