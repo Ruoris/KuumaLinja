@@ -18,8 +18,14 @@ public class PointController : MonoBehaviour
     {
         levelController = GameObject.FindGameObjectWithTag("LevelController");
         currentFloor = levelController.GetComponent<LevelController>().currentFloor;
+        if (nextFloor == false)
+        {
+            this.gameObject.GetComponent<SpriteRenderer>().color = new Color(this.gameObject.GetComponent<SpriteRenderer>().color.r - 1,
+                this.gameObject.GetComponent<SpriteRenderer>().color.b,
+                this.gameObject.GetComponent<SpriteRenderer>().color.g - 1,
+                this.gameObject.GetComponent<SpriteRenderer>().color.a);
+        }
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -36,12 +42,48 @@ public class PointController : MonoBehaviour
         {
             if (nextFloor == true)
             {
-                levelController.GetComponent<LevelController>().floors[currentFloor].SetActive(false);
+                if (levelController.GetComponent<LevelController>().currentFloor + 1 != levelController.GetComponent<LevelController>().floors.Length)
+                {
+                    levelController.GetComponent<LevelController>().floors[currentFloor].SetActive(false);
+                } else
+                {
+                    levelController.GetComponent<LevelController>().currentFloorObject = levelController.GetComponent<LevelController>().floors[currentFloor];
+                }
                 currentFloor++;
                 levelController.GetComponent<LevelController>().currentFloor++;
-                if (currentFloor <= levelController.GetComponent<LevelController>().floors.Length)
+
+                if (levelController.GetComponent<LevelController>().currentFloor == levelController.GetComponent<LevelController>().floors.Length)
+                {
+                } else if (currentFloor <= levelController.GetComponent<LevelController>().floors.Length)
                 {
                     levelController.GetComponent<LevelController>().floors[currentFloor].SetActive(true);
+                }
+                levelController.GetComponent<LevelController>().levelsCleared++;
+            }
+
+            //Ruoriksen koodi
+
+            //if (collision.gameObject.CompareTag("Player")) { floor1.SetActive(false); floor2.SetActive(true); GameObject[] corpse = (GameObject[])FindObjectsOfType(typeof(GameObject)); for (int i = 0; i < corpse.Length; i++) { if (corpse[i].name.Contains("Death") || corpse[i].name.Contains("Drop")) { corpse[i].SetActive(false); } } }
+            //if (collision.gameObject.CompareTag("Player"))
+            {
+                //floor1.SetActive(false);
+                //floor2.SetActive(true);
+
+                GameObject[] corpse = (GameObject[])FindObjectsOfType(typeof(GameObject));
+                for (int i = 0; i < corpse.Length; i++)
+                {
+                    if (corpse[i].name.Contains("Death") || corpse[i].name.Contains("Drop") || corpse[i].name.Contains("footprint1"))
+                    {
+                        corpse[i].SetActive(false);
+                    }
+                }
+                GameObject[] oldRooms = (GameObject[])FindObjectsOfType(typeof(GameObject));
+                for (int i = 0; i < oldRooms.Length; i++)
+                {
+                    if ((oldRooms[i].name.Contains("Room") && oldRooms[i].transform.childCount == 0))
+                    {
+                            Destroy(oldRooms[i]);
+                    }
                 }
             }
         }

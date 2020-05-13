@@ -30,6 +30,8 @@ public class EnemyController : MonoBehaviour
 
     public GameObject walkAnimation;
 
+    public GameObject levelController;
+
     void Start()
     {
         enemyWeapon.SetActive(false);
@@ -39,6 +41,8 @@ public class EnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerLastPosition = player.transform.position;
         enemyRb = this.GetComponent<Rigidbody2D>();
+
+        levelController = GameObject.FindGameObjectWithTag("LevelController");
     }
 
     public bool GetPursuing()
@@ -83,7 +87,7 @@ public class EnemyController : MonoBehaviour
             Instantiate(death, enemy.transform.position, enemy.transform.rotation);
         }
 
-
+        levelController.GetComponent<LevelController>().enemiesKilled++;
         gameObject.SetActive(false);
     }
 

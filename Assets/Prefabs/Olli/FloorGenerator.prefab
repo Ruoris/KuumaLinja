@@ -51,10 +51,10 @@ MonoBehaviour:
   roomLayouts: []
   floorX: 0
   floorY: 0
-  floorSpawn: 0
-  nextFloor: 0
-  player: {fileID: 6441582434102132489, guid: 82d048926c6820740baf61b929396dd0, type: 3}
-  aim: {fileID: 203596257180371919, guid: 44c2585661122d84f83186925fccae9e, type: 3}
+  floorSpawn: 
+  nextFloor: 
+  player: {fileID: 69640893337760595, guid: ef297f99b9bcb4b408dd4ccf8048da63, type: 3}
+  aim: {fileID: 8859128934249297465, guid: d3c0f7c9453b525429f04fcae1c29a7d, type: 3}
   hallwayFloor: {fileID: 4478715479393370695, guid: dd86258358b695b4da3f6dddf094df3c,
     type: 3}
   hallwayCorners: {fileID: 300425294304570222, guid: 41dde6a0f6b0c6643b68ef0f4bb4a3c2,
@@ -62,9 +62,9 @@ MonoBehaviour:
   wallFloor: {fileID: 300425294304570222, guid: a7f2abd125c5c574a9d07449d6af2961,
     type: 3}
   stairs: {fileID: 8792128641301137700, guid: 6899db2395243034f97f89d78aa7c4c5, type: 3}
-  mainCamera: {fileID: 0}
+  playerSpawn: {x: 8.96, y: 8.639999}
   levelController: {fileID: 0}
-  levelGenerator: {fileID: 2650451161365301386}
+  levelGenerator: {fileID: 0}
 --- !u!114 &2650451161365301385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78,4 +78,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   connections: 0
-  playerOnTile: 0

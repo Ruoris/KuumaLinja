@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
+using UnityEditor.Build;
 using UnityEngine;
+using UnityEngine.Jobs;
 
 public class RandomLevelGenerator : MonoBehaviour
 {
@@ -19,10 +21,13 @@ public class RandomLevelGenerator : MonoBehaviour
     public bool floorGenerated;
 
     public int numberOfRooms;
-    int i = 0;
+    public int i = 0;
+    public int iTo;
 
     string yString;
     string xString;
+
+    private int floorsGenerated = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +41,9 @@ public class RandomLevelGenerator : MonoBehaviour
         if (floorGenerated == false)
         {
             i++;
+            floorsGenerated++;
             GenerateFloor();
-            if (i == 2)
+            if (i == iTo)
             {
                 floorGenerated = true;
             }
@@ -47,7 +53,7 @@ public class RandomLevelGenerator : MonoBehaviour
     public void GenerateFloor()
     {
         GameObject floor = Instantiate(floorGenerator, transform.position = new Vector2(0, 0), transform.rotation = new Quaternion(0, 0, 0, 0));
-        GameObject[] temp = new GameObject[numberOfRooms];
+        GameObject[] temp = new GameObject[iTo];
         levelController.GetComponent<LevelController>().floors.CopyTo(temp, 0);
         levelController.GetComponent<LevelController>().floors = temp;
         levelController.GetComponent<LevelController>().floors[i - 1] = floor;
@@ -58,45 +64,88 @@ public class RandomLevelGenerator : MonoBehaviour
         floor.GetComponent<LevelGenerator>().floorY = floorY;
 
         //Make the exit and Entrance of the floor
-        int randomX = UnityEngine.Random.Range(1, floorX - 1);
-        int randomY = UnityEngine.Random.Range(1, floorY - 1);
+        int randomX;
+        int randomY;
 
-        int floorSpawnX = randomX;
-        int floorSpawnY = randomY;
+        int floorSpawnX = 0;
+        int floorSpawnY = 0;
 
-        string _floorPoint = floorSpawnX + "-" + floorSpawnY;
+        string _floorPoint = "";
 
-        floor.GetComponent<LevelGenerator>().floorSpawn = _floorPoint;
+        int roomsStartX = 0;
+        int roomsStartY = 0;
+        int roomsEndX = 0;
+        int roomsEndY = 0;
 
+        int roomLocationX = 0;
+        int roomLocationY = 0;
 
-        if (floorSpawnY > floorY / 2)
+        int previousDoorDir = -1;
+
+        if (levelController.GetComponent<LevelController>().floorSpawnX == 0 && levelController.GetComponent<LevelController>().floorSpawnY == 0)
         {
-            randomX = UnityEngine.Random.Range(1, floorX - 1);
-            randomY = UnityEngine.Random.Range(1, floorY - 1);
+            randomX = 3;
+            randomY = 2;
+
+            floorSpawnX = randomX;
+            floorSpawnY = randomY;
+
+            _floorPoint = floorSpawnX + "-" + floorSpawnY;
         }
         else
         {
-            randomX = UnityEngine.Random.Range(1, floorX - 1);
-            randomY = UnityEngine.Random.Range(floorY / 2, floorY - 1);
+            floorSpawnX = levelController.GetComponent<LevelController>().floorSpawnX;
+            floorSpawnY = levelController.GetComponent<LevelController>().floorSpawnY;
+            _floorPoint = floorSpawnX + "-" + floorSpawnY;
+        }
+        floor.GetComponent<LevelGenerator>().floorSpawn = _floorPoint;
+
+        if (levelController.GetComponent<LevelController>().currentFloor == 0)
+        {
+            floorGenerator.GetComponent<LevelGenerator>().playerSpawn = new Vector2(floorSpawnX * 0.32f, floorSpawnY * 0.32f);
+        }
+
+        if (floorSpawnY > floorY / 2)
+        {
+            if (floorSpawnX > floorX / 2)
+            {
+                randomX = 3;
+            }
+            else
+            {
+                randomX = floorX - 2;
+            }
+            randomY = 2;
+        }
+        else
+        {
+            if (floorSpawnX > floorX / 2)
+            {
+                randomX = 3;
+            }
+            else
+            {
+                randomX = floorX - 2;
+            }
+            randomY = floorY - 3;
         }
 
         int floorExitX = randomX;
         int floorExitY = randomY;
 
-        int roomLocationX;
-        int roomLocationY;
+        _floorPoint = floorExitX + "-" + floorExitY;
+
+        levelController.GetComponent<LevelController>().floorSpawnX = floorExitX;
+        levelController.GetComponent<LevelController>().floorSpawnY = floorExitY;
+
+        floor.GetComponent<LevelGenerator>().nextFloor = _floorPoint;
 
         int totalX = 0;
         int totalY = 0;
 
-
-
-        _floorPoint = floorExitX + "-" + floorExitY;
-        floor.GetComponent<LevelGenerator>().nextFloor = _floorPoint;
-
+        //How many Rooms
         for (int x = 0; x < numberOfRooms; x++)
         {
-            //How many Rooms
             Room[] temp2 = new Room[numberOfRooms];
             int totalDif = 0;
 
@@ -121,22 +170,75 @@ public class RandomLevelGenerator : MonoBehaviour
 
             if (x == 0)
             {
-                floor.GetComponent<LevelGenerator>().roomCoordinates[x] = (floorSpawnX - 2) + "-" + (floorSpawnY - 1);
+                floor.GetComponent<LevelGenerator>().roomCoordinates[x] = (floorSpawnX - 3) + "-" + (floorSpawnY - 2);
+                if (floorSpawnX < floorX / 2)
+                {
+                    roomsStartX = floorSpawnX + 2;
+
+                    if (floorSpawnY < floorY / 2)
+                    {
+                        roomsStartY = floorSpawnY + 3;
+                    }
+                    else
+                    {
+                        roomsStartY = floorSpawnY - 2;
+                    }
+                }
+                else
+                {
+                    roomsStartX = floorSpawnX - 3;
+
+                    if (floorSpawnY < floorY / 2)
+                    {
+                        roomsStartY = floorSpawnY + 3;
+                    }
+                    else
+                    {
+                        roomsStartY = floorSpawnY - 2;
+                    }
+                }
             }
             else if (x == 1)
             {
-                floor.GetComponent<LevelGenerator>().roomCoordinates[x] = (floorExitX - 2) + "-" + (floorExitY - 1);
+                floor.GetComponent<LevelGenerator>().roomCoordinates[x] = (floorExitX - 3) + "-" + (floorExitY - 2);
+                if (floorSpawnX < floorX / 2)
+                {
+                    roomsEndX = floorSpawnX + 2;
+
+                    if (floorSpawnY < floorY / 2)
+                    {
+                        roomsEndY = floorSpawnY + 3;
+                    }
+                    else
+                    {
+                        roomsEndY = floorSpawnY - 2;
+                    }
+                }
+                else
+                {
+                    roomsEndX = floorSpawnX - 3;
+
+                    if (floorSpawnY < floorY / 2)
+                    {
+                        roomsEndY = floorSpawnY + 3;
+                    }
+                    else
+                    {
+                        roomsEndY = floorSpawnY - 2;
+                    }
+                }
             }
             else
             {
-                randomX = UnityEngine.Random.Range(totalX, totalX + 5);
-                randomY = UnityEngine.Random.Range(totalY, totalY + 5);
+                randomX = roomsStartX;
+                randomY = roomsStartY;
+
                 roomLocationX = randomX;
                 roomLocationY = randomY;
 
-                totalX += randomX - totalX;
-                totalY += randomY - totalY;
-                floor.GetComponent<LevelGenerator>().roomCoordinates[x] = roomLocationX + "-" + roomLocationY;
+                totalX += randomX;
+                totalY += randomY;
+                floor.GetComponent<LevelGenerator>().roomCoordinates[x] = 0 + "-" + 0;
             }
 
             //Room Sizes
@@ -146,43 +248,30 @@ public class RandomLevelGenerator : MonoBehaviour
 
             if (x == 0 || x == 1)
             {
-                floor.GetComponent<LevelGenerator>().roomSizes[x] = "3-3";
+                floor.GetComponent<LevelGenerator>().roomSizes[x] = "5-5";
             }
             else
             {
-                randomX = UnityEngine.Random.Range(8, 20);
-                randomY = UnityEngine.Random.Range(8, 20);
-                totalX += randomX;
-                totalY += randomY;
+                floor.GetComponent<LevelGenerator>().roomSizes[x] = floorX + "-" + floorY;
 
-                if (totalX > floorX)
+                if (floorSpawnX > floorX / 2)
                 {
-                    randomX -= totalX - floorX;
-                    Debug.Log("X Over");
+                    if (floorSpawnY > floorY / 2)
+                    {
+                        floor.GetComponent<LevelGenerator>().roomCoordinates[x] = (roomLocationX - randomX) + "-" + (roomLocationY - randomY);
+                    }
+                    else
+                    {
+                        floor.GetComponent<LevelGenerator>().roomCoordinates[x] = (roomLocationX - randomX) + "-" + (roomLocationY);
+                    }
                 }
-                else if (totalX + 3 > floorX)
+                else
                 {
-                    randomX += totalX + 3 - floorX;
-                    Debug.Log("X: " + randomX);
+                    if (floorSpawnY > floorY / 2)
+                    {
+                        floor.GetComponent<LevelGenerator>().roomCoordinates[x] = (roomLocationX) + "-" + (roomLocationY - randomY);
+                    }
                 }
-
-                if (totalY > floorY)
-                {
-                    randomY -= totalY - floorY;
-                    Debug.Log("Y Over");
-                }
-                else if (totalY + 3 > floorY)
-                {
-                    randomY += totalY + 3 - floorY;
-                    Debug.Log("X: " + randomX);
-                }
-
-                if (randomX < 3)
-                {
-
-                }
-
-                floor.GetComponent<LevelGenerator>().roomSizes[x] = randomX + "-" + randomY;
             }
 
             int roomSizeY = randomY;
@@ -197,92 +286,185 @@ public class RandomLevelGenerator : MonoBehaviour
             {
                 if (floorSpawnX < floorX / 2)
                 {
-                    floor.GetComponent<LevelGenerator>().roomDoors[x] = "2-1";
+                    floor.GetComponent<LevelGenerator>().roomDoors[x] = "4-2";
                 }
                 else
                 {
-                    floor.GetComponent<LevelGenerator>().roomDoors[x] = "0-1";
+                    floor.GetComponent<LevelGenerator>().roomDoors[x] = "0-2";
                 }
             }
             else if (x == 1)
             {
                 if (floorExitX < floorX / 2)
                 {
-                    floor.GetComponent<LevelGenerator>().roomDoors[x] = "2-1";
+                    floor.GetComponent<LevelGenerator>().roomDoors[x] = "4-2";
                 }
                 else
                 {
-                    floor.GetComponent<LevelGenerator>().roomDoors[x] = "0-1";
+                    floor.GetComponent<LevelGenerator>().roomDoors[x] = "0-2";
                 }
             }
             else
             {
-                int randomNumber = UnityEngine.Random.Range(0, 0);
-                if (randomNumber == 0)
+                if (previousDoorDir == -1)
                 {
-                    randomNumber = UnityEngine.Random.Range(0, 1);
-
-                    if (randomNumber == 0)
-                    {
-                        if (randomX < floorX / 2)
-                        {
-                            randomY = UnityEngine.Random.Range(1, roomSizeY - 2);
-                            floor.GetComponent<LevelGenerator>().roomDoors[x] = (roomSizeX - 1) + "-" + randomY;
-                        }
-                        else
-                        {
-                            randomY = UnityEngine.Random.Range(1, roomSizeY - 2);
-                            floor.GetComponent<LevelGenerator>().roomDoors[x] = 0 + "-" + randomY;
-                        }
-                    }
-                    else if (randomNumber == 1)
-                    {
-                        if (randomY < floorY / 2)
-                        {
-                            randomX = UnityEngine.Random.Range(1, roomSizeX - 2);
-                            floor.GetComponent<LevelGenerator>().roomDoors[x] = randomX + "-" + (roomSizeY - 1);
-                        }
-                        else
-                        {
-                            randomX = UnityEngine.Random.Range(1, roomSizeX - 2);
-                            floor.GetComponent<LevelGenerator>().roomDoors[x] = randomX + "-" + 0;
-                        }
-                    }
+                    previousDoorDir = UnityEngine.Random.Range(0, 1);
+                }
+                else if (previousDoorDir == 0)
+                {
+                    previousDoorDir = 1;
+                }
+                else if (previousDoorDir == 1)
+                {
+                    previousDoorDir = 0;
+                }
+                randomX = UnityEngine.Random.Range(1, roomSizeX - 2);
+                xString = randomX + "-" + 0;
+                if (previousDoorDir == 0)
+                {
+                    randomY = UnityEngine.Random.Range(1, roomSizeY - 1);
+                    yString = 0 + "-" + randomY;
                 }
                 else
                 {
-
-                    if (randomY < floorY / 2)
-                    {
-                        randomX = UnityEngine.Random.Range(1, roomSizeX - 2);
-                        yString = randomX + "-" + (roomSizeY - 1);
-                    }
-                    else
-                    {
-                        randomX = UnityEngine.Random.Range(1, roomSizeX - 2);
-                        yString = randomX + "-" + 0;
-                    }
-
-                    if (randomX < floorX / 2)
-                    {
-                        randomY = UnityEngine.Random.Range(1, roomSizeY - 2);
-                        xString = randomY + "-" + (roomSizeY - 1);
-                    }
-                    else
-                    {
-                        randomX = UnityEngine.Random.Range(1, roomSizeY - 2);
-                        yString = randomY + "-" + 0;
-                    }
-                    floor.GetComponent<LevelGenerator>().roomDoors[x] = xString + ", " + yString;
-
+                    Debug.Log("RightWall!");
+                    randomY = UnityEngine.Random.Range(1, roomSizeY - 1);
+                    yString = (roomSizeX - 2) + "-" + randomY;
                 }
+                floor.GetComponent<LevelGenerator>().roomDoors[x] = xString + ", " + yString;
             }
 
             //Room Furniture
             string[] temp6 = new string[numberOfRooms];
             floor.GetComponent<LevelGenerator>().roomLayouts.CopyTo(temp6, 0);
             floor.GetComponent<LevelGenerator>().roomLayouts = temp6;
+            int totalFurX = 1;
+            int totalFurY = 0;
+            string objectMaking = "";
+            int laskinX = floorX / 10;
+            int laskinY = floorY / 10;
 
+            if (x > 1)
+            {
+                for (int i = 0; i < laskinY; i++)
+                {
+                    for (int j = 0; j < laskinX; j++)
+                    {
+                        int randomFurniture = UnityEngine.Random.Range(2, floor.GetComponent<LevelGenerator>().rooms[x].furniture.Length);
+                        int roomFurnitureX = UnityEngine.Random.Range(totalFurX, totalFurX);
+                        int roomFurnitureY = UnityEngine.Random.Range(totalFurY, totalFurY);
+                        if ((j == 0 && i == 0) || (i == laskinY - 1 && j == laskinX - 1)) 
+                        {
+                            objectMaking = "a" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                            if (floorsGenerated % 3 == 0)
+                            {
+                                objectMaking = "b" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                            }
+                        }
+                        else if (randomFurniture == 2)
+                        {
+                            objectMaking = "c" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 3)
+                        {
+                            objectMaking = "d" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 4)
+                        {
+                            objectMaking = "e" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 5)
+                        {
+                            objectMaking = "f" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 6)
+                        {
+                            objectMaking = "g" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 7)
+                        {
+                            objectMaking = "h" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 8)
+                        {
+                            objectMaking = "i" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 9)
+                        {
+                            objectMaking = "j" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 10)
+                        {
+                            objectMaking = "k" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 11)
+                        {
+                            objectMaking = "l" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 12)
+                        {
+                            objectMaking = "m" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 13)
+                        {
+                            objectMaking = "n" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 14)
+                        {
+                            objectMaking = "o" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 15)
+                        {
+                            objectMaking = "p" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 16)
+                        {
+                            objectMaking = "q" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 17)
+                        {
+                            objectMaking = "r" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 18)
+                        {
+                            objectMaking = "s" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 19)
+                        {
+                            objectMaking = "t" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 20)
+                        {
+                            objectMaking = "u" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 21)
+                        {
+                            objectMaking = "v" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 22)
+                        {
+                            objectMaking = "w" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 23)
+                        {
+                            objectMaking = "x" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 24)
+                        {
+                            objectMaking = "y" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+                        else if (randomFurniture == 25)
+                        {
+                            objectMaking = "z" + roomFurnitureX + "-" + roomFurnitureY + ",";
+                        }
+
+                        floor.GetComponent<LevelGenerator>().roomLayouts[x] += objectMaking;
+                        totalFurX += 10;
+                    }
+                    totalFurX = 1;
+                    totalFurY += 10;
+                }
+            }
         }
     }
 }

@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: ElevatorRoom
   m_EditorClassIdentifier: 
   roomType: Elevator
+  difficulty: 0
   wall: {fileID: 300425294304570222, guid: a7f2abd125c5c574a9d07449d6af2961, type: 3}
   halfWall: {fileID: 300425294304570222, guid: 13dc85cebb98dc64b9789ae48cf98e75, type: 3}
   wallCorner: {fileID: 300425294304570222, guid: 41dde6a0f6b0c6643b68ef0f4bb4a3c2,
     type: 3}
-  door: {fileID: 300425294304570222, guid: 6ba506a9ba52f09448975e2c6486c906, type: 3}
+  door: {fileID: 4990560635838119404, guid: 12a5bb725a09b7746bc1f142369c19fa, type: 3}
   floor: {fileID: 4478715479393370695, guid: 765082d5eae742c45b969230be13ac46, type: 3}
   furniture:
   - {fileID: 4002979554525059714, guid: 9a0521e50c53e794294ce8e358348071, type: 3}

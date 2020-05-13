@@ -23,6 +23,9 @@ TagManager:
   - RoomController
   - Door
   - AmmoSpawn
+  - LevelGenerator
+  - LevelController
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -37,8 +40,8 @@ TagManager:
   - Player
   - Equipment
   - Obstacle
-  - 
-  - 
+  - Wall
+  - Equipment
   - 
   - 
   - 

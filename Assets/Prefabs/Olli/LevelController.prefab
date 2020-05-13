@@ -43,9 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c667314abd6a55428e0eb8ddc45d769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numberOfFloors: 2
-  floorNum: 1
+  numberOfFloors: 0
+  floorNum: 0
   floors: []
+  player: {fileID: 0}
+  mainCamera: {fileID: 809194335311716555, guid: eab467a7cf4effc4aafb096704412526,
+    type: 3}
   currentFloor: 0
   playerSpawned: 0
   firstRoomSpawned: 0

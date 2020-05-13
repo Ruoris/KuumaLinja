@@ -25,9 +25,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject stairs;
 
     private Vector2 location;
-    private Vector2 playerSpawn;
-
-    public Camera mainCamera;
+    public Vector2 playerSpawn;
 
     public GameObject levelController;
     public GameObject levelGenerator;
@@ -36,9 +34,9 @@ public class LevelGenerator : MonoBehaviour
     void Start()
     {
         location = new Vector2(0, 0);
-        Instantiate(mainCamera, player.transform.position + new Vector3(0, 0, -10), player.transform.rotation);
 
         levelController = GameObject.FindGameObjectWithTag("LevelController");
+        levelGenerator = this.gameObject;
 
         //mainCamera.transform.position = new Vector2((floorX / 2) * 0.32f, (floorY / 2) * 0.32f);
         //mainCamera.GetComponent<Camera>().orthographicSize = floorX;
@@ -48,11 +46,9 @@ public class LevelGenerator : MonoBehaviour
 
         if (levelController.GetComponent<LevelController>().playerSpawned == false)
         {
-            Vector2 temp2 = new Vector2(1, 1);
-            GameObject _player = Instantiate(player, temp2, transform.rotation = new Quaternion(0, 0, 0, 0));
+            GameObject _player = Instantiate(player, playerSpawn, transform.rotation = new Quaternion(0, 0, 0, 0));
             GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
-            _player.GetComponent<PlayerCtrl>().aim = _aim;
-
+            //_player.GetComponent<PlayerCtrl>().aim = _aim;
             levelController.GetComponent<LevelController>().playerSpawned = true;
         }
         GetRooms();
@@ -167,14 +163,16 @@ public class LevelGenerator : MonoBehaviour
         location = new Vector2(spawnXint * 0.32f, spawnYint * 0.32f);
         GameObject _stairs = Instantiate(stairs, location, transform.rotation = new Quaternion(0, 0, 0, 0));
         _stairs.transform.parent = this.gameObject.transform;
-
+        levelController.GetComponent<LevelController>().floorSpawn = location;
         playerSpawn = location;
 
         if (nextFloor[0] == '.')
         {
-        } else { 
+        }
+        else
+        {
             //Next Floor Enterance
-            for (int x = 0; x < floorSpawn.Length; x++)
+            for (int x = 0; x < nextFloor.Length - 1; x++)
             {
                 if (nextFloor[x] == '-')
                 {

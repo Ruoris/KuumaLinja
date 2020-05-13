@@ -8,14 +8,11 @@ public class RoomGenerator : MonoBehaviour
 
     private Vector2 v2;
 
-    public float playerOnTile;
-
     private GameObject newRoom;
 
     // Start is called before the first frame update
     void Start()
     {
-        playerOnTile = 0;
     }
 
     // Update is called once per frame
@@ -209,8 +206,20 @@ public class RoomGenerator : MonoBehaviour
 
                     if ((_y == forbiddenY.Length - 1 && _x == 0) || (_x == 0 && _y == 0))
                     {
-                        GameObject leftWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
-                        leftWalls.transform.parent = newRoom.transform;
+                        if (doorPlacedLeft == true)
+                        {
+                            GameObject leftHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            doorLocalScale = leftHalfWalls.transform.localScale;
+                            doorLocalScale.x = doorLocalScale.x * -1;
+                            leftHalfWalls.transform.localScale = doorLocalScale;
+                            leftHalfWalls.transform.parent = newRoom.transform;
+                            doorPlacedLeft = false;
+                        }
+                        else
+                        {
+                            GameObject leftWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            leftWalls.transform.parent = newRoom.transform;
+                        }
                     }
                     else if (forbiddenX[_x] == true && forbiddenY[_y] == true)
                     {
@@ -222,6 +231,7 @@ public class RoomGenerator : MonoBehaviour
                             leftHalfWalls.transform.localScale = doorLocalScale;
                             leftHalfWalls.transform.parent = newRoom.transform;
                             doorPlacedLeft = false;
+                            Debug.Log("HalfWallELeft");
                         }
                         else
                         {
@@ -415,6 +425,97 @@ public class RoomGenerator : MonoBehaviour
                     x++;
                     nextC = x;
                 }
+                else if (layouts[x] == 'l')
+                {
+                    objectToGenerate = room.furniture[11];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'm')
+                {
+                    objectToGenerate = room.furniture[12];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'n')
+                {
+                    objectToGenerate = room.furniture[13];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'o')
+                {
+                    objectToGenerate = room.furniture[14];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'p')
+                {
+                    objectToGenerate = room.furniture[15];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'q')
+                {
+                    objectToGenerate = room.furniture[16];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'r')
+                {
+                    objectToGenerate = room.furniture[17];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 's')
+                {
+                    objectToGenerate = room.furniture[18];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 't')
+                {
+                    objectToGenerate = room.furniture[19];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'u')
+                {
+                    objectToGenerate = room.furniture[20];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'v')
+                {
+                    objectToGenerate = room.furniture[21];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'w')
+                {
+                    objectToGenerate = room.furniture[22];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'x')
+                {
+                    objectToGenerate = room.furniture[23];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'y')
+                {
+                    objectToGenerate = room.furniture[24];
+                    x++;
+                    nextC = x;
+                }
+                else if (layouts[x] == 'z')
+                {
+                    objectToGenerate = room.furniture[25];
+                    x++;
+                    nextC = x;
+                }
+
                 if (layouts[x] == '-')
                 {
                     int save = x;
