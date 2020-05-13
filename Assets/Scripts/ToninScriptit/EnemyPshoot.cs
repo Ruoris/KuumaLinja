@@ -15,7 +15,7 @@ public class EnemyPshoot : MonoBehaviour
 
     public Transform firePoint;
     public GameObject enemy;
-    public GameObject bulletprefab, gunFlareAnimation;
+    public GameObject bulletprefab;
 
 
 
@@ -28,14 +28,14 @@ public class EnemyPshoot : MonoBehaviour
     {
         int equippedGun = GetComponent<EnemyWeapons>().equippedGun;
         bool emptyMagazine = GetComponent<EnemyWeapons>().emptyMagazine;
-        gunFlareAnimation.SetActive(false);
+       
         bool pursuing = GetComponent<EnemyController>().GetPursuing();
 
         if (pursuing == true && fireRate < canFire && !emptyMagazine)
         {
 
             Fire();
-            gunFlareAnimation.SetActive(true);
+            
 
 
 

@@ -186,7 +186,7 @@ MonoBehaviour:
     type: 3}
   bloodFrame: {fileID: 5683224466201235956, guid: 89fb7652abcb6b44c868041a061f5d47,
     type: 3}
-  playerHealth: 1
+  playerHealth: 95
   pauser: {fileID: 0}
   crouching: 0
   playerRB: {fileID: 69640893337760600}
@@ -218,7 +218,6 @@ MonoBehaviour:
   meleeAnimation: {fileID: 387397056410143226}
   pipeHands: {fileID: 387397054322394624}
   melee: 0
-  wallChecker: {fileID: 0}
   dialogueTrigger: {fileID: 0}
 --- !u!114 &69640893337760605
 MonoBehaviour:
@@ -268,6 +267,7 @@ MonoBehaviour:
   pistolCapacity: 10
   shotgunCapacity: 5
   assaultRifleCapacity: 15
+  wallCheck: {fileID: 0}
 --- !u!114 &69640893337760604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2233,7 +2233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &959089833575389613
 Transform:
   m_ObjectHideFlags: 0

@@ -7263,6 +7263,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4265694229931077943, guid: 4d4836ca96a3aa04a98c321a019689fe,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetLeveleffects
+      objectReference: {fileID: 0}
     - target: {fileID: 4265694230280256164, guid: 4d4836ca96a3aa04a98c321a019689fe,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -7272,6 +7277,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4265694230390335773, guid: 4d4836ca96a3aa04a98c321a019689fe,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetLevelMusic
       objectReference: {fileID: 0}
     - target: {fileID: 4265694230532759330, guid: 4d4836ca96a3aa04a98c321a019689fe,
         type: 3}

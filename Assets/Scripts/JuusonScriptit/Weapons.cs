@@ -25,13 +25,15 @@ public class Weapons : MonoBehaviour
     public int shotgunCapacity = 5;
     public int assaultRifleCapacity = 15;
 
-
+    public Transform wallCheck;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+     
+        
         Cursor.visible = true;
 
         pistolCapacity = 10;
@@ -245,7 +247,7 @@ public class Weapons : MonoBehaviour
             var droppedPistol = Instantiate(pistolDrop, gameThrow.transform.position, Quaternion.identity);
             droppedPistol.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedPistol.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
-
+           
 
             Rigidbody2D rb1 = droppedPistol.GetComponent<Rigidbody2D>();
             float spreadAngle = Random.Range(19, 5);
@@ -263,7 +265,7 @@ public class Weapons : MonoBehaviour
             var droppedShotgun = Instantiate(shotGunDrop, gameThrow.transform.position, Quaternion.identity);
             droppedShotgun.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedShotgun.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
-
+          
 
             Rigidbody2D rb1 = droppedShotgun.GetComponent<Rigidbody2D>();
             float spreadAngle = Random.Range(19, 5);
@@ -281,7 +283,7 @@ public class Weapons : MonoBehaviour
             var droppedRifle = Instantiate(rifleDrop, gameThrow.transform.position, Quaternion.identity);
             droppedRifle.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
             droppedRifle.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
-
+           
 
             Rigidbody2D rb1 = droppedRifle.GetComponent<Rigidbody2D>();
             float spreadAngle = Random.Range(19, 5);
@@ -427,12 +429,12 @@ public class Weapons : MonoBehaviour
     }
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.gameObject.layer == 11 && Input.GetKeyDown(KeyCode.E))
+        if (other.gameObject.layer == 11 && Input.GetKey(KeyCode.E))
         {
 
             emptyMagazine = false;
 
-           
+            Debug.Log("ase käteem");
             if (other.gameObject.tag == "PistolDrop")
             {
                 uiAmmoCounter.GetComponent<AmmocounterScript>().ReturnColor(pistolCapacity);

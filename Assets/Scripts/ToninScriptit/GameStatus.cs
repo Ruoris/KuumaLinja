@@ -85,11 +85,7 @@ public class GameStatus : MonoBehaviour
             
            nextlevel = "Level2.1";
         }
-        //if (scene.buildIndex == 5)
-        //{
-        //    GameStatus.status.Level2 = true;
-        //     nextlevel = "Cutscene 3";
-        //}
+       
         if (scene.buildIndex == 5)
         {
             GameStatus.status.Level2 = true;
@@ -100,11 +96,7 @@ public class GameStatus : MonoBehaviour
             GameStatus.status.Level3 = true;
             nextlevel = "Cutscene 3";
         }
-        if (scene.buildIndex == 7)
-        {
-            
-            nextlevel = "Credits";
-        }  
+        
         if (scene.buildIndex != 7)
         {
         int sceneToLoad = scene.buildIndex + 1;
@@ -116,10 +108,10 @@ public class GameStatus : MonoBehaviour
         }
         if(scene.buildIndex == 7)
             {
-          
+            nextlevel = "UIMainmenukehitysScene";
             SceneManager.LoadScene("UIMainmenukehitysScene");
             AudioImmortality.immortal.ChangeBackgroundMusic("UIMainmenukehitysScene");
-            GameStatus.status.currentLevel = nextlevel;
+            
             Debug.Log(SceneManager.GetActiveScene().name);
             GameStatus.status.Save();
 

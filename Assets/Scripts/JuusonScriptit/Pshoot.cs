@@ -18,12 +18,12 @@ public class Pshoot : MonoBehaviour
     private GameObject ammopanel;
     public bool melee;
 
-    public GameObject wallChecker;
+    
     public GameObject dialogueTrigger;
     void Start()
     {
         
-        wallChecker= this.gameObject.transform.GetChild(17).gameObject;
+     
 
 
     }
@@ -44,8 +44,7 @@ public class Pshoot : MonoBehaviour
         }
 
         
-        if (Input.GetButton("Fire1") && fireRate < canFire && pauser.GetComponent<Pause>().paused == false
-            &&wallChecker.GetComponent<ShootEnable>().canShoot==true)
+        if (Input.GetButton("Fire1") && fireRate < canFire && pauser.GetComponent<Pause>().paused == false)
         {
             if (equippedGun != 0)
 

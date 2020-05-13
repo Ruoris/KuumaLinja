@@ -16,7 +16,7 @@ public class Boss : MonoBehaviour
     private float fireRate = 3f;
     private float canFire;
     public int health = 5;
-
+    public GameObject locker;
 
     void Update()
     {
@@ -84,9 +84,10 @@ public class Boss : MonoBehaviour
         {
             health--;
             if(health < 1)
-            {
+            {   Destroy(locker) ;
                 lastDialogue.SetActive(true);
                 Destroy(boss);
+
             }
         }
     }
