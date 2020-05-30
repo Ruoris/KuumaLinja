@@ -27,7 +27,7 @@ public class PlayerCtrl : MonoBehaviour
         Cursor.visible = false;
         pauser = GameObject.FindWithTag("soundsettings");
         player.SetActive(true);
-        movementSpeed = 1.8f;
+        movementSpeed = 1.8f + GameStatus.status.movementSpeedAmount; 
 
         Instantiate(aim, player.transform.position, player.transform.rotation);
         //Instantiate(playerCamera, player.transform.position + new Vector3(0,0,-10), player.transform.rotation);
@@ -138,7 +138,6 @@ public class PlayerCtrl : MonoBehaviour
                 deathPanel.SetActive(true);
                 pauser.GetComponent<Pause>().alive = false;
                 Cursor.visible = true;
-
                 player.SetActive(false);
             }
         }

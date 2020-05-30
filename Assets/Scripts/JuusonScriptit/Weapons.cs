@@ -338,7 +338,7 @@ public class Weapons : MonoBehaviour
     }
     public void MovementSpeedBuff()
     {
-        player.GetComponent<PlayerCtrl>().movementSpeed = 1.8f + GameStatus.status.movementSpeedAmount;
+        player.GetComponent<PlayerCtrl>().movementSpeed = 1.80f + GameStatus.status.movementSpeedAmount;
     }
     public void AmmoBuff()
     {

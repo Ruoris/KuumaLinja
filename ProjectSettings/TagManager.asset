@@ -37,6 +37,14 @@ TagManager:
   - SpeedBoost
   - AmmoBoost
   - LevelEnd
+  - Scientist
+  - DT1
+  - DT2
+  - DT3
+  - DT4
+  - DT5
+  - DT6
+  - DT7
   layers:
   - Default
   - TransparentFX
@@ -79,4 +87,7 @@ TagManager:
     locked: 0
   - name: foreGround
     uniqueID: 3833441929
+    locked: 0
+  - name: UI
+    uniqueID: 2038974981
     locked: 0

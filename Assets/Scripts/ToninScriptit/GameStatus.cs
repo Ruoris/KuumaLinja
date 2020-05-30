@@ -28,6 +28,21 @@ public class GameStatus : MonoBehaviour
 
     public string nextlevel;
 
+    public bool Level1DT1 = false;
+    public bool Level1DT2 = false;
+    public bool Level1DT3 = false;
+    public bool Level1DT4 = false;
+    public bool Level1DT5 = false;
+    public bool Level1DT6 = false;
+    public bool Level1DT7 = false;
+
+    public bool Level6DT1 = false;
+    public bool Level6DT2 = false;
+    public bool Level6DT3 = false;
+    public bool Level6DT4 = false;
+    public bool Level6DT5 = false;
+    public bool Level6DT6 = false;
+    public bool Level6DT7 = false;
     void Start()
     {
         ammobuffsCollected = 0;

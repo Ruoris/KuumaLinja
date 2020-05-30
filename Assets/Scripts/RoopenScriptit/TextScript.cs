@@ -86,39 +86,45 @@ public class TextScript : MonoBehaviour
         }
         else
         {
-            index = 0;
-            dialoguePause = false;
-            Time.timeScale = 1f;
-            textDisplay.text = "";
-            continueButtuon.SetActive(false);
-
-            if (SceneManager.GetActiveScene().name == "Cutscene 1")
-            {
-                Debug.Log("Loading level 2");
-                //SceneManager.LoadScene("Level2");
-                GameStatus.status.LevelEnd();
-            }
-
-            else if (SceneManager.GetActiveScene().name == "Cutscene 2")
-            {
-                Debug.Log("Loading level 3");
-                //SceneManager.LoadScene("Level3");
-                GameStatus.status.LevelEnd();
-            }
-            //else if (SceneManager.GetActiveScene().name == "Boss Scene")
-            //{ var boss = GameObject.Find("boss level 1.2/Boss");
-            //    if(boss==null)
-            //    Debug.Log("Loading Credits");
-            //    //SceneManager.LoadScene("Level3");
-            //    GameStatus.status.LevelEnd();
-            //}
-            else if (SceneManager.GetActiveScene().name == "Cutscene 3")
-            {
-                Debug.Log("Loading Credits");
-                //SceneManager.LoadScene("Level3");
-                GameStatus.status.LevelEnd();
-            }
+            Skip();
         }  
+    }
+    public void Skip() 
+    {
+
+        index = 0;
+        dialoguePause = false;
+        Time.timeScale = 1f;
+        textDisplay.text = "";
+        continueButtuon.SetActive(false);
+
+        if (SceneManager.GetActiveScene().name == "Cutscene 1")
+        {
+            Debug.Log("Loading level 2");
+            //SceneManager.LoadScene("Level2");
+            GameStatus.status.LevelEnd();
+        }
+
+        else if (SceneManager.GetActiveScene().name == "Cutscene 2")
+        {
+            Debug.Log("Loading level 3");
+            //SceneManager.LoadScene("Level3");
+            GameStatus.status.LevelEnd();
+        }
+        //else if (SceneManager.GetActiveScene().name == "Boss Scene")
+        //{ var boss = GameObject.Find("boss level 1.2/Boss");
+        //    if(boss==null)
+        //    Debug.Log("Loading Credits");
+        //    //SceneManager.LoadScene("Level3");
+        //    GameStatus.status.LevelEnd();
+        //}
+        else if (SceneManager.GetActiveScene().name == "Cutscene 3")
+        {
+            Debug.Log("Loading Credits");
+            //SceneManager.LoadScene("Level3");
+            GameStatus.status.LevelEnd();
+        }
+
     }
 }
 

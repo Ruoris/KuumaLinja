@@ -260,6 +260,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5069778984648989358, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5069778984648989358, guid: 6cb9611b7c276504b99869857e03a55c,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 5069778984951189111, guid: 6cb9611b7c276504b99869857e03a55c,
         type: 3}
       propertyPath: m_textInfo.characterCount
