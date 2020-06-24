@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EnemyController : MonoBehaviour
 {
@@ -69,12 +70,12 @@ public class EnemyController : MonoBehaviour
     void KilledByBullet()
     {
         int deathInt = Random.Range(1, 3);
-
+        Scene scene = SceneManager.GetActiveScene();
         Destroy(footPrints);
         GetComponent<EnemyWeapons>().DropGun();
 
         enemy.transform.eulerAngles = new Vector3(0, 0, enemy.transform.eulerAngles.z - 180);
-        
+
         if (deathInt == 2)
         {
             Instantiate(death2, enemy.transform.position, enemy.transform.rotation);
@@ -83,12 +84,10 @@ public class EnemyController : MonoBehaviour
         {
             Instantiate(death, enemy.transform.position, enemy.transform.rotation);
         }
-        if (GameStatus.status.currentLevel == "RandomGenerator")
+        if (scene.name == "RandomGenerator")
         {
-        levelController.GetComponent<LevelController>().enemiesKilled++;
+            levelController.GetComponent<LevelController>().enemiesKilled++;
         }
-
-        
 
         gameObject.SetActive(false);
     }

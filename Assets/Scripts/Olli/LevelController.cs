@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -13,7 +14,7 @@ public class LevelController : MonoBehaviour
     public Camera mainCamera;
 
     public int currentFloor;
-    
+
     public Vector2 floorSpawn;
     public int floorSpawnX;
     public int floorSpawnY;
@@ -42,6 +43,7 @@ public class LevelController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         currentFloor = 0;
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -52,15 +54,16 @@ public class LevelController : MonoBehaviour
         }
         else
         {
-            Camera _mainCamera = Instantiate(mainCamera, new Vector3(0, 0, -10), new Quaternion(0,0,0,0));
+            Camera _mainCamera = Instantiate(mainCamera, new Vector3(0, 0, -10), new Quaternion(0, 0, 0, 0));
         }
 
     }
-    
+
 
     // Update is called once per frame
     void Update()
     {
+
         timer += Time.deltaTime;
         float coolDown = 0.25f;
         if (floors[0].activeSelf == false && firstRoomSpawned == false)
@@ -91,13 +94,16 @@ public class LevelController : MonoBehaviour
             Debug.Log("SetFalse");
             currentFloorObject.SetActive(false);
         }
+
     }
 
     public void ResetFloor()
     {
+
         if (floorNum < numberOfFloors)
         {
             floorNum++;
         }
+
     }
 }

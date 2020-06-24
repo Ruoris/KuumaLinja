@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Photon/PhotonMenu.unity
+    guid: c41481cc93303c84bb02aeee3229fd44
+  - enabled: 1
     path: Assets/Scenes/Loading.unity
     guid: a7ffc86fd3c799d49b0e9d4a9cf8d1e5
   - enabled: 1
@@ -32,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Olli/RandomGenerator.unity
     guid: 83119539f1fbf384baa32311a32e5119
+  - enabled: 1
+    path: Assets/Scenes/Photon/TestiPhoton.unity
+    guid: 0a71e1ee97733e347800f7d15e3561bd
+  - enabled: 1
+    path: Assets/Scenes/Photon/MultiplayerEndless.unity
+    guid: 5840d5f304b45c74f92f9798228304a9
   m_configObjects: {}

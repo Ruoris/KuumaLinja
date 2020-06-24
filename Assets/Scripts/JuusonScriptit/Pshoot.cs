@@ -20,13 +20,7 @@ public class Pshoot : MonoBehaviour
 
     
     public GameObject dialogueTrigger;
-    void Start()
-    {
-        
-     
-
-
-    }
+ 
 
     void Update()
     {
