@@ -13,9 +13,9 @@ public class RandomLevelGeneratorMultiplayer : MonoBehaviour
     //Listat
     public Room[] roomList;
 
-    public int[] randomrooms = new int[3];
-    public int[] randomXarray = new int[2];
-    public int[] randomYarray = new int[2];
+    public int[] randomrooms;
+    public int[] randomXarray;
+    public int[] randomYarray;
     public int[] randomFurniturearray = new int[23];
 
     public int floorX;
@@ -33,8 +33,8 @@ public class RandomLevelGeneratorMultiplayer : MonoBehaviour
     string xString;
 
     private int floorsGenerated = 0;
-    [SerializeField]
-    private bool randomized = false;
+    
+    public bool randomized = false;
 
     public void Randomizing()
     {   //Huoneet
@@ -44,10 +44,14 @@ public class RandomLevelGeneratorMultiplayer : MonoBehaviour
         //Ovet
         
         // randomikoordinaatit.
+        //X koordinaatit
         int randomX0 = UnityEngine.Random.Range(1, 5 - 2);
         int randomX1 = UnityEngine.Random.Range(1, 25 - 2);
+        int randomX2 = UnityEngine.Random.Range(1, 25 - 2);
+        // Y koordinaatit
         int randomY0 = UnityEngine.Random.Range(1, 5 - 1);
         int randomY1 = UnityEngine.Random.Range(1, 25 - 1);
+        int randomY2 = UnityEngine.Random.Range(1, 25 - 1);
         //roomfurnitureX
 
         int[] randomFurniture = new int[18];
@@ -56,14 +60,16 @@ public class RandomLevelGeneratorMultiplayer : MonoBehaviour
         randomFurniture[x]= UnityEngine.Random.Range(2, 23);
         }
         // huoneiden ja randomikoordinaattien array siirtoa varten
-        int[] randoms= new int[7];
+        int[] randoms= new int[9];
         randoms[0] = randomroom0;
         randoms[1] = randomroom1;
         randoms[2] = randomroom2;
         randoms[3] = randomX0;
         randoms[4] = randomX1;
-        randoms[5] = randomY0;
-        randoms[6] = randomY1;
+        randoms[5] = randomX2;
+        randoms[6] = randomY0;
+        randoms[7] = randomY1;
+        randoms[8] = randomY2;
 
         PhotonView photonview = PhotonView.Get(this);
         photonview.RPC("GetRandoms", RpcTarget.AllViaServer, randoms, randomFurniture);
@@ -72,15 +78,25 @@ public class RandomLevelGeneratorMultiplayer : MonoBehaviour
 
     [PunRPC]
     void GetRandoms(int[]randoms,int[]randomfurniture)
-    {for(int x = 0; x < 3;x++)
+    {
+        randomrooms = new int[3];
+
+
+        for (int x = 0; x < 3;x++)
         {
         randomrooms[x] = randoms[x];
         }
+        //Alustus
+        randomXarray = new int[3];
+        randomYarray = new int[3];
 
         randomXarray[0] = randoms[3];
         randomXarray[1] = randoms[4];
-        randomYarray[0] = randoms[5];
-        randomYarray[1] = randoms[6];
+        randomXarray[2] = randoms[5];
+
+        randomYarray[0] = randoms[6];
+        randomYarray[1] = randoms[7];
+        randomYarray[2] = randoms[8];
         randomfurniture.CopyTo(randomFurniturearray,0);
         randomized = true;
         Debug.Log("randomisaatio tuli perille");
@@ -88,7 +104,12 @@ public class RandomLevelGeneratorMultiplayer : MonoBehaviour
     void Start()
     {
         levelController = GameObject.FindGameObjectWithTag("LevelController");
+
+        if (PhotonNetwork.IsMasterClient)
+        {
         Randomizing();
+        }
+        
     }
 
     // Update is called once per frame
@@ -103,12 +124,13 @@ public class RandomLevelGeneratorMultiplayer : MonoBehaviour
                 if (i == iTo)
                 {
                     floorGenerated = true;
-                    randomized = false;
+                    randomized = false; 
+                }
                 if (PhotonNetwork.IsMasterClient)
                 {
                     Randomizing();
                 }
-                }
+               
             }
         
     }

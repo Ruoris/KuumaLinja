@@ -56,7 +56,7 @@ public class PointController : MonoBehaviour
                 floorChanged = true;
             }
         }
-            if (scene.name != "MultiplayerEndless")
+        if (scene.name != "MultiplayerEndless")
         {
             if (floorChanged == false)
             {
@@ -75,18 +75,18 @@ public class PointController : MonoBehaviour
             {
                 if (nextFloor == true)
                 {
-                    if (levelController.GetComponent<LevelControllerMultiplayer>().currentFloor + 1 != levelController.GetComponent<LevelController>().floors.Length)
+                    if (levelController.GetComponent<LevelControllerMultiplayer>().currentFloor + 1 != levelController.GetComponent<LevelControllerMultiplayer>().floors.Length)
                     {
                         levelController.GetComponent<LevelControllerMultiplayer>().floors[currentFloor].SetActive(false);
                     }
                     else
                     {
-                        levelController.GetComponent<LevelControllerMultiplayer>().currentFloorObject = levelController.GetComponent<LevelController>().floors[currentFloor];
+                        levelController.GetComponent<LevelControllerMultiplayer>().currentFloorObject = levelController.GetComponent<LevelControllerMultiplayer>().floors[currentFloor];
                     }
                     currentFloor++;
                     levelController.GetComponent<LevelControllerMultiplayer>().currentFloor++;
 
-                    if (levelController.GetComponent<LevelControllerMultiplayer>().currentFloor == levelController.GetComponent<LevelController>().floors.Length)
+                    if (levelController.GetComponent<LevelControllerMultiplayer>().currentFloor == levelController.GetComponent<LevelControllerMultiplayer>().floors.Length)
                     {
                     }
                     else if (currentFloor <= levelController.GetComponent<LevelControllerMultiplayer>().floors.Length)

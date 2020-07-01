@@ -216,17 +216,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfFloors: 0
   floorNum: 0
-  floors:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  floors: []
   player: {fileID: 0}
   mainCamera: {fileID: 809194335311716555, guid: eab467a7cf4effc4aafb096704412526,
     type: 3}

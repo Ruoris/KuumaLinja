@@ -9,7 +9,7 @@ public class LevelControllerMultiplayer : MonoBehaviour
     public int numberOfFloors;
     public int floorNum;
 
-    public GameObject[] floors = new GameObject[2];
+    public GameObject[] floors= new GameObject[3];
     public GameObject player;
     public Camera mainCamera;
 
@@ -36,7 +36,8 @@ public class LevelControllerMultiplayer : MonoBehaviour
     public float scorePoints = 0;
 
     public bool addPoints = false;
-
+    [SerializeField]
+    private bool randomized = false;
     public GameObject currentFloorObject;
 
     private float timer = 0;
@@ -63,10 +64,15 @@ public class LevelControllerMultiplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (rndLvlGntr.GetComponent<RandomLevelGeneratorMultiplayer>().randomized == true)
+        {
+            randomized = true;
+        }
+        if (randomized == true)
+        {
             timer += Time.deltaTime;
             float coolDown = 0.25f;
-            if (floors[0] != null && floors[0].activeSelf == false && firstRoomSpawned == false)
+            if (floors[0].activeSelf == false && firstRoomSpawned == false)
             {
                 firstRoomSpawned = true;
                 floors[currentFloor].SetActive(true);
@@ -94,6 +100,8 @@ public class LevelControllerMultiplayer : MonoBehaviour
                 Debug.Log("SetFalse");
                 currentFloorObject.SetActive(false);
             }
+        }
+            
         
     }
 
