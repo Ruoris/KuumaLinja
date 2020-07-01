@@ -9,7 +9,7 @@ public class LevelControllerMultiplayer : MonoBehaviour
     public int numberOfFloors;
     public int floorNum;
 
-    public GameObject[] floors;
+    public GameObject[] floors = new GameObject[2];
     public GameObject player;
     public Camera mainCamera;
 
@@ -63,47 +63,48 @@ public class LevelControllerMultiplayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        timer += Time.deltaTime;
-        float coolDown = 0.25f;
-        if (floors[0].activeSelf == false && firstRoomSpawned == false)
-        {
-            firstRoomSpawned = true;
-            floors[currentFloor].SetActive(true);
-        }
-
-        if (currentFloor > floors.Length - 1 && currentFloor != 0)
-        {
-            currentFloor = 0;
-            rndLvlGntr.GetComponent<RandomLevelGenerator>().i = 0;
-            rndLvlGntr.GetComponent<RandomLevelGenerator>().floorGenerated = false;
-            firstRoomSpawned = false;
-        }
-
-        if (previousFloor != currentFloor)
-        {
-            previousFloor = currentFloor;
-            addPoints = true;
-            if (currentFloorObject != null)
+        
+            timer += Time.deltaTime;
+            float coolDown = 0.25f;
+            if (floors[0] != null && floors[0].activeSelf == false && firstRoomSpawned == false)
             {
-                timer = 0;
+                firstRoomSpawned = true;
+                floors[currentFloor].SetActive(true);
             }
-        }
-        if (timer > coolDown && currentFloorObject != null)
-        {
-            Debug.Log("SetFalse");
-            currentFloorObject.SetActive(false);
-        }
 
+            if (currentFloor > floors.Length - 1 && currentFloor != 0)
+            {
+                currentFloor = 0;
+                rndLvlGntr.GetComponent<RandomLevelGeneratorMultiplayer>().i = 0;
+                rndLvlGntr.GetComponent<RandomLevelGeneratorMultiplayer>().floorGenerated = false;
+                firstRoomSpawned = false;
+            }
+
+            if (previousFloor != currentFloor)
+            {
+                previousFloor = currentFloor;
+                addPoints = true;
+                if (currentFloorObject != null)
+                {
+                    timer = 0;
+                }
+            }
+            if (timer > coolDown && currentFloorObject != null)
+            {
+                Debug.Log("SetFalse");
+                currentFloorObject.SetActive(false);
+            }
+        
     }
 
     public void ResetFloor()
     {
-
-        if (floorNum < numberOfFloors)
-        {
-            floorNum++;
-        }
+        
+            if (floorNum < numberOfFloors)
+            {
+                floorNum++;
+            }
+        
 
     }
 }

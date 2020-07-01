@@ -91,7 +91,7 @@ public class LevelController : MonoBehaviour
         }
         if (timer > coolDown && currentFloorObject != null)
         {
-            Debug.Log("SetFalse");
+
             currentFloorObject.SetActive(false);
         }
 

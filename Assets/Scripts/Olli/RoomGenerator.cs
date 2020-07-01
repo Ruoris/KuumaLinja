@@ -24,7 +24,7 @@ public class RoomGenerator : MonoBehaviour
         bool doorPlacedRight = false;
         bool doorPlacedTop = false;
         bool doorPlacedBot = false;
-        newRoom = MasterManager.NetworkInstantiate(new GameObject("Room"), v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+        newRoom = Instantiate(new GameObject("Room"), v2, transform.rotation = new Quaternion(0, 0, 0, 0));
 
         bool[] forbiddenX = new bool[rX];
         bool[] forbiddenY = new bool[rY];
@@ -71,31 +71,31 @@ public class RoomGenerator : MonoBehaviour
             while (rX > _x)
             {
                 v2.x = v2.x + 0.32f;
-                GameObject floors = MasterManager.NetworkInstantiate(room.floor, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                GameObject floors = Instantiate(room.floor, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
                 floors.transform.parent = newRoom.transform;
 
                 //CornerGenerator
                 if (_x == 0 && _y == 0)
                 {
-                    GameObject downLeftCorner = MasterManager.NetworkInstantiate(room.wallCorner, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                    GameObject downLeftCorner =Instantiate(room.wallCorner, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
                     downLeftCorner.transform.parent = newRoom.transform;
                 }
 
                 if (_x == forbiddenX.Length - 1 && _y == 0)
                 {
-                    GameObject downRightCorner = MasterManager.NetworkInstantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                    GameObject downRightCorner = Instantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
                     downRightCorner.transform.parent = newRoom.transform;
                 }
 
                 if (_x == 0 && _y == forbiddenY.Length - 1)
                 {
-                    GameObject topLeftCorner = MasterManager.NetworkInstantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                    GameObject topLeftCorner = Instantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
                     topLeftCorner.transform.parent = newRoom.transform;
                 }
 
                 if (_x == forbiddenX.Length - 1 && _y == forbiddenY.Length - 1)
                 {
-                    GameObject topRightCorner = MasterManager.NetworkInstantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                    GameObject topRightCorner = Instantiate(room.wallCorner, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
                     topRightCorner.transform.parent = newRoom.transform;
                 }
 
@@ -106,20 +106,20 @@ public class RoomGenerator : MonoBehaviour
                     {
                         if (doorPlacedBot == true)
                         {
-                            GameObject botHalfWalls = MasterManager.NetworkInstantiate(room.halfWall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                            GameObject botHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
                             botHalfWalls.transform.parent = newRoom.transform;
                             doorPlacedBot = false;
                         }
                         else
                         {
-                            GameObject botWalls = MasterManager.NetworkInstantiate(room.wall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                            GameObject botWalls = Instantiate(room.wall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
                             botWalls.transform.parent = newRoom.transform;
                         }
 
                     }
                     else if (forbiddenX[_x] == true && forbiddenY[_y] == true)
                     {
-                        GameObject door = MasterManager.NetworkInstantiate(room.door, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                        GameObject door = Instantiate(room.door, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
                         door.transform.parent = newRoom.transform;
                         doorPlacedBot = true;
                     }
@@ -127,13 +127,13 @@ public class RoomGenerator : MonoBehaviour
                     {
                         if (doorPlacedBot == true)
                         {
-                            GameObject botHalfWalls = MasterManager.NetworkInstantiate(room.halfWall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                            GameObject botHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
                             botHalfWalls.transform.parent = newRoom.transform;
                             doorPlacedBot = false;
                         }
                         else
                         {
-                            GameObject botWalls = MasterManager.NetworkInstantiate(room.wall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                            GameObject botWalls = Instantiate(room.wall, v2, transform.rotation = new Quaternion(0, 0, 0, 0));
                             botWalls.transform.parent = newRoom.transform;
                         }
                     }
@@ -151,7 +151,7 @@ public class RoomGenerator : MonoBehaviour
                     {
                         if (doorPlacedTop == true)
                         {
-                            GameObject topHalfWalls = MasterManager.NetworkInstantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                            GameObject topHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
                             doorLocalScale = topHalfWalls.transform.localScale;
                             doorLocalScale.x = doorLocalScale.x * -1;
                             topHalfWalls.transform.localScale = doorLocalScale;
@@ -160,13 +160,13 @@ public class RoomGenerator : MonoBehaviour
                         }
                         else
                         {
-                            GameObject topWalls = MasterManager.NetworkInstantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                            GameObject topWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
                             topWalls.transform.parent = newRoom.transform;
                         }
                     }
                     else if (forbiddenX[_x] == true && forbiddenY[_y] == true)
                     {
-                        GameObject door = MasterManager.NetworkInstantiate(room.door, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                        GameObject door = Instantiate(room.door, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
                         doorLocalScale = door.transform.localScale;
                         doorLocalScale.x = doorLocalScale.x * -1;
                         door.transform.localScale = doorLocalScale;
@@ -177,7 +177,7 @@ public class RoomGenerator : MonoBehaviour
                     {
                         if (doorPlacedTop == true)
                         {
-                            GameObject topHalfWalls = MasterManager.NetworkInstantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                            GameObject topHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
                             doorLocalScale = topHalfWalls.transform.localScale;
                             doorLocalScale.x = doorLocalScale.x * -1;
                             topHalfWalls.transform.localScale = doorLocalScale;
@@ -186,7 +186,7 @@ public class RoomGenerator : MonoBehaviour
                         }
                         else
                         {
-                            GameObject topWalls = MasterManager.NetworkInstantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                            GameObject topWalls =Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
                             topWalls.transform.parent = newRoom.transform;
                         }
                     }
@@ -203,7 +203,7 @@ public class RoomGenerator : MonoBehaviour
                     {
                         if (doorPlacedLeft == true)
                         {
-                            GameObject leftHalfWalls = MasterManager.NetworkInstantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            GameObject leftHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
                             doorLocalScale = leftHalfWalls.transform.localScale;
                             doorLocalScale.x = doorLocalScale.x * -1;
                             leftHalfWalls.transform.localScale = doorLocalScale;
@@ -212,7 +212,7 @@ public class RoomGenerator : MonoBehaviour
                         }
                         else
                         {
-                            GameObject leftWalls = MasterManager.NetworkInstantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            GameObject leftWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
                             leftWalls.transform.parent = newRoom.transform;
                         }
                     }
@@ -220,7 +220,7 @@ public class RoomGenerator : MonoBehaviour
                     {
                         if (doorPlacedLeft == true)
                         {
-                            GameObject leftHalfWalls = MasterManager.NetworkInstantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            GameObject leftHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
                             doorLocalScale = leftHalfWalls.transform.localScale;
                             doorLocalScale.x = doorLocalScale.x * -1;
                             leftHalfWalls.transform.localScale = doorLocalScale;
@@ -230,7 +230,7 @@ public class RoomGenerator : MonoBehaviour
                         }
                         else
                         {
-                            GameObject door = MasterManager.NetworkInstantiate(room.door, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            GameObject door = Instantiate(room.door, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
                             doorLocalScale = door.transform.localScale;
                             doorLocalScale.x = doorLocalScale.x * -1;
                             door.transform.localScale = doorLocalScale;
@@ -242,7 +242,7 @@ public class RoomGenerator : MonoBehaviour
                     {
                         if (doorPlacedLeft == true)
                         {
-                            GameObject leftHalfWalls = MasterManager.NetworkInstantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            GameObject leftHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
                             doorLocalScale = leftHalfWalls.transform.localScale;
                             doorLocalScale.x = doorLocalScale.x * -1;
                             leftHalfWalls.transform.localScale = doorLocalScale;
@@ -251,7 +251,7 @@ public class RoomGenerator : MonoBehaviour
                         }
                         else
                         {
-                            GameObject leftWalls = MasterManager.NetworkInstantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                            GameObject leftWalls = Instantiate(room.wall, v2Temp, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
                             leftWalls.transform.parent = newRoom.transform;
                         }
                     }
@@ -264,19 +264,19 @@ public class RoomGenerator : MonoBehaviour
                     {
                         if (doorPlacedRight == true)
                         {
-                            GameObject rightHalfWalls = MasterManager.NetworkInstantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                            GameObject rightHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
                             rightHalfWalls.transform.parent = newRoom.transform;
                             doorPlacedRight = false;
                         }
                         else
                         {
-                            GameObject rightWalls = MasterManager.NetworkInstantiate(room.wall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                            GameObject rightWalls = Instantiate(room.wall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
                             rightWalls.transform.parent = newRoom.transform;
                         }
                     }
                     else if (forbiddenX[_x] == true && forbiddenY[_y] == true)
                     {
-                        GameObject door = MasterManager.NetworkInstantiate(room.door, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                        GameObject door = Instantiate(room.door, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
                         door.transform.parent = newRoom.transform;
                         doorPlacedRight = true;
                     }
@@ -284,13 +284,13 @@ public class RoomGenerator : MonoBehaviour
                     {
                         if (doorPlacedRight == true)
                         {
-                            GameObject rightHalfWalls = MasterManager.NetworkInstantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                            GameObject rightHalfWalls = Instantiate(room.halfWall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
                             rightHalfWalls.transform.parent = newRoom.transform;
                             doorPlacedRight = false;
                         }
                         else
                         {
-                            GameObject rightWalls = MasterManager.NetworkInstantiate(room.wall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                            GameObject rightWalls = Instantiate(room.wall, v2, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
                             rightWalls.transform.parent = newRoom.transform;
                         }
                     }
@@ -540,7 +540,7 @@ public class RoomGenerator : MonoBehaviour
                     vec2.x += 0.32f * spawnXint;
                     vec2.y += 0.32f * spawnYint;
                     // tässä on huone.
-                    GameObject _object = MasterManager.NetworkInstantiate(objectToGenerate, vec2, transform.rotation = new Quaternion(0, 0, 0, 0));
+                    GameObject _object =Instantiate(objectToGenerate, vec2, transform.rotation = new Quaternion(0, 0, 0, 0));
                     vec2 = vectorOrig;
                     _object.transform.parent = _parent.transform;
                     //vec2 = _parent.transform.position;

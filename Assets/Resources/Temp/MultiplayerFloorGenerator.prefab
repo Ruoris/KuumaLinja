@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2650451161365301380}
-  - component: {fileID: 2650451161365301387}
-  - component: {fileID: 2650451161365301385}
-  - component: {fileID: 4175496352764787677}
+  - component: {fileID: 465310643330825008}
+  - component: {fileID: -1648663354467677773}
+  - component: {fileID: -6828607231504678406}
   m_Layer: 0
   m_Name: MultiplayerFloorGenerator
   m_TagString: LevelGenerator
@@ -33,7 +33,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2650451161365301387
+--- !u!114 &465310643330825008
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -42,7 +42,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 2650451161365301386}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5432ca27e9d9dde42bd23f06c90594d1, type: 3}
+  m_Script: {fileID: 11500000, guid: 32a45c3d4a79eb24aad07723b0f47afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connections: 0
+--- !u!114 &-1648663354467677773
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2650451161365301386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538ee9eb4b4c7774687e11469c1ed919, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rooms: []
@@ -63,23 +76,10 @@ MonoBehaviour:
   wallFloor: {fileID: 300425294304570222, guid: a7f2abd125c5c574a9d07449d6af2961,
     type: 3}
   stairs: {fileID: 8792128641301137700, guid: 6899db2395243034f97f89d78aa7c4c5, type: 3}
-  playerSpawn: {x: 0.96, y: 0.64}
+  playerSpawn: {x: 8.96, y: 8.639999}
   levelController: {fileID: 0}
   levelGenerator: {fileID: 0}
---- !u!114 &2650451161365301385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2650451161365301386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd157c215fe49874baba069343a8127c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  connections: 0
---- !u!114 &4175496352764787677
+--- !u!114 &-6828607231504678406
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

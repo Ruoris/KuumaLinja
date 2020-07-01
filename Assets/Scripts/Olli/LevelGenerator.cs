@@ -48,9 +48,9 @@ public class LevelGenerator : MonoBehaviour
 
             if (levelController.GetComponent<LevelController>().playerSpawned == false)
             {
-                GameObject _player = /* Instantiate*/  MasterManager.NetworkInstantiate(player, playerSpawn, transform.rotation = new Quaternion(0, 0, 0, 0));
+                GameObject _player = /* Instantiate*/ Instantiate(player, playerSpawn, transform.rotation = new Quaternion(0, 0, 0, 0));
 
-                GameObject _aim = MasterManager.NetworkInstantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                GameObject _aim = Instantiate(aim, location, transform.rotation = new Quaternion(0, 0, 0, 0));
                 //_player.GetComponent<PlayerCtrl>().aim = _aim;
                 levelController.GetComponent<LevelController>().playerSpawned = true;
             }
@@ -72,53 +72,53 @@ public class LevelGenerator : MonoBehaviour
                 while (floorX > _x)
                 {
                     location.x = location.x + 0.32f;
-                    GameObject floor = MasterManager.NetworkInstantiate(hallwayFloor, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                    GameObject floor = Instantiate(hallwayFloor, location, transform.rotation = new Quaternion(0, 0, 0, 0));
                     floor.transform.parent = levelController.transform;
 
                     //CornerGenerator
                     if (_x == 0 && _y == 0)
                     {
-                        GameObject downLeftCorner = MasterManager.NetworkInstantiate(hallwayCorners, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                        GameObject downLeftCorner = Instantiate(hallwayCorners, location, transform.rotation = new Quaternion(0, 0, 0, 0));
                         downLeftCorner.transform.parent = levelController.transform;
                     }
 
                     if (_x == floorX - 1 && _y == 0)
                     {
-                        GameObject downRightCorner = MasterManager.NetworkInstantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                        GameObject downRightCorner = Instantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
                         downRightCorner.transform.parent = levelController.transform;
                     }
 
                     if (_x == 0 && _y == floorY - 1)
                     {
-                        GameObject topLeftCorner = MasterManager.NetworkInstantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                        GameObject topLeftCorner = Instantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
                         topLeftCorner.transform.parent = levelController.transform;
                     }
 
                     if (_x == floorX - 1 && _y == floorY - 1)
                     {
-                        GameObject topRightCorner = MasterManager.NetworkInstantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                        GameObject topRightCorner =Instantiate(hallwayCorners, location, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
                         topRightCorner.transform.parent = levelController.transform;
                     }
 
                     _x++;
                     if (_y == 0)
                     {
-                        GameObject wall = MasterManager.NetworkInstantiate(wallFloor, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                        GameObject wall = Instantiate(wallFloor, location, transform.rotation = new Quaternion(0, 0, 0, 0));
                         wall.transform.parent = levelController.transform;
                     }
                     if (_y == floorY - 1)
                     {
-                        GameObject wall = MasterManager.NetworkInstantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
+                        GameObject wall = Instantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 180));
                         wall.transform.parent = levelController.transform;
                     }
                     if (_x == 1)
                     {
-                        GameObject wall = MasterManager.NetworkInstantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
+                        GameObject wall = Instantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 270));
                         wall.transform.parent = levelController.transform;
                     }
                     if (_x == floorX)
                     {
-                        GameObject wall = MasterManager.NetworkInstantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
+                        GameObject wall = Instantiate(wallFloor, location, transform.rotation = Quaternion.Euler(Vector3.forward * 90));
                         wall.transform.parent = levelController.transform;
                     }
                 }
@@ -164,7 +164,7 @@ public class LevelGenerator : MonoBehaviour
                 }
             }
             location = new Vector2(spawnXint * 0.32f, spawnYint * 0.32f);
-            GameObject _stairs = MasterManager.NetworkInstantiate(stairs, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+            GameObject _stairs = Instantiate(stairs, location, transform.rotation = new Quaternion(0, 0, 0, 0));
             _stairs.transform.parent = this.gameObject.transform;
             levelController.GetComponent<LevelController>().floorSpawn = location;
             playerSpawn = location;
@@ -199,7 +199,7 @@ public class LevelGenerator : MonoBehaviour
                     }
                 }
                 location = new Vector2(spawnXint * 0.32f, spawnYint * 0.32f);
-                GameObject exit = MasterManager.NetworkInstantiate(stairs, location, transform.rotation = new Quaternion(0, 0, 0, 0));
+                GameObject exit = Instantiate(stairs, location, transform.rotation = new Quaternion(0, 0, 0, 0));
                 exit.transform.parent = this.gameObject.transform;
                 exit.GetComponent<PointController>().nextFloor = true;
             }

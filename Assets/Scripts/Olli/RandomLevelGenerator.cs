@@ -33,6 +33,8 @@ public class RandomLevelGenerator : MonoBehaviour
     void Start()
     {
         levelController = GameObject.FindGameObjectWithTag("LevelController");
+      
+     
     }
 
     // Update is called once per frame
@@ -55,7 +57,7 @@ public class RandomLevelGenerator : MonoBehaviour
     public void GenerateFloor()
     {
         
-            GameObject floor = MasterManager.NetworkInstantiate(floorGenerator, transform.position = new Vector2(0, 0), transform.rotation = new Quaternion(0, 0, 0, 0));
+            GameObject floor = Instantiate(floorGenerator, transform.position = new Vector2(0, 0), transform.rotation = new Quaternion(0, 0, 0, 0));
             GameObject[] temp = new GameObject[iTo];
             levelController.GetComponent<LevelController>().floors.CopyTo(temp, 0);
             levelController.GetComponent<LevelController>().floors = temp;
@@ -312,6 +314,7 @@ public class RandomLevelGenerator : MonoBehaviour
                     if (previousDoorDir == -1)
                     {
                         previousDoorDir = UnityEngine.Random.Range(0, 1);
+                    Debug.Log("previosdoordir: "+previousDoorDir);
                     }
                     else if (previousDoorDir == 0)
                     {
@@ -321,16 +324,19 @@ public class RandomLevelGenerator : MonoBehaviour
                     {
                         previousDoorDir = 0;
                     }
-                    randomX = UnityEngine.Random.Range(1, roomSizeX - 2);
+               
+                randomX = UnityEngine.Random.Range(1, roomSizeX - 2);
                     xString = randomX + "-" + 0;
                     if (previousDoorDir == 0)
                     {
-                        randomY = UnityEngine.Random.Range(1, roomSizeY - 1);
+                    Debug.Log("RandomY: " + roomSizeY);
+                    randomY = UnityEngine.Random.Range(1, roomSizeY - 1);
                         yString = 0 + "-" + randomY;
                     }
                     else
                     {
-                        Debug.Log("RightWall!");
+                    
+                    Debug.Log("RightWall!");
                         randomY = UnityEngine.Random.Range(1, roomSizeY - 1);
                         yString = (roomSizeX - 2) + "-" + randomY;
                     }
@@ -346,14 +352,15 @@ public class RandomLevelGenerator : MonoBehaviour
                 string objectMaking = "";
                 int laskinX = floorX / 10;
                 int laskinY = floorY / 10;
-
-                if (x > 1)
+            
+            if (x > 1)
                 {
                     for (int i = 0; i < laskinY; i++)
                     {
                         for (int j = 0; j < laskinX; j++)
                         {
-                            int randomFurniture = UnityEngine.Random.Range(2, floor.GetComponent<LevelGenerator>().rooms[x].furniture.Length);
+                       
+                        int randomFurniture = UnityEngine.Random.Range(2, floor.GetComponent<LevelGenerator>().rooms[x].furniture.Length);
                             int roomFurnitureX = UnityEngine.Random.Range(totalFurX, totalFurX);
                             int roomFurnitureY = UnityEngine.Random.Range(totalFurY, totalFurY);
                             if ((j == 0 && i == 0) || (i == laskinY - 1 && j == laskinX - 1))

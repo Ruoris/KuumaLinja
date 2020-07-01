@@ -193,14 +193,121 @@ PrefabInstance:
       propertyPath: rndLvlGntr
       value: 
       objectReference: {fileID: 1323353466}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 641768728829189047, guid: 80658696b8c2a6749b4c3f8b9b15422c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 80658696b8c2a6749b4c3f8b9b15422c, type: 3}
+--- !u!1 &105587356 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 641768728829189040, guid: 80658696b8c2a6749b4c3f8b9b15422c,
+    type: 3}
+  m_PrefabInstance: {fileID: 105587355}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &105587357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 105587356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1af07a175b139b34e9889466acd50994, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numberOfFloors: 0
+  floorNum: 0
+  floors:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  player: {fileID: 0}
+  mainCamera: {fileID: 809194335311716555, guid: eab467a7cf4effc4aafb096704412526,
+    type: 3}
+  currentFloor: 0
+  floorSpawn: {x: 0, y: 0}
+  floorSpawnX: 0
+  floorSpawnY: 0
+  playerSpawned: 0
+  firstRoomSpawned: 0
+  rndLvlGntr: {fileID: 1323353466}
+  levelsCleared: 1
+  enemiesKilled: 0
+  previousTotalEnemies: 0
+  previousFloor: 0
+  scorePoints: 0
+  addPoints: 0
+  currentFloorObject: {fileID: 0}
 --- !u!1 &1323353466 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7186013616714362258, guid: 3f884f34da3b4d54c9904d4a0225ba58,
     type: 3}
   m_PrefabInstance: {fileID: 7186013617729139986}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1323353467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323353466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0cdb90d5a6635e4e898d20bef224703, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floorGenerator: {fileID: 2650451161365301386, guid: 95738f16db16bd048975c0c7b5b76234,
+    type: 3}
+  levelController: {fileID: 0}
+  roomList:
+  - {fileID: 11400000, guid: b0c53475895f74442a0662953085afdc, type: 2}
+  - {fileID: 11400000, guid: 3c7b516e19f8c844293ccbc50b976a08, type: 2}
+  - {fileID: 11400000, guid: 92e68005401b1db4d96b90f9b9795d97, type: 2}
+  - {fileID: 11400000, guid: 465f90581a505c445968b6f9eed473d4, type: 2}
+  - {fileID: 11400000, guid: 5ef14a71c8be0814cbcfb8701d3d53f9, type: 2}
+  - {fileID: 11400000, guid: fa5f03ac60b90664b8ce47a1dc1c364e, type: 2}
+  - {fileID: 11400000, guid: d27de116353000f4faa5e528dfc90ec0, type: 2}
+  - {fileID: 11400000, guid: b389378fbe4f1f948953a1c37cfacbdc, type: 2}
+  randomrooms: 000000000000000000000000
+  randomXarray: 0000000000000000
+  randomYarray: 0000000000000000
+  randomFurniturearray: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+  floorX: 30
+  floorY: 30
+  startDifficulty: 0
+  floorGenerated: 0
+  numberOfRooms: 3
+  i: 0
+  iTo: 2
+  randomized: 0
+--- !u!114 &1323353468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323353466}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 0
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 0}
+  viewIdField: 1
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!224 &1565390180 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7544745665695984323, guid: 08bbb266864b7ca4e9280dc8fea02e9d,
@@ -218,6 +325,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RandomLevelUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 5737882933112854793, guid: 7b1aefb798c07724494f319ba22a1577,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5737882933112854798, guid: 7b1aefb798c07724494f319ba22a1577,
         type: 3}
@@ -642,5 +754,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7186013616714362256, guid: 3f884f34da3b4d54c9904d4a0225ba58, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3f884f34da3b4d54c9904d4a0225ba58, type: 3}
