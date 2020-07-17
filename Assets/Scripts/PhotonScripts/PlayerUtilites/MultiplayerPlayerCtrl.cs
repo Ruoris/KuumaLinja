@@ -19,9 +19,12 @@ public class MultiplayerPlayerCtrl : MonoBehaviourPun
     Vector2 movement;
 
     public GameObject dialogueTrigger;
+    public PhotonView photonview;
 
     void Start()
     {
+         photonview = PhotonView.Get(this);
+        
         if (base.photonView.IsMine)
         {
             //dialogue = false;
@@ -78,25 +81,38 @@ public class MultiplayerPlayerCtrl : MonoBehaviourPun
             if (movement.x != 0 || movement.y != 0)
             {
                 walkAnimation.SetActive(true);
-
-
+                bool walking = true;
+                
 
 
                 walkAnimation.transform.position = player.transform.position;
 
                 float walkAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg;
                 walkAnimation.transform.rotation = Quaternion.AngleAxis(-walkAngle, Vector3.forward);
+                photonview.RPC("Walking", RpcTarget.Others,walking,walkAngle);
             }
             else
             {
+                bool walking = false;
+                float notwalking = 0;
                 walkAnimation.SetActive(false);
+                photonview.RPC("Walking", RpcTarget.Others, walking,notwalking);
             }
 
         }
     }
 
-
-
+    [PunRPC]
+   public void Walking(bool walking,float walkAngle)
+    {
+        walkAnimation.SetActive(walking);
+        walkAnimation.transform.position = player.transform.position;
+        if (walking)
+        {
+        walkAnimation.transform.rotation = Quaternion.AngleAxis(-walkAngle, Vector3.forward);
+        }
+       
+    }
     void Crouch()
     {
         if (base.photonView.IsMine)

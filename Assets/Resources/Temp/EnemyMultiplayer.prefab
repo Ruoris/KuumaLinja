@@ -103,10 +103,12 @@ GameObject:
   - component: {fileID: 4002979554525059706}
   - component: {fileID: 4002979554525059711}
   - component: {fileID: 28430702618665717}
-  - component: {fileID: 4002979554525059708}
-  - component: {fileID: 4002979554525059715}
+  - component: {fileID: 8593684639696761691}
+  - component: {fileID: 5109196962840285517}
   - component: {fileID: 4002979554525059710}
   - component: {fileID: -2432760689772227318}
+  - component: {fileID: -5108847532119379965}
+  - component: {fileID: 4735509790459248249}
   m_Layer: 9
   m_Name: EnemyMultiplayer
   m_TagString: Enemy
@@ -263,7 +265,7 @@ MonoBehaviour:
   randomDirection: 4
   levelController: {fileID: 0}
   walkAnimation: {fileID: 4002979554662983208}
---- !u!114 &4002979554525059708
+--- !u!114 &8593684639696761691
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,7 +274,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4002979554525059714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2a80562fe7148944b56c46e9773c0ec, type: 3}
+  m_Script: {fileID: 11500000, guid: d5821bb8349016c459bd396611e59032, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pistol: {fileID: 4002979554997890369}
@@ -287,20 +289,20 @@ MonoBehaviour:
   emptyMagazine: 0
   reload: 0
   equipClip: {fileID: 0}
-  pistolDrop: {fileID: 2240815205682665118, guid: 4a1e3a497c2cd1a418d3fa85e250d6aa,
+  pistolDrop: {fileID: 4452341860737512717, guid: 553ef055cbab355469773891438b17c7,
     type: 3}
-  shotGunDrop: {fileID: 1764569589546099640, guid: f9e03e828832949419606133a7f5393f,
+  shotGunDrop: {fileID: 4674569110575288557, guid: 6f417c6471475484b9f6765cc129dc84,
     type: 3}
-  rifleDrop: {fileID: 8845930403911128201, guid: 3da5ea25f3e680a4288c2b1f3cb98e21,
+  rifleDrop: {fileID: 7252247960322415752, guid: e92a72b968254b747871404d5a34998f,
     type: 3}
   gameThrow: {fileID: 4002979554414100260}
   equippedGun: 1
   ammoCapacity: 10
-  ammoLeft: 10
+  ammoLeft: 0
   previousequippedGun: 0
   previousammoCapacity: 0
   previousAmmoLeft: 0
---- !u!114 &4002979554525059715
+--- !u!114 &5109196962840285517
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -309,7 +311,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4002979554525059714}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a03b548cd98d1834fbcceece36d86452, type: 3}
+  m_Script: {fileID: 11500000, guid: 1d328681755598c4da15e736851636e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 20
@@ -320,6 +322,9 @@ MonoBehaviour:
   enemy: {fileID: 4002979554525059714}
   bulletprefab: {fileID: 5005290098821576133, guid: 3dfb09dca58c4aa4c861b7ec19d0d4a6,
     type: 3}
+  photonview: {fileID: 0}
+  scene:
+    m_Handle: 0
 --- !u!70 &4002979554525059710
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -432,6 +437,43 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-5108847532119379965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002979554525059714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 4735509790459248249}
+  viewIdField: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &4735509790459248249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4002979554525059714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &4002979554662983208
 GameObject:
   m_ObjectHideFlags: 0

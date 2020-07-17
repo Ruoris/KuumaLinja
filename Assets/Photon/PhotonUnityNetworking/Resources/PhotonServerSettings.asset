@@ -37,6 +37,16 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - GetRandoms
+  - KilledByBulletrpc
+  - Walking
+  - MeleeInHands
+  - EquipRpc
+  - Smash
+  - FireMultiplayer
+  - DropGun
+  - PickedUp
+  - RpcCaller
+  - OppenHeimer
   DisableAutoOpenWizard: 1
   ShowSettings: 1
   DevRegionSetOnce: 1

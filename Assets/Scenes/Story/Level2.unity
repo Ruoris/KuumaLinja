@@ -2223,7 +2223,8 @@ AudioSource:
   m_GameObject: {fileID: 509478088}
   m_Enabled: 0
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 1655462591543370242, guid: dad76038e9f59bc4391ba2c841f8d294,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 463743ca1ea4bf04a84cb523af5dcf63, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.08
@@ -8965,13 +8966,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713b9c2d40b3cd346848459183dc1841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level1DT1: 0
-  Level1DT2: 0
-  Level1DT3: 0
-  Level1DT4: 0
-  Level1DT5: 0
-  Level1DT6: 0
-  Level1DT7: 0
 --- !u!1001 &301298681973822152
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10597,13 +10591,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713b9c2d40b3cd346848459183dc1841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level1DT1: 0
-  Level1DT2: 0
-  Level1DT3: 0
-  Level1DT4: 0
-  Level1DT5: 0
-  Level1DT6: 0
-  Level1DT7: 0
 --- !u!212 &2359925400404173970
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11363,13 +11350,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713b9c2d40b3cd346848459183dc1841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level1DT1: 0
-  Level1DT2: 0
-  Level1DT3: 0
-  Level1DT4: 0
-  Level1DT5: 0
-  Level1DT6: 0
-  Level1DT7: 0
 --- !u!4 &3375483098379186971
 Transform:
   m_ObjectHideFlags: 0
@@ -12360,13 +12340,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713b9c2d40b3cd346848459183dc1841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level1DT1: 0
-  Level1DT2: 0
-  Level1DT3: 0
-  Level1DT4: 0
-  Level1DT5: 0
-  Level1DT6: 0
-  Level1DT7: 0
 --- !u!1001 &5103509436435950269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12703,13 +12676,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713b9c2d40b3cd346848459183dc1841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level1DT1: 0
-  Level1DT2: 0
-  Level1DT3: 0
-  Level1DT4: 0
-  Level1DT5: 0
-  Level1DT6: 0
-  Level1DT7: 0
 --- !u!1001 &5300888488904068658
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25719,13 +25685,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713b9c2d40b3cd346848459183dc1841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level1DT1: 0
-  Level1DT2: 0
-  Level1DT3: 0
-  Level1DT4: 0
-  Level1DT5: 0
-  Level1DT6: 0
-  Level1DT7: 0
 --- !u!4 &6068620363794502425 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1392287940242630015, guid: 2c3f285f05caeb44c81cdc12e61b2258,
@@ -26344,13 +26303,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713b9c2d40b3cd346848459183dc1841, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Level1DT1: 0
-  Level1DT2: 0
-  Level1DT3: 0
-  Level1DT4: 0
-  Level1DT5: 0
-  Level1DT6: 0
-  Level1DT7: 0
 --- !u!212 &6655445049214792623
 SpriteRenderer:
   m_ObjectHideFlags: 0

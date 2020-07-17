@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class WeaponDrop : MonoBehaviour
 {
@@ -8,12 +9,23 @@ public class WeaponDrop : MonoBehaviour
     public int ammoCapacity;
     private bool started;
     public float timer;
-
+   
     public void Start()
     {
         timer = 0;
         started = true;
         //bulletsLeft = ammoCapacity;
+
+    }
+    [PunRPC]
+   void OppenHeimer()
+    {
+        Destroy(this.gameObject);
+    }
+    
+    public void RpcCaller()
+    {   PhotonView photonview = PhotonView.Get(this); 
+        photonview.RPC("OppenHeimer", RpcTarget.All);
     }
     public void FixedUpdate()
 

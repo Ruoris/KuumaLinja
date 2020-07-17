@@ -253,6 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1699877606529187974}
   - component: {fileID: -9179696875809427845}
+  - component: {fileID: -4376811019548173632}
   m_Layer: 0
   m_Name: Environment15
   m_TagString: Untagged
@@ -289,6 +290,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d0c7c2459567bc468bbf46332ee27ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-4376811019548173632
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300425294304570222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab8f658943a1c7047bcb59ee0fb9cb08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Environment: {fileID: 0}
+  multiplayerEnemyPrefab: {fileID: 4002979554525059714, guid: e97d4f395d16a984596c9e7da79f358d,
+    type: 3}
 --- !u!1 &321761923735620266
 GameObject:
   m_ObjectHideFlags: 0

@@ -1988,7 +1988,7 @@ GameObject:
   - component: {fileID: 3263682782232455110}
   - component: {fileID: 3263682782232455107}
   - component: {fileID: -6458611702065434778}
-  - component: {fileID: 8665110952458005305}
+  - component: {fileID: -5259984783017272454}
   m_Layer: 10
   m_Name: Playeri
   m_TagString: Player
@@ -2163,6 +2163,7 @@ MonoBehaviour:
   playerRB: {fileID: 3263682782232455106}
   dialogueTrigger: {fileID: 6749529398471079634, guid: 98db27a6161865b48b292147d7ec3875,
     type: 3}
+  photonview: {fileID: 0}
 --- !u!114 &-81356265046425554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2189,6 +2190,7 @@ MonoBehaviour:
   meleeAnimation: {fileID: 2944733641535724896}
   pipeHands: {fileID: 2944733642415510170}
   melee: 0
+  photonview: {fileID: 0}
   dialogueTrigger: {fileID: 0}
 --- !u!114 &643343708125265457
 MonoBehaviour:
@@ -2217,11 +2219,11 @@ MonoBehaviour:
   uiShellCounter: {fileID: 0}
   uiRifleCounter: {fileID: 0}
   secondaryWeaponContainer: {fileID: 0}
-  pistolDrop: {fileID: 2240815205682665118, guid: 4a1e3a497c2cd1a418d3fa85e250d6aa,
+  pistolDrop: {fileID: 4452341860737512717, guid: c9dffb27af9a40b48b896d19a9b0099e,
     type: 3}
-  shotGunDrop: {fileID: 1764569589546099640, guid: f9e03e828832949419606133a7f5393f,
+  shotGunDrop: {fileID: 4674569110575288557, guid: 38e942fdb3de4ab40858fa662b51abef,
     type: 3}
-  rifleDrop: {fileID: 8845930403911128201, guid: 3da5ea25f3e680a4288c2b1f3cb98e21,
+  rifleDrop: {fileID: 7252247960322415752, guid: 0c702dab18001034eb5ce72b1fcf6f2f,
     type: 3}
   gameThrow: {fileID: 2944733642538263949}
   otherWeapons:
@@ -2239,6 +2241,7 @@ MonoBehaviour:
   shotgunCapacity: 5
   assaultRifleCapacity: 15
   wallCheck: {fileID: 0}
+  photonview: {fileID: 0}
 --- !u!114 &3263682782232455110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2307,11 +2310,11 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 8665110952458005305}
+  - {fileID: -5259984783017272454}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &8665110952458005305
+--- !u!114 &-5259984783017272454
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2320,30 +2323,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 3263682782232455113}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &8852211536145154589
 GameObject:
   m_ObjectHideFlags: 0

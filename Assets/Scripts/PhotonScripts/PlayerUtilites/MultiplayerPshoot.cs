@@ -19,17 +19,20 @@ public class MultiplayerPshoot : MonoBehaviourPun
     private GameObject ammopanel;
     public bool melee;
 
-
+    public PhotonView photonview;
     public GameObject dialogueTrigger;
 
-
-    void Update()
+    void Start()
     {
+        photonview = PhotonView.Get(this);
+    }
+        void Update()
+    {       meleeAnimation.transform.position = player.transform.position;
+            meleeAnimation.transform.rotation = player.transform.rotation;
         if (base.photonView.IsMine)
         {
 
-            meleeAnimation.transform.position = player.transform.position;
-            meleeAnimation.transform.rotation = player.transform.rotation;
+           
 
             GameObject pauser = GameObject.FindWithTag("soundsettings");
             int equippedGun = GetComponent<MultiplayerWeapons>().equippedGun;
@@ -48,8 +51,10 @@ public class MultiplayerPshoot : MonoBehaviourPun
 
                 {
                     ammopanel = GameObject.FindWithTag("activeBulletCounter");
+                   
                     gunSound.Play();
-                    Fire();
+                    photonview.RPC("Fire", RpcTarget.All);
+                   
                     gunFlareAnimation.SetActive(true);
 
                     GetComponent<MultiplayerWeapons>().ammoLeft--;
@@ -57,32 +62,28 @@ public class MultiplayerPshoot : MonoBehaviourPun
                     if (equippedGun == 2)
                     {
                         // if a shotgun is equipped
-                        Fire();
-                        Fire();
-                        Fire();
-                        Fire();
-                        Fire();
-                        Fire();
+                        photonview.RPC("Fire", RpcTarget.All);   //Fire();
+                        photonview.RPC("Fire", RpcTarget.All);   //Fire();
+                        photonview.RPC("Fire", RpcTarget.All);   //Fire();
+                        photonview.RPC("Fire", RpcTarget.All);   //Fire();
+                        photonview.RPC("Fire", RpcTarget.All);   //Fire();
+                        photonview.RPC("Fire", RpcTarget.All);   //Fire();
                     }
                 }
                 else
                 {
-                    melee = true;
-                    meleeAnimation.SetActive(true);
-                    pipeHands.SetActive(false);
-                    StartCoroutine("MeleeAnimation", 0.25f);
+                    photonview.RPC("Smash", RpcTarget.All);
                 }
             }
-            canFire += Time.deltaTime;
+           
 
         }
-
+        canFire += Time.deltaTime;
     }
 
     IEnumerator MeleeAnimation(float delay)
     {
-        if (base.photonView.IsMine)
-        {
+        
             while (true && melee == true)
             {
                 //Debug.Log("melee");
@@ -92,7 +93,7 @@ public class MultiplayerPshoot : MonoBehaviourPun
                 pipeHands.SetActive(true);
                 melee = false;
             }
-        }
+        
     }
 
     void AmmoCounter(int equippedGun)
@@ -104,10 +105,18 @@ public class MultiplayerPshoot : MonoBehaviourPun
             ammopanel.GetComponent<AmmocounterScript>().ChangeColor(GetComponent<MultiplayerWeapons>().ammoLeft);
         }
     }
+   [PunRPC]
+   void Smash()
+    {
+                    melee = true;
+                    meleeAnimation.SetActive(true);
+                    pipeHands.SetActive(false);
+                    StartCoroutine("MeleeAnimation", 0.25f);
+    }
+    [PunRPC]
     void Fire()
     {
-        if (base.photonView.IsMine)
-        {
+        
             canFire = 0;
 
             int equippedGun = GetComponent<MultiplayerWeapons>().equippedGun;
@@ -138,6 +147,6 @@ public class MultiplayerPshoot : MonoBehaviourPun
             {
                 Destroy(tempBullet, 0.3f);
             }
-        }
+        
     }
 }

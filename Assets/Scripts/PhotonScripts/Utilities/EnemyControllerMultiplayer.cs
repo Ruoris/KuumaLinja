@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Photon.Pun;
 
 public class EnemyControllerMultiplayer : MonoBehaviour
 {
@@ -70,9 +71,9 @@ public class EnemyControllerMultiplayer : MonoBehaviour
     void KilledByBullet()
     {
         int deathInt = Random.Range(1, 3);
-        Scene scene = SceneManager.GetActiveScene();
+      
         Destroy(footPrints);
-        GetComponent<EnemyWeapons>().DropGun();
+        GetComponent<EnemyWeaponsMultiplayer>().DropGun();
 
         enemy.transform.eulerAngles = new Vector3(0, 0, enemy.transform.eulerAngles.z - 180);
         
@@ -84,12 +85,39 @@ public class EnemyControllerMultiplayer : MonoBehaviour
         {
             Instantiate(death, enemy.transform.position, enemy.transform.rotation);
         }
-        if (scene.name == "RandomGenerator")
+    
+        levelController.GetComponent<LevelControllerMultiplayer>().enemiesKilled++;
+      
+
+
+
+        gameObject.SetActive(false);
+    }
+    [PunRPC]
+    void KilledByBulletrpc()
+    {
+        int deathInt = Random.Range(1, 3);
+        Scene scene = SceneManager.GetActiveScene();
+        Destroy(footPrints);
+        GetComponent<EnemyWeaponsMultiplayer>().DropGun();
+
+        enemy.transform.eulerAngles = new Vector3(0, 0, enemy.transform.eulerAngles.z - 180);
+
+        if (deathInt == 2)
         {
-        levelController.GetComponent<LevelController>().enemiesKilled++;
+            Instantiate(death2, enemy.transform.position, enemy.transform.rotation);
+        }
+        else
+        {
+            Instantiate(death, enemy.transform.position, enemy.transform.rotation);
+        }
+        
+        if (scene.name == "MultiplayerEndless")
+        {
+            levelController.GetComponent<LevelControllerMultiplayer>().enemiesKilled++;
         }
 
-        
+
 
         gameObject.SetActive(false);
     }
@@ -219,7 +247,9 @@ public class EnemyControllerMultiplayer : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet") && dying == false)
         {
             dying = true;
-            KilledByBullet();
+            //KilledByBullet();
+            PhotonView photonview = PhotonView.Get(this);
+            photonview.RPC("KilledByBulletrpc", RpcTarget.All);
         }
     }
 }

@@ -28,11 +28,12 @@ public class MultiplayerWeapons : MonoBehaviourPun
 
     public Transform wallCheck;
 
-
+    public PhotonView photonview;
 
     // Start is called before the first frame update
     void Start()
     {
+        photonview = PhotonView.Get(this);
         if (base.photonView.IsMine)
         {
 
@@ -73,11 +74,13 @@ public class MultiplayerWeapons : MonoBehaviourPun
 
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
+              //  photonView.RPC("DropGun", RpcTarget.All);  
                 DropGun();
             }
             if (ammoLeft <= 0)
             {
                 equippedGun = 0;
+                photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
             }
         }
     }
@@ -126,14 +129,67 @@ public class MultiplayerWeapons : MonoBehaviourPun
 
 
     }
-
-    void EquipGun()
+    [PunRPC]
+    void EquipRpc(int equipped)
     {
+        bulletForce = 10;
+        for (int i = 0; i < player.transform.childCount; i++)
+        {
+            // deactivates other weapons and stances
+            var child = player.transform.GetChild(i).gameObject;
+
+            if (child != null && child.name.Contains("Weapon") || child.name.Contains("Hand"))
+            {
+                child.SetActive(false);
+            }
+        }
+
+        switch (equipped)
+        {
+            // gun selection
+            case 0:
+              
+
+                playerBothHands.SetActive(false);
+                playerOneHand.SetActive(false);
+
+                bool melee = GetComponent<MultiplayerPshoot>().melee;
+                if (melee == false)
+                {
+                    pipeHands.SetActive(true);
+                }
+                
+                break;
+
+            case 1: 
+                pistol.SetActive(true);
+                playerOneHand.SetActive(true);
+                pipeHands.SetActive(false);
+                break;
+            case 2: 
+                shotgun.SetActive(true);
+                playerBothHands.SetActive(true);
+                pipeHands.SetActive(false);
+                break;
+
+            case 3:
+               
+                
+                assaultRifle.SetActive(true);
+                playerBothHands.SetActive(true);
+                pipeHands.SetActive(false);
+
+                break;
+        }
+
+    }
+    void EquipGun()
+    {   bulletForce = 10;
         if (base.photonView.IsMine)
         {
             pipeHands.SetActive(false);
             //pipe.SetActive(false);
-            bulletForce = 10;
+           
 
             foreach (Transform weapon in player.GetComponentsInChildren<Transform>())
             {
@@ -178,7 +234,7 @@ public class MultiplayerWeapons : MonoBehaviourPun
                         {
                             pipeHands.SetActive(true);
                         }
-
+                        
                         emptyMagazine = true;
                         ammoCapacity = 0;
                         break;
@@ -243,18 +299,18 @@ public class MultiplayerWeapons : MonoBehaviourPun
             }
         }
     }
-
+   // [PunRPC]
     public void DropGun()
     {
+
         if (base.photonView.IsMine)
         {
 
-            GameObject ammoSpawn = GameObject.FindWithTag("AmmoSpawn");
-            Transform firePoint = ammoSpawn.GetComponent<Transform>();
+            Transform firePoint = this.transform.GetChild(0);
 
             if (equippedGun == 1)
             {
-                var droppedPistol = Instantiate(pistolDrop, gameThrow.transform.position, Quaternion.identity);
+                var droppedPistol = MasterManager.NetworkInstantiate(pistolDrop, gameThrow.transform.position, Quaternion.identity);
                 droppedPistol.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
                 droppedPistol.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
@@ -268,11 +324,13 @@ public class MultiplayerWeapons : MonoBehaviourPun
                 rb1.AddForce(MovementDirection * 2, ForceMode2D.Impulse);
 
                 equippedGun = 0;
+                photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
                 ammoLeft = 0;
+
             }
             if (equippedGun == 2)
             {
-                var droppedShotgun = Instantiate(shotGunDrop, gameThrow.transform.position, Quaternion.identity);
+                var droppedShotgun = MasterManager.NetworkInstantiate(shotGunDrop, gameThrow.transform.position, Quaternion.identity);
                 droppedShotgun.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
                 droppedShotgun.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
@@ -284,13 +342,17 @@ public class MultiplayerWeapons : MonoBehaviourPun
                 float rotateAngle = spreadAngle + (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
                 var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
                 rb1.AddForce(MovementDirection * 2, ForceMode2D.Impulse);
+
                 equippedGun = 0;
+                photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
                 ammoLeft = 0;
+
+
             }
 
             if (equippedGun == 3)
             {
-                var droppedRifle = Instantiate(rifleDrop, gameThrow.transform.position, Quaternion.identity);
+                var droppedRifle = MasterManager.NetworkInstantiate(rifleDrop, gameThrow.transform.position, Quaternion.identity);
                 droppedRifle.GetComponent<WeaponDrop>().bulletsLeft = ammoLeft;
                 droppedRifle.GetComponent<WeaponDrop>().ammoCapacity = ammoCapacity;
 
@@ -302,9 +364,12 @@ public class MultiplayerWeapons : MonoBehaviourPun
                 float rotateAngle = spreadAngle + (Mathf.Atan2(y, x) * Mathf.Rad2Deg);
                 var MovementDirection = new Vector2(Mathf.Cos(rotateAngle * Mathf.Deg2Rad), Mathf.Sin(rotateAngle * Mathf.Deg2Rad)).normalized;
                 rb1.AddForce(MovementDirection * 2, ForceMode2D.Impulse);
+
                 equippedGun = 0;
+                photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
                 ammoLeft = 0;
             }
+
         }
     }
 
@@ -332,6 +397,7 @@ public class MultiplayerWeapons : MonoBehaviourPun
             ammoCapacity = previousAmmoCapacity;
             ammoLeft = previousAmmoLeft;
             equippedGun = previousEquippedGun;
+            photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
             if (equippedGun == 1)
             {
                 uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
@@ -463,10 +529,11 @@ public class MultiplayerWeapons : MonoBehaviourPun
 
 
                     equippedGun = 1;
+                    photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
                     ammoCapacity = pistolCapacity;
                     ammoLeft = pistolCapacity;
                     uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
+                    other.GetComponent<WeaponDrop>().RpcCaller();
                 }
 
                 if (other.gameObject.tag == "ShotGunDrop")
@@ -481,13 +548,12 @@ public class MultiplayerWeapons : MonoBehaviourPun
 
 
                     equippedGun = 2;
+                    photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
                     ammoCapacity = shotgunCapacity;
                     ammoLeft = shotgunCapacity;
                     uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
+                    other.gameObject.GetComponent<WeaponDrop>().RpcCaller();
                 }
-
-
                 if (other.gameObject.tag == "RifleDrop")
                 {
                     uiRifleCounter.GetComponent<AmmocounterScript>().ReturnColor(assaultRifleCapacity);
@@ -499,10 +565,11 @@ public class MultiplayerWeapons : MonoBehaviourPun
                     }
 
                     equippedGun = 3;
+                    photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
                     ammoCapacity = assaultRifleCapacity;
                     ammoLeft = assaultRifleCapacity;
                     uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
+                    other.gameObject.GetComponent<WeaponDrop>().RpcCaller();
                 }
                 if (other.gameObject.tag == "PlayerPistolDrop")
                 {
@@ -516,10 +583,11 @@ public class MultiplayerWeapons : MonoBehaviourPun
                     }
 
                     equippedGun = 1;
+                    photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
                     ammoCapacity = pistolCapacity;
                     ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
                     uiAmmoCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
+                    other.gameObject.GetComponent<WeaponDrop>().RpcCaller();
 
                 }
                 if (other.gameObject.tag == "PlayerShotgunDrop")
@@ -534,11 +602,11 @@ public class MultiplayerWeapons : MonoBehaviourPun
                     }
 
                     equippedGun = 2;
+                    photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
                     ammoCapacity = shotgunCapacity;
                     ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
                     uiShellCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
-
+                    other.gameObject.GetComponent<WeaponDrop>().RpcCaller();
                 }
                 if (other.gameObject.tag == "PlayerRifleDrop")
                 {
@@ -550,12 +618,12 @@ public class MultiplayerWeapons : MonoBehaviourPun
                         previousAmmoLeft = ammoLeft;
                         previousAmmoCapacity = ammoCapacity;
                     }
-
                     equippedGun = 3;
+                    photonView.RPC("EquipRpc", RpcTarget.Others, equippedGun);
                     ammoCapacity = assaultRifleCapacity;
                     ammoLeft = other.GetComponent<WeaponDrop>().bulletsLeft;
                     uiRifleCounter.GetComponent<AmmocounterScript>().PartialColorToUsed(ammoCapacity, ammoLeft);
-                    Destroy(other.gameObject);
+                    other.gameObject.GetComponent<WeaponDrop>().RpcCaller();
 
                 }
 

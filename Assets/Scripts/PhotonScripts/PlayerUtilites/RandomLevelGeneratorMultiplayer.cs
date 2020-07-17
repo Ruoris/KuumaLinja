@@ -73,7 +73,7 @@ public class RandomLevelGeneratorMultiplayer : MonoBehaviour
 
         PhotonView photonview = PhotonView.Get(this);
         photonview.RPC("GetRandoms", RpcTarget.AllViaServer, randoms, randomFurniture);
-        Debug.Log("Randimsoitu");
+        Debug.Log("Randomisoitu");
     }
 
     [PunRPC]
